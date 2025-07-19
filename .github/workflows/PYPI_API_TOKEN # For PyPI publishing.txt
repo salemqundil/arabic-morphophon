@@ -1,0 +1,3 @@
+PYPI_API_TOKEN          # For PyPI publishing
+DOCKERHUB_USERNAME      # For Docker Hub publishing  
+DOCKERHUB_TOKEN         # For Docker Hub authentication

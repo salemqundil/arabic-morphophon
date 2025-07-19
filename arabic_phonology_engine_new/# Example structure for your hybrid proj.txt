@@ -1,0 +1,20 @@
+# Example structure for your hybrid project
+CXX = g++
+PYTHON = python
+PIP = pip
+
+.PHONY: build install test clean
+
+build:
+    # Build C++ phonology engine
+    $(CXX) -O3 -shared -fPIC src/cpp/phonology_engine.cpp -o src/arabic_phonology/core/engine.so
+    
+install: build
+    $(PIP) install -e .[dev]
+
+test: install
+    pytest tests/ --cov=arabic_phonology
+
+clean:
+    rm -f src/arabic_phonology/core/*.so
+    $(PIP) uninstall -y arabic-phonology-engine
