@@ -1,0 +1,21 @@
+your-python-project/
+├── src/
+│   └── your_package_name/
+│       ├── __init__.py
+│       ├── main.py
+│       └── modules/
+├── tests/
+│   ├── __init__.py
+│   ├── test_main.py
+│   └── test_modules.py
+├── pyproject.toml          # Modern Python packaging
+├── setup.py               # Legacy setup (optional)
+├── requirements.txt       # Runtime dependencies
+├── requirements-dev.txt   # Development dependencies
+├── README.md
+├── LICENSE
+├── MANIFEST.in           # Include additional files
+├── Dockerfile            # For Docker deployment
+└── .github/
+    └── workflows/
+        └── ci.yml        # Your workflow file

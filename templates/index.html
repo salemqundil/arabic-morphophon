@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محرك التحليل الصوتي العربي - Arabic Phonology Engine</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <header class="bg-primary text-white p-4 mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-4 mb-0">
+                        <i class="fas fa-microphone-alt me-3"></i>
+                        محرك التحليل الصوتي العربي
+                    </h1>
+                    <p class="lead mb-0">Arabic Phonological Analysis Engine</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <span class="badge bg-success fs-6">
+                        <i class="fas fa-circle me-1"></i>
+                        نشط - Active
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <!-- Input Panel -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-keyboard me-2"></i>
+                            إدخال النص - Text Input
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="analysisForm">
+                            <div class="mb-3">
+                                <label for="arabicText" class="form-label">النص العربي:</label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="arabicText" 
+                                    rows="6" 
+                                    placeholder="اكتب النص العربي هنا... (مثال: أَكَلَ الوَلَدُ التُّفاحَ)"
+                                    style="font-size: 18px; font-family: 'Amiri', 'Times New Roman', serif;"
+                                >أَكَلَ الوَلَدُ التُّفاحَ</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-cogs me-2"></i>
+                                تحليل النص - Analyze
+                            </button>
+                        </form>
+                        
+                        <!-- Loading Indicator -->
+                        <div id="loadingIndicator" class="text-center mt-3" style="display: none;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">جاري التحليل...</span>
+                            </div>
+                            <p class="mt-2">جاري التحليل...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Examples -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h6 class="mb-0">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            أمثلة سريعة
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-outline-secondary btn-sm mb-2 w-100 example-btn" 
+                                data-text="السَّلامُ عَلَيْكُم">
+                            السَّلامُ عَلَيْكُم
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm mb-2 w-100 example-btn" 
+                                data-text="مَرْحَباً بِالعالَم">
+                            مَرْحَباً بِالعالَم
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm w-100 example-btn" 
+                                data-text="نَحْنُ نَتَعَلَّمُ العَرَبِيَّة">
+                            نَحْنُ نَتَعَلَّمُ العَرَبِيَّة
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="col-lg-8">
+                <!-- Analysis Results -->
+                <div id="resultsContainer" style="display: none;">
+                    <!-- Normalized Text -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-warning">
+                            <h5 class="mb-0">
+                                <i class="fas fa-filter me-2"></i>
+                                النص المعياري - Normalized Text
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="normalizedText" class="alert alert-light" style="font-size: 20px; font-family: 'Amiri', serif;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Phoneme Analysis -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-search me-2"></i>
+                                التحليل الصوتي - Phoneme Analysis
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="phonemeAnalysis" class="row"></div>
+                        </div>
+                    </div>
+
+                    <!-- Syllable Encoding -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-code me-2"></i>
+                                ترميز المقاطع - Syllable Encoding
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="syllableEncoding" class="table-responsive"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Container -->
+                <div id="errorContainer" class="alert alert-danger" style="display: none;">
+                    <h5>
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        خطأ - Error
+                    </h5>
+                    <p id="errorMessage"></p>
+                </div>
+
+                <!-- Welcome Message -->
+                <div id="welcomeMessage" class="text-center">
+                    <div class="jumbotron bg-light p-5 rounded">
+                        <h2 class="display-6 text-muted">مرحباً بك في محرك التحليل الصوتي العربي</h2>
+                        <p class="lead text-muted">
+                            أدخل النص العربي في الحقل الجانبي واضغط "تحليل" للحصول على:
+                        </p>
+                        <ul class="list-unstyled text-muted">
+                            <li><i class="fas fa-check text-success me-2"></i>تطبيع النص العربي</li>
+                            <li><i class="fas fa-check text-success me-2"></i>تحليل الوحدات الصوتية</li>
+                            <li><i class="fas fa-check text-success me-2"></i>ترميز المقاطع الصوتية</li>
+                            <li><i class="fas fa-check text-success me-2"></i>تصنيف مورفولوجي للحروف</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
