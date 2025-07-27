@@ -1,0 +1,248 @@
+# Arabic Relative Pronouns System Configuration
+# ======================================
+# إعدادات نظام الأسماء الموصولة العربية
+
+# General System Settings
+system:
+  name: "Arabic Relative Pronouns Generator"
+  version: "1.0.0"
+  description: "نظام توليد الأسماء الموصولة العربية من المقاطع الصوتية"
+  author: "Arabic NLP Expert Team - GitHub Copilot"
+  encoding: "UTF-8"
+  language: "Arabic"
+
+# Relative Pronouns Categories
+# فئات الأسماء الموصولة
+relative_pronoun_categories:
+  masculine_singular:
+    name: "مذكر مفرد"
+    examples: ["الذي", "الذى", "ذو"]
+    frequency_weight: 0.9
+
+  feminine_singular:
+    name: "مؤنث مفرد"
+    examples: ["التي", "اللتي", "ذات"]
+    frequency_weight: 0.85
+
+  masculine_dual:
+    name: "مذكر مثنى"
+    examples: ["اللذان", "اللذين"]
+    frequency_weight: 0.6
+
+  feminine_dual:
+    name: "مؤنث مثنى"
+    examples: ["اللتان", "اللتين"]
+    frequency_weight: 0.55
+
+  masculine_plural:
+    name: "مذكر جمع"
+    examples: ["الذين"]
+    frequency_weight: 0.8
+
+  feminine_plural:
+    name: "مؤنث جمع"
+    examples: ["اللاتي", "اللائي", "اللواتي"]
+    frequency_weight: 0.7
+
+  general:
+    name: "عام"
+    examples: ["مَن", "ما", "أي"]
+    frequency_weight: 0.95
+
+# Syllable Patterns
+# الأنماط المقطعية
+syllable_patterns:
+  simple_patterns:
+    CV:
+      description: "مقطع بسيط (حرف + حركة)"
+      examples: ["ذِي", "تِي", "مَا"]
+      complexity_score: 1.0
+
+    CVC:
+      description: "مقطع مغلق (حرف + حركة + حرف)"
+      examples: ["مَنْ", "ذَاتِ"]
+      complexity_score: 1.5
+
+  compound_patterns:
+    CV_CV:
+      description: "مقطعان بسيطان"
+      examples: ["الْذِي", "الْتِي"]
+      complexity_score: 2.0
+
+    CV_CVC:
+      description: "مقطع بسيط + مقطع مغلق"
+      examples: ["أَيّ"]
+      complexity_score: 2.5
+
+    CV_CV_CV:
+      description: "ثلاثة مقاطع بسيطة"
+      examples: ["الْلَاتِي"]
+      complexity_score: 3.0
+
+    CV_CV_CV_CV:
+      description: "أربعة مقاطع"
+      examples: ["الْلَوَاتِي"]
+      complexity_score: 4.0
+
+# Phoneme Inventory
+# مخزون الفونيمات
+phonemes:
+  consonants:
+    stops: ["b", "t", "d", "k", "q", "ʔ"]
+    fricatives: ["f", "th", "dh", "s", "z", "sh", "x", "gh", "h", "ħ", "ʕ"]
+    nasals: ["m", "n"]
+    liquids: ["l", "r"]
+    glides: ["w", "y"]
+    emphatic: ["ṭ", "ḍ", "ṣ", "ẓ"]
+
+  vowels:
+    short: ["a", "i", "u"]
+    long: ["aa", "ii", "uu"]
+    diphthongs: ["ay", "aw"]
+
+# Morphological Features
+# الخصائص المورفولوجية
+morphological_features:
+  gender:
+    values: ["مذكر", "مؤنث", "محايد", "متغير"]
+
+  number:
+    values: ["مفرد", "مثنى", "جمع", "محايد", "متغير"]
+
+  case:
+    values: ["رفع", "نصب", "جر", "نصب_وجر", "مبني", "معرب", "متغير"]
+
+  definiteness:
+    values: ["معرف", "نكرة", "محايد"]
+
+# Usage Contexts
+# سياقات الاستخدام
+usage_contexts:
+  syntactic:
+    - "جملة الصلة"
+    - "التعريف"
+    - "الوصف"
+    - "الشرط"
+    - "الاستفهام"
+    - "الإضافة"
+
+  stylistic:
+    - "النصوص الفصيحة"
+    - "النصوص الكلاسيكية"
+    - "الكتابة الرسمية"
+    - "اللغة المعاصرة"
+    - "الأدب القديم"
+
+# Frequency Scores
+# درجات التكرار
+frequency_ranges:
+  very_high:
+    range: [0.9, 1.0]
+    examples: ["الذي", "التي", "مَن", "ما"]
+
+  high:
+    range: [0.8, 0.9]
+    examples: ["الذين", "الذى"]
+
+  medium:
+    range: [0.6, 0.8]
+    examples: ["اللاتي", "اللذان", "اللتان"]
+
+  low:
+    range: [0.4, 0.6]
+    examples: ["اللذين", "اللتين", "ذو", "ذات"]
+
+  very_low:
+    range: [0.1, 0.4]
+    examples: ["اللائي", "اللواتي"]
+
+# Matching Algorithm Settings
+# إعدادات خوارزمية المطابقة
+matching:
+  similarity_threshold: 0.7
+  pattern_match_weight: 0.3
+  syllable_similarity_weight: 0.7
+  frequency_bonus_weight: 0.1
+
+  scoring:
+    exact_match: 1.0
+    partial_match: 0.5
+    pattern_match: 0.8
+    no_match: 0.0
+
+# Deep Learning Model Configuration
+# إعدادات نموذج التعلم العميق
+deep_learning:
+  model_types:
+    - "RNN"
+    - "GRU"
+    - "LSTM"
+    - "Transformer"
+
+  rnn_config:
+    embed_dim: 64
+    hidden_size: 128
+    num_layers: 2
+    bidirectional: true
+    dropout: 0.1
+
+  transformer_config:
+    d_model: 256
+    nhead: 8
+    num_encoder_layers: 6
+    dim_feedforward: 1024
+    dropout: 0.1
+    max_seq_length: 20
+
+  training:
+    batch_size: 32
+    learning_rate: 0.001
+    epochs: 50
+    optimizer: "Adam"
+    loss_function: "CrossEntropyLoss"
+
+  data_processing:
+    max_sequence_length: 15
+    padding_token: "<PAD>"
+    unknown_token: "<UNK>"
+    start_token: "<START>"
+    end_token: "<END>"
+
+# Audio Processing (MFCC Features)
+# معالجة الصوت
+audio_processing:
+  mfcc:
+    n_mfcc: 40
+    n_fft: 2048
+    hop_length: 512
+    sample_rate: 16000
+
+  spectrogram:
+    n_fft: 2048
+    hop_length: 256
+    win_length: 1024
+
+  augmentation:
+    noise_factor: 0.005
+    pitch_shift_steps: 2
+    time_stretch_rate: 0.9
+
+# Evaluation Metrics
+# مقاييس التقييم
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "confusion_matrix"
+
+  validation:
+    split_ratio: 0.2
+    k_fold: 5
+
+  benchmarks:
+    target_accuracy: 0.90
+    target_precision: 0.88
+    target_recall: 0.87
+    target_f1: 0.88

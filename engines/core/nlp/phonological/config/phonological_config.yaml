@@ -1,0 +1,7 @@
+
+rules_order: ['assimilation', 'deletion', 'inversion']
+rules_enabled:
+  assimilation: true
+  deletion: true
+  inversion: true
+logging_level: INFO

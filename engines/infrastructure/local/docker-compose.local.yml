@@ -1,0 +1,88 @@
+version: '3.8'
+
+# Local development configuration for docker-compose.yml
+# Use with: docker compose -f docker-compose.yml -f infrastructure/local/docker-compose.local.yml up
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/backend.Dockerfile
+      target: base  # Use the base stage for development (with dev dependencies)
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"  # Expose API directly for local development
+    environment:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+      - RELOAD=true
+      - DATABASE_URL=postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-password}@db:5432/${DB_NAME:-arabic_morphophon}
+      - REDIS_URL=redis://redis:6379/0
+      - JWT_SECRET=${JWT_SECRET:-dev_secret_key}
+      - ENABLE_CORS=true
+      - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080,http://localhost:80
+    volumes:
+      - ./core:/app/core  # Mount source code for hot reloading
+      - ./nlp:/app/nlp    # Mount source code for hot reloading
+      - ./backend:/app/backend  # Mount source code for hot reloading
+      - ./data:/app/data
+    command: ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    networks:
+      - dev-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../infrastructure/docker/frontend.Dockerfile
+      target: development  # Use development target if defined
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"  # Different port for development server
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:8000/api
+    volumes:
+      - ./frontend:/app  # Mount source code for hot reloading
+    command: ["npm", "start"]  # Run development server
+    networks:
+      - dev-network
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-password}
+      - POSTGRES_DB=${DB_NAME:-arabic_morphophon}
+    ports:
+      - "${DB_PORT:-5432}:5432"  # Expose database port for local tools
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
+    networks:
+      - dev-network
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    ports:
+      - "${REDIS_PORT:-6379}:6379"  # Expose Redis port for local tools
+    volumes:
+      - redis-dev-data:/data
+    networks:
+      - dev-network
+
+  # Simple admin tool for database
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+    depends_on:
+      - db
+    networks:
+      - dev-network
+
+volumes:
+  postgres-dev-data:
+  redis-dev-data:
+
+networks:
+  dev-network:
+    name: arabic-morphophon-dev

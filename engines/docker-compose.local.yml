@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: local/backend/Dockerfile.dev
+    volumes:
+      - .:/app
+      - /app/.venv
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./local/.env.local
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - local-network
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-arabic_morpho}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-dev_password}
+      POSTGRES_DB: ${DB_NAME:-arabic_morphophon}
+      POSTGRES_HOST: db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./local/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./local/database/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-arabic_morpho} -d ${DB_NAME:-arabic_morphophon}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - local-network
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    volumes:
+      - redisdata:/data
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - local-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../local/frontend/Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000/api
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+    networks:
+      - local-network
+
+  # Development tools
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - local-network
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"  # SMTP server
+      - "8025:8025"  # Web UI
+    networks:
+      - local-network
+
+volumes:
+  pgdata:
+  redisdata:
+  pgadmin-data:
+
+networks:
+  local-network:
+    driver: bridge

@@ -1,0 +1,100 @@
+{
+  "health_check": {
+    "unified_engine": true,
+    "engines": {
+      "morphological": true,
+      "inflection": true,
+      "weight": true
+    },
+    "total_engines": 3,
+    "healthy_engines": 3,
+    "health_percentage": 100.0,
+    "timestamp": "2025-07-26T23:50:12.762666",
+    "monitor_version": "1.0.0",
+    "check_duration_ms": 0
+  },
+  "processing_test": {
+    "timestamp": "2025-07-26T23:50:12.763165",
+    "test_cases": 5,
+    "successful_tests": 5,
+    "failed_tests": 0,
+    "test_results": [
+      {
+        "test_id": 1,
+        "input_text": "مرحبا",
+        "success": true,
+        "duration_ms": 0.56,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "error": null
+      },
+      {
+        "test_id": 2,
+        "input_text": "الكتاب",
+        "success": true,
+        "duration_ms": 0.74,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "error": null
+      },
+      {
+        "test_id": 3,
+        "input_text": "يذهبون",
+        "success": true,
+        "duration_ms": 0.64,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "error": null
+      },
+      {
+        "test_id": 4,
+        "input_text": "استكشاف",
+        "success": true,
+        "duration_ms": 1.24,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "error": null
+      },
+      {
+        "test_id": 5,
+        "input_text": "",
+        "success": true,
+        "duration_ms": 0.69,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "error": null
+      }
+    ],
+    "success_rate": 100.0
+  },
+  "summary": {
+    "last_check": "2025-07-26T23:50:12.762666",
+    "checks_performed": 1,
+    "current_health": "UNKNOWN",
+    "current_percentage": 100.0,
+    "available_engines": [
+      "morphological",
+      "inflection",
+      "weight"
+    ],
+    "trend": "stable",
+    "status": "🟢 EXCELLENT",
+    "recommendation": "System is performing well"
+  },
+  "generated_at": "2025-07-26T23:50:12.767406"
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic SyllabicUnit Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ff6b6b;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+        }
+        .syllable-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #ff6b6b;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .syllable-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .syllable {
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: 2px solid #ff6b6b;
+        }
+        .syllable-separator {
+            color: #666;
+            font-size: 1.2em;
+            margin: 0 5px;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .syllable-patterns {
+            margin: 15px 0;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+        .pattern-item {
+            display: inline-block;
+            background: #6c757d;
+            color: white;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك تقطيع المقاطع العربية</h1>
+            <div class="subtitle">Arabic SyllabicUnit Segmentation Engine</div>
+            <div class="subtitle">يقسم النص العربي إلى مقاطع صوتية ويحللها</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل النص العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: كتب الطالب الدرس" value="كتب الطالب الدرس">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('المدرسة الجميلة')">مثال ١</button>
+            <button class="btn example-btn" onclick="setExample('الكتاب المقدس')">مثال ٢</button>
+            <button class="btn example-btn" onclick="setExample('تكنولوجيا المعلومات')">مثال ٣</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeSyllabicUnits()"> تحليل المقاطع</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج تحليل المقاطع</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <style>
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+    </style>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeSyllabicUnits() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال نص عربي للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateSyllableAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateSyllableAnalysis(text) {
+            const words = text.split(/\s+/);
+            const analysis = [];
+
+            words.forEach(word => {
+                const syllabic_units = segmentIntoSyllabicUnits(word);
+                const patterns = syllabic_units.map(s => generateSyllablePattern(s));
+
+                analysis.push({
+                    word: word,
+                    syllabic_units: syllabic_units,
+                    count: syllabic_units.length,
+                    patterns: patterns,
+                    stress_pattern: generateStressPattern(syllabic_units),
+                    syllable_types: categorizeSyllabicUnits(syllabic_units)
+                });
+            });
+
+            return {
+                input: text,
+                total_words: words.length,
+                total_syllabic_units: analysis.reduce((sum, item) => sum + item.count, 0),
+                analysis: analysis
+            };
+        }
+
+        function segmentIntoSyllabicUnits(word) {
+            // Simple syllabic_unit segmentation simulation
+            const vowels = ['ا', 'و', 'ي', 'ة', 'ى', 'أ', 'إ', 'آ'];
+            const syllabic_units = [];
+            let currentSyllable = '';
+
+            for (let i = 0; i < word.length; i++) {
+                const char = word[i];
+                currentSyllable += char;
+
+                // If we hit a vowel and the next character is a consonant, or we're at the end
+                if (vowels.includes(char) && (i === word.length - 1 || !vowels.includes(word[i + 1]))) {
+                    syllabic_units.push(currentSyllable);
+                    currentSyllable = '';
+                }
+            }
+
+            if (currentSyllable) {
+                syllabic_units.push(currentSyllable);
+            }
+
+            return syllabic_units.length > 0 ? syllabic_units : [word];
+        }
+
+        function generateSyllablePattern(syllable) {
+            const vowels = ['ا', 'و', 'ي', 'ة', 'ى', 'أ', 'إ', 'آ'];
+            let pattern = '';
+
+            for (let char of syllable) {
+                if (vowels.includes(char)) {
+                    pattern += 'V';
+                } else {
+                    pattern += 'C';
+                }
+            }
+
+            return pattern;
+        }
+
+        function generateStressPattern(syllabic_units) {
+            // Simple stress pattern (usually penultimate or final)
+            if (syllabic_units.length === 1) return ['مُشدد'];
+            if (syllabic_units.length === 2) return ['غير مُشدد', 'مُشدد'];
+
+            const pattern = new Array(syllabic_units.length).fill('غير مُشدد');
+            pattern[syllabic_units.length - 2] = 'مُشدد'; // Penultimate stress
+            return pattern;
+        }
+
+        function categorizeSyllabicUnits(syllabic_units) {
+            return syllabic_units.map(syllable => {
+                if (syllable.length === 1) return 'مقطع قصير';
+                if (syllable.length === 2) return 'مقطع متوسط';
+                return 'مقطع طويل';
+            });
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="stats">
+                    <strong> النص المدخل:</strong> ${analysis.input}<br>
+                    <strong> عدد الكلمات:</strong> ${analysis.total_words}<br>
+                    <strong> إجمالي المقاطع:</strong> ${analysis.total_syllabic_units}
+                </div>
+            `;
+
+            analysis.analysis.forEach((item, index) => {
+                html += `
+                    <div class="syllable-analysis">
+                        <div class="word-header"> الكلمة ${index + 1}: ${item.word}</div>
+
+                        <div><strong>المقاطع:</strong></div>
+                        <div class="syllable-list">
+                            ${item.syllabic_units.map((s, i) =>
+                                `<span class="syllable">${s}</span>${i < item.syllabic_units.length - 1 ? '<span class="syllable-separator">-</span>' : ''}`
+                            ).join('')}
+                        </div>
+
+                        <div class="syllable-patterns">
+                            <strong>أنماط المقاطع:</strong><br>
+                            ${item.patterns.map((p, i) =>
+                                `<span class="pattern-item">${item.syllabic_units[i]}: ${p}</span>`
+                            ).join('')}
+                        </div>
+
+                        <div class="stats">
+                            <strong>عدد المقاطع:</strong> ${item.count} |
+                            <strong>نمط النبر:</strong> ${item.stress_pattern.join(' - ')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeSyllabicUnits();
+        };
+    </script>
+</body>
+</html>

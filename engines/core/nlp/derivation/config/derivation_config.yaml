@@ -1,0 +1,71 @@
+# Arabic Derivational Morphology Configuration
+# Professional Enterprise-Grade Configuration
+# Zero-Tolerance Standards Applied - Phase 2 Week 5-6
+
+# Vector Embedding Configuration
+embedding:
+  root_vector_dim: 64        # Dimension for root embeddings
+  pattern_vector_dim: 128    # Dimension for pattern embeddings
+  encoding_method: "unicode" # "unicode" | "phonetic" | "semantic"
+  normalization: true       # Normalize vectors
+  cache_embeddings: true    # Cache computed embeddings
+
+# Root Configuration
+roots:
+  supported_types:
+    - "triliteral"           # جذور ثلاثية (ك-ت-ب)
+    - "quadriliteral"        # جذور رباعية (ب-ر-م-ج)
+  min_root_length: 3
+  max_root_length: 4
+  validate_arabic: true     # Validate Arabic characters only
+  allow_hamza: true         # Allow hamza in roots
+  allow_weak_radicals: true # Allow weak radicals (و، ي، ا)
+
+# Pattern Configuration  
+patterns:
+  template_format: "classical"    # "classical" | "modern" | "mixed"
+  placeholder_chars:
+    radical1: "ف"               # First radical placeholder
+    radical2: "ع"               # Second radical placeholder  
+    radical3: "ل"               # Third radical placeholder
+    radical4: "م"               # Fourth radical placeholder
+  vowel_notation: "harakat"      # "harakat" | "long_vowels" | "both"
+  support_irregular: true       # Support irregular derivations
+
+# Derivation Engine Settings
+derivation:
+  max_derivations_per_root: 50  # Limit derivations per root
+  enable_phonological_rules: true # Apply phonological changes
+  process_assimilation: true     # Process consonant assimilation
+  process_gemination: true       # Process gemination rules
+  strict_morphology: false      # Strict vs flexible morphology
+  
+# Performance Settings
+performance:
+  batch_processing: true        # Enable batch derivation
+  parallel_processing: false    # Parallel processing (future)
+  cache_results: true          # Cache derivation results
+  max_cache_size: 10000        # Maximum cache entries
+  precompile_patterns: true    # Precompile regex patterns
+
+# Quality Assurance
+quality:
+  validate_output: true        # Validate derived words
+  check_phonotactics: true     # Check phonotactic constraints
+  verify_morphology: true      # Verify morphological validity
+  confidence_threshold: 0.8    # Minimum confidence for derivations
+
+# Logging and Debug
+logging:
+  level: "INFO"               # DEBUG | INFO | WARN | ERROR
+  log_derivations: false      # Log each derivation
+  log_failures: true         # Log failed derivations
+  debug_embeddings: false     # Debug embedding computation
+  performance_metrics: true   # Track performance metrics
+
+# Advanced Features
+advanced:
+  semantic_similarity: false  # Use semantic similarity (future)
+  morpheme_analysis: true     # Analyze morphemes
+  frequency_weighting: false  # Weight by frequency (future)
+  dialectal_variants: false   # Support dialectal variants (future)

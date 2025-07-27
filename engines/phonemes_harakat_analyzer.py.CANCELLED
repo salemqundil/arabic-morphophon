@@ -1,0 +1,739 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+🧱 محلل الفونيمات والحركات - قاعدة بيانات المفاعل الصرفي,
+    Phonemes and Harakat Analyzer - Morphological Reactor Database Core
+"""
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped def,misc
+    import json  # noqa: F401
+    import logging  # noqa: F401
+    from typing import Dict, List, Optional, Any
+    from dataclasses import dataclass  # noqa: F401
+
+# Setup logging,
+    logger = logging.getLogger(__name__)
+
+
+@dataclass,
+    class Phoneme:
+    """🔤 كلاس الفونيم (الوحدة الصوتية الأساسية)"""
+
+    letter: str,
+    type: str  # صامت، صائت، صائت طويل,
+    articulation_point: str  # مخرج,
+    hardness: str  # صلابة,
+    function: str  # وظيفة صرفية,
+    morphological_weight: float = 0.0,
+    frequency_score: float = 0.0
+
+
+@dataclass,
+    class Haraka:
+    """🔢 كلاس الحركة"""
+
+    symbol: str,
+    name: str,
+    type: str  # نوع الحركة,
+    clarity: str  # وضوح,
+    role: str  # دور صرفي,
+    phonetic_weight: float = 0.0,
+    grammatical_significance: float = 0.0,
+    class PhonemesHarakatAnalyzer:
+    """🧱 محلل الفونيمات والحركات - نواة المفاعل الصرفي"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """TODO: Add docstring."""
+        self.phonemes = self._initialize_phonemes()
+        self.harakat = self._initialize_harakat()
+        self.phoneme_combinations = self._initialize_combinations()
+        self.morphological_rules = self._initialize_morphological_rules()
+
+    def _initialize_phonemes(self) -> List[Phoneme]:
+        """🔤 تهيئة قاعدة بيانات الفونيمات"""
+        phonemes_data = [
+            {
+                "letter": "ب",
+                "type": "صامت",
+                "articulation_point": "شفوي",
+                "hardness": "صلب",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.85,
+                "frequency_score": 0.78,
+            },
+            {
+                "letter": "ت",
+                "type": "صامت",
+                "articulation_point": "طرف اللسان",
+                "hardness": "صلب",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.88,
+                "frequency_score": 0.82,
+            },
+            {
+                "letter": "ك",
+                "type": "صامت",
+                "articulation_point": "لهوي",
+                "hardness": "صلب",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.90,
+                "frequency_score": 0.95,
+            },
+            {
+                "letter": "د",
+                "type": "صامت",
+                "articulation_point": "طرف اللسان",
+                "hardness": "صلب",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.83,
+                "frequency_score": 0.75,
+            },
+            {
+                "letter": "س",
+                "type": "صامت",
+                "articulation_point": "أسنان",
+                "hardness": "صلب متوسط",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.80,
+                "frequency_score": 0.72,
+            },
+            {
+                "letter": "أ",
+                "type": "صائت",
+                "articulation_point": "حلقي",
+                "hardness": "لين",
+                "function": "محفز صرفي",
+                "morphological_weight": 0.95,
+                "frequency_score": 0.90,
+            },
+            {
+                "letter": "ا",
+                "type": "صائت طويل",
+                "articulation_point": "فمي",
+                "hardness": "لين",
+                "function": "مد صوتي",
+                "morphological_weight": 0.92,
+                "frequency_score": 0.98,
+            },
+            {
+                "letter": "و",
+                "type": "صائت طويل",
+                "articulation_point": "شفوي",
+                "hardness": "لين",
+                "function": "مد وربط",
+                "morphological_weight": 0.88,
+                "frequency_score": 0.85,
+            },
+            {
+                "letter": "ي",
+                "type": "صائت طويل",
+                "articulation_point": "وسط اللسان",
+                "hardness": "لين",
+                "function": "مد وربط",
+                "morphological_weight": 0.87,
+                "frequency_score": 0.88,
+            },
+            {
+                "letter": "ن",
+                "type": "صامت",
+                "articulation_point": "خيشوم",
+                "hardness": "مخفف",
+                "function": "زيادة صرفية",
+                "morphological_weight": 0.75,
+                "frequency_score": 0.80,
+            },
+            {
+                "letter": "م",
+                "type": "صامت",
+                "articulation_point": "شفوي",
+                "hardness": "مخفف",
+                "function": "زيادة صرفية",
+                "morphological_weight": 0.78,
+                "frequency_score": 0.83,
+            },
+            {
+                "letter": "ل",
+                "type": "صامت",
+                "articulation_point": "طرف اللسان",
+                "hardness": "مائع",
+                "function": "ربط وتعريف",
+                "morphological_weight": 0.70,
+                "frequency_score": 0.95,
+            },
+            {
+                "letter": "ر",
+                "type": "صامت",
+                "articulation_point": "طرف اللسان",
+                "hardness": "مكرر",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.82,
+                "frequency_score": 0.85,
+            },
+            {
+                "letter": "ع",
+                "type": "صامت",
+                "articulation_point": "حلقي",
+                "hardness": "احتكاكي",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.85,
+                "frequency_score": 0.70,
+            },
+            {
+                "letter": "ف",
+                "type": "صامت",
+                "articulation_point": "شفوي أسناني",
+                "hardness": "احتكاكي",
+                "function": "مبني للجذر",
+                "morphological_weight": 0.83,
+                "frequency_score": 0.77,
+            },
+        ]
+
+        phonemes = []
+        for p in phonemes_data:
+            phoneme = Phoneme()
+                letter=p["letter"],
+                type=p["type"],
+                articulation_point=p["articulation_point"],
+                hardness=p["hardness"],
+                function=p["function"],
+                morphological_weight=p["morphological_weight"],
+                frequency_score=p["frequency_score"])
+            phonemes.append(phoneme)
+
+        return phonemes,
+    def _initialize_harakat(self) -> List[Haraka]:
+        """🔢 تهيئة قاعدة بيانات الحركات"""
+        harakat_data = [
+            {
+                "symbol": "َ",
+                "name": "فتحة",
+                "type": "نصف فونيم",
+                "clarity": "متوسط",
+                "role": "تحريك الجذر",
+                "phonetic_weight": 0.80,
+                "grammatical_significance": 0.75,
+            },
+            {
+                "symbol": "ِ",
+                "name": "كسرة",
+                "type": "نصف فونيم",
+                "clarity": "حاد",
+                "role": "دلالة على المصدر/الاسم",
+                "phonetic_weight": 0.85,
+                "grammatical_significance": 0.90,
+            },
+            {
+                "symbol": "ُ",
+                "name": "ضمة",
+                "type": "نصف فونيم",
+                "clarity": "غليظ",
+                "role": "علامة للفاعل أو المضارع",
+                "phonetic_weight": 0.82,
+                "grammatical_significance": 0.88,
+            },
+            {
+                "symbol": "ْ",
+                "name": "سكون",
+                "type": "سالب حركة",
+                "clarity": "انغلاق",
+                "role": "وقف وتثبيت",
+                "phonetic_weight": 0.60,
+                "grammatical_significance": 0.70,
+            },
+            {
+                "symbol": "ّ",
+                "name": "شدة",
+                "type": "تضاعف",
+                "clarity": "مضاعف",
+                "role": "تقوية وتكرار",
+                "phonetic_weight": 0.95,
+                "grammatical_significance": 0.85,
+            },
+            {
+                "symbol": "ً",
+                "name": "تنوين فتح",
+                "type": "تنوين",
+                "clarity": "خفيف",
+                "role": "نكرة منصوبة",
+                "phonetic_weight": 0.65,
+                "grammatical_significance": 0.92,
+            },
+            {
+                "symbol": "ٍ",
+                "name": "تنوين كسر",
+                "type": "تنوين",
+                "clarity": "خفيف",
+                "role": "نكرة مجرورة",
+                "phonetic_weight": 0.65,
+                "grammatical_significance": 0.92,
+            },
+            {
+                "symbol": "ٌ",
+                "name": "تنوين ضم",
+                "type": "تنوين",
+                "clarity": "خفيف",
+                "role": "نكرة مرفوعة",
+                "phonetic_weight": 0.65,
+                "grammatical_significance": 0.92,
+            },
+        ]
+
+        harakat = []
+        for h in harakat_data:
+            haraka = Haraka()
+                symbol=h["symbol"],
+                name=h["name"],
+                type=h["type"],
+                clarity=h["clarity"],
+                role=h["role"],
+                phonetic_weight=h["phonetic_weight"],
+                grammatical_significance=h["grammatical_significance"])
+            harakat.append(haraka)
+
+        return harakat,
+    def _initialize_combinations(self) -> Dict[str, Dict]:
+        """🔗 تهيئة تركيبات الفونيمات والحركات"""
+        return {
+            "consonant_vowel": {
+                "CV": {"weight": 1.0, "type": "مقطع خفيف", "frequency": 0.95},
+                "CVC": {"weight": 2.0, "type": "مقطع ثقيل", "frequency": 0.85},
+                "CVV": {"weight": 2.0, "type": "مقطع طويل", "frequency": 0.75},
+                "CVVC": {"weight": 3.0, "type": "مقطع فائق", "frequency": 0.45},
+            },
+            "morphological_templates": {
+                "فعل": {
+                    "pattern": "CaCaC",
+                    "phonemes": ["C", "a", "C", "a", "C"],
+                    "weight": 0.95,
+                },
+                "فاعل": {
+                    "pattern": "CaaCiC",
+                    "phonemes": ["C", "aa", "C", "i", "C"],
+                    "weight": 0.88,
+                },
+                "مفعول": {
+                    "pattern": "mafCuuC",
+                    "phonemes": ["m", "a", "C", "uu", "C"],
+                    "weight": 0.82,
+                },
+                "استفعل": {
+                    "pattern": "istafCaC",
+                    "phonemes": ["i", "s", "t", "a", "C", "a", "C"],
+                    "weight": 0.65,
+                },
+            },
+        }
+
+    def _initialize_morphological_rules(self) -> Dict[str, Any]:
+        """📋 تهيئة القواعد الصرفية للفونيمات والحركات"""
+        return {
+            "assimilation_rules": {
+                "sun_letters": [
+                    "ت",
+                    "ث",
+                    "د",
+                    "ذ",
+                    "ر",
+                    "ز",
+                    "س",
+                    "ش",
+                    "ص",
+                    "ض",
+                    "ط",
+                    "ظ",
+                    "ل",
+                    "ن",
+                ],
+                "moon_letters": [
+                    "أ",
+                    "ب",
+                    "ج",
+                    "ح",
+                    "خ",
+                    "ع",
+                    "غ",
+                    "ف",
+                    "ق",
+                    "ك",
+                    "م",
+                    "ه",
+                    "و",
+                    "ي",
+                ],
+            },
+            "vowel_harmony": {
+                "front_vowels": ["ِ", "ي"],
+                "back_vowels": ["ُ", "و"],
+                "central_vowels": ["َ", "ا"],
+            },
+            "syllable_rules": {
+                "initial_clusters": ["bl", "br", "dr", "kr"],
+                "final_clusters": ["nt", "nd", "st", "kt"],
+                "forbidden_sequences": ["aa", "ii", "uu"],
+            },
+        }
+
+    def analyze_phonetic_structure(self, word: str) -> Dict[str, Any]:
+        """🔍 تحليل البنية الصوتية للكلمة"""
+        try:
+            phonetic_analysis = {
+                "word": word,
+                "phonemes": [],
+                "harakat": [],
+                "syllable_structure": [],
+                "phonetic_weight": 0.0,
+                "morphological_complexity": 0.0,
+                "assimilation_effects": [],
+            }
+
+            # تحليل كل حرف في الكلمة,
+    for i, char in enumerate(word):
+                # البحث عن الفونيم,
+    phoneme = self.find_phoneme(char)
+                if phoneme:
+                    phonetic_analysis["phonemes"].append()
+                        {
+                            "position": i,
+                            "letter": char,
+                            "type": phoneme.type,
+                            "articulation_point": phoneme.articulation_point,
+                            "function": phoneme.function,
+                            "weight": phoneme.morphological_weight,
+                        }
+                    )
+                    phonetic_analysis["phonetic_weight"] += phoneme.morphological_weight
+
+                # البحث عن الحركة,
+    haraka = self.find_haraka(char)
+                if haraka:
+                    phonetic_analysis["harakat"].append()
+                        {
+                            "position": i,
+                            "symbol": char,
+                            "name": haraka.name,
+                            "role": haraka.role,
+                            "grammatical_significance": haraka.grammatical_significance,
+                        }
+                    )
+
+            # تحليل البنية المقطعية,
+    phonetic_analysis["syllable_structure"] = self._extract_syllable_structure()
+                word
+            )
+
+            # حساب التعقيد الصرفي,
+    phonetic_analysis["morphological_complexity"] = ()
+                self._calculate_morphological_complexity()
+                    phonetic_analysis["phonemes"], phonetic_analysis["harakat"]
+                )
+            )
+
+            # تحليل تأثيرات الإدغام,
+    phonetic_analysis["assimilation_effects"] = self._analyze_assimilation(word)
+
+            return {"status": "success", "analysis": phonetic_analysis}
+
+        except Exception as e:
+            logger.error(f"Error in phonetic analysis: {e}")
+            return {"status": "error", "message": f"خطأ في التحليل الصوتي: {str(e)}"}
+
+    def find_phoneme(self, letter: str) -> Optional[Phoneme]:
+        """🔤 البحث عن فونيم"""
+        for phoneme in self.phonemes:
+            if phoneme.letter == letter:
+                return phoneme,
+    return None,
+    def find_haraka(self, symbol: str) -> Optional[Haraka]:
+        """🔢 البحث عن حركة"""
+        for haraka in self.harakat:
+            if haraka.symbol == symbol:
+                return haraka,
+    return None,
+    def _extract_syllable_structure(self, word: str) -> List[Dict]:
+        """📊 استخراج البنية المقطعية"""
+        syllables = []
+        current_syllable = ""
+
+        i = 0,
+    while i < len(word):
+            char = word[i]
+            phoneme = self.find_phoneme(char)
+            self.find_haraka(char)
+
+            if phoneme:
+                if phoneme.type in ["صامت"]:
+                    current_syllable += "C"
+                elif phoneme.type in ["صائت", "صائت طويل"]:
+                    current_syllable += "V" if phoneme.type == "صائت" else "VV"
+
+            # تحديد نهاية المقطع,
+    if i == len(word) - 1 or self._is_syllable_boundary(word, i):
+                if current_syllable:
+                    syllable_weight = self.phoneme_combinations.get()
+                        "consonant_vowel", {}
+                    ).get(current_syllable, {"weight": 1.0, "type": "غير محدد"})
+
+                    syllables.append()
+                        {
+                            "pattern": current_syllable,
+                            "type": syllable_weight["type"],
+                            "weight": syllable_weight["weight"],
+                            "position": len(syllables),
+                        }
+                    )
+                    current_syllable = ""
+
+            i += 1,
+    return syllables,
+    def _is_syllable_boundary(self, word: str, position: int) -> bool:
+        """🔍 تحديد حدود المقاطع"""
+        if position >= len(word) - 1:
+            return True,
+    current_char = word[position]
+        next_char = word[position + 1]
+
+        current_phoneme = self.find_phoneme(current_char)
+        next_phoneme = self.find_phoneme(next_char)
+
+        # قواعد بسيطة لتحديد حدود المقاطع,
+    if current_phoneme and next_phoneme:
+            if ()
+                current_phoneme.type in ["صائت", "صائت طويل"]
+                and next_phoneme.type == "صامت"
+            ):
+                return True,
+    return False,
+    def _calculate_morphological_complexity()
+        self, phonemes: List[Dict], harakat: List[Dict]
+    ) -> float:
+        """⚖️ حساب التعقيد الصرفي"""
+        complexity = 0.0
+
+        # تعقيد الفونيمات,
+    for phoneme in phonemes:
+            if phoneme["type"] == "صامت":
+                complexity += 0.5,
+    elif phoneme["type"] in ["صائت طويل"]:
+                complexity += 0.3,
+    else:
+                complexity += 0.2
+
+        # تعقيد الحركات,
+    for haraka in harakat:
+            complexity += haraka["grammatical_significance"] * 0.2
+
+        # تطبيع النتيجة,
+    total_elements = len(phonemes) + len(harakat)
+        return complexity / total_elements if total_elements > 0 else 0.0,
+    def _analyze_assimilation(self, word: str) -> List[Dict]:
+        """🔄 تحليل تأثيرات الإدغام"""
+        assimilation_effects = []
+
+        # تحقق من وجود أل التعريف,
+    if word.startswith("ال"):
+            third_letter = word[2] if len(word) > 2 else ""
+            if ()
+                third_letter,
+    in self.morphological_rules["assimilation_rules"]["sun_letters"]
+            ):
+                assimilation_effects.append()
+                    {
+                        "type": "إدغام شمسي",
+                        "position": 1,
+                        "effect": f"إدغام اللام في {third_letter}",
+                        "phonetic_change": f"ال{third_letter}  > ا{third_letter}ّ",
+                    }
+                )
+
+        # تحقق من تأثيرات أخرى,
+    for i in range(len(word) - 1):
+            current = word[i]
+            next_char = word[i + 1]
+
+            # قواعد الإدغام البسيطة,
+    if current == next_char:
+                assimilation_effects.append()
+                    {
+                        "type": "إدغام تماثلي",
+                        "position": i,
+                        "effect": f"إدغام {current} في {next_char}}",
+                        "phonetic_change": f"{current}{next_char}  > {current}ّ",
+                    }
+                )
+
+        return assimilation_effects,
+    def get_phonemes_statistics(self) -> Dict[str, Any]:
+        """📈 إحصائيات الفونيمات"""
+        consonants = [p for p in self.phonemes if p.type == "صامت"]
+        vowels = [p for p in self.phonemes if "صائت" in p.type]
+
+        return {
+            "total_phonemes": len(self.phonemes),
+            "consonants_count": len(consonants),
+            "vowels_count": len(vowels),
+            "average_morphological_weight": sum()
+                p.morphological_weight for p in self.phonemes
+            )
+            / len(self.phonemes),
+            "average_frequency": sum(p.frequency_score for p in self.phonemes)
+            / len(self.phonemes),
+            "articulation_points": list()
+                set(p.articulation_point for p in self.phonemes)
+            ),
+            "functions": list(set(p.function for p in self.phonemes)),
+        }
+
+    def get_harakat_statistics(self) -> Dict[str, Any]:
+        """📊 إحصائيات الحركات"""
+        return {
+            "total_harakat": len(self.harakat),
+            "average_phonetic_weight": sum(h.phonetic_weight for h in self.harakat)
+            / len(self.harakat),
+            "average_grammatical_significance": sum()
+                h.grammatical_significance for h in self.harakat
+            )
+            / len(self.harakat),
+            "harakat_types": list(set(h.type for h in self.harakat)),
+            "grammatical_roles": list(set(h.role for h in self.harakat)),
+        }
+
+    def export_phonemes_dataframe(self):  # type: ignore[no-untyped def]
+        """📊 تصدير الفونيمات كـ DataFrame"""
+        try:
+            import pandas as pd  # noqa: F401,
+    PANDAS_AVAILABLE = True,
+    except ImportError:
+            PANDAS_AVAILABLE = False,
+    data = []
+        for phoneme in self.phonemes:
+            data.append()
+                {
+                    "الحرف": phoneme.letter,
+                    "النوع": phoneme.type,
+                    "المخرج": phoneme.articulation_point,
+                    "الصلابة": phoneme.hardness,
+                    "الوظيفة": phoneme.function,
+                    "الوزن_الصرفي": phoneme.morphological_weight,
+                    "نقاط_التكرار": phoneme.frequency_score,
+                }
+            )
+
+        if PANDAS_AVAILABLE:
+            return pd.DataFrame(data)
+        else:
+            return {"error": "pandas غير متوفر", "data": data}
+
+    def export_harakat_dataframe(self):  # type: ignore[no-untyped def]
+        """📊 تصدير الحركات كـ DataFrame"""
+        try:
+            import pandas as pd  # noqa: F401,
+    PANDAS_AVAILABLE = True,
+    except ImportError:
+            PANDAS_AVAILABLE = False,
+    data = []
+        for haraka in self.harakat:
+            data.append()
+                {
+                    "الحركة": haraka.symbol,
+                    "الاسم": haraka.name,
+                    "النوع": haraka.type,
+                    "الوضوح": haraka.clarity,
+                    "الدور": haraka.role,
+                    "الوزن_الصوتي": haraka.phonetic_weight,
+                    "الأهمية_النحوية": haraka.grammatical_significance,
+                }
+            )
+
+        if PANDAS_AVAILABLE:
+            return pd.DataFrame(data)
+        else:
+            return {"error": "pandas غير متوفر", "data": data}
+
+    # إضافات لدعم ميزات الخدمة,
+    def get_detailed_features(self, word: str) -> Dict[str, Any]:
+        """تفاصيل ميزات التحليل الصوتي لكلمة واحدة"""
+        result = self.analyze_phonetic_structure(word)
+        return result.get('analysis', {})
+
+    def get_batch_statistics(self, results: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """إحصائيات لدفعة من التحليلات"""
+        total = len(results)
+        phonetic_weights = []
+        for r in results:
+            if r.get('status') == 'success':
+                analysis = r.get('analysis', {}).get('analysis', {})
+                weight = analysis.get('phonetic_weight')
+                if weight is not None:
+                    phonetic_weights.append(weight)
+        avg_weight = ()
+            sum(phonetic_weights) / len(phonetic_weights) if phonetic_weights else 0.0
+        )
+        return {
+            'average_phonetic_weight': avg_weight,
+            'processed': len(phonetic_weights),
+            'total_requested': total,
+        }
+
+    def compare_phonetic_structures()
+        self, analyses: List[Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """مقارنة البنى الصوتية لقائمة من التحليلات"""
+        comparisons = []
+        for i in range(len(analyses)):
+            for j in range(i + 1, len(analyses)):
+                w1 = analyses[i].get('word')
+                w2 = analyses[j].get('word')
+                ph1 = ()
+                    analyses[i]
+                    .get('analysis', {})
+                    .get('analysis', {})
+                    .get('phonemes', [])
+                )
+                ph2 = ()
+                    analyses[j]
+                    .get('analysis', {})
+                    .get('analysis', {})
+                    .get('phonemes', [])
+                )
+                comparisons.append()
+                    {
+                        'word1': w1,
+                        'word2': w2,
+                        'phonemes_equal': ph1 == ph2,
+                        'shared_phonemes': [p for p in ph1 if p in ph2],
+                    }
+                )
+        return {'comparisons': comparisons}  # type: ignore
+        # type ignore to satisfy declared return type
+
+
+# مثال على الاستخدام,
+    def demo_phonemes_analyzer():  # type: ignore[no-untyped-def]
+    """🧪 عرض توضيحي لمحلل الفونيمات والحركات"""
+    analyzer = PhonemesHarakatAnalyzer()
+
+    print("🧱 محلل الفونيمات والحركات - قاعدة بيانات المفاعل الصرفي")
+    print("=" * 60)
+
+    # تحليل كلمة,
+    result = analyzer.analyze_phonetic_structure("كتاب")
+    print("📊 تحليل كلمة 'كتاب':")
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+
+    # إحصائيات,
+    phonemes_stats = analyzer.get_phonemes_statistics()
+    harakat_stats = analyzer.get_harakat_statistics()
+
+    print("\n📈 إحصائيات الفونيمات:")
+    print(json.dumps(phonemes_stats, ensure_ascii=False, indent=2))
+
+    print("\n📊 إحصائيات الحركات:")
+    print(json.dumps(harakat_stats, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    demo_phonemes_analyzer()
+

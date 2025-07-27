@@ -1,0 +1,150 @@
+#  Arabic Inflection Engine Configuration
+# Enterprise-Grade Morphological System Settings
+
+# Default inflection parameters
+defaults:
+  default_tense: "present"
+  default_person: 3
+  default_gender: "masc"
+  default_number: "singular"
+  default_case: "nominative"
+  default_definiteness: "indefinite"
+  fallback_person: 3
+  enable_irregulars: true
+  enable_weak_verbs: true
+  enable_phonological_rules: true
+
+# Linguistic processing settings
+processing:
+  apply_assimilation: true
+  apply_gemination: true
+  process_sun_letters: true
+  process_moon_letters: true
+  normalize_hamza: true
+  validate_root_phonology: true
+
+# Pattern matching configuration
+patterns:
+  strict_matching: true
+  allow_partial_matches: false
+  confidence_threshold: 0.8
+  enable_pattern_fallback: true
+  max_pattern_alternatives: 3
+
+# Error handling configuration
+error_handling:
+  strict_validation: true
+  throw_on_invalid_root: true
+  throw_on_invalid_features: true
+  log_warnings: true
+  log_level: "INFO"
+
+# Performance optimization
+performance:
+  enable_caching: true
+  cache_size: 1000
+  enable_batch_processing: true
+  max_batch_size: 100
+  preimport_data_patterns: true
+
+# Supported inflection categories
+supported_categories:
+  verbs:
+    - "past"
+    - "present" 
+    - "imperative"
+    - "subjunctive"
+    - "jussive"
+    - "passive_past"
+    - "passive_present"
+  
+  nouns:
+    - "definite"
+    - "indefinite"
+    - "sound_masculine_plural"
+    - "sound_feminine_plural"
+    - "broken_plurals"
+  
+  adjectives:
+    - "فاعل"
+    - "مفعول"
+    - "فعيل"
+    - "أفعل"
+
+# Grammatical feature validation
+validation:
+  tenses: ["past", "present", "imperative", "subjunctive", "jussive"]
+  persons: [1, 2, 3]
+  genders: ["masc", "fem"]
+  numbers: ["singular", "dual", "plural"]
+  cases: ["nominative", "accusative", "genitive"]
+  definiteness: ["definite", "indefinite"]
+  moods: ["indicative", "subjunctive", "jussive"]
+  voices: ["active", "passive"]
+
+# Phonological rules configuration
+phonology:
+  weak_letters: ["و", "ي", "ء", "ا"]
+  sun_letters: "تثدذرزسشصضطظلن"
+  moon_letters: "ابجحخعغفقكمهوي"
+  
+  assimilation_rules:
+    enable_sun_assimilation: true
+    enable_moon_preservation: true
+    process_definite_article: true
+  
+  weak_verb_rules:
+    process_hollow_verbs: true
+    process_defective_verbs: true
+    process_assimilated_verbs: true
+    apply_vowel_changes: true
+
+# Database file paths (relative to config directory)
+database_paths:
+  verb_inflections: "../data/verb_inflections.json"
+  noun_inflections: "../data/noun_inflections.json"
+  irregular_verbs: "../data/irregular_verbs.json"
+  weak_verb_patterns: "../data/weak_verb_patterns.json"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_inflection_operations: true
+  log_pattern_matching: false
+  log_phonological_changes: true
+  log_cache_operations: false
+
+# Enterprise quality assurance
+quality_assurance:
+  enable_output_validation: true
+  validate_arabic_script: true
+  check_diacritical_marks: true
+  verify_morphological_integrity: true
+  confidence_reporting: true
+
+# Advanced features
+advanced:
+  enable_machine_learning: false
+  ml_confidence_threshold: 0.9
+  enable_statistical_analysis: false
+  generate_alternative_forms: true
+  max_alternatives: 5
+
+# API configuration
+api:
+  enable_rest_api: false
+  api_port: 8080
+  enable_batch_endpoints: true
+  max_request_size: 1000
+  rate_limiting: true
+  requests_per_minute: 100
+
+# Testing configuration
+testing:
+  run_comprehensive_tests: true
+  test_irregular_verbs: true
+  test_weak_verbs: true
+  test_phonological_rules: true
+  benchmark_performance: true
+  generate_test_reports: true

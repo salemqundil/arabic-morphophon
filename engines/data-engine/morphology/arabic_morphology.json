@@ -1,0 +1,546 @@
+{
+  "metadata": {
+    "name": "Arabic Morphological System",
+    "version": "3.0.0", 
+    "description": "Comprehensive Arabic morphological patterns, roots, and affixes",
+    "language": "Arabic",
+    "script": "Arabic",
+    "linguistic_tradition": "Traditional + Modern",
+    "coverage": "Modern Standard Arabic + Classical Arabic",
+    "author": "Arabic NLP Research Team",
+    "license": "MIT",
+    "created": "2025-01-07",
+    "last_updated": "2025-01-07"
+  },
+  
+  "root_system": {
+    "description": "Arabic trilateral and quadrilateral root system",
+    "root_types": {
+      "trilateral": {
+        "pattern": "CCC",
+        "frequency": 0.85,
+        "examples": {
+          "ktb": {
+            "root": "ك-ت-ب",
+            "meaning": "write/writing",
+            "semantic_field": "communication",
+            "derivations": ["كتب", "كاتب", "مكتوب", "كتاب", "مكتبة", "كتابة"]
+          },
+          "qr": {
+            "root": "ق-ر-أ", 
+            "meaning": "read/reading",
+            "semantic_field": "communication",
+            "derivations": ["قرأ", "قارئ", "مقروء", "قراءة", "مقرأ"]
+          },
+          "drb": {
+            "root": "د-ر-ب",
+            "meaning": "strike/path",
+            "semantic_field": "action",
+            "derivations": ["ضرب", "ضارب", "مضروب", "مضرب", "ضربة"]
+          },
+          "md": {
+            "root": "ح-م-د",
+            "meaning": "praise/thank",
+            "semantic_field": "emotion",
+            "derivations": ["حمد", "حامد", "محمود", "حمدة", "تحميد"]
+          }
+        }
+      },
+      "quadrilateral": {
+        "pattern": "CCCC",
+        "frequency": 0.15,
+        "examples": {
+          "trjm": {
+            "root": "ت-ر-ج-م",
+            "meaning": "translate",
+            "semantic_field": "communication",
+            "derivations": ["ترجم", "مترجم", "ترجمة", "تراجم"]
+          },
+          "ndq": {
+            "root": "ح-ن-د-ق",
+            "meaning": "geometrize",
+            "semantic_field": "science",
+            "derivations": ["حندق", "حندقة", "محندق"]
+          }
+        }
+      }
+    },
+    
+    "root_variations": {
+      "sound_roots": {
+        "description": "Roots with all strong consonants",
+        "pattern": "CCC",
+        "examples": ["ktb", "drb", "md"]
+      },
+      "weak_roots": {
+        "description": "Roots containing weak letters (و، ي، ا)",
+        "types": {
+          "assimilated": {
+            "description": "First radical is weak",
+            "pattern": "WCC",
+            "examples": ["wqf", "wl", "wjd"]
+          },
+          "hollow": {
+            "description": "Second radical is weak", 
+            "pattern": "CWC",
+            "examples": ["qwl", "kwr", "yr"]
+          },
+          "defective": {
+            "description": "Third radical is weak",
+            "pattern": "CCW", 
+            "examples": ["rmw", "bnw", "ky"]
+          }
+        }
+      },
+      "doubled_roots": {
+        "description": "Roots with identical second and third radicals",
+        "pattern": "CCC where C2=C3",
+        "examples": ["mdd", "bb", "fkk"]
+      },
+      "hamzated_roots": {
+        "description": "Roots containing hamza",
+        "positions": ["initial", "medial", "final"],
+        "examples": ["kl", "sl", "qr"]
+      }
+    }
+  },
+  
+  "morphological_patterns": {
+    "description": "Arabic morphological patterns (awzan)",
+    "verbal_patterns": {
+      "form_i": {
+        "pattern": "faala",
+        "template": "C1aC2aC3a",
+        "meaning": "basic action",
+        "frequency": 0.40,
+        "examples": {
+          "kataba": "كتب - wrote",
+          "qaraa": "قرأ - read", 
+          "araba": "ضرب - struck"
+        }
+      },
+      "form_ii": {
+        "pattern": "faala",
+        "template": "C1aC2C2aC3a",
+        "meaning": "intensive/causative",
+        "frequency": 0.15,
+        "examples": {
+          "kattaba": "كتّب - made write",
+          "allama": "علّم - taught"
+        }
+      },
+      "form_iii": {
+        "pattern": "faaala",
+        "template": "C1aaC2aC3a", 
+        "meaning": "reciprocal/associative",
+        "frequency": 0.08,
+        "examples": {
+          "kaataba": "كاتب - corresponded",
+          "aaraba": "حارب - fought"
+        }
+      },
+      "form_iv": {
+        "pattern": "afala",
+        "template": "aC1C2aC3a",
+        "meaning": "causative",
+        "frequency": 0.12,
+        "examples": {
+          "aktaba": "أكتب - dictated",
+          "aslama": "أسلم - submitted"
+        }
+      },
+      "form_v": {
+        "pattern": "tafaala",
+        "template": "taC1aC2C2aC3a",
+        "meaning": "reflexive of form ii",
+        "frequency": 0.06,
+        "examples": {
+          "taallama": "تعلّم - learned",
+          "takallama": "تكلّم - spoke"
+        }
+      },
+      "form_vi": {
+        "pattern": "tafaaala", 
+        "template": "taC1aaC2aC3a",
+        "meaning": "reciprocal",
+        "frequency": 0.04,
+        "examples": {
+          "takaataba": "تكاتب - corresponded mutually",
+          "taaaraba": "تحارب - fought each other"
+        }
+      },
+      "form_vii": {
+        "pattern": "infaala",
+        "template": "inC1aC2aC3a", 
+        "meaning": "passive/reflexive",
+        "frequency": 0.03,
+        "examples": {
+          "inkataba": "انكتب - was written",
+          "inkasar": "انكسر - was broken"
+        }
+      },
+      "form_viii": {
+        "pattern": "iftaala",
+        "template": "iC1taC2aC3a",
+        "meaning": "reflexive",
+        "frequency": 0.07,
+        "examples": {
+          "iktasaba": "اكتسب - acquired",
+          "ijtamaa": "اجتمع - gathered"
+        }
+      },
+      "form_ix": {
+        "pattern": "ifalla",
+        "template": "iC1C2aC3C3a",
+        "meaning": "colors/defects",
+        "frequency": 0.01,
+        "examples": {
+          "imarra": "احمرّ - became red",
+          "iswadda": "اسودّ - became black"
+        }
+      },
+      "form_x": {
+        "pattern": "istafala",
+        "template": "istaC1C2aC3a",
+        "meaning": "seeking/considering",
+        "frequency": 0.04,
+        "examples": {
+          "istakataba": "استكتب - asked to write",
+          "istamala": "استعمل - used"
+        }
+      }
+    },
+    
+    "nominal_patterns": {
+      "agent_patterns": {
+        "fail": {
+          "template": "C1aC2iC3",
+          "meaning": "active participle", 
+          "examples": ["كاتب", "قارئ", "ضارب"]
+        },
+        "mufail": {
+          "template": "muC1aC2C2iC3",
+          "meaning": "agent of form ii",
+          "examples": ["معلّم", "مكتّب"] 
+        },
+        "mufaail": {
+          "template": "muC1aaC2iC3",
+          "meaning": "agent of form iii",
+          "examples": ["محارب", "مكاتب"]
+        }
+      },
+      "patient_patterns": {
+        "mafuul": {
+          "template": "maC1C2uuC3",
+          "meaning": "passive participle",
+          "examples": ["مكتوب", "مقروء", "مضروب"]
+        },
+        "mufaal": {
+          "template": "muC1aC2C2aC3", 
+          "meaning": "patient of form ii",
+          "examples": ["معلّم", "مكتّب"]
+        }
+      },
+      "instrument_patterns": {
+        "mifaal": {
+          "template": "miC1C2aaC3",
+          "meaning": "instrument/tool",
+          "examples": ["مفتاح", "مصباح", "مقياس"]
+        },
+        "mifala": {
+          "template": "miC1C2aC3a",
+          "meaning": "instrument",
+          "examples": ["مكتبة", "مدرسة"]
+        }
+      },
+      "place_patterns": {
+        "mafil": {
+          "template": "maC1C2iC3",
+          "meaning": "place/time",
+          "examples": ["مكتب", "مشرب", "مطبخ"]
+        },
+        "mafala": {
+          "template": "maC1C2aC3a",
+          "meaning": "place",
+          "examples": ["مكتبة", "مدرسة", "مطبعة"]
+        }
+      },
+      "abstract_patterns": {
+        "fiaala": {
+          "template": "C1iC2aaC3a",
+          "meaning": "abstract quality/profession",
+          "examples": ["كتابة", "قراءة", "زراعة"]
+        },
+        "fuuula": {
+          "template": "C1uC2uuC3a",
+          "meaning": "abstract concept",
+          "examples": ["شيخوخة", "طفولة"]
+        }
+      }
+    }
+  },
+  
+  "affixation_system": {
+    "description": "Arabic prefixal and suffixal morphology",
+    "prefixes": {
+      "definite_article": {
+        "form": "al-",
+        "variants": ["al", "ar", "as", "at", "ad", "an"],
+        "function": "definiteness",
+        "assimilation": "solar_letters",
+        "examples": {
+          "al-kitaab": "الكتاب - the book",
+          "ar-rajul": "الرجل - the man",
+          "as-sams": "الشمس - the sun"
+        }
+      },
+      "prepositions": {
+        "bi": {
+          "form": "bi-",
+          "meaning": "with/by/in",
+          "examples": ["بالقلم", "بالمدرسة"]
+        },
+        "li": {
+          "form": "li-", 
+          "meaning": "for/to",
+          "examples": ["للطالب", "للمدرسة"]
+        },
+        "ka": {
+          "form": "ka-",
+          "meaning": "like/as",
+          "examples": ["كالأسد", "كالماء"]
+        }
+      },
+      "conjunctions": {
+        "wa": {
+          "form": "wa-",
+          "meaning": "and",
+          "examples": ["والطالب", "والمدرسة"]
+        },
+        "fa": {
+          "form": "fa-",
+          "meaning": "so/then",
+          "examples": ["فالطالب", "فالمدرسة"]
+        }
+      },
+      "verbal_prefixes": {
+        "ya": {
+          "form": "ya-",
+          "function": "imperfect_3rd_masc",
+          "examples": ["يكتب", "يقرأ"]
+        },
+        "ta": {
+          "form": "ta-",
+          "function": "imperfect_2nd/3rd_fem",
+          "examples": ["تكتب", "تقرأ"]
+        },
+        "aa": {
+          "form": "aa-",
+          "function": "imperfect_1st_sing",
+          "examples": ["أكتب", "أقرأ"]
+        },
+        "na": {
+          "form": "na-",
+          "function": "imperfect_1st_plur",
+          "examples": ["نكتب", "نقرأ"]
+        }
+      }
+    },
+    
+    "suffixes": {
+      "nominal_suffixes": {
+        "dual": {
+          "nominative": "-aan",
+          "accusative_genitive": "-ayn",
+          "examples": ["كتابان", "كتابين"]
+        },
+        "masculine_plural": {
+          "nominative": "-uun",
+          "accusative_genitive": "-iin", 
+          "examples": ["مسلمون", "مسلمين"]
+        },
+        "feminine_singular": {
+          "form": "-a",
+          "examples": ["مدرسة", "طالبة"]
+        },
+        "feminine_plural": {
+          "form": "-aat",
+          "examples": ["مدرسات", "طالبات"]
+        },
+        "case_endings": {
+          "nominative": "-u",
+          "accusative": "-a", 
+          "genitive": "-i",
+          "examples": ["الطالبُ", "الطالبَ", "الطالبِ"]
+        }
+      },
+      "verbal_suffixes": {
+        "perfect_suffixes": {
+          "1st_sing": "-tu",
+          "2nd_masc": "-ta",
+          "2nd_fem": "-ti",
+          "3rd_masc": "",
+          "3rd_fem": "-at",
+          "1st_plur": "-naa",
+          "2nd_plur": "-tum",
+          "3rd_plur": "-uu"
+        },
+        "imperfect_suffixes": {
+          "indicative": "",
+          "subjunctive": "", 
+          "jussive": "",
+          "dual": "-aan",
+          "feminine": "-na",
+          "plural": "-uun"
+        }
+      },
+      "pronominal_suffixes": {
+        "1st_sing": "-ii",
+        "2nd_masc": "-ka", 
+        "2nd_fem": "-ki",
+        "3rd_masc": "-hu",
+        "3rd_fem": "-haa",
+        "1st_plur": "-naa",
+        "2nd_plur": "-kum",
+        "3rd_plur": "-hum/-hunna"
+      }
+    }
+  },
+  
+  "morphophonological_processes": {
+    "description": "Sound changes at morpheme boundaries",
+    "assimilation": {
+      "definite_article": {
+        "description": "Assimilation of /l/ to solar consonants",
+        "rule": "al + [solar]  a[solar][solar]",
+        "solar_letters": ["ت", "ث", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ل", "ن"],
+        "examples": {
+          "as-sams": "الشمس  al-sams",
+          "ar-rajul": "الرجل  al-rajul",
+          "at-taalib": "الطالب  al-taalib"
+        }
+      },
+      "preposition_assimilation": {
+        "description": "Preposition + definite article",
+        "examples": {
+          "bil-qalam": "بالقلم  bi + al-qalam",
+          "lil-bayt": "للبيت  li + al-bayt"
+        }
+      }
+    },
+    
+    "deletion": {
+      "vowel_deletion": {
+        "description": "Short vowel deletion in certain environments",
+        "contexts": ["unstressed_syllabic_units", "cluster_resolution"]
+      },
+      "hamza_deletion": {
+        "description": "Hamza deletion in specific morphological contexts",
+        "contexts": ["word_initial", "after_prefixes"]
+      }
+    },
+    
+    "epenthesis": {
+      "vowel_epenthesis": {
+        "description": "Vowel insertion to break consonant clusters",
+        "default_vowel": "i",
+        "contexts": ["cluster_resolution", "word_final"]
+      }
+    },
+    
+    "metathesis": {
+      "t_metathesis": {
+        "description": "Metathesis of /t/ in form VIII verbs",
+        "rule": "t + [fricative]  [fricative] + t",
+        "examples": {
+          "iztaad": "ازداد  *izdaad",
+          "ittakhaa": "اتخذ  *ittakha"
+        }
+      }
+    }
+  },
+  
+  "broken_plurals": {
+    "description": "Internal plural patterns in Arabic",
+    "patterns": {
+      "afaal": {
+        "template": "aC1C2aaC3",
+        "input_pattern": "CiCaaC",
+        "examples": {
+          "kitaabaktaab": "كتاب  أكتاب",
+          "rijaalarjaal": "رجال  أرجال"
+        }
+      },
+      "fuuul": {
+        "template": "C1uC2uuC3", 
+        "input_pattern": "CaCC",
+        "examples": {
+          "baytbuyuut": "بيت  بيوت",
+          "aqququuq": "حق  حقوق"
+        }
+      },
+      "fiaal": {
+        "template": "C1iC2aaC3",
+        "input_pattern": "CaCC",
+        "examples": {
+          "jabaljibaal": "جبل  جبال",
+          "rajulrijaal": "رجل  رجال"
+        }
+      },
+      "fualaa": {
+        "template": "C1uC2aC3aa",
+        "input_pattern": "CaaCiC",
+        "examples": {
+          "aalimulamaa": "عالم  علماء",
+          "aairuaraa": "شاعر  شعراء"
+        }
+      }
+    }
+  },
+  
+  "derivational_morphology": {
+    "description": "Productive derivational processes",
+    "diminutive": {
+      "pattern": "CuCayC",
+      "function": "smallness/endearment",
+      "examples": {
+        "baytbuwayt": "بيت  بُويت",
+        "waladwulayd": "ولد  وُليد"
+      }
+    },
+    "nisba_adjectives": {
+      "suffix": "-iyy",
+      "function": "relational_adjective",
+      "examples": {
+        "mirmiriyy": "مصر  مصري",
+        "arabarabiyy": "عرب  عربي"
+      }
+    },
+    "abstract_nouns": {
+      "patterns": ["CiCaaCa", "CuCuuCa", "CaCaCa"],
+      "examples": {
+        "katabakitaaba": "كتب  كتابة",
+        "kaburakubuura": "كبر  كبورة"
+      }
+    }
+  },
+  
+  "morphological_analysis_rules": {
+    "segmentation_priorities": [
+      "definite_article",
+      "prepositions", 
+      "conjunctions",
+      "prefixes",
+      "root_identification",
+      "pattern_matching",
+      "suffix_identification",
+      "pronominal_clitics"
+    ],
+    "ambiguity_resolution": {
+      "frequency_based": true,
+      "context_based": true,
+      "semantic_constraints": true,
+      "syntactic_constraints": true
+    }
+  }
+}

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Full Pipeline Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #fd79a8;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+            min-height: 100px;
+            resize: vertical;
+        }
+        .input-section textarea:focus {
+            outline: none;
+            border-color: #fd79a8;
+            box-shadow: 0 0 10px rgba(253, 121, 168, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #fd79a8;
+        }
+        .pipeline-stage {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #fdcb6e;
+        }
+        .stage-header {
+            font-weight: bold;
+            color: #fd79a8;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .stage-number {
+            background: #fd79a8;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .tokenization { background: #e3f2fd; border-left: 3px solid #2196f3; }
+        .morphology { background: #f3e5f5; border-left: 3px solid #9c27b0; }
+        .phonology { background: #fff3e0; border-left: 3px solid #ff9800; }
+        .syntax { background: #e8f5e8; border-left: 3px solid #4caf50; }
+        .semantics { background: #fce4ec; border-left: 3px solid #e91e63; }
+        .derivation { background: #f1f8e9; border-left: 3px solid #8bc34a; }
+        .token-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .token {
+            background: #fd79a8;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .token:hover {
+            transform: scale(1.05);
+            background: #e84393;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fd79a8, #fdcb6e);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .summary-box {
+            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .feature-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #fd79a8;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك التحليل الشامل</h1>
+            <div class="subtitle">Arabic Full NLP Pipeline Engine</div>
+            <div class="subtitle">تحليل شامل متعدد المراحل للنصوص العربية</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل النص العربي للتحليل الشامل:</label>
+            <textarea id="arabicText" placeholder="مثال: ذهب الطلاب المجتهدون إلى المكتبة الجامعية لدراسة الكتب المفيدة">ذهب الطلاب المجتهدون إلى المكتبة الجامعية لدراسة الكتب المفيدة</textarea>
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('ذهب الطلاب المجتهدون إلى المكتبة الجامعية لدراسة الكتب المفيدة')">نص أكاديمي</button>
+            <button class="btn example-btn" onclick="setExample('يحب الأطفال اللعب في الحديقة الجميلة عندما تشرق الشمس')">نص وصفي</button>
+            <button class="btn example-btn" onclick="setExample('إذا درس الطالب بجد فسوف ينجح في الامتحان بإذن الله')">نص شرطي</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="runFullPipeline()"> تشغيل التحليل الشامل</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <div class="summary-box">
+                <h3> ملخص التحليل الشامل</h3>
+                <div id="summary-content"></div>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+            document.getElementById('summary-content').innerHTML = '';
+            document.getElementById('progress-fill').style.width = '0%';
+        }
+
+        async function runFullPipeline() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال نص عربي للتحليل');
+                return;
+            }
+
+            document.getElementById('results').classList.remove('hidden');
+
+            // Simulate progressive analysis
+            const stages = [
+                { name: 'التقطيع', progress: 16.67 },
+                { name: 'التحليل الصرفي', progress: 33.33 },
+                { name: 'التحليل الصوتي', progress: 50 },
+                { name: 'التحليل النحوي', progress: 66.67 },
+                { name: 'التحليل الدلالي', progress: 83.33 },
+                { name: 'التحليل الاشتقاقي', progress: 100 }
+            ];
+
+            let analysis = await simulateFullPipelineAnalysis(text);
+
+            for (let i = 0; i < stages.length; i++) {
+                await new Promise(resolve => setTimeout(resolve, 500));
+                document.getElementById('progress-fill').style.width = stages[i].progress + '%';
+
+                if (i === stages.length - 1) {
+                    displayResults(analysis);
+                }
+            }
+        }
+
+        async function simulateFullPipelineAnalysis(text) {
+            const words = text.split(/\s+/);
+
+            // Stage 1: Tokenization
+            const tokens = tokenizeText(text);
+
+            // Stage 2: Morphological Analysis
+            const morphology = words.map(word => analyzeMorphology(word));
+
+            // Stage 3: Phonological Analysis
+            const phonology = words.map(word => analyzePhonology(word));
+
+            // Stage 4: Syntactic Analysis
+            const syntax = analyzeSyntax(words);
+
+            // Stage 5: Semantic Analysis
+            const semantics = analyzeSemantics(words);
+
+            // Stage 6: Derivational Analysis
+            const derivation = words.map(word => analyzeDerivation(word));
+
+            return {
+                input_text: text,
+                stages: {
+                    tokenization: { tokens, statistics: generateTokenStats(tokens) },
+                    morphology: { analysis: morphology, summary: generateMorphSummary(morphology) },
+                    phonology: { analysis: phonology, summary: generatePhonSummary(phonology) },
+                    syntax: { analysis: syntax, summary: generateSyntaxSummary(syntax) },
+                    semantics: { analysis: semantics, summary: generateSemanticsSummary(semantics) },
+                    derivation: { analysis: derivation, summary: generateDerivationSummary(derivation) }
+                },
+                overall_statistics: generateOverallStats(text, words),
+                complexity_score: calculateComplexityScore(words),
+                language_features: identifyLanguageFeatures(text)
+            };
+        }
+
+        function tokenizeText(text) {
+            const tokens = [];
+            const words = text.split(/\s+/);
+
+            words.forEach((word, index) => {
+                // Basic tokenization with type classification
+                tokens.push({
+                    text: word,
+                    position: index,
+                    type: classifyToken(word),
+                    length: word.length,
+                    has_prefix: hasPrefix(word),
+                    has_suffix: hasSuffix(word)
+                });
+            });
+
+            return tokens;
+        }
+
+        function classifyToken(word) {
+            if (/^[اأإآ]/.test(word)) return 'بادئة_همزة';
+            if (/[ةه]$/.test(word)) return 'مؤنث';
+            if (/ون$/.test(word)) return 'جمع_مذكر';
+            if (/ات$/.test(word)) return 'جمع_مؤنث';
+            if (/^ال/.test(word)) return 'معرف';
+            return 'عادي';
+        }
+
+        function hasPrefix(word) {
+            const prefixes = ['ال', 'و', 'ف', 'ب', 'ك', 'ل'];
+            return prefixes.some(prefix => word.startsWith(prefix));
+        }
+
+        function hasSuffix(word) {
+            const suffixes = ['ة', 'ان', 'ون', 'ين', 'ات', 'ها', 'هم', 'هن'];
+            return suffixes.some(suffix => word.endsWith(suffix));
+        }
+
+        function analyzeMorphology(word) {
+            return {
+                word: word,
+                root: extractRoot(word),
+                pattern: extractPattern(word),
+                type: classifyMorphType(word),
+                features: extractMorphFeatures(word)
+            };
+        }
+
+        function extractRoot(word) {
+            // Simplified root extraction
+            const cleaned = word.replace(/^(ال|و|ف|ب|ك|ل)/, '').replace(/(ة|ان|ون|ين|ات|ها|هم|هن)$/, '');
+            if (cleaned.length >= 3) {
+                return cleaned.slice(0, 3).split('').join('-');
+            }
+            return 'غير_محدد';
+        }
+
+        function extractPattern(word) {
+            const patterns = ['فعل', 'فاعل', 'مفعول', 'فعيل', 'فعال', 'مفعلة'];
+            return patterns[word.length % patterns.length];
+        }
+
+        function classifyMorphType(word) {
+            if (word.endsWith('ون') || word.endsWith('ين')) return 'جمع_مذكر_سالم';
+            if (word.endsWith('ات')) return 'جمع_مؤنث_سالم';
+            if (word.endsWith('ة')) return 'مفرد_مؤنث';
+            return 'مفرد_مذكر';
+        }
+
+        function extractMorphFeatures(word) {
+            const features = [];
+            if (word.startsWith('مُ')) features.push('اسم_فاعل');
+            if (word.startsWith('مَ')) features.push('اسم_مفعول');
+            if (word.includes('ت')) features.push('احتواء_تاء');
+            return features;
+        }
+
+        function analyzePhonology(word) {
+            const phonemes = word.split('').map(char => ({
+                grapheme: char,
+                phoneme: arabicToIPA(char),
+                features: getPhonemeFeatures(char)
+            }));
+
+            return {
+                word: word,
+                phonemes: phonemes,
+                syllable_count: estimateSyllabicUnits(word),
+                stress_pattern: generateStressPattern(word)
+            };
+        }
+
+        function arabicToIPA(char) {
+            const mapping = {
+                'ا': 'a', 'ب': 'b', 'ت': 't', 'ث': '', 'ج': 'd',
+                'ح': '', 'خ': 'x', 'د': 'd', 'ذ': '', 'ر': 'r',
+                'ز': 'z', 'س': 's', 'ش': '', 'ص': 's', 'ض': 'd',
+                'ط': 't', 'ظ': '', 'ع': '', 'غ': '', 'ف': 'f',
+                'ق': 'q', 'ك': 'k', 'ل': 'l', 'م': 'm', 'ن': 'n',
+                'ه': 'h', 'و': 'w', 'ي': 'j'
+            };
+            return mapping[char] || char;
+        }
+
+        function getPhonemeFeatures(char) {
+            const vowels = ['ا', 'و', 'ي', 'ة', 'ى'];
+            return vowels.includes(char) ? ['صائت'] : ['صامت'];
+        }
+
+        function estimateSyllabicUnits(word) {
+            const vowels = (word.match(/[اويةى]/g) || []).length;
+            return Math.max(1, vowels);
+        }
+
+        function generateStressPattern(word) {
+            return word.length > 4 ? 'نبر_ثانوي' : 'نبر_أساسي';
+        }
+
+        function analyzeSyntax(words) {
+            return {
+                sentence_type: classifySentenceType(words),
+                phrase_structure: analyzePhrasalStructure(words),
+                dependencies: generateDependencies(words),
+                grammatical_relations: identifyGrammaticalRelations(words)
+            };
+        }
+
+        function classifySentenceType(words) {
+            const text = words.join(' ');
+            if (text.includes('؟')) return 'استفهامية';
+            if (text.includes('!')) return 'تعجبية';
+            if (text.includes('إذا') || text.includes('لو')) return 'شرطية';
+            return 'خبرية';
+        }
+
+        function analyzePhrasalStructure(words) {
+            const phrases = [];
+            let currentPhrase = [];
+
+            words.forEach(word => {
+                if (word.startsWith('ال') || currentPhrase.length === 0) {
+                    if (currentPhrase.length > 0) {
+                        phrases.push(currentPhrase.join(' '));
+                        currentPhrase = [];
+                    }
+                }
+                currentPhrase.push(word);
+            });
+
+            if (currentPhrase.length > 0) {
+                phrases.push(currentPhrase.join(' '));
+            }
+
+            return phrases;
+        }
+
+        function generateDependencies(words) {
+            // Simplified dependency analysis
+            return words.map((word, index) => ({
+                word: word,
+                head: index > 0 ? index - 1 : -1,
+                relation: index === 0 ? 'root' : 'dep'
+            }));
+        }
+
+        function identifyGrammaticalRelations(words) {
+            const relations = [];
+            words.forEach((word, index) => {
+                if (word.startsWith('ال')) relations.push({ word, relation: 'مُعرَّف' });
+                if (word.endsWith('ون')) relations.push({ word, relation: 'فاعل_جمع' });
+                if (word.endsWith('ة')) relations.push({ word, relation: 'مؤنث' });
+            });
+            return relations;
+        }
+
+        function analyzeSemantics(words) {
+            return {
+                semantic_fields: identifySemanticFields(words),
+                named_entities: identifyNamedEntities(words),
+                sentiment: analyzeSentiment(words),
+                topic: identifyTopic(words)
+            };
+        }
+
+        function identifySemanticFields(words) {
+            const fields = new Set();
+            words.forEach(word => {
+                if (['طالب', 'مدرسة', 'كتاب', 'دراسة'].some(edu => word.includes(edu))) {
+                    fields.add('تعليم');
+                }
+                if (['بيت', 'حديقة', 'مكان'].some(place => word.includes(place))) {
+                    fields.add('أماكن');
+                }
+            });
+            return Array.from(fields);
+        }
+
+        function identifyNamedEntities(words) {
+            const entities = [];
+            words.forEach(word => {
+                if (word.match(/^[أإا][A-Za-z]/)) {
+                    entities.push({ word, type: 'اسم_علم' });
+                }
+            });
+            return entities;
+        }
+
+        function analyzeSentiment(words) {
+            const positiveWords = ['جميل', 'رائع', 'مفيد', 'ممتاز'];
+            const negativeWords = ['سيء', 'صعب', 'معقد'];
+
+            let score = 0;
+            words.forEach(word => {
+                if (positiveWords.some(pos => word.includes(pos))) score++;
+                if (negativeWords.some(neg => word.includes(neg))) score--;
+            });
+
+            if (score > 0) return 'إيجابي';
+            if (score < 0) return 'سلبي';
+            return 'محايد';
+        }
+
+        function identifyTopic(words) {
+            const topics = {
+                'education': ['طالب', 'مدرسة', 'كتاب', 'دراسة', 'تعليم'],
+                'family': ['أب', 'أم', 'أخ', 'أخت', 'عائلة'],
+                'work': ['عمل', 'وظيفة', 'مكتب', 'شركة']
+            };
+
+            let maxScore = 0;
+            let detectedTopic = 'عام';
+
+            Object.entries(topics).forEach(([topic, keywords]) => {
+                const score = keywords.filter(keyword =>
+                    words.some(word => word.includes(keyword))
+                ).length;
+
+                if (score > maxScore) {
+                    maxScore = score;
+                    detectedTopic = topic === 'education' ? 'تعليم' :
+                                   topic === 'family' ? 'عائلة' : 'عمل';
+                }
+            });
+
+            return detectedTopic;
+        }
+
+        function analyzeDerivation(word) {
+            return {
+                word: word,
+                possible_derivatives: generateDerivatives(word),
+                morphological_family: identifyMorphFamily(word),
+                productivity_score: calculateProductivity(word)
+            };
+        }
+
+        function generateDerivatives(word) {
+            const base = word.replace(/^(ال|و|ف|ب|ك|ل)/, '').replace(/(ة|ان|ون|ين|ات|ها|هم|هن)$/, '');
+            return [
+                base + 'ة',
+                'مُ' + base,
+                base + 'ان',
+                'تَ' + base
+            ].slice(0, 3);
+        }
+
+        function identifyMorphFamily(word) {
+            if (word.includes('كتب')) return 'عائلة_الكتابة';
+            if (word.includes('درس')) return 'عائلة_الدراسة';
+            return 'عائلة_عامة';
+        }
+
+        function calculateProductivity(word) {
+            return word.length > 4 ? 'عالي' : 'متوسط';
+        }
+
+        // Generate summaries and statistics
+        function generateTokenStats(tokens) {
+            return {
+                total_tokens: tokens.length,
+                avg_length: (tokens.reduce((sum, token) => sum + token.length, 0) / tokens.length).toFixed(2),
+                type_distribution: tokens.reduce((acc, token) => {
+                    acc[token.type] = (acc[token.type] || 0) + 1;
+                    return acc;
+                }, {})
+            };
+        }
+
+        function generateMorphSummary(morphAnalysis) {
+            const types = morphAnalysis.map(m => m.type);
+            const uniqueTypes = [...new Set(types)];
+            return {
+                morphological_diversity: uniqueTypes.length,
+                most_common_type: types.reduce((a, b, i, arr) =>
+                    arr.filter(v => v === a).length >= arr.filter(v => v === b).length ? a : b
+                )
+            };
+        }
+
+        function generatePhonSummary(phonAnalysis) {
+            const totalSyllabicUnits = phonAnalysis.reduce((sum, p) => sum + p.syllable_count, 0);
+            return {
+                total_syllabic_units: totalSyllabicUnits,
+                avg_syllabic_units_per_word: (totalSyllabicUnits / phonAnalysis.length).toFixed(2),
+                phonological_complexity: totalSyllabicUnits > 15 ? 'عالي' : 'متوسط'
+            };
+        }
+
+        function generateSyntaxSummary(syntaxAnalysis) {
+            return {
+                sentence_type: syntaxAnalysis.sentence_type,
+                phrase_count: syntaxAnalysis.phrase_structure.length,
+                syntactic_complexity: syntaxAnalysis.phrase_structure.length > 3 ? 'معقد' : 'بسيط'
+            };
+        }
+
+        function generateSemanticsSummary(semanticsAnalysis) {
+            return {
+                semantic_richness: semanticsAnalysis.semantic_fields.length,
+                topic: semanticsAnalysis.topic,
+                sentiment: semanticsAnalysis.sentiment,
+                entity_count: semanticsAnalysis.named_entities.length
+            };
+        }
+
+        function generateDerivationSummary(derivationAnalysis) {
+            return {
+                derivational_potential: derivationAnalysis.length,
+                morphological_families: [...new Set(derivationAnalysis.map(d => d.morphological_family))].length
+            };
+        }
+
+        function generateOverallStats(text, words) {
+            return {
+                character_count: text.length,
+                word_count: words.length,
+                avg_word_length: (words.reduce((sum, word) => sum + word.length, 0) / words.length).toFixed(2),
+                lexical_density: calculateLexicalDensity(words)
+            };
+        }
+
+        function calculateLexicalDensity(words) {
+            const contentWords = words.filter(word =>
+                !['في', 'على', 'إلى', 'من', 'ال', 'و', 'ف'].some(func => word.includes(func))
+            );
+            return ((contentWords.length / words.length) * 100).toFixed(1) + '%';
+        }
+
+        function calculateComplexityScore(words) {
+            let score = 0;
+            score += words.length * 0.5; // Length factor
+            score += words.filter(w => w.length > 5).length * 1.5; // Long words
+            score += words.filter(w => w.includes('است')).length * 2; // Complex prefixes
+
+            if (score < 10) return { level: 'بسيط', score: score.toFixed(1) };
+            if (score < 20) return { level: 'متوسط', score: score.toFixed(1) };
+            return { level: 'معقد', score: score.toFixed(1) };
+        }
+
+        function identifyLanguageFeatures(text) {
+            const features = [];
+            if (text.includes('إذا') || text.includes('لو')) features.push('جمل_شرطية');
+            if (text.includes('ال')) features.push('تعريف');
+            if (text.includes('ة')) features.push('تأنيث');
+            if (text.includes('ون') || text.includes('ات')) features.push('جمع');
+            return features;
+        }
+
+        function displayResults(analysis) {
+            const summaryDiv = document.getElementById('summary-content');
+            const contentDiv = document.getElementById('analysis-content');
+
+            // Display summary
+            summaryDiv.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div><strong> عدد الكلمات:</strong> ${analysis.overall_statistics.word_count}</div>
+                    <div><strong> التعقيد:</strong> ${analysis.complexity_score.level}</div>
+                    <div><strong> الموضوع:</strong> ${analysis.stages.semantics.summary.topic}</div>
+                    <div><strong> المشاعر:</strong> ${analysis.stages.semantics.summary.sentiment}</div>
+                    <div><strong> الكثافة المعجمية:</strong> ${analysis.overall_statistics.lexical_density}</div>
+                    <div><strong> نوع الجملة:</strong> ${analysis.stages.syntax.summary.sentence_type}</div>
+                </div>
+            `;
+
+            // Display detailed analysis
+            let html = '';
+
+            // Stage 1: Tokenization
+            html += `
+                <div class="pipeline-stage">
+                    <div class="stage-header">
+                        <div class="stage-number">1</div>
+                        <span>مرحلة التقطيع (Tokenization)</span>
+                    </div>
+                    <div class="tokenization info-box">
+                        <strong>الرموز المستخرجة:</strong><br>
+                        <div class="token-list">
+                            ${analysis.stages.tokenization.tokens.map(token =>
+                                `<span class="token" title="نوع: ${token.type}">${token.text}</span>`
+                            ).join('')}
+                        </div>
+                        <div class="stats">
+                            عدد الرموز: ${analysis.stages.tokenization.statistics.total_tokens} |
+                            متوسط الطول: ${analysis.stages.tokenization.statistics.avg_length}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Stage 2: Morphology
+            html += `
+                <div class="pipeline-stage">
+                    <div class="stage-header">
+                        <div class="stage-number">2</div>
+                        <span>مرحلة التحليل الصرفي (Morphology)</span>
+                    </div>
+                    <div class="morphology info-box">
+                        <strong>التحليل الصرفي:</strong><br>
+                        <div class="feature-grid">
+                            ${analysis.stages.morphology.analysis.slice(0, 6).map(morph =>
+                                `<div class="feature-item">
+                                    <strong>${morph.word}:</strong> ${morph.pattern} (${morph.type})
+                                </div>`
+                            ).join('')}
+                        </div>
+                        <div class="stats">
+                            التنوع الصرفي: ${analysis.stages.morphology.summary.morphological_diversity} |
+                            النوع الأكثر: ${analysis.stages.morphology.summary.most_common_type}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Stage 3: Phonology
+            html += `
+                <div class="pipeline-stage">
+                    <div class="stage-header">
+                        <div class="stage-number">3</div>
+                        <span>مرحلة التحليل الصوتي (Phonology)</span>
+                    </div>
+                    <div class="phonology info-box">
+                        <strong>التحليل الصوتي:</strong><br>
+                        إجمالي المقاطع: ${analysis.stages.phonology.summary.total_syllabic_units} |
+                        متوسط المقاطع/كلمة: ${analysis.stages.phonology.summary.avg_syllabic_units_per_word} |
+                        التعقيد الصوتي: ${analysis.stages.phonology.summary.phonological_complexity}
+                    </div>
+                </div>
+            `;
+
+            // Stage 4: Syntax
+            html += `
+                <div class="pipeline-stage">
+                    <div class="stage-header">
+                        <div class="stage-number">4</div>
+                        <span>مرحلة التحليل النحوي (Syntax)</span>
+                    </div>
+                    <div class="syntax info-box">
+                        <strong>التركيب النحوي:</strong><br>
+                        <div class="feature-grid">
+                            <div class="feature-item">نوع الجملة: ${analysis.stages.syntax.summary.sentence_type}</div>
+                            <div class="feature-item">عدد العبارات: ${analysis.stages.syntax.summary.phrase_count}</div>
+                            <div class="feature-item">التعقيد النحوي: ${analysis.stages.syntax.summary.syntactic_complexity}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Stage 5: Semantics
+            html += `
+                <div class="pipeline-stage">
+                    <div class="stage-header">
+                        <div class="stage-number">5</div>
+                        <span>مرحلة التحليل الدلالي (Semantics)</span>
+                    </div>
+                    <div class="semantics info-box">
+                        <strong>التحليل الدلالي:</strong><br>
+                        <div class="feature-grid">
+                            <div class="feature-item">الموضوع: ${analysis.stages.semantics.summary.topic}</div>
+                            <div class="feature-item">المشاعر: ${analysis.stages.semantics.summary.sentiment}</div>
+                            <div class="feature-item">الثراء الدلالي: ${analysis.stages.semantics.summary.semantic_richness}</div>
+                            <div class="feature-item">الكيانات: ${analysis.stages.semantics.summary.entity_count}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Stage 6: Derivation
+            html += `
+                <div class="pipeline-stage">
+                    <div class="stage-header">
+                        <div class="stage-number">6</div>
+                        <span>مرحلة التحليل الاشتقاقي (Derivation)</span>
+                    </div>
+                    <div class="derivation info-box">
+                        <strong>التحليل الاشتقاقي:</strong><br>
+                        <div class="feature-grid">
+                            <div class="feature-item">إمكانية الاشتقاق: ${analysis.stages.derivation.summary.derivational_potential}</div>
+                            <div class="feature-item">العائلات الصرفية: ${analysis.stages.derivation.summary.morphological_families}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            // No auto-analysis for full pipeline due to complexity
+        };
+    </script>
+</body>
+</html>

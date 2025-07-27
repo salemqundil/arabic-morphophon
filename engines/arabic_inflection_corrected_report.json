@@ -1,0 +1,198 @@
+{
+  "engine_info": {
+    "name": "CorrectedArabicInflectionEngine",
+    "version": "1.1.0",
+    "total_rules": 7,
+    "rule_types": [
+      "إدغام",
+      "إعلال بالنقل",
+      "إبدال",
+      "إعلال بالقلب",
+      "إعلال بالحذف"
+    ]
+  },
+  "test_results": {
+    "total_tests": 7,
+    "passed": 5,
+    "failed": 2,
+    "results": [
+      {
+        "rule_id": "ilal_001",
+        "rule_name": "قلب الواو ألفاً بعد فتحة",
+        "input": "قَوَلَ",
+        "expected": "قَالَ",
+        "actual": "قَاَلَ",
+        "success": false,
+        "applied_rules": [
+          "ilal_001"
+        ]
+      },
+      {
+        "rule_id": "ilal_002",
+        "rule_name": "حذف حرف العلة في آخر الفعل المجزوم",
+        "input": "يَقُولُ",
+        "expected": "يَقُلْ",
+        "actual": "يَقُولُ",
+        "success": false,
+        "applied_rules": []
+      },
+      {
+        "rule_id": "ilal_003",
+        "rule_name": "إعلال الماضي مع ضمير المتكلم",
+        "input": "قَامَ",
+        "expected": "قُمْتُ",
+        "actual": "قُمْتُ",
+        "success": true,
+        "applied_rules": [
+          "ilal_003"
+        ]
+      },
+      {
+        "rule_id": "ibdal_001",
+        "rule_name": "إبدال الهمزة واواً بعد ضمة",
+        "input": "سُؤال",
+        "expected": "سُوال",
+        "actual": "سُوال",
+        "success": true,
+        "applied_rules": [
+          "ibdal_001"
+        ]
+      },
+      {
+        "rule_id": "ibdal_002",
+        "rule_name": "إبدال الهمزة ياء بعد كسرة",
+        "input": "مِءَة",
+        "expected": "مِيَة",
+        "actual": "مِيَة",
+        "success": true,
+        "applied_rules": [
+          "ibdal_002"
+        ]
+      },
+      {
+        "rule_id": "gemination_001",
+        "rule_name": "إدغام المتماثلين",
+        "input": "مدْد",
+        "expected": "مدّ",
+        "actual": "مدّ",
+        "success": true,
+        "applied_rules": [
+          "gemination_001"
+        ]
+      },
+      {
+        "rule_id": "ilal_004",
+        "rule_name": "نقل الحركة في المبني للمجهول",
+        "input": "وَجَدَ",
+        "expected": "وُجِدَ",
+        "actual": "وُجِدَ",
+        "success": true,
+        "applied_rules": [
+          "ilal_004"
+        ]
+      }
+    ],
+    "success_rate": 71.42857142857143
+  },
+  "rule_details": [
+    {
+      "rule_id": "ilal_001",
+      "arabic_name": "قلب الواو ألفاً بعد فتحة",
+      "english_name": "Waw to Alif after Fatha",
+      "type": "إعلال بالقلب",
+      "pattern": "([قصنمطكدجبحخذرزسشضظعغفتثل])َو([َُِ]?)([لمنتبكدقعفسرزطجحخشصضظغثذه]?)",
+      "replacement": "\\1َا\\2\\3",
+      "test_case": {
+        "input": "قَوَلَ",
+        "expected_output": "قَالَ"
+      },
+      "context": [
+        "verb_past"
+      ]
+    },
+    {
+      "rule_id": "ilal_002",
+      "arabic_name": "حذف حرف العلة في آخر الفعل المجزوم",
+      "english_name": "Final weak deletion in jussive",
+      "type": "إعلال بالحذف",
+      "pattern": "([يتأن])([َُِ]?)([قعلفرسنمطكدجبحخذزشصضظغت])([ُِ]?)([ويى])([ُِ]?)$",
+      "replacement": "\\1\\2\\3\\4ْ",
+      "test_case": {
+        "input": "يَقُولُ",
+        "expected_output": "يَقُلْ"
+      },
+      "context": [
+        "verb_jussive"
+      ]
+    },
+    {
+      "rule_id": "ilal_003",
+      "arabic_name": "إعلال الماضي مع ضمير المتكلم",
+      "english_name": "Past tense inflection with first person",
+      "type": "إعلال بالنقل",
+      "pattern": "([قن])َا([مم])َ$",
+      "replacement": "\\1ُ\\2ْتُ",
+      "test_case": {
+        "input": "قَامَ",
+        "expected_output": "قُمْتُ"
+      },
+      "context": [
+        "verb_past_first_person"
+      ]
+    },
+    {
+      "rule_id": "ibdal_001",
+      "arabic_name": "إبدال الهمزة واواً بعد ضمة",
+      "english_name": "Hamza to Waw after Damma",
+      "type": "إبدال",
+      "pattern": "([سملكنتبفقرجحدزعطشصضظغخذث])ُؤ",
+      "replacement": "\\1ُو",
+      "test_case": {
+        "input": "سُؤال",
+        "expected_output": "سُوال"
+      },
+      "context": []
+    },
+    {
+      "rule_id": "ibdal_002",
+      "arabic_name": "إبدال الهمزة ياء بعد كسرة",
+      "english_name": "Hamza to Yaa after Kasra",
+      "type": "إبدال",
+      "pattern": "([مسلكنتبفقرجحدزعطشصضظغخذث])ِء",
+      "replacement": "\\1ِي",
+      "test_case": {
+        "input": "مِءَة",
+        "expected_output": "مِيَة"
+      },
+      "context": []
+    },
+    {
+      "rule_id": "gemination_001",
+      "arabic_name": "إدغام المتماثلين",
+      "english_name": "Identical consonant assimilation",
+      "type": "إدغام",
+      "pattern": "([بتثجحخدذرزسشصضطظعغفقكلمنهويا])ْ\\1",
+      "replacement": "\\1ّ",
+      "test_case": {
+        "input": "مدْد",
+        "expected_output": "مدّ"
+      },
+      "context": []
+    },
+    {
+      "rule_id": "ilal_004",
+      "arabic_name": "نقل الحركة في المبني للمجهول",
+      "english_name": "Vowel transfer in passive voice",
+      "type": "إعلال بالنقل",
+      "pattern": "([وي])َ([جحخدذرزسشصضطظعغفقكلمنهبت])َ([دذرزسشصضطظعغفقكلمنهبت])َ$",
+      "replacement": "\\1ُ\\2ِ\\3َ",
+      "test_case": {
+        "input": "وَجَدَ",
+        "expected_output": "وُجِدَ"
+      },
+      "context": [
+        "verb_passive"
+      ]
+    }
+  ]
+}

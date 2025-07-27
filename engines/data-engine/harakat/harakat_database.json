@@ -1,0 +1,339 @@
+{
+  "description": "Arabic Harakat (Diacritical Marks) Comprehensive Database",
+  "version": "1.0.0",
+  "last_updated": "2025-07-23",
+  "standard": "Unicode_15.0_Arabic_Block",
+  "metadata": {
+    "source": "Classical Arabic Grammar & Unicode Standard",
+    "verification": "Morphophonological accuracy verified",
+    "coverage": "Complete harakat inventory with linguistic functions"
+  },
+
+  "harakat_inventory": {
+    "short_vowels": {
+      "fatha": {
+        "unicode": "َ",
+        "unicode_name": "ARABIC FATHA",
+        "unicode_point": "U+064E",
+        "phonetic_value": "a",
+        "ipa_symbol": "a",
+        "mora_count": 1,
+        "syllable_weight_contribution": "light",
+        "grammatical_functions": ["accusative_case", "verbal_mood"],
+        "examples": [
+          {"word": "كَتَبَ", "ipa": "/kataba/", "meaning": "he wrote"},
+          {"word": "بَيْت", "ipa": "/bajt/", "meaning": "house"}
+        ]
+      },
+      "damma": {
+        "unicode": "ُ",
+        "unicode_name": "ARABIC DAMMA",
+        "unicode_point": "U+064F",
+        "phonetic_value": "u",
+        "ipa_symbol": "u",
+        "mora_count": 1,
+        "syllable_weight_contribution": "light",
+        "grammatical_functions": ["nominative_case", "verbal_mood"],
+        "examples": [
+          {"word": "كُتُب", "ipa": "/kutub/", "meaning": "books"},
+          {"word": "يَكْتُب", "ipa": "/jaktubu/", "meaning": "he writes"}
+        ]
+      },
+      "kasra": {
+        "unicode": "ِ",
+        "unicode_name": "ARABIC KASRA",
+        "unicode_point": "U+0650",
+        "phonetic_value": "i",
+        "ipa_symbol": "i",
+        "mora_count": 1,
+        "syllable_weight_contribution": "light",
+        "grammatical_functions": ["genitive_case", "verbal_mood"],
+        "examples": [
+          {"word": "كِتَاب", "ipa": "/kitaːb/", "meaning": "book"},
+          {"word": "فِي", "ipa": "/fiː/", "meaning": "in"}
+        ]
+      }
+    },
+
+    "consonant_markers": {
+      "sukun": {
+        "unicode": "ْ",
+        "unicode_name": "ARABIC SUKUN",
+        "unicode_point": "U+0652",
+        "phonetic_value": "",
+        "ipa_symbol": "",
+        "mora_count": 0,
+        "syllable_weight_contribution": "coda",
+        "grammatical_functions": ["consonant_cluster", "syllable_closure"],
+        "examples": [
+          {"word": "مِنْ", "ipa": "/min/", "meaning": "from"},
+          {"word": "كَلْب", "ipa": "/kalb/", "meaning": "dog"}
+        ]
+      },
+      "shadda": {
+        "unicode": "ّ",
+        "unicode_name": "ARABIC SHADDA",
+        "unicode_point": "U+0651",
+        "phonetic_value": "gemination",
+        "ipa_symbol": "ː",
+        "mora_count": 1,
+        "syllable_weight_contribution": "heavy",
+        "grammatical_functions": ["gemination", "morphological_pattern"],
+        "examples": [
+          {"word": "مُدَرِّس", "ipa": "/mudarris/", "meaning": "teacher"},
+          {"word": "كَتَّبَ", "ipa": "/kattaba/", "meaning": "he made write"}
+        ]
+      }
+    },
+
+    "nunation": {
+      "tanwin_fath": {
+        "unicode": "ً",
+        "unicode_name": "ARABIC FATHATAN",
+        "unicode_point": "U+064B",
+        "phonetic_value": "an",
+        "ipa_symbol": "an",
+        "mora_count": 2,
+        "syllable_weight_contribution": "heavy",
+        "grammatical_functions": ["indefinite_accusative", "adverbial"],
+        "examples": [
+          {"word": "كِتَابًا", "ipa": "/kitaːban/", "meaning": "a book (acc.)"},
+          {"word": "أَحْيَانًا", "ipa": "/ʔaħjaːnan/", "meaning": "sometimes"}
+        ]
+      },
+      "tanwin_dam": {
+        "unicode": "ٌ",
+        "unicode_name": "ARABIC DAMMATAN",
+        "unicode_point": "U+064C",
+        "phonetic_value": "un",
+        "ipa_symbol": "un",
+        "mora_count": 2,
+        "syllable_weight_contribution": "heavy",
+        "grammatical_functions": ["indefinite_nominative"],
+        "examples": [
+          {"word": "كِتَابٌ", "ipa": "/kitaːbun/", "meaning": "a book (nom.)"},
+          {"word": "رَجُلٌ", "ipa": "/raʒulun/", "meaning": "a man"}
+        ]
+      },
+      "tanwin_kasr": {
+        "unicode": "ٍ",
+        "unicode_name": "ARABIC KASRATAN",
+        "unicode_point": "U+064D",
+        "phonetic_value": "in",
+        "ipa_symbol": "in",
+        "mora_count": 2,
+        "syllable_weight_contribution": "heavy",
+        "grammatical_functions": ["indefinite_genitive"],
+        "examples": [
+          {"word": "كِتَابٍ", "ipa": "/kitaːbin/", "meaning": "of a book"},
+          {"word": "بَيْتٍ", "ipa": "/bajtin/", "meaning": "of a house"}
+        ]
+      }
+    },
+
+    "special_marks": {
+      "alif_khanjariya": {
+        "unicode": "ٰ",
+        "unicode_name": "ARABIC LETTER SUPERSCRIPT ALIF",
+        "unicode_point": "U+0670",
+        "phonetic_value": "aː",
+        "ipa_symbol": "aː",
+        "mora_count": 2,
+        "syllable_weight_contribution": "heavy",
+        "grammatical_functions": ["long_vowel_marker"],
+        "examples": [
+          {"word": "هَٰذَا", "ipa": "/haːðaː/", "meaning": "this"},
+          {"word": "الرَّحْمَٰن", "ipa": "/arː.raħ.maːn/", "meaning": "The Merciful"}
+        ]
+      },
+      "maddah": {
+        "unicode": "ٓ",
+        "unicode_name": "ARABIC MADDAH ABOVE",
+        "unicode_point": "U+0653",
+        "phonetic_value": "ʔaː",
+        "ipa_symbol": "ʔaː",
+        "mora_count": 3,
+        "syllable_weight_contribution": "superheavy",
+        "grammatical_functions": ["hamza_alif_combination"],
+        "examples": [
+          {"word": "آمَنَ", "ipa": "/ʔaːmana/", "meaning": "he believed"},
+          {"word": "قُرْآن", "ipa": "/qurʔaːn/", "meaning": "Quran"}
+        ]
+      },
+      "hamza_above": {
+        "unicode": "ٔ",
+        "unicode_name": "ARABIC HAMZA ABOVE",
+        "unicode_point": "U+0654",
+        "phonetic_value": "ʔ",
+        "ipa_symbol": "ʔ",
+        "mora_count": 0,
+        "syllable_weight_contribution": "onset",
+        "grammatical_functions": ["glottal_stop"],
+        "examples": [
+          {"word": "سُؤَال", "ipa": "/suʔaːl/", "meaning": "question"},
+          {"word": "مَسْؤُول", "ipa": "/masʔuːl/", "meaning": "responsible"}
+        ]
+      },
+      "hamza_below": {
+        "unicode": "ٕ",
+        "unicode_name": "ARABIC HAMZA BELOW",
+        "unicode_point": "U+0655",
+        "phonetic_value": "ʔ",
+        "ipa_symbol": "ʔ",
+        "mora_count": 0,
+        "syllable_weight_contribution": "onset",
+        "grammatical_functions": ["glottal_stop"],
+        "examples": [
+          {"word": "إِسْلَام", "ipa": "/ʔislaːm/", "meaning": "Islam"},
+          {"word": "إِنْسَان", "ipa": "/ʔinsaːn/", "meaning": "human"}
+        ]
+      }
+    }
+  },
+
+  "morphophonological_rules": {
+    "harakat_conditioning": {
+      "vowel_harmony": {
+        "description": "Vowel harmony in certain morphological contexts",
+        "rules": [
+          {
+            "condition": "Form II pattern",
+            "rule": "CaCCaC → CuCCiC in passive",
+            "example": {"active": "كَتَّبَ", "passive": "كُتِّبَ"}
+          }
+        ]
+      },
+      "stress_conditioned_reduction": {
+        "description": "Vowel reduction in unstressed syllables",
+        "rules": [
+          {
+            "condition": "unstressed_short_vowel",
+            "rule": "V → ∅ / unstressed",
+            "example": {"full": "كَتَبَ", "reduced": "كِتَب"}
+          }
+        ]
+      }
+    },
+
+    "case_mood_marking": {
+      "nominal_case": {
+        "nominative": {
+          "definite": "ُ",
+          "indefinite": "ٌ",
+          "examples": ["الكِتَابُ", "كِتَابٌ"]
+        },
+        "accusative": {
+          "definite": "َ",
+          "indefinite": "ً",
+          "examples": ["الكِتَابَ", "كِتَابًا"]
+        },
+        "genitive": {
+          "definite": "ِ",
+          "indefinite": "ٍ",
+          "examples": ["الكِتَابِ", "كِتَابٍ"]
+        }
+      },
+      "verbal_mood": {
+        "indicative": {
+          "marker": "ُ",
+          "example": "يَكْتُبُ"
+        },
+        "subjunctive": {
+          "marker": "َ",
+          "example": "أَنْ يَكْتُبَ"
+        },
+        "jussive": {
+          "marker": "ْ",
+          "example": "لَمْ يَكْتُبْ"
+        }
+      }
+    }
+  },
+
+  "syllable_interaction": {
+    "weight_calculation": {
+      "light_syllables": {
+        "structure": "CV",
+        "harakat_pattern": "C + short_vowel",
+        "mora_count": 1,
+        "examples": ["كَ", "تَ", "بَ"]
+      },
+      "heavy_syllables": {
+        "structures": ["CVC", "CVV"],
+        "harakat_patterns": [
+          "C + short_vowel + C",
+          "C + long_vowel"
+        ],
+        "mora_count": 2,
+        "examples": ["كَتْ", "كَا", "تُو"]
+      },
+      "superheavy_syllables": {
+        "structures": ["CVVC", "CVCC"],
+        "harakat_patterns": [
+          "C + long_vowel + C",
+          "C + short_vowel + CC"
+        ],
+        "mora_count": 3,
+        "examples": ["كَاتْ", "كَتْبْ"]
+      }
+    },
+
+    "stress_assignment": {
+      "primary_stress_rules": [
+        {
+          "rule": "Final superheavy attracts stress",
+          "pattern": "...CVVC#",
+          "example": "كِتَاب → ki.ˈtaːb"
+        },
+        {
+          "rule": "Penultimate heavy if final is light",
+          "pattern": "...CVC.CV#",
+          "example": "كَاتِب → ˈkaː.tib"
+        },
+        {
+          "rule": "Antepenultimate if last two are light",
+          "pattern": "...CV.CV.CV#",
+          "example": "مَدْرَسَة → ˈmad.ra.sa"
+        }
+      ]
+    }
+  },
+
+  "prediction_patterns": {
+    "morphological_templates": {
+      "Form_I_perfect": {
+        "pattern": "CaCaC",
+        "harakat_sequence": ["fatha", "fatha"],
+        "example": "كَتَبَ"
+      },
+      "Form_I_imperfect": {
+        "pattern": "yaCCuC",
+        "harakat_sequence": ["fatha", "damma"],
+        "example": "يَكْتُبُ"
+      },
+      "active_participle": {
+        "pattern": "CaaCiC",
+        "harakat_sequence": ["fatha", "kasra"],
+        "example": "كَاتِب"
+      },
+      "passive_participle": {
+        "pattern": "maCCuuC",
+        "harakat_sequence": ["fatha", "damma"],
+        "example": "مَكْتُوب"
+      }
+    },
+
+    "contextual_disambiguation": {
+      "case_prediction": {
+        "after_preposition": "genitive",
+        "subject_position": "nominative",
+        "object_position": "accusative"
+      },
+      "mood_prediction": {
+        "after_an": "subjunctive",
+        "after_lam": "jussive",
+        "default": "indicative"
+      }
+    }
+  }
+}

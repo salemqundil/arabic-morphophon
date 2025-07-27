@@ -1,0 +1,572 @@
+"""
+🧬 Arabic Phoneme Weight Map Service
+Interactive mapping between phonemes and morphological patterns
+"""
+
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped def,misc
+
+
+import json  # noqa: F401
+from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass, asdict  # noqa: F401
+from collections import defaultdict  # noqa: F401
+
+
+@dataclass
+class PhonemeMapping:
+    """Data class for phoneme characteristics"""
+
+    letter: str
+    articulation_point: str  # المخرج
+    common_position: str  # الموقع_الأشيع
+    common_patterns: List[str]  # الأوزان_الشائعة
+    behavior: str  # السلوك
+    frequency: str  # تواتر_الظهور
+    phonetic_impact: str  # التأثير_الصوتي
+    description: str  # الوصف
+
+
+class PhonemeWeightMapService:
+    """Service for managing phoneme pattern relationships"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """TODO: Add docstring."""
+        self.phoneme_map = self._initialize_phoneme_map()
+        self.pattern_weights = self._calculate_pattern_weights()
+
+    def _initialize_phoneme_map(self) -> Dict[str, PhonemeMapping]:
+        """Initialize the complete phoneme mapping from Arabic alphabet - alphabetically ordered"""
+
+        phoneme_data = [
+            {
+                "letter": "أ",
+                "articulation_point": "حلقي",
+                "common_position": "بداية",
+                "common_patterns": ["أَفْعَلَ", "إِفْعَال", "فُعْلان"],
+                "behavior": "محفز/بادئ",
+                "frequency": "مرتفع في المزيد",
+                "phonetic_impact": "قاطع/مفتوح",
+                "description": "يفتح التركيب الصرفي ويوجه نحو التعدية",
+            },
+            {
+                "letter": "ا",
+                "articulation_point": "فمي",
+                "common_position": "وسط الوزن",
+                "common_patterns": ["فَاعَلَ", "فَعَالَة", "فِعَالَة"],
+                "behavior": "لين/ممدود",
+                "frequency": "شائع",
+                "phonetic_impact": "مدي/واسع",
+                "description": "يوسع المقطع ويخلق إيقاعًا صرفيًا مميزًا",
+            },
+            {
+                "letter": "ب",
+                "articulation_point": "شفوي",
+                "common_position": "لام",
+                "common_patterns": ["فَعَلَ", "فَعَّلَ", "مَفْعُول", "مِفْعَال"],
+                "behavior": "مستقر/ثقيل",
+                "frequency": "مرتفع",
+                "phonetic_impact": "قوي/صوت انفجاري",
+                "description": "صامت قوي يُستخدم غالباً في نهاية الجذر",
+            },
+            {
+                "letter": "ت",
+                "articulation_point": "طرف اللسان",
+                "common_position": "فـ/عـ",
+                "common_patterns": ["فَعَلَ", "فَاعَلَ", "مُفَاعِل", "تَفَاعَلَ"],
+                "behavior": "مرن/مربوط",
+                "frequency": "مرتفع جداً",
+                "phonetic_impact": "محتك متوسّط",
+                "description": "صامت تفاعلي متعدد الأدوار",
+            },
+            {
+                "letter": "ث",
+                "articulation_point": "بين الأسنان",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["فَعَلَ", "مَفْعُول"],
+                "behavior": "نادر/محدود",
+                "frequency": "منخفض",
+                "phonetic_impact": "محتك خفيف",
+                "description": "صامت نادر الاستعمال في الجذور الشائعة",
+            },
+            {
+                "letter": "ج",
+                "articulation_point": "وسط اللسان",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "فَاعَلَ"],
+                "behavior": "قوي/متحرك",
+                "frequency": "متوسط",
+                "phonetic_impact": "انفجاري أمامي",
+                "description": "يدل على الحركة والتجمع",
+            },
+            {
+                "letter": "ح",
+                "articulation_point": "حلق",
+                "common_position": "عين أو لام",
+                "common_patterns": ["فَعَلَ", "فَعِيل", "فَاعِل"],
+                "behavior": "هادئ/مستمر",
+                "frequency": "متوسط إلى مرتفع",
+                "phonetic_impact": "محتك حلقي",
+                "description": "يعطي نعومة صوتية ودلالة على الهدوء",
+            },
+            {
+                "letter": "خ",
+                "articulation_point": "حلق",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ"],
+                "behavior": "خشن/مميز",
+                "frequency": "منخفض إلى متوسط",
+                "phonetic_impact": "محتك خشن",
+                "description": "يدل على الخشونة والقوة",
+            },
+            {
+                "letter": "د",
+                "articulation_point": "طرف اللسان",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "تَفَاعَلَ"],
+                "behavior": "قوي/واضح",
+                "frequency": "متوسط إلى مرتفع",
+                "phonetic_impact": "انفجاري واضح",
+                "description": "يدل على الوضوح والحسم",
+            },
+            {
+                "letter": "ذ",
+                "articulation_point": "بين الأسنان",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ"],
+                "behavior": "نادر/مميز",
+                "frequency": "منخفض",
+                "phonetic_impact": "محتك مجهور",
+                "description": "صامت نادر له دلالة خاصة",
+            },
+            {
+                "letter": "ر",
+                "articulation_point": "طرف اللسان",
+                "common_position": "عين أو لام",
+                "common_patterns": ["فَعَلَ", "فَعِيل", "مَفْعُول"],
+                "behavior": "متدحرج/حيوي",
+                "frequency": "مرتفع جداً",
+                "phonetic_impact": "تكراري/رنان",
+                "description": "صامت شائع جداً يعطي حيوية للجذر",
+            },
+            {
+                "letter": "ز",
+                "articulation_point": "أسنان",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ"],
+                "behavior": "حاد/مجهور",
+                "frequency": "متوسط",
+                "phonetic_impact": "صفيري مجهور",
+                "description": "يدل على الحدة والوضوح",
+            },
+            {
+                "letter": "س",
+                "articulation_point": "أسنان",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["اسْتَفْعَلَ", "فَاعَلَ", "فِعَال"],
+                "behavior": "سَلس/محايد",
+                "frequency": "مرتفع",
+                "phonetic_impact": "صفيري مستمر",
+                "description": "يتكرر في الأفعال العامة والمجردة",
+            },
+            {
+                "letter": "ش",
+                "articulation_point": "وسط اللسان",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "تَفَاعَلَ"],
+                "behavior": "واسع/منتشر",
+                "frequency": "متوسط",
+                "phonetic_impact": "صفيري واسع",
+                "description": "يدل على الانتشار والوضوح",
+            },
+            {
+                "letter": "ص",
+                "articulation_point": "طرف اللسان",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "فَاعَلَ"],
+                "behavior": "مفخم/قوي",
+                "frequency": "متوسط",
+                "phonetic_impact": "صفيري مفخم",
+                "description": "يضفي قوة وتفخيمًا على الجذر",
+            },
+            {
+                "letter": "ض",
+                "articulation_point": "جانب اللسان",
+                "common_position": "عين أو لام",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "انْفَعَلَ"],
+                "behavior": "مفخم/مميز",
+                "frequency": "منخفض إلى متوسط",
+                "phonetic_impact": "جانبي مفخم",
+                "description": "صامت مميز للعربية يدل على القوة",
+            },
+            {
+                "letter": "ط",
+                "articulation_point": "طرف اللسان",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "تَفَاعَلَ"],
+                "behavior": "مفخم/انفجاري",
+                "frequency": "متوسط",
+                "phonetic_impact": "انفجاري مفخم",
+                "description": "يدل على القوة والتأثير",
+            },
+            {
+                "letter": "ظ",
+                "articulation_point": "بين الأسنان",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ"],
+                "behavior": "مفخم/نادر",
+                "frequency": "منخفض",
+                "phonetic_impact": "محتك مفخم",
+                "description": "صامت نادر مفخم له دلالة خاصة",
+            },
+            {
+                "letter": "ع",
+                "articulation_point": "حلق",
+                "common_position": "عين أو لام",
+                "common_patterns": ["فَعَلَ", "فَاعَلَ", "أَفْعَلَ"],
+                "behavior": "عميق/حلقي",
+                "frequency": "مرتفع",
+                "phonetic_impact": "حلقي عميق",
+                "description": "صامت حلقي مميز يعطي عمقًا صوتيًا",
+            },
+            {
+                "letter": "غ",
+                "articulation_point": "حلق",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "تَفَاعَلَ"],
+                "behavior": "مجهور/قوي",
+                "frequency": "متوسط",
+                "phonetic_impact": "محتك حلقي مجهور",
+                "description": "يدل على القوة والتغيير",
+            },
+            {
+                "letter": "ف",
+                "articulation_point": "شفوي أسناني",
+                "common_position": "فاء أو لام",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "تَفَاعَلَ"],
+                "behavior": "محتك/خفيف",
+                "frequency": "مرتفع",
+                "phonetic_impact": "محتك خفيف",
+                "description": "صامت شائع يدل على الفعل والتأثير",
+            },
+            {
+                "letter": "ق",
+                "articulation_point": "لهوي",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "تَفَاعَلَ"],
+                "behavior": "انفجاري/قوي",
+                "frequency": "متوسط إلى مرتفع",
+                "phonetic_impact": "انفجاري خلفي قوي",
+                "description": "يدل على القوة والحسم",
+            },
+            {
+                "letter": "ك",
+                "articulation_point": "لهوي",
+                "common_position": "فاء",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ", "اسْتَفْعَلَ"],
+                "behavior": "مستقر/ثقيل",
+                "frequency": "متوسط",
+                "phonetic_impact": "انفجاري خلفي",
+                "description": "صامت خلفي يدل غالبًا على فعل حسّي",
+            },
+            {
+                "letter": "ل",
+                "articulation_point": "طرف اللسان",
+                "common_position": "لام أو عين",
+                "common_patterns": ["فَعَلَ", "فَعِيل", "مَفْعُول"],
+                "behavior": "سائل/مستمر",
+                "frequency": "مرتفع جداً",
+                "phonetic_impact": "جانبي مستمر",
+                "description": "صامت شائع جداً يعطي استمرارية",
+            },
+            {
+                "letter": "م",
+                "articulation_point": "شفوي",
+                "common_position": "فاء أو عين",
+                "common_patterns": ["فَعَلَ", "مَفْعُول", "فَاعِل"],
+                "behavior": "أنفي/مستمر",
+                "frequency": "مرتفع جداً",
+                "phonetic_impact": "أنفي شفوي",
+                "description": "صامت أنفي شائع يدل على الاستمرار",
+            },
+            {
+                "letter": "ن",
+                "articulation_point": "خيشوم",
+                "common_position": "لام أو أول مزيد",
+                "common_patterns": ["انْفَعَلَ", "مُنْفَعِل", "اسْتَفْعَلَ"],
+                "behavior": "لين/تحويلي",
+                "frequency": "متوسط",
+                "phonetic_impact": "أنفي/مطبّق",
+                "description": "عنصر إضافي يدل على التغير والتحول",
+            },
+            {
+                "letter": "ه",
+                "articulation_point": "حنجرة",
+                "common_position": "لام أو هاء السكت",
+                "common_patterns": ["فَعَلَ", "أَفْعَلَ"],
+                "behavior": "خفيف/تنفسي",
+                "frequency": "متوسط",
+                "phonetic_impact": "تنفسي خفيف",
+                "description": "صامت خفيف يظهر في النهايات",
+            },
+            {
+                "letter": "و",
+                "articulation_point": "شفوي",
+                "common_position": "وسط أو آخر",
+                "common_patterns": ["فُعُول", "فَعُول", "مَفْعُول"],
+                "behavior": "لين/خاتم",
+                "frequency": "متوسط",
+                "phonetic_impact": "مفتوح/رابط",
+                "description": "تظهر في الخواتيم أو عند المد الصوتي",
+            },
+            {
+                "letter": "ي",
+                "articulation_point": "وسط اللسان",
+                "common_position": "لام أو فاء",
+                "common_patterns": ["فَعِيل", "فِعَال", "فِعْلَة"],
+                "behavior": "لين/واصل",
+                "frequency": "متوسط",
+                "phonetic_impact": "مائل/رقيق",
+                "description": "يدل على الاستمرارية والوصف",
+            },
+        ]
+
+        return {data["letter"]: PhonemeMapping(**data) for data in phoneme_data}
+
+    def _calculate_pattern_weights(self) -> Dict[str, float]:
+        """Calculate weights for morphological patterns based on frequency"""
+        pattern_counts = defaultdict(int)
+
+        # Count pattern occurrences across all phonemes
+        for phoneme in self.phoneme_map.values():
+            for pattern in phoneme.common_patterns:
+                pattern_counts[pattern] += 1
+
+        # Convert to normalized weights
+        max_count = max(pattern_counts.values()) if pattern_counts else 1
+        return {pattern: count / max_count for pattern, count in pattern_counts.items()}
+
+    def get_phoneme_info(self, letter: str) -> Optional[PhonemeMapping]:
+        """Get detailed information for a specific phoneme"""
+        return self.phoneme_map.get(letter)
+
+    def get_patterns_for_phoneme(self, letter: str) -> List[str]:
+        """Get common patterns for a specific phoneme"""
+        phoneme = self.phoneme_map.get(letter)
+        return phoneme.common_patterns if phoneme else []
+
+    def get_phonemes_for_pattern(self, pattern: str) -> List[str]:
+        """Get phonemes that commonly use a specific pattern"""
+        result = []
+        for letter, phoneme in self.phoneme_map.items():
+            if pattern in phoneme.common_patterns:
+                result.append(letter)
+        return result
+
+    def analyze_word_phonetic_structure(self, word: str) -> Dict:
+        """Analyze the phonetic structure of a word"""
+        analysis = {
+            "word": word,
+            "phoneme_breakdown": [],
+            "predicted_patterns": [],
+            "phonetic_characteristics": {
+                "articulation_diversity": set(),
+                "behavior_types": set(),
+                "frequency_distribution": [],
+            },
+        }
+
+        for char in word:
+            if char in self.phoneme_map:
+                phoneme = self.phoneme_map[char]
+                analysis["phoneme_breakdown"].append(
+                    {
+                        "letter": char,
+                        "articulation": phoneme.articulation_point,
+                        "behavior": phoneme.behavior,
+                        "frequency": phoneme.frequency,
+                    }
+                )
+
+                analysis["phonetic_characteristics"]["articulation_diversity"].add(
+                    phoneme.articulation_point
+                )
+                analysis["phonetic_characteristics"]["behavior_types"].add(
+                    phoneme.behavior
+                )
+                analysis["phonetic_characteristics"]["frequency_distribution"].append(
+                    phoneme.frequency
+                )
+
+                # Add common patterns for this phoneme
+                analysis["predicted_patterns"].extend(phoneme.common_patterns)
+
+        # Convert sets to lists for JSON serialization
+        analysis["phonetic_characteristics"]["articulation_diversity"] = list(
+            analysis["phonetic_characteristics"]["articulation_diversity"]
+        )
+        analysis["phonetic_characteristics"]["behavior_types"] = list(
+            analysis["phonetic_characteristics"]["behavior_types"]
+        )
+
+        # Remove duplicate patterns and sort by weight
+        unique_patterns = list(set(analysis["predicted_patterns"]))
+        analysis["predicted_patterns"] = sorted(
+            unique_patterns, key=lambda p: self.pattern_weights.get(p, 0), reverse=True
+        )
+
+        return analysis
+
+    def get_interactive_map_data(self) -> List[Dict]:
+        """Get data formatted for interactive display"""
+        return [
+            {
+                "الحرف": phoneme.letter,
+                "المخرج": phoneme.articulation_point,
+                "الموقع_الأشيع": phoneme.common_position,
+                "الأوزان_الشائعة": phoneme.common_patterns,
+                "السلوك": phoneme.behavior,
+                "تواتر_الظهور": phoneme.frequency,
+                "التأثير_الصوتي": phoneme.phonetic_impact,
+                "الوصف": phoneme.description,
+            }
+            for phoneme in sorted(self.phoneme_map.values(), key=lambda x: x.letter)
+        ]
+
+    def search_patterns(self, query: str) -> List[Dict]:
+        """Search for patterns and related phonemes"""
+        results = []
+        query_lower = query.lower()
+
+        for letter, phoneme in self.phoneme_map.items():
+            # Search in patterns
+            matching_patterns = [
+                p for p in phoneme.common_patterns if query_lower in p.lower()
+            ]
+
+            if matching_patterns or query_lower in phoneme.behavior.lower():
+                results.append(
+                    {
+                        "phoneme": letter,
+                        "matching_patterns": matching_patterns,
+                        "phoneme_info": asdict(phoneme),
+                    }
+                )
+
+        return results
+
+    def get_phoneme_statistics(self) -> Dict:
+        """Get statistical overview of the phoneme map"""
+        stats = {
+            "total_phonemes": len(self.phoneme_map),
+            "total_patterns": len(self.pattern_weights),
+            "articulation_points": defaultdict(int),
+            "behavior_types": defaultdict(int),
+            "frequency_levels": defaultdict(int),
+            "most_common_patterns": [],
+        }
+
+        for phoneme in self.phoneme_map.values():
+            stats["articulation_points"][phoneme.articulation_point] += 1
+            stats["behavior_types"][phoneme.behavior] += 1
+            stats["frequency_levels"][phoneme.frequency] += 1
+
+        # Get most common patterns
+        stats["most_common_patterns"] = sorted(
+            self.pattern_weights.items(), key=lambda x: x[1], reverse=True
+        )[:10]
+
+        return stats
+
+    def get_pandas_style_dataframe_data(self) -> List[Dict]:
+        """
+        Get phoneme data formatted as pandas DataFrame style for interactive display
+        خريطة تفاعلية مرتبة حسب الحرف من أ إلى ي
+        """
+        dataframe_data = []
+
+        # Sort phonemes alphabetically according to Arabic alphabet order
+        arabic_alphabet_order = [
+            "أ",
+            "ا",
+            "ب",
+            "ت",
+            "ث",
+            "ج",
+            "ح",
+            "خ",
+            "د",
+            "ذ",
+            "ر",
+            "ز",
+            "س",
+            "ش",
+            "ص",
+            "ض",
+            "ط",
+            "ظ",
+            "ع",
+            "غ",
+            "ف",
+            "ق",
+            "ك",
+            "ل",
+            "م",
+            "ن",
+            "ه",
+            "و",
+            "ي",
+        ]
+
+        for letter in arabic_alphabet_order:
+            if letter in self.phoneme_map:
+                phoneme = self.phoneme_map[letter]
+                dataframe_data.append(
+                    {
+                        "الحرف": phoneme.letter,
+                        "المخرج": phoneme.articulation_point,
+                        "الموقع_الأشيع": phoneme.common_position,
+                        "الأوزان_الشائعة": phoneme.common_patterns,
+                        "السلوك": phoneme.behavior,
+                        "تواتر_الظهور": phoneme.frequency,
+                        "التأثير_الصوتي": phoneme.phonetic_impact,
+                        "الوصف": phoneme.description,
+                    }
+                )
+
+        return dataframe_data
+
+    def create_interactive_phoneme_display(self) -> Dict:
+        """
+        Create an interactive display similar to ace_tools.display_dataframe_to_user
+        """
+        dataframe_data = self.get_pandas_style_dataframe_data()
+
+        return {
+            "title": "🧬 خريطة تفاعلية مرتبة بين الفونيمات والأوزان الصرفية",
+            "description": "Interactive mapping between Arabic phonemes and morphological patterns, sorted alphabetically",
+            "data": dataframe_data,
+            "metadata": {
+                "total_entries": len(dataframe_data),
+                "sorted_by": "Arabic alphabetical order (أ إلى ي)",
+                "columns": [
+                    {"key": "الحرف", "description": "Arabic Letter/Phoneme"},
+                    {"key": "المخرج", "description": "Articulation Point"},
+                    {"key": "الموقع_الأشيع", "description": "Most Common Position"},
+                    {"key": "الأوزان_الشائعة", "description": "Common Patterns"},
+                    {"key": "السلوك", "description": "Phonetic Behavior"},
+                    {"key": "تواتر_الظهور", "description": "Frequency of Occurrence"},
+                    {"key": "التأثير_الصوتي", "description": "Phonetic Impact"},
+                    {"key": "الوصف", "description": "Description"},
+                ],
+                "language": "Arabic",
+                "created_at": "2025-07 09",
+                "version": "2.0",
+            },
+        }
+
+
+# Global instance
+phoneme_service = PhonemeWeightMapService()

@@ -1,0 +1,28 @@
+{
+  "name": "arabic-morphophon",
+  "version": "1.0.0",
+  "description": "Arabic Morphophonology Engine",
+  "scripts": {
+    "docker:dev": "docker-compose -f docker-compose.local.yml up",
+    "docker:dev:detached": "docker-compose -f docker-compose.local.yml up -d",
+    "docker:stop": "docker-compose -f docker-compose.local.yml down",
+    "docker:build": "docker-compose -f docker-compose.local.yml build",
+    "docker:rebuild": "docker-compose -f docker-compose.local.yml build --no-cache",
+    "docker:logs": "docker-compose -f docker-compose.local.yml logs -f",
+    "docker:logs:backend": "docker-compose -f docker-compose.local.yml logs -f backend",
+    "docker:logs:frontend": "docker-compose -f docker-compose.local.yml logs -f frontend",
+    "docker:logs:db": "docker-compose -f docker-compose.local.yml logs -f db",
+    "docker:shell:backend": "docker-compose -f docker-compose.local.yml exec backend bash",
+    "docker:shell:frontend": "docker-compose -f docker-compose.local.yml exec frontend sh",
+    "docker:shell:db": "docker-compose -f docker-compose.local.yml exec db psql -U arabic_morpho -d arabic_morphophon",
+    "docker:clean": "node ./frontend/scripts/docker-clean.js",
+    "docker:restart": "npm-run-all docker:stop docker:dev:detached",
+    "docker:status": "docker-compose -f docker-compose.local.yml ps",
+    "start": "npm-run-all docker:dev",
+    "start:detached": "npm-run-all docker:dev:detached",
+    "stop": "npm-run-all docker:stop"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

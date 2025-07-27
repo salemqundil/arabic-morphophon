@@ -1,0 +1,1340 @@
+{
+  "timestamp": "2025-07-26 15:04:21",
+  "total_generated": 206,
+  "results_by_category": {
+    "numbers": [
+      {
+        "number": 1,
+        "gender": "masculine",
+        "term": "واحد",
+        "syllables": [
+          "و",
+          "احد"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "حد"
+          ],
+          "vowel_pattern": "uu-aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.4333333333333333,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 1,
+        "gender": "feminine",
+        "term": "واحدة",
+        "syllables": [
+          "و",
+          "احدة"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "حد"
+          ],
+          "vowel_pattern": "uu-aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.4333333333333333,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 2,
+        "gender": "masculine",
+        "term": "اثنان",
+        "syllables": [
+          "اث",
+          "نان"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثن"
+          ],
+          "vowel_pattern": "aa-aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.4333333333333333,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 2,
+        "gender": "feminine",
+        "term": "اثنتان",
+        "syllables": [
+          "اث",
+          "نتان"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 6,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثن",
+            "نت"
+          ],
+          "vowel_pattern": "aa-aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.4000000000000001,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 3,
+        "gender": "masculine",
+        "term": "ثلاثة",
+        "syllables": [
+          "ثلاثة"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثل"
+          ],
+          "vowel_pattern": "aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3666666666666667,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 3,
+        "gender": "feminine",
+        "term": "ثلاث",
+        "syllables": [
+          "ثلاث"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثل"
+          ],
+          "vowel_pattern": "aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3666666666666667,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 5,
+        "gender": "masculine",
+        "term": "خمسة",
+        "syllables": [
+          "خمسة"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 5,
+        "gender": "feminine",
+        "term": "خمس",
+        "syllables": [
+          "خمس"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 3,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 8,
+        "gender": "masculine",
+        "term": "ثمانية",
+        "syllables": [
+          "ثمان",
+          "ية"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 6,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثم",
+            "ني"
+          ],
+          "vowel_pattern": "aa-ii",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.4000000000000001,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 8,
+        "gender": "feminine",
+        "term": "ثمان",
+        "syllables": [
+          "ثمان"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثم"
+          ],
+          "vowel_pattern": "aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3666666666666667,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 10,
+        "gender": "masculine",
+        "term": "عشرة",
+        "syllables": [
+          "عشرة"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "عش",
+            "شر"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 10,
+        "gender": "feminine",
+        "term": "عشر",
+        "syllables": [
+          "عشر"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 3,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "عش",
+            "شر"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 11,
+        "gender": "masculine",
+        "term": "أحد عشر",
+        "syllables": [
+          "أحدعشر"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 7,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "حد",
+            "عش",
+            "شر"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 11,
+        "gender": "feminine",
+        "term": "إحدى عشرة",
+        "syllables": [
+          "إحدىعشرة"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 9,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "حد",
+            "عش",
+            "شر"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.2,
+          "euphony_score": 1.24,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 15,
+        "gender": "masculine",
+        "term": "خمسة عشر",
+        "syllables": [
+          "خمسةعشر"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 8,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس",
+            "عش",
+            "شر"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 15,
+        "gender": "feminine",
+        "term": "خمس عشرة",
+        "syllables": [
+          "خمسعشرة"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 8,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس",
+            "عش",
+            "شر"
+          ],
+          "vowel_pattern": "",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 20,
+        "gender": "masculine",
+        "term": "عشرون",
+        "syllables": [
+          "عشرون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "عش",
+            "شر",
+            "رو",
+            "ون"
+          ],
+          "vowel_pattern": "uu",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.34,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 20,
+        "gender": "feminine",
+        "term": "عشرون",
+        "syllables": [
+          "عشرون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "عش",
+            "شر",
+            "رو",
+            "ون"
+          ],
+          "vowel_pattern": "uu",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.34,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 25,
+        "gender": "masculine",
+        "term": "خمسة وعشرون",
+        "syllables": [
+          "خمسةوع",
+          "شرون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 11,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس",
+            "وع",
+            "عش",
+            "شر",
+            "رو",
+            "ون"
+          ],
+          "vowel_pattern": "uu-uu",
+          "phonetic_difficulty": 0.2,
+          "euphony_score": 1.2844444444444445,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 25,
+        "gender": "feminine",
+        "term": "خمس وعشرون",
+        "syllables": [
+          "خمسوع",
+          "شرون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 10,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس",
+            "وع",
+            "عش",
+            "شر",
+            "رو",
+            "ون"
+          ],
+          "vowel_pattern": "uu-uu",
+          "phonetic_difficulty": 0.2,
+          "euphony_score": 1.2844444444444445,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 30,
+        "gender": "masculine",
+        "term": "ثلاثون",
+        "syllables": [
+          "ثلاث",
+          "ون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 6,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثل",
+            "ثو",
+            "ون"
+          ],
+          "vowel_pattern": "aa-uu",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3800000000000001,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 30,
+        "gender": "feminine",
+        "term": "ثلاثون",
+        "syllables": [
+          "ثلاث",
+          "ون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 6,
+          "syllable_count": 2,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "ثل",
+            "ثو",
+            "ون"
+          ],
+          "vowel_pattern": "aa-uu",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.3800000000000001,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 50,
+        "gender": "masculine",
+        "term": "خمسون",
+        "syllables": [
+          "خمسون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس",
+            "سو",
+            "ون"
+          ],
+          "vowel_pattern": "uu",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.34,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 50,
+        "gender": "feminine",
+        "term": "خمسون",
+        "syllables": [
+          "خمسون"
+        ],
+        "pattern": "CVC",
+        "phonetic_analysis": {
+          "length": 5,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [
+            "خم",
+            "مس",
+            "سو",
+            "ون"
+          ],
+          "vowel_pattern": "uu",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.34,
+          "mathematical_appropriateness": 0.5
+        }
+      },
+      {
+        "number": 100,
+        "gender": "masculine",
+        "term": "مائة",
+        "syllables": [
+          "مائة"
+        ],
+        "pattern": "CV",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [],
+          "vowel_pattern": "aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.5,
+          "mathematical_appropriateness": 0.6
+        }
+      },
+      {
+        "number": 100,
+        "gender": "feminine",
+        "term": "مائة",
+        "syllables": [
+          "مائة"
+        ],
+        "pattern": "CV",
+        "phonetic_analysis": {
+          "length": 4,
+          "syllable_count": 1,
+          "stress_pattern": "ultimate",
+          "consonant_clusters": [],
+          "vowel_pattern": "aa",
+          "phonetic_difficulty": 0.0,
+          "euphony_score": 1.5,
+          "mathematical_appropriateness": 0.6
+        }
+      }
+    ],
+    "ordinals": [
+      {
+        "number": 1,
+        "gender": "masculine",
+        "term": "أول",
+        "examples": [
+          "هذا هو اليوم أول",
+          "في المرتبة أول",
+          "الفصل أول"
+        ]
+      },
+      {
+        "number": 1,
+        "gender": "feminine",
+        "term": "أولى",
+        "examples": [
+          "هذا هو اليوم أولى",
+          "في المرتبة أولى",
+          "الفصل أولى"
+        ]
+      },
+      {
+        "number": 2,
+        "gender": "masculine",
+        "term": "ثاني",
+        "examples": [
+          "هذا هو اليوم ثاني",
+          "في المرتبة ثاني",
+          "الفصل ثاني"
+        ]
+      },
+      {
+        "number": 2,
+        "gender": "feminine",
+        "term": "ثانية",
+        "examples": [
+          "هذا هو اليوم ثانية",
+          "في المرتبة ثانية",
+          "الفصل ثانية"
+        ]
+      },
+      {
+        "number": 3,
+        "gender": "masculine",
+        "term": "ثالث",
+        "examples": [
+          "هذا هو اليوم ثالث",
+          "في المرتبة ثالث",
+          "الفصل ثالث"
+        ]
+      },
+      {
+        "number": 3,
+        "gender": "feminine",
+        "term": "ثالثة",
+        "examples": [
+          "هذا هو اليوم ثالثة",
+          "في المرتبة ثالثة",
+          "الفصل ثالثة"
+        ]
+      },
+      {
+        "number": 4,
+        "gender": "masculine",
+        "term": "رابع",
+        "examples": [
+          "هذا هو اليوم رابع",
+          "في المرتبة رابع",
+          "الفصل رابع"
+        ]
+      },
+      {
+        "number": 4,
+        "gender": "feminine",
+        "term": "رابعة",
+        "examples": [
+          "هذا هو اليوم رابعة",
+          "في المرتبة رابعة",
+          "الفصل رابعة"
+        ]
+      },
+      {
+        "number": 5,
+        "gender": "masculine",
+        "term": "خامس",
+        "examples": [
+          "هذا هو اليوم خامس",
+          "في المرتبة خامس",
+          "الفصل خامس"
+        ]
+      },
+      {
+        "number": 5,
+        "gender": "feminine",
+        "term": "خامسة",
+        "examples": [
+          "هذا هو اليوم خامسة",
+          "في المرتبة خامسة",
+          "الفصل خامسة"
+        ]
+      },
+      {
+        "number": 6,
+        "gender": "masculine",
+        "term": "سادس",
+        "examples": [
+          "هذا هو اليوم سادس",
+          "في المرتبة سادس",
+          "الفصل سادس"
+        ]
+      },
+      {
+        "number": 6,
+        "gender": "feminine",
+        "term": "سادسة",
+        "examples": [
+          "هذا هو اليوم سادسة",
+          "في المرتبة سادسة",
+          "الفصل سادسة"
+        ]
+      },
+      {
+        "number": 7,
+        "gender": "masculine",
+        "term": "سابع",
+        "examples": [
+          "هذا هو اليوم سابع",
+          "في المرتبة سابع",
+          "الفصل سابع"
+        ]
+      },
+      {
+        "number": 7,
+        "gender": "feminine",
+        "term": "سابعة",
+        "examples": [
+          "هذا هو اليوم سابعة",
+          "في المرتبة سابعة",
+          "الفصل سابعة"
+        ]
+      },
+      {
+        "number": 8,
+        "gender": "masculine",
+        "term": "ثامن",
+        "examples": [
+          "هذا هو اليوم ثامن",
+          "في المرتبة ثامن",
+          "الفصل ثامن"
+        ]
+      },
+      {
+        "number": 8,
+        "gender": "feminine",
+        "term": "ثامنة",
+        "examples": [
+          "هذا هو اليوم ثامنة",
+          "في المرتبة ثامنة",
+          "الفصل ثامنة"
+        ]
+      },
+      {
+        "number": 9,
+        "gender": "masculine",
+        "term": "تاسع",
+        "examples": [
+          "هذا هو اليوم تاسع",
+          "في المرتبة تاسع",
+          "الفصل تاسع"
+        ]
+      },
+      {
+        "number": 9,
+        "gender": "feminine",
+        "term": "تاسعة",
+        "examples": [
+          "هذا هو اليوم تاسعة",
+          "في المرتبة تاسعة",
+          "الفصل تاسعة"
+        ]
+      },
+      {
+        "number": 10,
+        "gender": "masculine",
+        "term": "عاشر",
+        "examples": [
+          "هذا هو اليوم عاشر",
+          "في المرتبة عاشر",
+          "الفصل عاشر"
+        ]
+      },
+      {
+        "number": 10,
+        "gender": "feminine",
+        "term": "عاشرة",
+        "examples": [
+          "هذا هو اليوم عاشرة",
+          "في المرتبة عاشرة",
+          "الفصل عاشرة"
+        ]
+      },
+      {
+        "number": 11,
+        "gender": "masculine",
+        "term": "أحد عشرال",
+        "examples": [
+          "هذا هو اليوم أحد عشرال",
+          "في المرتبة أحد عشرال",
+          "الفصل أحد عشرال"
+        ]
+      },
+      {
+        "number": 11,
+        "gender": "feminine",
+        "term": "إحدى عشرةة",
+        "examples": [
+          "هذا هو اليوم إحدى عشرةة",
+          "في المرتبة إحدى عشرةة",
+          "الفصل إحدى عشرةة"
+        ]
+      },
+      {
+        "number": 12,
+        "gender": "masculine",
+        "term": "اثنا عشرال",
+        "examples": [
+          "هذا هو اليوم اثنا عشرال",
+          "في المرتبة اثنا عشرال",
+          "الفصل اثنا عشرال"
+        ]
+      },
+      {
+        "number": 12,
+        "gender": "feminine",
+        "term": "اثنتا عشرةة",
+        "examples": [
+          "هذا هو اليوم اثنتا عشرةة",
+          "في المرتبة اثنتا عشرةة",
+          "الفصل اثنتا عشرةة"
+        ]
+      },
+      {
+        "number": 13,
+        "gender": "masculine",
+        "term": "ثلاثة عشرال",
+        "examples": [
+          "هذا هو اليوم ثلاثة عشرال",
+          "في المرتبة ثلاثة عشرال",
+          "الفصل ثلاثة عشرال"
+        ]
+      },
+      {
+        "number": 13,
+        "gender": "feminine",
+        "term": "ثلاث عشرةة",
+        "examples": [
+          "هذا هو اليوم ثلاث عشرةة",
+          "في المرتبة ثلاث عشرةة",
+          "الفصل ثلاث عشرةة"
+        ]
+      },
+      {
+        "number": 14,
+        "gender": "masculine",
+        "term": "أربعة عشرال",
+        "examples": [
+          "هذا هو اليوم أربعة عشرال",
+          "في المرتبة أربعة عشرال",
+          "الفصل أربعة عشرال"
+        ]
+      },
+      {
+        "number": 14,
+        "gender": "feminine",
+        "term": "أربع عشرةة",
+        "examples": [
+          "هذا هو اليوم أربع عشرةة",
+          "في المرتبة أربع عشرةة",
+          "الفصل أربع عشرةة"
+        ]
+      },
+      {
+        "number": 15,
+        "gender": "masculine",
+        "term": "خمسة عشرال",
+        "examples": [
+          "هذا هو اليوم خمسة عشرال",
+          "في المرتبة خمسة عشرال",
+          "الفصل خمسة عشرال"
+        ]
+      },
+      {
+        "number": 15,
+        "gender": "feminine",
+        "term": "خمس عشرةة",
+        "examples": [
+          "هذا هو اليوم خمس عشرةة",
+          "في المرتبة خمس عشرةة",
+          "الفصل خمس عشرةة"
+        ]
+      },
+      {
+        "number": 16,
+        "gender": "masculine",
+        "term": "ستة عشرال",
+        "examples": [
+          "هذا هو اليوم ستة عشرال",
+          "في المرتبة ستة عشرال",
+          "الفصل ستة عشرال"
+        ]
+      },
+      {
+        "number": 16,
+        "gender": "feminine",
+        "term": "ست عشرةة",
+        "examples": [
+          "هذا هو اليوم ست عشرةة",
+          "في المرتبة ست عشرةة",
+          "الفصل ست عشرةة"
+        ]
+      },
+      {
+        "number": 17,
+        "gender": "masculine",
+        "term": "سبعة عشرال",
+        "examples": [
+          "هذا هو اليوم سبعة عشرال",
+          "في المرتبة سبعة عشرال",
+          "الفصل سبعة عشرال"
+        ]
+      },
+      {
+        "number": 17,
+        "gender": "feminine",
+        "term": "سبع عشرةة",
+        "examples": [
+          "هذا هو اليوم سبع عشرةة",
+          "في المرتبة سبع عشرةة",
+          "الفصل سبع عشرةة"
+        ]
+      },
+      {
+        "number": 18,
+        "gender": "masculine",
+        "term": "ثمانية عشرال",
+        "examples": [
+          "هذا هو اليوم ثمانية عشرال",
+          "في المرتبة ثمانية عشرال",
+          "الفصل ثمانية عشرال"
+        ]
+      },
+      {
+        "number": 18,
+        "gender": "feminine",
+        "term": "ثمان عشرةة",
+        "examples": [
+          "هذا هو اليوم ثمان عشرةة",
+          "في المرتبة ثمان عشرةة",
+          "الفصل ثمان عشرةة"
+        ]
+      },
+      {
+        "number": 19,
+        "gender": "masculine",
+        "term": "تسعة عشرال",
+        "examples": [
+          "هذا هو اليوم تسعة عشرال",
+          "في المرتبة تسعة عشرال",
+          "الفصل تسعة عشرال"
+        ]
+      },
+      {
+        "number": 19,
+        "gender": "feminine",
+        "term": "تسع عشرةة",
+        "examples": [
+          "هذا هو اليوم تسع عشرةة",
+          "في المرتبة تسع عشرةة",
+          "الفصل تسع عشرةة"
+        ]
+      },
+      {
+        "number": 20,
+        "gender": "masculine",
+        "term": "عشرونال",
+        "examples": [
+          "هذا هو اليوم عشرونال",
+          "في المرتبة عشرونال",
+          "الفصل عشرونال"
+        ]
+      },
+      {
+        "number": 20,
+        "gender": "feminine",
+        "term": "عشرونة",
+        "examples": [
+          "هذا هو اليوم عشرونة",
+          "في المرتبة عشرونة",
+          "الفصل عشرونة"
+        ]
+      }
+    ],
+    "fractions": [
+      {
+        "numerator": 1,
+        "denominator": 2,
+        "term": "نصف",
+        "value": 0.5,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 3,
+        "term": "ثلث",
+        "value": 0.3333333333333333,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 4,
+        "term": "ربع",
+        "value": 0.25,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 5,
+        "term": "خمس",
+        "value": 0.2,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 6,
+        "term": "سدس",
+        "value": 0.16666666666666666,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 7,
+        "term": "سبع",
+        "value": 0.14285714285714285,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 8,
+        "term": "ثمن",
+        "value": 0.125,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 9,
+        "term": "تسع",
+        "value": 0.1111111111111111,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 1,
+        "denominator": 10,
+        "term": "عشر",
+        "value": 0.1,
+        "category": "fraction_simple"
+      },
+      {
+        "numerator": 2,
+        "denominator": 3,
+        "term": "اثنان أثلاث",
+        "value": 0.6666666666666666,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 3,
+        "denominator": 4,
+        "term": "ثلاثة أرباع",
+        "value": 0.75,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 2,
+        "denominator": 5,
+        "term": "اثنان أخماس",
+        "value": 0.4,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 3,
+        "denominator": 5,
+        "term": "ثلاثة أخماس",
+        "value": 0.6,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 4,
+        "denominator": 5,
+        "term": "أربعة أخماس",
+        "value": 0.8,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 5,
+        "denominator": 6,
+        "term": "خمسة أسداس",
+        "value": 0.8333333333333334,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 7,
+        "denominator": 8,
+        "term": "سبعة أثمان",
+        "value": 0.875,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 5,
+        "denominator": 12,
+        "term": "خمسة أجزاء من اثنا عشر",
+        "value": 0.4166666666666667,
+        "category": "fraction_compound"
+      },
+      {
+        "numerator": 7,
+        "denominator": 10,
+        "term": "سبعة أعشار",
+        "value": 0.7,
+        "category": "fraction_compound"
+      }
+    ],
+    "operations": [
+      {
+        "operation": "addition",
+        "term": "جمع",
+        "category": "operation_basic",
+        "derivatives": [
+          "جمع",
+          "مجموع",
+          "إضافة",
+          "زيادة"
+        ],
+        "examples": [
+          "عملية جمع الأرقام",
+          "نتيجة جمع العددين",
+          "تطبيق جمع في الحساب",
+          "٣ + ٢ = ٥ (جمع ثلاثة واثنين)"
+        ]
+      },
+      {
+        "operation": "subtraction",
+        "term": "طرح",
+        "category": "operation_basic",
+        "derivatives": [
+          "طرح",
+          "نقص",
+          "تناقص",
+          "فرق"
+        ],
+        "examples": [
+          "عملية طرح الأرقام",
+          "نتيجة طرح العددين",
+          "تطبيق طرح في الحساب",
+          "٥ - ٢ = ٣ (طرح اثنين من خمسة)"
+        ]
+      },
+      {
+        "operation": "multiplication",
+        "term": "ضرب",
+        "category": "operation_basic",
+        "derivatives": [
+          "ضرب",
+          "حاصل ضرب",
+          "مضاعفة"
+        ],
+        "examples": [
+          "عملية ضرب الأرقام",
+          "نتيجة ضرب العددين",
+          "تطبيق ضرب في الحساب",
+          "٣ × ٢ = ٦ (ضرب ثلاثة في اثنين)"
+        ]
+      },
+      {
+        "operation": "division",
+        "term": "قسمة",
+        "category": "operation_basic",
+        "derivatives": [
+          "قسمة",
+          "تقسيم",
+          "حاصل القسمة"
+        ],
+        "examples": [
+          "عملية قسمة الأرقام",
+          "نتيجة قسمة العددين",
+          "تطبيق قسمة في الحساب",
+          "٦ ÷ ٢ = ٣ (قسمة ستة على اثنين)"
+        ]
+      },
+      {
+        "operation": "power",
+        "term": "أس",
+        "category": "operation_advanced",
+        "phonetic_score": 1.3
+      },
+      {
+        "operation": "root",
+        "term": "جذر",
+        "category": "operation_advanced",
+        "phonetic_score": 1.3
+      },
+      {
+        "operation": "logarithm",
+        "term": "لوغاريتم",
+        "category": "operation_advanced",
+        "phonetic_score": 1.3857142857142857
+      },
+      {
+        "operation": "factorial",
+        "term": "مضروب",
+        "category": "operation_advanced",
+        "phonetic_score": 1.34
+      },
+      {
+        "operation": "ratio",
+        "term": "نسبة",
+        "category": "operation_advanced",
+        "phonetic_score": 1.3
+      },
+      {
+        "operation": "proportion",
+        "term": "تناسب",
+        "category": "operation_advanced",
+        "phonetic_score": 1.35
+      }
+    ],
+    "concepts": [
+      {
+        "type": "numbers",
+        "domain": "arithmetic",
+        "term": "عدد",
+        "meaning": "مفهوم numbers في arithmetic"
+      },
+      {
+        "type": "operations",
+        "domain": "arithmetic",
+        "term": "احتساب",
+        "meaning": "مفهوم operations في arithmetic"
+      },
+      {
+        "type": "properties",
+        "domain": "arithmetic",
+        "term": "خاصية",
+        "meaning": "مفهوم properties في arithmetic"
+      },
+      {
+        "type": "variables",
+        "domain": "algebra",
+        "term": "متغير",
+        "examples": [
+          "دراسة متغير في الرياضيات",
+          "تطبيق مفهوم متغير",
+          "فهم متغير بشكل صحيح",
+          "حل متغير بالطرق الجبرية"
+        ]
+      },
+      {
+        "type": "equations",
+        "domain": "algebra",
+        "term": "نظام معادلات",
+        "examples": [
+          "دراسة نظام معادلات في الرياضيات",
+          "تطبيق مفهوم نظام معادلات",
+          "فهم نظام معادلات بشكل صحيح",
+          "حل نظام معادلات بالطرق الجبرية"
+        ]
+      },
+      {
+        "type": "functions",
+        "domain": "algebra",
+        "term": "اقتران",
+        "examples": [
+          "دراسة اقتران في الرياضيات",
+          "تطبيق مفهوم اقتران",
+          "فهم اقتران بشكل صحيح",
+          "حل اقتران بالطرق الجبرية"
+        ]
+      },
+      {
+        "type": "polynomials",
+        "domain": "algebra",
+        "term": "معامل",
+        "examples": [
+          "دراسة معامل في الرياضيات",
+          "تطبيق مفهوم معامل",
+          "فهم معامل بشكل صحيح",
+          "حل معامل بالطرق الجبرية"
+        ]
+      },
+      {
+        "type": "shapes",
+        "domain": "geometry",
+        "term": "مضلع",
+        "appropriateness": 0.5
+      },
+      {
+        "type": "measurements",
+        "domain": "geometry",
+        "term": "قطر",
+        "appropriateness": 0.5
+      },
+      {
+        "type": "angles",
+        "domain": "geometry",
+        "term": "زاوية حادة",
+        "appropriateness": 0.6
+      },
+      {
+        "type": "lines",
+        "domain": "geometry",
+        "term": "عمودي",
+        "appropriateness": 0.6
+      },
+      {
+        "type": "measures",
+        "domain": "statistics",
+        "term": "متوسط"
+      },
+      {
+        "type": "probability",
+        "domain": "statistics",
+        "term": "احتمالية"
+      },
+      {
+        "type": "distributions",
+        "domain": "statistics",
+        "term": "انحراف معياري"
+      }
+    ],
+    "comprehensive": [
+      

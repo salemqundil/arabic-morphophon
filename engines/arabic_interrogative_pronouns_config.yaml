@@ -1,0 +1,293 @@
+# Arabic Interrogative Pronouns System Configuration
+# ================================================
+# إعدادات نظام أسماء الاستفهام العربية
+
+# General System Settings
+system:
+  name: "Arabic Interrogative Pronouns Generator"
+  version: "1.0.0"
+  language: "Arabic"
+  encoding: "UTF-8"
+
+# Matching Algorithm Settings
+matching:
+  similarity_threshold: 0.6        # عتبة التشابه للمطابقة
+  max_results: 5                   # أقصى عدد نتائج
+  enable_phonetic_matching: true   # تفعيل المطابقة الصوتية
+  enable_fuzzy_matching: true      # تفعيل المطابقة الضبابية
+  enable_partial_matching: true    # تفعيل المطابقة الجزئية
+
+# Scoring Weights
+scoring:
+  frequency_weight: 0.3            # وزن التكرار
+  pattern_weight: 0.4              # وزن النمط
+  similarity_weight: 0.3           # وزن التشابه
+  position_weight: 0.2             # وزن الموضع
+  length_penalty: 0.1              # عقوبة الطول
+
+# Categories Configuration
+categories:
+  person:                          # أسماء الاستفهام عن الأشخاص
+    weight: 1.0
+    priority: "high"
+    common_patterns: ["مَنْ", "مَن ذَا"]
+
+  thing:                           # أسماء الاستفهام عن الأشياء
+    weight: 1.0
+    priority: "high"
+    common_patterns: ["مَا", "مَاذَا", "مَهْمَا"]
+
+  time:                           # أسماء الاستفهام عن الزمان
+    weight: 0.9
+    priority: "high"
+    common_patterns: ["مَتَى", "أَيَّانَ"]
+
+  place:                          # أسماء الاستفهام عن المكان
+    weight: 0.9
+    priority: "high"
+    common_patterns: ["أَيْنَ", "أَنَّى", "أَيْنَمَا"]
+
+  manner:                         # أسماء الاستفهام عن الكيفية
+    weight: 0.8
+    priority: "medium"
+    common_patterns: ["كَيْفَ", "كَيْفَمَا"]
+
+  quantity:                       # أسماء الاستفهام عن الكمية
+    weight: 0.8
+    priority: "medium"
+    common_patterns: ["كَمْ", "كَأَيِّنْ"]
+
+  choice:                         # أسماء الاستفهام للاختيار
+    weight: 0.7
+    priority: "medium"
+    common_patterns: ["أَيّ", "أَيُّهَا"]
+
+  reason:                         # أسماء الاستفهام عن السبب
+    weight: 0.8
+    priority: "medium"
+    common_patterns: ["لِمَاذَا", "لِمَ"]
+
+  state:                          # أسماء الاستفهام عن الحال
+    weight: 0.6
+    priority: "low"
+    common_patterns: ["كَيْفَمَا"]
+
+  possession:                     # أسماء الاستفهام عن الملكية
+    weight: 0.5
+    priority: "low"
+    common_patterns: ["لِمَنْ"]
+
+# Phonetic Processing
+phonetics:
+  enable_diacritics: true         # تفعيل الحركات
+  enable_stress_marking: false    # تفعيل علامات النبر
+  normalize_hamza: true           # توحيد الهمزة
+  normalize_taa: true             # توحيد التاء المربوطة
+
+  # Arabic Phoneme Inventory
+  consonants:
+    - "ب"  # baa
+    - "ت"  # taa
+    - "ث"  # thaa
+    - "ج"  # jeem
+    - "ح"  # Haa
+    - "خ"  # khaa
+    - "د"  # daal
+    - "ذ"  # dhaal
+    - "ر"  # raa
+    - "ز"  # zaay
+    - "س"  # seen
+    - "ش"  # sheen
+    - "ص"  # Saad
+    - "ض"  # Daad
+    - "ط"  # Taa
+    - "ظ"  # Zaa
+    - "ع"  # ayn
+    - "غ"  # ghayn
+    - "ف"  # faa
+    - "ق"  # qaaf
+    - "ك"  # kaaf
+    - "ل"  # laam
+    - "م"  # meem
+    - "ن"  # noon
+    - "ه"  # haa
+    - "و"  # waaw
+    - "ي"  # yaa
+    - "ء"  # hamza
+
+  vowels:
+    short:
+      - "َ"  # fatha
+      - "ُ"  # damma
+      - "ِ"  # kasra
+    long:
+      - "ا"  # alif
+      - "و"  # waaw
+      - "ي"  # yaa
+      - "ى"  # alif maqsura
+
+  diacritics:
+    - "ْ"   # sukun
+    - "ً"   # tanween fath
+    - "ٌ"   # tanween damm
+    - "ٍ"   # tanween kasr
+    - "ّ"   # shadda
+
+# Syllable Patterns
+syllable_patterns:
+  cv_patterns:
+    - "CV"          # مقطع مفتوح قصير
+    - "CVC"         # مقطع مغلق قصير
+    - "CVV"         # مقطع مفتوح طويل
+    - "CVVC"        # مقطع مغلق طويل
+    - "CVCC"        # مقطع مغلق بصامتين
+
+  common_interrogative_patterns:
+    simple:
+      - "مَ"         # مقطع بسيط
+      - "أَ"         # همزة الاستفهام
+      - "كَ"         # كاف الاستفهام
+
+    complex:
+      - "مَا"        # ما الاستفهامية
+      - "مَنْ"       # من الاستفهامية
+      - "أَيْ"       # أي الاستفهامية
+      - "كَيْ"       # كيف مقطعة
+
+  frequency_weights:
+    "مَ": 0.95
+    "أَ": 0.90
+    "كَ": 0.85
+    "لِ": 0.80
+    "نَ": 0.75
+    "يْ": 0.70
+    "ذَا": 0.85
+    "تَى": 0.80
+
+# Machine Learning Model Settings
+model:
+  architecture: "transformer"      # نوع النموذج
+  embedding_dim: 128              # أبعاد التضمين
+  hidden_dim: 256                 # أبعاد الطبقة المخفية
+  num_layers: 3                   # عدد الطبقات
+  num_heads: 8                    # عدد رؤوس الانتباه
+  dropout_rate: 0.1               # معدل الإسقاط
+
+  training:
+    batch_size: 32
+    learning_rate: 0.001
+    epochs: 50
+    early_stopping: true
+    patience: 10
+
+  features:
+    use_positional_encoding: true
+    use_attention_weights: true
+    use_phonetic_features: true
+    max_sequence_length: 20
+
+# Audio Processing (للتوسعات المستقبلية)
+audio:
+  sample_rate: 16000
+  frame_length: 512
+  hop_length: 256
+  n_mels: 80
+  fmin: 0
+  fmax: 8000
+
+# Output Settings
+output:
+  max_candidates: 10              # أقصى عدد مرشحين
+  confidence_threshold: 0.5       # عتبة الثقة
+  include_alternatives: true      # تضمين البدائل
+  include_confidence_scores: true # تضمين درجات الثقة
+  include_category_info: true     # تضمين معلومات الفئة
+  include_usage_context: true     # تضمين سياق الاستخدام
+
+  formatting:
+    use_diacritics: true          # استخدام الحركات في الإخراج
+    normalize_output: true        # توحيد الإخراج
+    remove_redundant_info: false  # إزالة المعلومات المكررة
+
+# Logging and Debug
+logging:
+  level: "INFO"                   # مستوى السجلات
+  file_path: "interrogative_pronouns.log"
+  max_file_size: "10MB"
+  backup_count: 5
+  include_timestamps: true
+  include_line_numbers: false
+
+debug:
+  enable_detailed_analysis: false
+  save_intermediate_results: false
+  print_processing_steps: false
+  measure_performance: true
+
+# Performance Optimization
+performance:
+  enable_caching: true            # تفعيل التخزين المؤقت
+  cache_size: 1000               # حجم التخزين المؤقت
+  enable_parallel_processing: false
+  max_workers: 4
+
+  memory_optimization:
+    enable_batch_processing: false
+    max_batch_size: 100
+    clear_cache_on_limit: true
+
+# Validation and Testing
+validation:
+  enable_input_validation: true   # تفعيل التحقق من المدخلات
+  min_syllable_length: 1         # أقل طول للمقطع
+  max_syllable_length: 10        # أقصى طول للمقطع
+  allowed_characters: "أبتثجحخدذرزسشصضطظعغفقكلمنهويءآإؤئةىًٌٍَُِّْ"
+
+  testing:
+    enable_unit_tests: true
+    test_data_path: "test_data/"
+    expected_accuracy: 0.85
+    performance_benchmark: 100    # ms
+
+# Database Settings
+database:
+  auto_save: true                 # الحفظ التلقائي
+  save_interval: 300             # فترة الحفظ بالثواني
+  backup_enabled: true           # تفعيل النسخ الاحتياطي
+  backup_interval: 3600          # فترة النسخ الاحتياطي
+  max_backups: 10               # أقصى عدد نسخ احتياطية
+
+  file_paths:
+    main_database: "arabic_interrogative_pronouns_database.json"
+    config_backup: "config_backup.yaml"
+    model_weights: "interrogative_model_weights.pth"
+
+# Internationalization
+i18n:
+  default_language: "ar"          # اللغة الافتراضية
+  fallback_language: "en"        # لغة الاحتياط
+  supported_languages: ["ar", "en"]
+
+  messages:
+    ar:
+      success: "تم بنجاح"
+      error: "حدث خطأ"
+      not_found: "غير موجود"
+      invalid_input: "مدخل غير صحيح"
+    en:
+      success: "Success"
+      error: "Error occurred"
+      not_found: "Not found"
+      invalid_input: "Invalid input"
+
+# Advanced Features
+advanced:
+  enable_context_analysis: false  # تفعيل تحليل السياق
+  enable_semantic_similarity: false # تفعيل التشابه الدلالي
+  enable_morphological_analysis: true # تفعيل التحليل الصرفي
+  enable_syntactic_analysis: false # تفعيل التحليل النحوي
+
+  experimental:
+    enable_neural_phonetics: false
+    enable_cross_dialectal: false
+    enable_diachronic_analysis: false

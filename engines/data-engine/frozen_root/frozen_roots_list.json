@@ -1,0 +1,208 @@
+{
+  "frozen_roots": {
+    "من": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "who/whom",
+      "cv_pattern": "CVC",
+      "phonemes": ["m", "a", "n"]
+    },
+    "لن": {
+      "type": "frozen", 
+      "category": "negation_particle",
+      "meaning": "will not",
+      "cv_pattern": "CVC",
+      "phonemes": ["l", "a", "n"]
+    },
+    "إذا": {
+      "type": "frozen",
+      "category": "conditional_particle", 
+      "meaning": "if/when",
+      "cv_pattern": "VCV",
+      "phonemes": ["", "i", "", "a"]
+    },
+    "يا": {
+      "type": "frozen",
+      "category": "vocative_particle",
+      "meaning": "oh/hey",
+      "cv_pattern": "CV",
+      "phonemes": ["j", "a"]
+    },
+    "لم": {
+      "type": "frozen",
+      "category": "negation_particle",
+      "meaning": "did not",
+      "cv_pattern": "CVC",
+      "phonemes": ["l", "a", "m"]
+    },
+    "قد": {
+      "type": "frozen",
+      "category": "affirmation_particle",
+      "meaning": "may have/already",
+      "cv_pattern": "CVC",
+      "phonemes": ["q", "a", "d"]
+    },
+    "كلا": {
+      "type": "frozen",
+      "category": "negative_particle",
+      "meaning": "no/not at all",
+      "cv_pattern": "CVCV",
+      "phonemes": ["k", "a", "l", "l", "a"]
+    },
+    "هل": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "is it/question marker",
+      "cv_pattern": "CVC",
+      "phonemes": ["h", "a", "l"]
+    },
+    "إن": {
+      "type": "frozen",
+      "category": "conditional_particle",
+      "meaning": "if/indeed",
+      "cv_pattern": "VC",
+      "phonemes": ["", "i", "n"]
+    },
+    "أن": {
+      "type": "frozen",
+      "category": "complementizer",
+      "meaning": "that/to",
+      "cv_pattern": "VC",
+      "phonemes": ["", "a", "n"]
+    },
+    "كي": {
+      "type": "frozen",
+      "category": "purpose_particle",
+      "meaning": "in order to",
+      "cv_pattern": "CV",
+      "phonemes": ["k", "a", "j"]
+    },
+    "لكن": {
+      "type": "frozen",
+      "category": "adversative_particle",
+      "meaning": "but/however",
+      "cv_pattern": "CVCVC",
+      "phonemes": ["l", "a", "k", "i", "n"]
+    },
+    "غير": {
+      "type": "frozen",
+      "category": "negative_particle",
+      "meaning": "other than/not",
+      "cv_pattern": "CVC",
+      "phonemes": ["", "a", "j", "r"]
+    },
+    "سوف": {
+      "type": "frozen",
+      "category": "future_particle",
+      "meaning": "will/shall",
+      "cv_pattern": "CVCVC",
+      "phonemes": ["s", "a", "w", "f", "a"]
+    },
+    "ليس": {
+      "type": "frozen",
+      "category": "negation_verb",
+      "meaning": "is not",
+      "cv_pattern": "CVCC",
+      "phonemes": ["l", "a", "j", "s", "a"]
+    },
+    "ماذا": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "what",
+      "cv_pattern": "CVCV",
+      "phonemes": ["m", "a", "", "a"]
+    },
+    "متى": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "when",
+      "cv_pattern": "CVCV",
+      "phonemes": ["m", "a", "t", "a"]
+    },
+    "أين": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "where",
+      "cv_pattern": "VVC",
+      "phonemes": ["", "a", "j", "n"]
+    },
+    "كيف": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "how",
+      "cv_pattern": "CVVC",
+      "phonemes": ["k", "a", "j", "f"]
+    },
+    "لماذا": {
+      "type": "frozen",
+      "category": "interrogative_particle",
+      "meaning": "why",
+      "cv_pattern": "CCVCV",
+      "phonemes": ["l", "i", "m", "a", "", "a"]
+    },
+    "ذلك": {
+      "type": "frozen",
+      "category": "demonstrative_pronoun",
+      "meaning": "that",
+      "cv_pattern": "CVCVC",
+      "phonemes": ["", "a", "l", "i", "k"]
+    },
+    "هذا": {
+      "type": "frozen",
+      "category": "demonstrative_pronoun",
+      "meaning": "this",
+      "cv_pattern": "CVCV",
+      "phonemes": ["h", "a", "", "a"]
+    },
+    "هذه": {
+      "type": "frozen",
+      "category": "demonstrative_pronoun",
+      "meaning": "this (feminine)",
+      "cv_pattern": "CVCV",
+      "phonemes": ["h", "a", "", "i", "h"]
+    },
+    "تلك": {
+      "type": "frozen",
+      "category": "demonstrative_pronoun",
+      "meaning": "that (feminine)",
+      "cv_pattern": "CVCVC",
+      "phonemes": ["t", "i", "l", "k", "a"]
+    },
+    "أولئك": {
+      "type": "frozen",
+      "category": "demonstrative_pronoun",
+      "meaning": "those",
+      "cv_pattern": "VCVVCVC",
+      "phonemes": ["", "u", "l", "a", "", "i", "k"]
+    },
+    "هؤلاء": {
+      "type": "frozen",
+      "category": "demonstrative_pronoun",
+      "meaning": "these",
+      "cv_pattern": "CVCVVC",
+      "phonemes": ["h", "a", "", "u", "l", "a", ""]
+    }
+  },
+  "derivable_patterns": {
+    "CVCVC": {
+      "examples": ["كتب", "درس", "فعل"],
+      "verb_forms": ["فَعَلَ", "فَعُلَ", "فَعِلَ"]
+    },
+    "CVCCVC": {
+      "examples": ["كسّر", "درّس", "فعّل"],
+      "verb_forms": ["فَعَّلَ"]
+    },
+    "CVVCVC": {
+      "examples": ["قاتل", "شارك", "فاعل"],
+      "verb_forms": ["فَاعَلَ"]
+    },
+    "VCCVC": {
+      "examples": ["انكسر", "انفعل"],
+      "verb_forms": ["انْفَعَلَ"]
+    },
+    "CCVCVC": {
+      "examples": ["استخرج", "استفعل"],
+      "verb_forms": ["اسْتَفْعَلَ"]
+    }
+  }
+}

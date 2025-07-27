@@ -1,0 +1,75 @@
+morphological_patterns:
+  augmented_patterns:
+  - أَفعَل
+  - فَعَّل
+  - فاعَل
+  - تَفَعَّل
+  - تَفاعَل
+  - اِنفَعَل
+  trilateral_patterns:
+  - فَعَل
+  - فَعِل
+  - فَعُل
+  - فاعِل
+  - فَعّال
+  - مَفعول
+  - فَعْل
+  - فِعْل
+  - فُعْل
+phoneme_inventory:
+  consonants:
+    fricatives:
+    - ف
+    - ث
+    - ذ
+    - س
+    - ز
+    - ش
+    - ص
+    - ض
+    - خ
+    - غ
+    - ح
+    - ع
+    - ه
+    glides:
+    - و
+    - ي
+    liquids:
+    - ل
+    - ر
+    nasals:
+    - م
+    - ن
+    stops:
+    - ب
+    - ت
+    - د
+    - ط
+    - ك
+    - ق
+    - ء
+  vowels:
+    long:
+    - ا
+    - ي
+    - و
+    short:
+    - َ
+    - ِ
+    - ُ
+    tanween:
+    - ً
+    - ٌ
+    - ٍ
+syllable_constraints:
+  maximal_syllable: CVCC
+  minimal_word: CV
+  preferred_patterns:
+  - CV
+  - CVC
+  - CVV
+  stress_rules:
+    primary_stress: final_heavy_syllable
+    secondary_stress: alternating_pattern
+    stress_clash_resolution: right_to_left

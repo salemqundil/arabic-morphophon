@@ -1,0 +1,10 @@
+2025-07-27T01:25:33.773590 - arabic_function_words_analyzer.py - Syntax still invalid after fix
+2025-07-27T01:25:33.876843 - arabic_interrogative_pronouns_deep_model.py - Syntax still invalid after fix
+2025-07-27T01:25:34.077013 - arabic_interrogative_pronouns_enhanced.py - Syntax still invalid after fix
+2025-07-27T01:25:34.192993 - arabic_interrogative_pronouns_final.py - Syntax still invalid after fix
+2025-07-27T01:25:34.397593 - arabic_interrogative_pronouns_test_analysis.py - Syntax still invalid after fix
+2025-07-27T01:25:34.440599 - arabic_normalizer.py - Syntax still invalid after fix
+2025-07-27T01:25:34.544845 - arabic_phoneme_word_decision_tree.py - Syntax still invalid after fix
+2025-07-27T01:25:34.601456 - arabic_pronouns_analyzer.py - Syntax still invalid after fix
+2025-07-27T01:25:34.653598 - arabic_pronouns_deep_model.py - Syntax still invalid after fix
+2025-07-27T01:25:34.745305 - arabic_relative_pronouns_analyzer.py - Syntax still invalid after fix

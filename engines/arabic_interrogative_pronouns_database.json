@@ -1,0 +1,713 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "creation_date": "2025-07-24T20:40:44.085684",
+    "total_pronouns": 19,
+    "categories": [
+      "شخص",
+      "شيء",
+      "زمان",
+      "مكان",
+      "كيفية",
+      "كمية",
+      "اختيار",
+      "سبب",
+      "حال",
+      "ملكية"
+    ]
+  },
+  "interrogative_pronouns": [
+    {
+      "text": "مَن",
+      "category": "شخص",
+      "syllables": [
+        "مَنْ"
+      ],
+      "phonemes": [
+        "م",
+        "َ",
+        "ن",
+        "ْ"
+      ],
+      "frequency_score": 0.95,
+      "usage_contexts": [
+        "السؤال عن الأشخاص",
+        "الهوية",
+        "الفاعل"
+      ],
+      "grammatical_cases": [
+        "مرفوع",
+        "منصوب",
+        "مجرور"
+      ],
+      "semantic_features": {
+        "animacy": "حي",
+        "specificity": "غير محدد",
+        "formality": "فصيح"
+      }
+    },
+    {
+      "text": "مَنْ ذَا",
+      "category": "شخص",
+      "syllables": [
+        "مَنْ",
+        "ذَا"
+      ],
+      "phonemes": [
+        "م",
+        "َ",
+        "ن",
+        "ْ",
+        "ذ",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.65,
+      "usage_contexts": [
+        "السؤال عن الأشخاص بتأكيد",
+        "الاستفهام المؤكد"
+      ],
+      "grammatical_cases": [
+        "مرفوع",
+        "منصوب"
+      ],
+      "semantic_features": {
+        "animacy": "حي",
+        "specificity": "غير محدد",
+        "emphasis": "مؤكد"
+      }
+    },
+    {
+      "text": "مَا",
+      "category": "شيء",
+      "syllables": [
+        "مَا"
+      ],
+      "phonemes": [
+        "م",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.98,
+      "usage_contexts": [
+        "السؤال عن الأشياء",
+        "المفعول",
+        "التعريف"
+      ],
+      "grammatical_cases": [
+        "مرفوع",
+        "منصوب",
+        "مجرور"
+      ],
+      "semantic_features": {
+        "animacy": "غير حي",
+        "specificity": "غير محدد",
+        "scope": "واسع"
+      }
+    },
+    {
+      "text": "مَاذَا",
+      "category": "شيء",
+      "syllables": [
+        "مَا",
+        "ذَا"
+      ],
+      "phonemes": [
+        "م",
+        "َ",
+        "ا",
+        "ذ",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.85,
+      "usage_contexts": [
+        "السؤال عن الأشياء",
+        "المفعول المباشر"
+      ],
+      "grammatical_cases": [
+        "منصوب"
+      ],
+      "semantic_features": {
+        "animacy": "غير حي",
+        "specificity": "غير محدد",
+        "directness": "مباشر"
+      }
+    },
+    {
+      "text": "مَتَى",
+      "category": "زمان",
+      "syllables": [
+        "مَ",
+        "تَى"
+      ],
+      "phonemes": [
+        "م",
+        "َ",
+        "ت",
+        "َ",
+        "ى"
+      ],
+      "frequency_score": 0.92,
+      "usage_contexts": [
+        "السؤال عن الزمن",
+        "التوقيت",
+        "الأحداث"
+      ],
+      "grammatical_cases": [
+        "ظرف زمان"
+      ],
+      "semantic_features": {
+        "temporal": true,
+        "specificity": "غير محدد",
+        "tense": "مفتوح"
+      }
+    },
+    {
+      "text": "أَيَّانَ",
+      "category": "زمان",
+      "syllables": [
+        "أَيْ",
+        "يَا",
+        "نَ"
+      ],
+      "phonemes": [
+        "أ",
+        "َ",
+        "ي",
+        "ْ",
+        "ي",
+        "َ",
+        "ا",
+        "ن",
+        "َ"
+      ],
+      "frequency_score": 0.45,
+      "usage_contexts": [
+        "السؤال عن الزمن المستقبلي",
+        "الأحداث المهمة"
+      ],
+      "grammatical_cases": [
+        "ظرف زمان"
+      ],
+      "semantic_features": {
+        "temporal": true,
+        "formality": "فصيح جداً",
+        "future_oriented": true
+      }
+    },
+    {
+      "text": "أَيْنَ",
+      "category": "مكان",
+      "syllables": [
+        "أَيْ",
+        "نَ"
+      ],
+      "phonemes": [
+        "أ",
+        "َ",
+        "ي",
+        "ْ",
+        "ن",
+        "َ"
+      ],
+      "frequency_score": 0.94,
+      "usage_contexts": [
+        "السؤال عن المكان",
+        "الموقع",
+        "الجهة"
+      ],
+      "grammatical_cases": [
+        "ظرف مكان"
+      ],
+      "semantic_features": {
+        "spatial": true,
+        "specificity": "غير محدد",
+        "dimensionality": "مكاني"
+      }
+    },
+    {
+      "text": "أَنَّى",
+      "category": "مكان",
+      "syllables": [
+        "أَنْ",
+        "نَى"
+      ],
+      "phonemes": [
+        "أ",
+        "َ",
+        "ن",
+        "ْ",
+        "ن",
+        "َ",
+        "ى"
+      ],
+      "frequency_score": 0.55,
+      "usage_contexts": [
+        "السؤال عن المكان والطريقة",
+        "الكيفية المكانية"
+      ],
+      "grammatical_cases": [
+        "ظرف مكان",
+        "ظرف حال"
+      ],
+      "semantic_features": {
+        "spatial": true,
+        "manner": true,
+        "complexity": "مركب"
+      }
+    },
+    {
+      "text": "كَيْفَ",
+      "category": "كيفية",
+      "syllables": [
+        "كَيْ",
+        "فَ"
+      ],
+      "phonemes": [
+        "ك",
+        "َ",
+        "ي",
+        "ْ",
+        "ف",
+        "َ"
+      ],
+      "frequency_score": 0.96,
+      "usage_contexts": [
+        "السؤال عن الطريقة",
+        "الحال",
+        "الكيفية"
+      ],
+      "grammatical_cases": [
+        "ظرف حال"
+      ],
+      "semantic_features": {
+        "manner": true,
+        "state": true,
+        "method": true
+      }
+    },
+    {
+      "text": "كَيْفَمَا",
+      "category": "كيفية",
+      "syllables": [
+        "كَيْ",
+        "فَ",
+        "مَا"
+      ],
+      "phonemes": [
+        "ك",
+        "َ",
+        "ي",
+        "ْ",
+        "ف",
+        "َ",
+        "م",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.35,
+      "usage_contexts": [
+        "السؤال عن أي طريقة",
+        "الشمولية"
+      ],
+      "grammatical_cases": [
+        "ظرف حال"
+      ],
+      "semantic_features": {
+        "manner": true,
+        "universality": "شامل",
+        "indefiniteness": "مطلق"
+      }
+    },
+    {
+      "text": "كَمْ",
+      "category": "كمية",
+      "syllables": [
+        "كَمْ"
+      ],
+      "phonemes": [
+        "ك",
+        "َ",
+        "م",
+        "ْ"
+      ],
+      "frequency_score": 0.89,
+      "usage_contexts": [
+        "السؤال عن العدد",
+        "الكمية",
+        "المقدار"
+      ],
+      "grammatical_cases": [
+        "مبني"
+      ],
+      "semantic_features": {
+        "quantitative": true,
+        "numerical": true,
+        "measure": true
+      }
+    },
+    {
+      "text": "كَأَيِّنْ",
+      "category": "كمية",
+      "syllables": [
+        "كَأَيْ",
+        "يِنْ"
+      ],
+      "phonemes": [
+        "ك",
+        "َ",
+        "أ",
+        "َ",
+        "ي",
+        "ْ",
+        "ي",
+        "ِ",
+        "ن",
+        "ْ"
+      ],
+      "frequency_score": 0.25,
+      "usage_contexts": [
+        "السؤال عن العدد الكثير",
+        "التعجب من الكثرة"
+      ],
+      "grammatical_cases": [
+        "مبني"
+      ],
+      "semantic_features": {
+        "quantitative": true,
+        "abundance": true,
+        "exclamatory": true
+      }
+    },
+    {
+      "text": "أَيّ",
+      "category": "اختيار",
+      "syllables": [
+        "أَيّ"
+      ],
+      "phonemes": [
+        "أ",
+        "َ",
+        "ي",
+        "ّ"
+      ],
+      "frequency_score": 0.88,
+      "usage_contexts": [
+        "السؤال عن التحديد",
+        "الاختيار",
+        "التمييز"
+      ],
+      "grammatical_cases": [
+        "معرب"
+      ],
+      "semantic_features": {
+        "selective": true,
+        "determinative": true,
+        "variable": "متغير"
+      }
+    },
+    {
+      "text": "أَيُّهَا",
+      "category": "اختيار",
+      "syllables": [
+        "أَيْ",
+        "يُ",
+        "هَا"
+      ],
+      "phonemes": [
+        "أ",
+        "َ",
+        "ي",
+        "ْ",
+        "ي",
+        "ُ",
+        "ه",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.65,
+      "usage_contexts": [
+        "النداء الاستفهامي",
+        "التعيين"
+      ],
+      "grammatical_cases": [
+        "منادى"
+      ],
+      "semantic_features": {
+        "selective": true,
+        "vocative": true,
+        "formal": "رسمي"
+      }
+    },
+    {
+      "text": "لِمَاذَا",
+      "category": "سبب",
+      "syllables": [
+        "لِ",
+        "مَا",
+        "ذَا"
+      ],
+      "phonemes": [
+        "ل",
+        "ِ",
+        "م",
+        "َ",
+        "ا",
+        "ذ",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.93,
+      "usage_contexts": [
+        "السؤال عن السبب",
+        "العلة",
+        "الغرض"
+      ],
+      "grammatical_cases": [
+        "جار ومجرور"
+      ],
+      "semantic_features": {
+        "causal": true,
+        "explanatory": true,
+        "purpose": "غرضي"
+      }
+    },
+    {
+      "text": "لِمَ",
+      "category": "سبب",
+      "syllables": [
+        "لِمَ"
+      ],
+      "phonemes": [
+        "ل",
+        "ِ",
+        "م",
+        "َ"
+      ],
+      "frequency_score": 0.75,
+      "usage_contexts": [
+        "السؤال عن السبب المختصر",
+        "العلة البسيطة"
+      ],
+      "grammatical_cases": [
+        "جار ومجرور"
+      ],
+      "semantic_features": {
+        "causal": true,
+        "concise": true,
+        "direct": "مباشر"
+      }
+    },
+    {
+      "text": "كَيْفَمَا",
+      "category": "حال",
+      "syllables": [
+        "كَيْ",
+        "فَ",
+        "مَا"
+      ],
+      "phonemes": [
+        "ك",
+        "َ",
+        "ي",
+        "ْ",
+        "ف",
+        "َ",
+        "م",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.4,
+      "usage_contexts": [
+        "السؤال عن أي حال",
+        "الحالة العامة"
+      ],
+      "grammatical_cases": [
+        "ظرف حال"
+      ],
+      "semantic_features": {
+        "state": true,
+        "condition": true,
+        "general": "عام"
+      }
+    },
+    {
+      "text": "أَيْنَمَا",
+      "category": "مكان",
+      "syllables": [
+        "أَيْ",
+        "نَ",
+        "مَا"
+      ],
+      "phonemes": [
+        "أ",
+        "َ",
+        "ي",
+        "ْ",
+        "ن",
+        "َ",
+        "م",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.45,
+      "usage_contexts": [
+        "السؤال عن أي مكان",
+        "المكان العام"
+      ],
+      "grammatical_cases": [
+        "ظرف مكان"
+      ],
+      "semantic_features": {
+        "spatial": true,
+        "universal": "شامل",
+        "indefinite": "غير محدد"
+      }
+    },
+    {
+      "text": "مَهْمَا",
+      "category": "شيء",
+      "syllables": [
+        "مَهْ",
+        "مَا"
+      ],
+      "phonemes": [
+        "م",
+        "َ",
+        "ه",
+        "ْ",
+        "م",
+        "َ",
+        "ا"
+      ],
+      "frequency_score": 0.7,
+      "usage_contexts": [
+        "السؤال عن أي شيء",
+        "الشمولية"
+      ],
+      "grammatical_cases": [
+        "شرطية"
+      ],
+      "semantic_features": {
+        "conditional": true,
+        "universal": "شامل",
+        "indefinite": "مطلق"
+      }
+    }
+  ],
+  "syllable_patterns": {
+    "مَنْ": [
+      "مَن"
+    ],
+    "مَنْ-ذَا": [
+      "مَنْ ذَا"
+    ],
+    "مَا": [
+      "مَا"
+    ],
+    "مَا-ذَا": [
+      "مَاذَا"
+    ],
+    "مَ-تَى": [
+      "مَتَى"
+    ],
+    "أَيْ-يَا-نَ": [
+      "أَيَّانَ"
+    ],
+    "أَيْ-نَ": [
+      "أَيْنَ"
+    ],
+    "أَنْ-نَى": [
+      "أَنَّى"
+    ],
+    "كَيْ-فَ": [
+      "كَيْفَ"
+    ],
+    "كَيْ-فَ-مَا": [
+      "كَيْفَمَا",
+      "كَيْفَمَا"
+    ],
+    "كَمْ": [
+      "كَمْ"
+    ],
+    "كَأَيْ-يِنْ": [
+      "كَأَيِّنْ"
+    ],
+    "أَيّ": [
+      "أَيّ"
+    ],
+    "أَيْ-يُ-هَا": [
+      "أَيُّهَا"
+    ],
+    "لِ-مَا-ذَا": [
+      "لِمَاذَا"
+    ],
+    "لِمَ": [
+      "لِمَ"
+    ],
+    "أَيْ-نَ-مَا": [
+      "أَيْنَمَا"
+    ],
+    "مَهْ-مَا": [
+      "مَهْمَا"
+    ]
+  },
+  "phoneme_patterns": {
+    "م-َ-ن-ْ": [
+      "مَن"
+    ],
+    "م-َ-ن-ْ-ذ-َ-ا": [
+      "مَنْ ذَا"
+    ],
+    "م-َ-ا": [
+      "مَا"
+    ],
+    "م-َ-ا-ذ-َ-ا": [
+      "مَاذَا"
+    ],
+    "م-َ-ت-َ-ى": [
+      "مَتَى"
+    ],
+    "أ-َ-ي-ْ-ي-َ-ا-ن-َ": [
+      "أَيَّانَ"
+    ],
+    "أ-َ-ي-ْ-ن-َ": [
+      "أَيْنَ"
+    ],
+    "أ-َ-ن-ْ-ن-َ-ى": [
+      "أَنَّى"
+    ],
+    "ك-َ-ي-ْ-ف-َ": [
+      "كَيْفَ"
+    ],
+    "ك-َ-ي-ْ-ف-َ-م-َ-ا": [
+      "كَيْفَمَا",
+      "كَيْفَمَا"
+    ],
+    "ك-َ-م-ْ": [
+      "كَمْ"
+    ],
+    "ك-َ-أ-َ-ي-ْ-ي-ِ-ن-ْ": [
+      "كَأَيِّنْ"
+    ],
+    "أ-َ-ي-ّ": [
+      "أَيّ"
+    ],
+    "أ-َ-ي-ْ-ي-ُ-ه-َ-ا": [
+      "أَيُّهَا"
+    ],
+    "ل-ِ-م-َ-ا-ذ-َ-ا": [
+      "لِمَاذَا"
+    ],
+    "ل-ِ-م-َ": [
+      "لِمَ"
+    ],
+    "أ-َ-ي-ْ-ن-َ-م-َ-ا": [
+      "أَيْنَمَا"
+    ],
+    "م-َ-ه-ْ-م-َ-ا": [
+      "مَهْمَا"
+    ]
+  }
+}

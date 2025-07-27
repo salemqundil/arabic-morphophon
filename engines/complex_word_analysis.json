@@ -1,0 +1,337 @@
+{
+  "input_word": "يستكتبونها",
+  "phonemic_analysis": {
+    "total_phonemes": 10,
+    "phoneme_sequence": [
+      "ي",
+      "س",
+      "ت",
+      "ك",
+      "ت",
+      "ب",
+      "و",
+      "ن",
+      "ه",
+      "ا"
+    ],
+    "classified_phonemes": [
+      {
+        "phoneme": "ي",
+        "type": "consonant",
+        "features": {
+          "category": "approximants",
+          "voice": "voiced",
+          "place": "unknown",
+          "manner": "approximant"
+        }
+      },
+      {
+        "phoneme": "س",
+        "type": "consonant",
+        "features": {
+          "category": "fricatives",
+          "voice": "voiceless",
+          "place": "alveolar",
+          "manner": "fricative"
+        }
+      },
+      {
+        "phoneme": "ت",
+        "type": "consonant",
+        "features": {
+          "category": "stops",
+          "voice": "voiceless",
+          "place": "dental",
+          "manner": "stop"
+        }
+      },
+      {
+        "phoneme": "ك",
+        "type": "consonant",
+        "features": {
+          "category": "stops",
+          "voice": "voiceless",
+          "place": "velar",
+          "manner": "stop"
+        }
+      },
+      {
+        "phoneme": "ت",
+        "type": "consonant",
+        "features": {
+          "category": "stops",
+          "voice": "voiceless",
+          "place": "dental",
+          "manner": "stop"
+        }
+      },
+      {
+        "phoneme": "ب",
+        "type": "consonant",
+        "features": {
+          "category": "stops",
+          "voice": "voiced",
+          "place": "bilabial",
+          "manner": "stop"
+        }
+      },
+      {
+        "phoneme": "و",
+        "type": "consonant",
+        "features": {
+          "category": "approximants",
+          "voice": "voiced",
+          "place": "unknown",
+          "manner": "approximant"
+        }
+      },
+      {
+        "phoneme": "ن",
+        "type": "consonant",
+        "features": {
+          "category": "nasals",
+          "voice": "voiced",
+          "place": "dental",
+          "manner": "nasal"
+        }
+      },
+      {
+        "phoneme": "ه",
+        "type": "consonant",
+        "features": {
+          "category": "fricatives",
+          "voice": "voiceless",
+          "place": "glottal",
+          "manner": "fricative"
+        }
+      },
+      {
+        "phoneme": "ا",
+        "type": "vowel",
+        "features": {
+          "ipa": "/aː/",
+          "name": "alif",
+          "quality": "open_long"
+        }
+      }
+    ],
+    "phonotactic_analysis": {
+      "sequences": [
+        {
+          "position": 0,
+          "sequence": [
+            "ي",
+            "س"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 1,
+          "sequence": [
+            "س",
+            "ت"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 2,
+          "sequence": [
+            "ت",
+            "ك"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 3,
+          "sequence": [
+            "ك",
+            "ت"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 4,
+          "sequence": [
+            "ت",
+            "ب"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 5,
+          "sequence": [
+            "ب",
+            "و"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 6,
+          "sequence": [
+            "و",
+            "ن"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 7,
+          "sequence": [
+            "ن",
+            "ه"
+          ],
+          "valid": true,
+          "type": "CC"
+        },
+        {
+          "position": 8,
+          "sequence": [
+            "ه",
+            "ا"
+          ],
+          "valid": true,
+          "type": "CV"
+        }
+      ],
+      "total_sequences": 9,
+      "valid_sequences": 9,
+      "constraints_violated": [],
+      "phonotactic_score": 1.0
+    },
+    "phonological_processes": [
+      {
+        "type": "vowel_change_potential",
+        "position": 0,
+        "phoneme": "ي",
+        "description": "حرف علة محتمل الإعلال: ي"
+      },
+      {
+        "type": "vowel_change_potential",
+        "position": 6,
+        "phoneme": "و",
+        "description": "حرف علة محتمل الإعلال: و"
+      },
+      {
+        "type": "vowel_change_potential",
+        "position": 9,
+        "phoneme": "ا",
+        "description": "حرف علة محتمل الإعلال: ا"
+      }
+    ]
+  },
+  "syllabic_analysis": {
+    "total_syllables": 3,
+    "syllables": [
+      "يس",
+      "تكتبون",
+      "ها"
+    ],
+    "syllable_analysis": [
+      {
+        "syllable": "يس",
+        "position": 0,
+        "structure": "CC",
+        "weight": "unknown",
+        "stress_potential": 0.0
+      },
+      {
+        "syllable": "تكتبون",
+        "position": 1,
+        "structure": "CCCCCC",
+        "weight": "unknown",
+        "stress_potential": 0.3
+      },
+      {
+        "syllable": "ها",
+        "position": 2,
+        "structure": "CV",
+        "weight": "light",
+        "stress_potential": 0.4
+      }
+    ],
+    "syllabic_complexity": 1.5
+  },
+  "morphological_analysis": {
+    "morphological_type": "form_x_verb_with_pronouns",
+    "root": "كتب",
+    "pattern": "يستفعل",
+    "form": "X",
+    "morphemes": [
+      {
+        "morpheme": "ي",
+        "type": "prefix",
+        "function": "imperfective_marker"
+      },
+      {
+        "morpheme": "ست",
+        "type": "prefix",
+        "function": "form_x_marker"
+      },
+      {
+        "morpheme": "كتب",
+        "type": "root",
+        "function": "lexical_core"
+      },
+      {
+        "morpheme": "ون",
+        "type": "suffix",
+        "function": "plural_masculine"
+      },
+      {
+        "morpheme": "ها",
+        "type": "suffix",
+        "function": "attached_pronoun_feminine"
+      }
+    ],
+    "semantic_frame": {
+      "action": "seek_to_cause_writing",
+      "agent": "third_person_plural_masculine",
+      "patient": "third_person_singular_feminine"
+    }
+  },
+  "syntactic_analysis": {
+    "word_class": "verb",
+    "verb_features": {
+      "tense": "imperfective",
+      "person": "3rd",
+      "number": "plural",
+      "gender": "masculine",
+      "voice": "active",
+      "mood": "indicative"
+    },
+    "attached_pronouns": [
+      {
+        "pronoun": "ها",
+        "person": "3rd",
+        "number": "singular",
+        "gender": "feminine",
+        "case": "accusative",
+        "function": "direct_object"
+      }
+    ],
+    "syntactic_complexity": 0.9
+  },
+  "semantic_analysis": {
+    "semantic_field": "communication",
+    "semantic_roles": {
+      "agent": "group_of_males",
+      "action": "causative_writing_request",
+      "patient": "female_entity"
+    },
+    "semantic_features": [
+      "causative",
+      "communicative",
+      "interpersonal",
+      "written_medium"
+    ],
+    "complexity_level": "high",
+    "semantic_transparency": 0.8
+  },
+  "complexity_score": 0.9199999999999999
+}

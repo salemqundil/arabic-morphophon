@@ -1,0 +1,384 @@
+{
+  "total_rules": 17,
+  "rules_by_type": {
+    "إعلال_بالقلب": [
+      "ilal_qalb_001",
+      "ilal_qalb_002",
+      "ilal_qalb_003"
+    ],
+    "إعلال_بالحذف": [
+      "ilal_hazf_001",
+      "ilal_hazf_002"
+    ],
+    "إعلال_بالإسكان": [
+      "ilal_iskaan_001"
+    ],
+    "إعلال_بالنقل": [
+      "ilal_naql_001"
+    ],
+    "إبدال_الحروف": [
+      "ibdal_hamza_001",
+      "ibdal_hamza_002",
+      "ibdal_hamza_003",
+      "ibdal_cons_001",
+      "ibdal_cons_002",
+      "ibdal_liquid_001"
+    ],
+    "تشديد": [
+      "gemination_001"
+    ],
+    "إبدال_بالإدغام": [
+      "assim_001"
+    ],
+    "حذف": [
+      "deletion_001"
+    ],
+    "زيادة": [
+      "epenthesis_001"
+    ]
+  },
+  "rule_priorities": {
+    "1": [
+      "ilal_qalb_001",
+      "ilal_qalb_002",
+      "ilal_hazf_001",
+      "ilal_iskaan_001",
+      "ibdal_hamza_001",
+      "ibdal_hamza_002",
+      "ibdal_hamza_003",
+      "ibdal_cons_001",
+      "ibdal_cons_002",
+      "gemination_001",
+      "assim_001"
+    ],
+    "2": [
+      "ilal_qalb_003",
+      "ilal_hazf_002",
+      "ibdal_liquid_001",
+      "deletion_001"
+    ],
+    "3": [
+      "ilal_naql_001",
+      "epenthesis_001"
+    ]
+  },
+  "morphological_contexts": [
+    "verb_form_iv",
+    "verb_imperative",
+    "verb_past_first_person",
+    "derived_form",
+    "verb_form_viii",
+    "derived_noun",
+    "verb_jussive",
+    "noun_verbal",
+    "verb_passive",
+    "noun_definite",
+    "verbal_noun",
+    "suffix_attachment",
+    "cluster_breaking",
+    "verb_past_second_person",
+    "assimilation_context",
+    "verb_present",
+    "noun_construct",
+    "verb_past"
+  ],
+  "detailed_rules": [
+    {
+      "rule_id": "ilal_qalb_001",
+      "arabic_name": "قلب الواو ألفاً بعد فتحة",
+      "english_name": "Waw to Alif after Fatha",
+      "type": "إعلال_بالقلب",
+      "priority": 1,
+      "examples": [
+        [
+          "قَوَلَ",
+          "قَالَ"
+        ],
+        [
+          "صَوَمَ",
+          "صَامَ"
+        ]
+      ],
+      "contexts": [
+        "verb_present",
+        "noun_verbal",
+        "verb_past"
+      ]
+    },
+    {
+      "rule_id": "ilal_qalb_002",
+      "arabic_name": "قلب الياء ألفاً بعد فتحة",
+      "english_name": "Yaa to Alif after Fatha",
+      "type": "إعلال_بالقلب",
+      "priority": 1,
+      "examples": [
+        [
+          "رَيَبَ",
+          "رَابَ"
+        ]
+      ],
+      "contexts": [
+        "noun_verbal",
+        "verb_past"
+      ]
+    },
+    {
+      "rule_id": "ilal_qalb_003",
+      "arabic_name": "قلب الواو ياء في أوسط الكلمة",
+      "english_name": "Waw to Yaa in medial position",
+      "type": "إعلال_بالقلب",
+      "priority": 2,
+      "examples": [
+        [
+          "مِوْزان",
+          "مِيزان"
+        ]
+      ],
+      "contexts": [
+        "derived_noun",
+        "verb_form_iv"
+      ]
+    },
+    {
+      "rule_id": "ilal_hazf_001",
+      "arabic_name": "حذف حرف العلة في آخر الفعل المجزوم",
+      "english_name": "Delete final weak letter in jussive",
+      "type": "إعلال_بالحذف",
+      "priority": 1,
+      "examples": [
+        [
+          "يَقُولُ",
+          "يَقُلْ"
+        ],
+        [
+          "يَرْمِي",
+          "يَرْمِ"
+        ]
+      ],
+      "contexts": [
+        "verb_jussive",
+        "verb_imperative"
+      ]
+    },
+    {
+      "rule_id": "ilal_hazf_002",
+      "arabic_name": "حذف حرف العلة المتوسط الساكن",
+      "english_name": "Delete medial weak letter when vowelless",
+      "type": "إعلال_بالحذف",
+      "priority": 2,
+      "examples": [
+        [
+          "قَوْل",
+          "قَل"
+        ],
+        [
+          "سَيْر",
+          "سَر"
+        ]
+      ],
+      "contexts": [
+        "noun_construct",
+        "verbal_noun"
+      ]
+    },
+    {
+      "rule_id": "ilal_iskaan_001",
+      "arabic_name": "إسكان حرف العلة قبل التاء",
+      "english_name": "Silence weak letter before taa",
+      "type": "إعلال_بالإسكان",
+      "priority": 1,
+      "examples": [
+        [
+          "قَامَ",
+          "قُمْت"
+        ],
+        [
+          "نَامَ",
+          "نُمْت"
+        ]
+      ],
+      "contexts": [
+        "verb_past_second_person",
+        "verb_past_first_person"
+      ]
+    },
+    {
+      "rule_id": "ilal_naql_001",
+      "arabic_name": "نقل حركة حرف العلة للحرف السابق",
+      "english_name": "Transfer vowel from weak letter to preceding consonant",
+      "type": "إعلال_بالنقل",
+      "priority": 3,
+      "examples": [
+        [
+          "وَجَدَ",
+          "وُجِدَ"
+        ]
+      ],
+      "contexts": [
+        "verb_passive",
+        "derived_form"
+      ]
+    },
+    {
+      "rule_id": "ibdal_hamza_001",
+      "arabic_name": "إبدال الهمزة ألفاً في أول الكلمة",
+      "english_name": "Hamza to Alif word-initially",
+      "type": "إبدال_الحروف",
+      "priority": 1,
+      "examples": [
+        [
+          "ءَكَلَ",
+          "اَكَلَ"
+        ]
+      ],
+      "contexts": [
+        "noun_definite",
+        "verb_imperative"
+      ]
+    },
+    {
+      "rule_id": "ibdal_hamza_002",
+      "arabic_name": "إبدال الهمزة واواً بعد ضمة",
+      "english_name": "Hamza to Waw after damma",
+      "type": "إبدال_الحروف",
+      "priority": 1,
+      "examples": [
+        [
+          "سُؤال",
+          "سُوال"
+        ]
+      ],
+      "contexts": []
+    },
+    {
+      "rule_id": "ibdal_hamza_003",
+      "arabic_name": "إبدال الهمزة ياء بعد كسرة",
+      "english_name": "Hamza to Yaa after kasra",
+      "type": "إبدال_الحروف",
+      "priority": 1,
+      "examples": [
+        [
+          "مِءَة",
+          "مِيَة"
+        ]
+      ],
+      "contexts": []
+    },
+    {
+      "rule_id": "ibdal_cons_001",
+      "arabic_name": "إبدال الدال تاء في افتعل",
+      "english_name": "Dal to Taa in Form VIII",
+      "type": "إبدال_الحروف",
+      "priority": 1,
+      "examples": [
+        [
+          "ادتعل",
+          "اتتعل"
+        ]
+      ],
+      "contexts": [
+        "verb_form_viii"
+      ]
+    },
+    {
+      "rule_id": "ibdal_cons_002",
+      "arabic_name": "إبدال الزاي سيناً قبل التاء",
+      "english_name": "Zaay to Seen before Taa",
+      "type": "إبدال_الحروف",
+      "priority": 1,
+      "examples": [
+        [
+          "ازتعل",
+          "استعل"
+        ]
+      ],
+      "contexts": [
+        "verb_form_viii"
+      ]
+    },
+    {
+      "rule_id": "ibdal_liquid_001",
+      "arabic_name": "إبدال اللام نوناً في بعض السياقات",
+      "english_name": "Lam to Noon in certain contexts",
+      "type": "إبدال_الحروف",
+      "priority": 2,
+      "examples": [
+        [
+          "منْل",
+          "منْن"
+        ]
+      ],
+      "contexts": [
+        "assimilation_context"
+      ]
+    },
+    {
+      "rule_id": "gemination_001",
+      "arabic_name": "إدغام الحروف المتماثلة",
+      "english_name": "Assimilation of identical consonants",
+      "type": "تشديد",
+      "priority": 1,
+      "examples": [
+        [
+          "مدْد",
+          "مدّ"
+        ],
+        [
+          "قطْط",
+          "قطّ"
+        ]
+      ],
+      "contexts": []
+    },
+    {
+      "rule_id": "assim_001",
+      "arabic_name": "إدغام النون قبل الشفوية",
+      "english_name": "Noon assimilation before labials",
+      "type": "إبدال_بالإدغام",
+      "priority": 1,
+      "examples": [
+        [
+          "منْب",
+          "مبّ"
+        ],
+        [
+          "منْم",
+          "ممّ"
+        ]
+      ],
+      "contexts": []
+    },
+    {
+      "rule_id": "deletion_001",
+      "arabic_name": "حذف الحركة القصيرة قبل السابقة المتحركة",
+      "english_name": "Delete short vowel before vowel-initial suffix",
+      "type": "حذف",
+      "priority": 2,
+      "examples": [
+        [
+          "كتبَا",
+          "كتبا"
+        ]
+      ],
+      "contexts": [
+        "suffix_attachment"
+      ]
+    },
+    {
+      "rule_id": "epenthesis_001",
+      "arabic_name": "زيادة حركة لكسر التجمع المحظور",
+      "english_name": "Insert vowel to break forbidden cluster",
+      "type": "زيادة",
+      "priority": 3,
+      "examples": [
+        [
+          "كتبْسْم",
+          "كتبْسِم"
+        ]
+      ],
+      "contexts": [
+        "cluster_breaking"
+      ]
+    }
+  ]
+}

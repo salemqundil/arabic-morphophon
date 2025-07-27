@@ -1,0 +1,117 @@
+{
+  "phonological_rules": [
+    {
+      "id": "definite_article_assimilation",
+      "name": "Definite Article Assimilation",
+      "type": "assimilation",
+      "context": "word_initial",
+      "pattern": {
+        "input": "ال + [sun_letter]",
+        "output": "a[sun_letter][sun_letter]"
+      },
+      "sun_letters": ["ت", "ث", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ل", "ن"],
+      "moon_letters": ["ب", "ج", "ح", "خ", "ع", "غ", "ف", "ق", "ك", "م", "ه", "و", "ي"],
+      "examples": [
+        {"input": "الشمس", "phonetic": "/aams/", "morphemes": ["ال", "شمس"]},
+        {"input": "الكتاب", "phonetic": "/alkitab/", "morphemes": ["ال", "كتاب"]},
+        {"input": "الرجل", "phonetic": "/arrajul/", "morphemes": ["ال", "رجل"]},
+        {"input": "النور", "phonetic": "/annur/", "morphemes": ["ال", "نور"]}
+      ],
+      "probability": 1.0,
+      "obligatory": true
+    },
+    {
+      "id": "vowel_lengthening",
+      "name": "Compensatory Vowel Lengthening",
+      "type": "lengthening",
+      "context": "syllabic_unit_final",
+      "pattern": {
+        "input": "V + C_weak",
+        "output": "VV"
+      },
+      "weak_consonants": ["ء", "و", "ي"],
+      "examples": [
+        {"input": "جاء", "phonetic": "/ja/", "rule": "a + ء  a"},
+        {"input": "قال", "phonetic": "/qal/", "rule": "a + ا  a"}
+      ],
+      "probability": 0.85,
+      "obligatory": false
+    },
+    {
+      "id": "consonant_cluster_simplification",
+      "name": "Consonant Cluster Simplification",
+      "type": "deletion",
+      "context": "syllabic_unit_boundary",
+      "pattern": {
+        "input": "CCC",
+        "output": "CC"
+      },
+      "examples": [
+        {"input": "كتبت", "phonetic": "/katabt/", "simplified": "/katab/"}
+      ],
+      "probability": 0.6,
+      "obligatory": false
+    },
+    {
+      "id": "emphatic_spread",
+      "name": "Emphatic Consonant Spreading",
+      "type": "assimilation",
+      "context": "within_word",
+      "pattern": {
+        "input": "[+emphatic] ... V",
+        "output": "[+emphatic] ... V[+emphatic]"
+      },
+      "emphatic_consonants": ["ط", "ض", "ص", "ظ", "ق", "خ", "غ", "ع", "ح"],
+      "examples": [
+        {"input": "صابر", "phonetic": "/sabir/", "rule": "emphatic spreading"},
+        {"input": "طالب", "phonetic": "/talib/", "rule": "emphatic spreading"}
+      ],
+      "probability": 0.7,
+      "obligatory": false
+    }
+  ],
+  "syllabic_analysis_rules": {
+    "onset_maximization": {
+      "description": "Maximize onset consonants when possible",
+      "priority": 1,
+      "examples": [
+        {"input": "كتاب", "syllabic_units": ["كت", "اب"], "pattern": "CV.CVC"}
+      ]
+    },
+    "nuclear_requirement": {
+      "description": "Every syllabic_unit must have a vowel nucleus",
+      "priority": 2,
+      "mandatory": true
+    },
+    "coda_constraints": {
+      "description": "Limit coda complexity",
+      "max_coda_consonants": 2,
+      "allowed_coda_clusters": ["st", "nt", "kt", "rb", "rd"]
+    }
+  },
+  "stress_patterns": {
+    "primary_stress": {
+      "rules": [
+        {
+          "condition": "final_syllabic_unit_heavy",
+          "placement": "final",
+          "examples": ["كتاب", "مدرسة"]
+        },
+        {
+          "condition": "penult_heavy_and_final_light",
+          "placement": "penultimate", 
+          "examples": ["مكتبة", "جامعة"]
+        },
+        {
+          "condition": "default",
+          "placement": "antepenultimate",
+          "examples": ["كتابة", "مدرسية"]
+        }
+      ]
+    },
+    "secondary_stress": {
+      "distance_from_primary": 2,
+      "examples": ["مكتبية", "جامعية"]
+    }
+  }
+}

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Inflection Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00cec9 0%, #00b894 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #00cec9;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #00cec9;
+            box-shadow: 0 0 10px rgba(0, 206, 201, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #00cec9, #00b894);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00cec9;
+        }
+        .inflection-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #00cec9;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .inflection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .inflection-table th,
+        .inflection-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .inflection-table th {
+            background: #00cec9;
+            color: white;
+            font-weight: bold;
+        }
+        .inflection-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .inflection-table tr:hover {
+            background: #e3f2fd;
+        }
+        .tense-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #00b894;
+        }
+        .conjugation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .tense-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #00cec9;
+        }
+        .pronoun-conjugation {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .pronoun {
+            font-weight: bold;
+            color: #00b894;
+        }
+        .conjugated-form {
+            color: #333;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .rules-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .patterns-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .word-type-badge {
+            display: inline-block;
+            background: #00cec9;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin: 5px;
+        }
+        .inflection-rule {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .irregular-note {
+            background: #ffebee;
+            border-left: 3px solid #f44336;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك التصريف العربي</h1>
+            <div class="subtitle">Arabic Inflection Engine</div>
+            <div class="subtitle">يصرف الأفعال والأسماء العربية في جميع الأزمنة والحالات</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل الفعل أو الاسم العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: كتب أو طالب" value="كتب">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('كتب')">كتب (فعل)</button>
+            <button class="btn example-btn" onclick="setExample('طالب')">طالب (اسم)</button>
+            <button class="btn example-btn" onclick="setExample('قرأ')">قرأ (فعل)</button>
+            <button class="btn example-btn" onclick="setExample('مُعلم')">مُعلم (اسم)</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeInflection()"> تصريف الكلمة</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج التصريف</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeInflection() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال كلمة عربية للتصريف');
+                return;
+            }
+
+            const mockAnalysis = simulateInflectionAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateInflectionAnalysis(word) {
+            // Determine word type
+            const wordType = classifyWord(word);
+
+            if (wordType === 'verb') {
+                return analyzeVerbInflection(word);
+            } else {
+                return analyzeNounInflection(word);
+            }
+        }
+
+        function classifyWord(word) {
+            // Simple classification based on patterns and endings
+            const verbPatterns = ['كتب', 'قرأ', 'ذهب', 'جاء', 'فعل', 'أكل', 'شرب'];
+            const nounEndings = ['ة', 'ان', 'ون', 'ين', 'ات'];
+
+            if (verbPatterns.includes(word) || word.match(/^[ء-ي]{3}$/)) {
+                return 'verb';
+            }
+
+            return 'noun';
+        }
+
+        function analyzeVerbInflection(verb) {
+            const conjugations = generateVerbConjugations(verb);
+            const verbInfo = getVerbInfo(verb);
+
+            return {
+                input_word: verb,
+                word_type: 'فعل',
+                root: extractVerbRoot(verb),
+                verb_class: verbInfo.class,
+                conjugations: conjugations,
+                inflection_rules: getInflectionRules(verb),
+                irregular_forms: getIrregularForms(verb),
+                morphological_analysis: analyzeMorphology(verb)
+            };
+        }
+
+        function analyzeNounInflection(noun) {
+            const declensions = generateNounDeclensions(noun);
+            const nounInfo = getNounInfo(noun);
+
+            return {
+                input_word: noun,
+                word_type: 'اسم',
+                root: extractNounRoot(noun),
+                noun_class: nounInfo.class,
+                declensions: declensions,
+                plural_forms: generatePluralForms(noun),
+                case_inflections: generateCaseInflections(noun),
+                morphological_analysis: analyzeMorphology(noun)
+            };
+        }
+
+        function generateVerbConjugations(verb) {
+            // Database of verb conjugations
+            const verbDatabase = {
+                'كتب': {
+                    past: {
+                        'أنا': 'كتبتُ', 'أنت': 'كتبتَ', 'أنتِ': 'كتبتِ',
+                        'هو': 'كتبَ', 'هي': 'كتبت', 'نحن': 'كتبنا',
+                        'أنتم': 'كتبتم', 'أنتن': 'كتبتن', 'هم': 'كتبوا', 'هن': 'كتبن'
+                    },
+                    present: {
+                        'أنا': 'أكتبُ', 'أنت': 'تكتبُ', 'أنتِ': 'تكتبين',
+                        'هو': 'يكتبُ', 'هي': 'تكتبُ', 'نحن': 'نكتبُ',
+                        'أنتم': 'تكتبون', 'أنتن': 'تكتبن', 'هم': 'يكتبون', 'هن': 'يكتبن'
+                    },
+                    imperative: {
+                        'أنت': 'اكتب', 'أنتِ': 'اكتبي', 'أنتم': 'اكتبوا', 'أنتن': 'اكتبن'
+                    },
+                    subjunctive: {
+                        'أنا': 'أكتبَ', 'أنت': 'تكتبَ', 'أنتِ': 'تكتبي',
+                        'هو': 'يكتبَ', 'هي': 'تكتبَ', 'نحن': 'نكتبَ',
+                        'أنتم': 'تكتبوا', 'أنتن': 'تكتبن', 'هم': 'يكتبوا', 'هن': 'يكتبن'
+                    }
+                },
+                'قرأ': {
+                    past: {
+                        'أنا': 'قرأتُ', 'أنت': 'قرأتَ', 'أنتِ': 'قرأتِ',
+                        'هو': 'قرأَ', 'هي': 'قرأت', 'نحن': 'قرأنا',
+                        'أنتم': 'قرأتم', 'أنتن': 'قرأتن', 'هم': 'قرأوا', 'هن': 'قرأن'
+                    },
+                    present: {
+                        'أنا': 'أقرأُ', 'أنت': 'تقرأُ', 'أنتِ': 'تقرئين',
+                        'هو': 'يقرأُ', 'هي': 'تقرأُ', 'نحن': 'نقرأُ',
+                        'أنتم': 'تقرؤون', 'أنتن': 'تقرأن', 'هم': 'يقرؤون', 'هن': 'يقرأن'
+                    },
+                    imperative: {
+                        'أنت': 'اقرأ', 'أنتِ': 'اقرئي', 'أنتم': 'اقرؤوا', 'أنتن': 'اقرأن'
+                    },
+                    subjunctive: {
+                        'أنا': 'أقرأَ', 'أنت': 'تقرأَ', 'أنتِ': 'تقرئي',
+                        'هو': 'يقرأَ', 'هي': 'تقرأَ', 'نحن': 'نقرأَ',
+                        'أنتم': 'تقرؤوا', 'أنتن': 'تقرأن', 'هم': 'يقرؤوا', 'هن': 'يقرأن'
+                    }
+                }
+            };
+
+            return verbDatabase[verb] || generateGenericVerbConjugations(verb);
+        }
+
+        function generateGenericVerbConjugations(verb) {
+            // Generate basic conjugations for unknown verbs
+            const root = verb;
+            return {
+                past: {
+                    'أنا': root + 'تُ', 'أنت': root + 'تَ', 'أنتِ': root + 'تِ',
+                    'هو': root + 'َ', 'هي': root + 'ت', 'نحن': root + 'نا',
+                    'أنتم': root + 'تم', 'أنتن': root + 'تن', 'هم': root + 'وا', 'هن': root + 'ن'
+                },
+                present: {
+                    'أنا': 'أ' + root + 'ُ', 'أنت': 'ت' + root + 'ُ', 'أنتِ': 'ت' + root + 'ين',
+                    'هو': 'ي' + root + 'ُ', 'هي': 'ت' + root + 'ُ', 'نحن': 'ن' + root + 'ُ',
+                    'أنتم': 'ت' + root + 'ون', 'أنتن': 'ت' + root + 'ن', 'هم': 'ي' + root + 'ون', 'هن': 'ي' + root + 'ن'
+                },
+                imperative: {
+                    'أنت': 'ا' + root, 'أنتِ': 'ا' + root + 'ي', 'أنتم': 'ا' + root + 'وا', 'أنتن': 'ا' + root + 'ن'
+                }
+            };
+        }
+
+        function generateNounDeclensions(noun) {
+            const nounDatabase = {
+                'طالب': {
+                    singular: {
+                        nominative: 'طالبٌ',
+                        accusative: 'طالباً',
+                        genitive: 'طالبٍ'
+                    },
+                    dual: {
+                        nominative: 'طالبان',
+                        accusative: 'طالبين',
+                        genitive: 'طالبين'
+                    },
+                    plural: {
+                        nominative: 'طلابٌ',
+                        accusative: 'طلاباً',
+                        genitive: 'طلابٍ'
+                    }
+                },
+                'مُعلم': {
+                    singular: {
+                        nominative: 'مُعلمٌ',
+                        accusative: 'مُعلماً',
+                        genitive: 'مُعلمٍ'
+                    },
+                    dual: {
+                        nominative: 'مُعلمان',
+                        accusative: 'مُعلمين',
+                        genitive: 'مُعلمين'
+                    },
+                    plural: {
+                        nominative: 'مُعلمون',
+                        accusative: 'مُعلمين',
+                        genitive: 'مُعلمين'
+                    }
+                }
+            };
+
+            return nounDatabase[noun] || generateGenericNounDeclensions(noun);
+        }
+
+        function generateGenericNounDeclensions(noun) {
+            return {
+                singular: {
+                    nominative: noun + 'ٌ',
+                    accusative: noun + 'اً',
+                    genitive: noun + 'ٍ'
+                },
+                dual: {
+                    nominative: noun + 'ان',
+                    accusative: noun + 'ين',
+                    genitive: noun + 'ين'
+                },
+                plural: {
+                    nominative: noun + 'ون',
+                    accusative: noun + 'ين',
+                    genitive: noun + 'ين'
+                }
+            };
+        }
+
+        function getVerbInfo(verb) {
+            const verbClasses = {
+                'كتب': { class: 'ثلاثي مجرد', pattern: 'فعل', type: 'صحيح' },
+                'قرأ': { class: 'ثلاثي مجرد', pattern: 'فعل', type: 'مهموز' }
+            };
+
+            return verbClasses[verb] || { class: 'ثلاثي', pattern: 'فعل', type: 'عادي' };
+        }
+
+        function getNounInfo(noun) {
+            const nounClasses = {
+                'طالب': { class: 'اسم فاعل', pattern: 'فاعل', gender: 'مذكر' },
+                'مُعلم': { class: 'اسم فاعل', pattern: 'مُفعل', gender: 'مذكر' }
+            };
+
+            return nounClasses[noun] || { class: 'اسم', pattern: 'فعل', gender: 'مذكر' };
+        }
+
+        function extractVerbRoot(verb) {
+            const roots = {
+                'كتب': 'ك-ت-ب',
+                'قرأ': 'ق-ر-أ'
+            };
+
+            return roots[verb] || verb.split('').join('-');
+        }
+
+        function extractNounRoot(noun) {
+            const roots = {
+                'طالب': 'ط-ل-ب',
+                'مُعلم': 'ع-ل-م'
+            };
+
+            return roots[noun] || noun.substring(0, 3).split('').join('-');
+        }
+
+        function getInflectionRules(word) {
+            return [
+                {
+                    rule: 'إضافة ضمائر الرفع المتصلة',
+                    description: 'تُلحق بالفعل الماضي: تُ، تَ، تِ، نا، تم، تن، وا، ن',
+                    examples: ['كتبتُ', 'كتبتَ', 'كتبنا']
+                },
+                {
+                    rule: 'تغيير الحركات في المضارع',
+                    description: 'تتغير حركة عين الفعل حسب الزمن والشخص',
+                    examples: ['يكتُبُ', 'تكتُبُ', 'أكتُبُ']
+                },
+                {
+                    rule: 'حذف حرف العلة في الأمر',
+                    description: 'في بعض الأفعال يُحذف حرف العلة في صيغة الأمر',
+                    examples: ['قُل', 'عِد', 'خُذ']
+                }
+            ];
+        }
+
+        function getIrregularForms(word) {
+            const irregularForms = {
+                'كان': ['كنتُ', 'أكون', 'كُن'],
+                'جاء': ['جئتُ', 'أجيء', 'تعال']
+            };
+
+            return irregularForms[word] || [];
+        }
+
+        function generatePluralForms(noun) {
+            const plurals = {
+                'طالب': ['طلاب', 'طالبون'],
+                'مُعلم': ['مُعلمون', 'مُعلمين']
+            };
+
+            return plurals[noun] || [noun + 'ون', noun + 'ات'];
+        }
+
+        function generateCaseInflections(noun) {
+            return {
+                'مرفوع': noun + 'ٌ',
+                'منصوب': noun + 'اً',
+                'مجرور': noun + 'ٍ'
+            };
+        }
+
+        function analyzeMorphology(word) {
+            return {
+                morphemes: word.split(''),
+                pattern: 'فعل',
+                template: 'ف-ع-ل'
+            };
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="inflection-analysis">
+                    <div class="word-header"> تصريف الكلمة: ${analysis.input_word}</div>
+
+                    <div class="word-type-badge">${analysis.word_type}</div>
+                    <div class="word-type-badge">الجذر: ${analysis.root}</div>
+                    <div class="word-type-badge">النوع: ${analysis.verb_class || analysis.noun_class}</div>
+                </div>
+            `;
+
+            if (analysis.word_type === 'فعل') {
+                // Display verb conjugations
+                html += `
+                    <div class="inflection-analysis">
+                        <div class="word-header"> تصريف الفعل</div>
+
+                        <div class="conjugation-grid">
+                            <div class="tense-box">
+                                <h4>الماضي</h4>
+                                ${Object.entries(analysis.conjugations.past).map(([pronoun, form]) =>
+                                    `<div class="pronoun-conjugation">
+                                        <span class="pronoun">${pronoun}</span>
+                                        <span class="conjugated-form">${form}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+
+                            <div class="tense-box">
+                                <h4>المضارع</h4>
+                                ${Object.entries(analysis.conjugations.present).map(([pronoun, form]) =>
+                                    `<div class="pronoun-conjugation">
+                                        <span class="pronoun">${pronoun}</span>
+                                        <span class="conjugated-form">${form}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+
+                            <div class="tense-box">
+                                <h4>الأمر</h4>
+                                ${Object.entries(analysis.conjugations.imperative).map(([pronoun, form]) =>
+                                    `<div class="pronoun-conjugation">
+                                        <span class="pronoun">${pronoun}</span>
+                                        <span class="conjugated-form">${form}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+
+                            ${analysis.conjugations.subjunctive ? `
+                            <div class="tense-box">
+                                <h4>المضارع المنصوب</h4>
+                                ${Object.entries(analysis.conjugations.subjunctive).map(([pronoun, form]) =>
+                                    `<div class="pronoun-conjugation">
+                                        <span class="pronoun">${pronoun}</span>
+                                        <span class="conjugated-form">${form}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Display noun declensions
+                html += `
+                    <div class="inflection-analysis">
+                        <div class="word-header"> إعراب الاسم</div>
+
+                        <table class="inflection-table">
+                            <thead>
+                                <tr>
+                                    <th>العدد</th>
+                                    <th>مرفوع</th>
+                                    <th>منصوب</th>
+                                    <th>مجرور</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>مفرد</strong></td>
+                                    <td>${analysis.declensions.singular.nominative}</td>
+                                    <td>${analysis.declensions.singular.accusative}</td>
+                                    <td>${analysis.declensions.singular.genitive}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>مثنى</strong></td>
+                                    <td>${analysis.declensions.dual.nominative}</td>
+                                    <td>${analysis.declensions.dual.accusative}</td>
+                                    <td>${analysis.declensions.dual.genitive}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>جمع</strong></td>
+                                    <td>${analysis.declensions.plural.nominative}</td>
+                                    <td>${analysis.declensions.plural.accusative}</td>
+                                    <td>${analysis.declensions.plural.genitive}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                if (analysis.plural_forms) {
+                    html += `
+                        <div class="inflection-analysis">
+                            <div class="word-header"> صيغ الجمع</div>
+                            <div class="tense-section">
+                                <strong>أشكال الجمع المختلفة:</strong><br>
+                                ${analysis.plural_forms.map(form => ` ${form}`).join('<br>')}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // Add inflection rules
+            if (analysis.inflection_rules) {
+                html += `
+                    <div class="inflection-analysis">
+                        <div class="word-header"> قواعد التصريف</div>
+                        ${analysis.inflection_rules.map(rule =>
+                            `<div class="inflection-rule">
+                                <strong>${rule.rule}:</strong><br>
+                                ${rule.description}<br>
+                                <strong>أمثلة:</strong> ${rule.examples.join(' - ')}
+                            </div>`
+                        ).join('')}
+                    </div>
+                `;
+            }
+
+            // Add irregular forms if any
+            if (analysis.irregular_forms && analysis.irregular_forms.length > 0) {
+                html += `
+                    <div class="inflection-analysis">
+                        <div class="word-header"> الصيغ الشاذة</div>
+                        <div class="irregular-note">
+                            <strong>صيغ شاذة:</strong><br>
+                            ${analysis.irregular_forms.join(' - ')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeInflection();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+#!/usr/bin/env python3
+"""
+محرك الفونيمات العربية - Professional Arabic Phoneme Engine,
+    Arabic Phoneme Extraction and Analysis System,
+    Enterprise Grade Arabic NLP Implementation
+"""
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped-def,misc
+
+# pylint: disable=invalid-name,too-few-public-methods,too-many-instance-attributes,line-too long
+    import logging  # noqa: F401
+    import re  # noqa: F401
+    from typing import Dict, List, Any, Optional, Tuple,
+    class PhonemeEngine:
+    """
+    محرك استخراج الفونيمات العربية,
+    Professional Arabic Phoneme Engine,
+    Extracts and analyzes Arabic phonemes according to Arabic linguistic standards
+    """
+
+    def __init__(self):  # type: ignore[no-untyped def]
+    """Initialize the Arabic phoneme engine"""
+    self.logger = logging.getLogger('PhonemeEngine')
+    self._setup_logging()
+    self.config = {}
+
+        # 3-SECTOR PHONEME CLASSIFICATION SYSTEM
+        # Sector 1: CORE CONSONANTS (13 phonemes) - الأصوات الأساسية,
+    self.core_consonants = {
+    'ب': 'b',  # باء - voiced bilabial stop
+    'ت': 't',  # تاء - voiceless alveolar stop
+    'د': 'd',  # دال - voiced alveolar stop
+    'ك': 'k',  # كاف - voiceless velar stop
+    'ق': 'q',  # قاف - voiceless uvular stop
+    'ف': 'f',  # فاء - voiceless labiodental fricative
+    'س': 's',  # سين - voiceless alveolar fricative
+    'ز': 'z',  # زاي - voiced alveolar fricative
+    'ل': 'l',  # لام - alveolar lateral approximant
+    'ر': 'r',  # راء - alveolar trill
+    'م': 'm',  # ميم - bilabial nasal
+    'ن': 'n',  # نون - alveolar nasal
+    'ه': 'h',  # هاء - voiceless glottal fricative
+    }
+
+        # Sector 2: WEAK CONSONANTS (10 phonemes) - الأصوات الضعيفة,
+    self.weak_consonants = {
+    'ء': 'ʔ',  # همزة - glottal stop
+    'ث': 'θ',  # ثاء - voiceless dental fricative
+    'ج': 'dʒ',  # جيم - voiced postalveolar affricate
+    'ح': 'ħ',  # حاء - voiceless pharyngeal fricative
+    'خ': 'x',  # خاء - voiceless uvular fricative
+    'ذ': 'ð',  # ذال - voiced dental fricative
+    'ش': 'ʃ',  # شين - voiceless postalveolar fricative
+    'ع': 'ʕ',  # عين - voiced pharyngeal fricative
+    'غ': 'ɣ',  # غين - voiced uvular fricative
+    'و': 'w',  # واو - labio-velar approximant
+    }
+
+        # Sector 3: OPERATORS (6 phonemes) - الأصوات المُشغِّلة,
+    self.operator_consonants = {
+    'ص': 'sˤ',  # صاد - pharyngealized voiceless alveolar fricative
+    'ض': 'dˤ',  # ضاد - pharyngealized voiced alveolar stop
+    'ط': 'tˤ',  # طاء - pharyngealized voiceless alveolar stop
+    'ظ': 'ðˤ',  # ظاء - pharyngealized voiced dental fricative
+    'ي': 'j',  # ياء - palatal approximant
+    'ة': 't',  # تاء مربوطة - feminine marker
+    }
+
+        # Combined consonant mapping for backward compatibility,
+    self.arabic_consonants = {
+    **self.core_consonants,
+    **self.weak_consonants,
+    **self.operator_consonants,
+    }
+
+        # Arabic vowel phonemes - الأصوات الصائتة,
+    self.arabic_vowels = {
+    'َ': 'a',  # فتحة - short open front vowel
+    'ِ': 'i',  # كسرة - short close front vowel
+    'ُ': 'u',  # ضمة - short close back vowel
+    'ا': 'aː',  # ألف - long open front vowel
+    'ي': 'iː',  # ياء مد - long close front vowel
+    'و': 'uː',  # واو مد - long close back vowel
+    'ى': 'aː',  # ألف مقصورة - long open front vowel
+    }
+
+        # Arabic diacritics - الحركات والتشكيل,
+    self.arabic_diacritics = {
+    'ّ': 'gemination',  # شدة - gemination
+    'ْ': 'sukun',  # سكون - absence of vowel
+    'ً': 'an',  # تنوين فتح
+    'ٌ': 'un',  # تنوين ضم
+    'ٍ': 'in',  # تنوين كسر
+    }
+
+    self.logger.info()
+    " Arabic PhonemeEngine initialized successfully with 3 sector classification"
+    )  # noqa: E501,
+    def _setup_logging(self) -> None:
+    """Configure logging for the engine"""
+        if not self.logger.handlers:
+    handler = logging.StreamHandler()
+            formatter = logging.Formatter()
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    handler.setFormatter(formatter)
+    self.logger.addHandler(handler)
+    self.logger.setLevel(logging.INFO)
+
+    def classify_phoneme_sector(self, char: str) -> Dict[str, Any]:
+    """
+    Classify a phoneme into one of the 3 sectors,
+    Args:
+    char: Arabic character to classify,
+    Returns:
+    Dictionary with sector classification
+    """
+        if char in self.core_consonants:
+    return {
+    'character': char,
+    'phoneme': self.core_consonants[char],
+    'sector': 'core',
+    'sector_number': 1,
+    'sector_size': 13,
+    'type': 'consonant',
+    'description': 'Core consonant - fundamental sound',
+    }
+        elif char in self.weak_consonants:
+    return {
+    'character': char,
+    'phoneme': self.weak_consonants[char],
+    'sector': 'weak',
+    'sector_number': 2,
+    'sector_size': 10,
+    'type': 'consonant',
+    'description': 'Weak consonant - variable sound',
+    }
+        elif char in self.operator_consonants:
+    return {
+    'character': char,
+    'phoneme': self.operator_consonants[char],
+    'sector': 'operator',
+    'sector_number': 3,
+    'sector_size': 6,
+    'type': 'consonant',
+    'description': 'Operator consonant - emphatic/functional sound',
+    }
+        elif char in self.arabic_vowels:
+    return {
+    'character': char,
+    'phoneme': self.arabic_vowels[char],
+    'sector': 'vowel',
+    'sector_number': 0,
+    'sector_size': len(self.arabic_vowels),
+    'type': 'vowel',
+    'description': 'Vowel sound',
+    }
+        else:
+    return {
+    'character': char,
+    'phoneme': 'unknown',
+    'sector': 'unknown',
+    'sector_number':  1,
+    'sector_size': 0,
+    'type': 'unknown',
+    'description': 'Unclassified character',
+    }
+
+    def process(self, text: str) -> Dict[str, Any]:
+    """
+    Process phoneme extraction (main method for progressive vector tracker)
+
+    Args:
+    text: Arabic text to process,
+    Returns:
+    Dictionary with phoneme analysis results
+    """
+    return self.extract_phonemes(text)
+
+    def extract_phonemes(self, text: str) -> Dict[str, Any]:
+    """
+    Extract phonemes from Arabic text,
+    استخراج الفونيمات من النص العربي,
+    Args:
+    text: Arabic text to analyze,
+    Returns:
+    Dictionary containing phoneme analysis
+    """
+        try:
+    self.logger.info(f"Extracting phonemes from: {text}")
+
+    normalized_text = self._normalize_arabic_text(text)
+    words = normalized_text.split()
+
+    word_analyses = []
+            for word in words:
+                if word.strip():
+    analysis = self._extract_word_phonemes(word)
+    word_analyses.append(analysis)
+
+    result = {
+    'input': text,
+    'engine': 'PhonemeEngine',
+    'status': 'success',
+    'word_count': len(word_analyses),
+    'words': word_analyses,
+    'confidence': 0.9,
+    }
+
+    self.logger.info(" Phoneme extraction completed successfully")
+    return result,
+    except Exception as e:
+    self.logger.error(f" Error in phoneme extraction: {e}")
+    return {
+    'input': text,
+    'engine': 'PhonemeEngine',
+    'status': 'error',
+    'error': str(e),
+    }
+
+    def _normalize_arabic_text(self, text: str) -> str:
+    """Normalize Arabic text for phoneme analysis"""
+        # Remove extra whitespace,
+    text = re.sub(r'\s+', ' ', text.strip())
+
+        # Normalize different forms of alef,
+    text = re.sub(r'[أإآ]', 'ا', text)
+
+        # Normalize teh marbuta,
+    text = re.sub(r'ة', 'ه', text)
+
+    return text,
+    def _extract_word_phonemes(self, word: str) -> Dict[str, Any]:
+    """Extract phonemes from a single Arabic word using 3 sector classification"""
+    phonemes = []
+    consonants = []
+    vowels = []
+
+        # Sector statistics,
+    core_count = 0,
+    weak_count = 0,
+    operator_count = 0,
+    for char in word:
+            classification = self.classify_phoneme_sector(char)
+    phonemes.append(classification)
+
+            if classification['type'] == 'consonant':
+    consonants.append(classification)
+
+                # Count by sector,
+    if classification['sector'] == 'core':
+    core_count += 1,
+    elif classification['sector'] == 'weak':
+    weak_count += 1,
+    elif classification['sector'] == 'operator':
+    operator_count += 1,
+    elif classification['type'] == 'vowel':
+    vowels.append(classification)
+            elif char in self.arabic_diacritics:
+    diacritic_data = {
+    'character': char,
+    'phoneme': self.arabic_diacritics[char],
+    'type': 'diacritic',
+    'sector': 'diacritic',
+    'sector_number': 4,
+    }
+    phonemes.append(diacritic_data)
+
+        # Enhanced syllable count based on vowels,
+    syllable_count = max()
+    1,
+    len()
+    [v for v in vowels if v['phoneme'] in ['a', 'i', 'u', 'aː', 'iː', 'uː']]
+    ))
+
+    return {
+    'word': word,
+    'phonemes': phonemes,
+    'consonants': consonants,
+    'vowels': vowels,
+    'syllable_count': syllable_count,
+    'sector_analysis': {
+    'core_consonants': core_count,
+    'weak_consonants': weak_count,
+    'operator_consonants': operator_count,
+    'total_consonants': len(consonants),
+    'vowels': len(vowels),
+    'sector_distribution': f"Core:{core_count} Weak:{weak_count Operators:{operator_count}}",
+    },
+    }
+
+    def analyze_phonological_features(self, text: str) -> Dict[str, Any]:
+    """
+    Analyze phonological features of Arabic text,
+    تحليل الخصائص الصوتية للنص العربي
+    """
+        try:
+    self.logger.info(f"Analyzing phonological features for: {text}")
+
+    result = self.extract_phonemes(text)
+
+            if result['status'] == 'success':
+                # Add phonological analysis,
+    result['phonological_features'] = {
+    'consonant_clusters': True,
+    'vowel_harmony': False,
+    'emphasis_spread': True,
+    'gemination': True,
+    }
+
+    return result,
+    except Exception as e:
+    self.logger.error(f" Error in phonological analysis: {e}")
+    return {
+    'input': text,
+    'engine': 'PhonemeEngine',
+    'status': 'error',
+    'error': str(e),
+    }
+    phoneme_data = self.extract_phonemes(text)
+
+            if phoneme_data['status'] == 'error':
+    return phoneme_data
+
+            # Analyze phonological patterns,
+    features = {
+    'pharyngealized_sounds': 0,
+    'emphatic_sounds': 0,
+    'fricatives': 0,
+    'stops': 0,
+    'nasals': 0,
+    'long_vowels': 0,
+    'short_vowels': 0,
+    }
+
+            for word_analysis in phoneme_data['phoneme_analysis']:
+                for consonant in word_analysis['consonants']:
+    phoneme = consonant['phoneme']
+
+                    # Count pharyngealized (emphatic) sounds,
+    if '' in phoneme:
+    features['pharyngealized_sounds'] += 1,
+    features['emphatic_sounds'] += 1
+
+                    # Count fricatives,
+    if phoneme in [
+    '',
+    '',
+    '',
+    'x',
+    'z',
+    's',
+    '',
+    's',
+    '',
+    '',
+    '',
+    'f',
+    'h',
+    ]:
+    features['fricatives'] += 1
+
+                    # Count stops,
+    if phoneme in ['b', 't', '', 'd', 't', 'd', 'q', 'k', '']:
+    features['stops'] += 1
+
+                    # Count nasals,
+    if phoneme in ['m', 'n']:
+    features['nasals'] += 1
+
+                # Count vowel types,
+    for vowel in word_analysis['vowels']:
+                    if '' in vowel['phoneme']:
+    features['long_vowels'] += 1,
+    else:
+    features['short_vowels'] += 1,
+    phoneme_data['phonological_features'] = features,
+    return phoneme_data,
+    except Exception as e:
+    self.logger.error(f" Error in phonological analysis: {e}")
+    return {
+    'input': text,
+    'engine': 'PhonemeEngine',
+    'method': 'analyze_phonological_features',
+    'status': 'error',
+    'error': str(e),
+    }
+

@@ -1,0 +1,330 @@
+{
+  "metadata": {
+    "analysis_date": "2025-07-24T18:18:27.771596",
+    "analyzer_version": "1.0.0",
+    "total_pronouns_analyzed": 25
+  },
+  "pattern_analysis": {
+    "total_patterns": 5,
+    "pattern_distribution": {
+      "CV-CV": {
+        "count": 10,
+        "percentage": 40.0,
+        "pronouns": [
+          "أنا",
+          "أنتِ",
+          "هو",
+          "هي",
+          "هما",
+          "ـني",
+          "ـنا",
+          "ـكما",
+          "ـها",
+          "ـهما"
+        ],
+        "complexity_score": 2.4000000000000004
+      },
+      "CV-CVC": {
+        "count": 4,
+        "percentage": 16.0,
+        "pronouns": [
+          "نحن",
+          "أنت",
+          "أنتم",
+          "أنتن"
+        ],
+        "complexity_score": 2.7
+      },
+      "CV-CV-CV": {
+        "count": 1,
+        "percentage": 4.0,
+        "pronouns": [
+          "أنتما"
+        ],
+        "complexity_score": 3.6000000000000005
+      },
+      "CVC": {
+        "count": 7,
+        "percentage": 28.000000000000004,
+        "pronouns": [
+          "هم",
+          "هن",
+          "ـك",
+          "ـكم",
+          "ـكن",
+          "ـهم",
+          "ـهن"
+        ],
+        "complexity_score": 1.5
+      },
+      "CV": {
+        "count": 3,
+        "percentage": 12.0,
+        "pronouns": [
+          "ـي",
+          "ـكِ",
+          "ـه"
+        ],
+        "complexity_score": 1.2
+      }
+    },
+    "most_common_pattern": "CV-CV",
+    "average_complexity": 2.2800000000000002
+  },
+  "linguistic_features": {
+    "person_distribution": {
+      "متكلم": 5,
+      "مخاطب": 10,
+      "غائب": 10
+    },
+    "number_distribution": {
+      "مفرد": 11,
+      "جمع": 10,
+      "مثنى": 4
+    },
+    "gender_distribution": {
+      "محايد": 9,
+      "مذكر": 8,
+      "مؤنث": 8
+    },
+    "type_distribution": {
+      "منفصل": 12,
+      "متصل": 13
+    },
+    "frequency_analysis": {
+      "mean_frequency": 0.7564,
+      "median_frequency": 0.85,
+      "std_frequency": 0.1851027822589385,
+      "high_frequency_pronouns": [
+        "أنا",
+        "نحن",
+        "أنت",
+        "أنتِ",
+        "هو",
+        "هي",
+        "ـني",
+        "ـي",
+        "ـنا",
+        "ـك",
+        "ـكِ",
+        "ـه",
+        "ـها"
+      ],
+      "low_frequency_pronouns": [
+        "أنتما",
+        "هما",
+        "ـكما",
+        "ـهما"
+      ]
+    }
+  },
+  "mapping_performance": {
+    "total_tests": 12,
+    "successful_mappings": 12,
+    "success_rate": 100.0,
+    "mapping_details": [
+      {
+        "input_syllables": [
+          "أَ",
+          "نَا"
+        ],
+        "pattern": "CV-CVV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "أنا",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "هُ",
+          "وَ"
+        ],
+        "pattern": "CV-CVV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "هو",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "هِ",
+          "يَ"
+        ],
+        "pattern": "CV-CVV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "هي",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "نَحْ",
+          "نُ"
+        ],
+        "pattern": "CVC-CV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "نحن",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "أَنْ",
+          "تَ"
+        ],
+        "pattern": "CV-CV",
+        "matches_found": 4,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "أنت",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "ـنِي"
+        ],
+        "pattern": "CVVC",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "ـني",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "ـهَا"
+        ],
+        "pattern": "CVV",
+        "matches_found": 2,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "ـها",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "ـكَ"
+        ],
+        "pattern": "CV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "ـك",
+        "similarity": 1.0
+      },
+      {
+        "input_syllables": [
+          "أَ",
+          "نَ"
+        ],
+        "pattern": "CV-CV",
+        "matches_found": 2,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "أنا",
+        "similarity": 0.8799999999999999
+      },
+      {
+        "input_syllables": [
+          "هُ",
+          "و"
+        ],
+        "pattern": "CV-CV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "هو",
+        "similarity": 0.8333333333333333
+      },
+      {
+        "input_syllables": [
+          "نَحُ",
+          "نُ"
+        ],
+        "pattern": "CVVC-CV",
+        "matches_found": 1,
+        "confidence": 1.0,
+        "success": true,
+        "best_match": "نحن",
+        "similarity": 0.9285714285714286
+      },
+      {
+        "input_syllables": [
+          "ـكُ"
+        ],
+        "pattern": "CV",
+        "matches_found": 1,
+        "confidence": 0.98,
+        "success": true,
+        "best_match": "ـكم",
+        "similarity": 0.84
+      }
+    ],
+    "average_confidence": 0.9983333333333334,
+    "average_similarity": 0.9568253968253968
+  },
+  "model_performance": {
+    "classification_accuracy": 89.5,
+    "precision_scores": {
+      "detached_pronouns": 92.3,
+      "attached_pronouns": 87.1
+    },
+    "recall_scores": {
+      "detached_pronouns": 90.8,
+      "attached_pronouns": 88.7
+    },
+    "f1_scores": {
+      "detached_pronouns": 91.5,
+      "attached_pronouns": 87.9
+    },
+    "confusion_matrix_summary": {
+      "most_confused_pairs": [
+        [
+          "هو",
+          "هم"
+        ],
+        [
+          "ـك",
+          "ـكم"
+        ],
+        [
+          "ـها",
+          "ـهما"
+        ]
+      ]
+    },
+    "processing_speed": {
+      "avg_inference_time_ms": 15.3,
+      "throughput_samples_per_second": 65.4
+    }
+  },
+  "overall_quality_score": {
+    "overall_score": 85.375,
+    "grade": "جيد جداً (A)",
+    "components": {
+      "pattern_diversity_score": 100.0,
+      "mapping_success_score": 100.0,
+      "model_accuracy_score": 89.5,
+      "frequency_coverage_score": 52.0
+    },
+    "recommendations": [
+      "إضافة ضمائر عالية التكرار مفقودة"
+    ]
+  },
+  "enhancement_info": {
+    "generator_version": "2.0.0 Enhanced",
+    "fuzzy_matching": true,
+    "phonetic_analysis": true,
+    "similarity_threshold": 0.7,
+    "improvements": [
+      "مطابقة ضبابية للمقاطع",
+      "تحليل صوتي متقدم",
+      "تطبيع المقاطع الذكي",
+      "حساب درجة التشابه المحسن"
+    ]
+  }
+}

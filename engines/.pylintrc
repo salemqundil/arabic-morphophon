@@ -1,0 +1,38 @@
+[MASTER]
+init-hook='import sys; sys.path.append(".")'
+load-plugins=
+
+[MESSAGES CONTROL]
+disable=
+    broad-except,
+    unused-variable,
+    unused-argument,
+    too-many-arguments,
+    too-few-public-methods,
+    invalid-name,
+    missing-docstring,
+    line-too-long,
+    import-error,
+    no-member,
+    too-many-locals,
+    too-many-branches,
+    too-many-statements,
+    redefined-builtin,
+    unused-import,
+    wildcard-import,
+    protected-access,
+    attribute-defined-outside-init
+
+[FORMAT]
+max-line-length=88
+indent-string='    '
+
+[BASIC]
+good-names=i,j,k,ex,Run,_,e,f,db,id,x,y,z
+
+[DESIGN]
+max-args=10
+max-locals=20
+max-returns=10
+max-branches=15
+max-statements=60

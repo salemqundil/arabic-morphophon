@@ -1,0 +1,77 @@
+[tool.black]
+line-length = 88
+target-version = ['py38']
+skip-string-normalization = true
+exclude = '''
+(
+    /(
+        \.git
+      | \.mypy_cache
+      | \.pytest_cache
+      | \.venv
+      | _build
+      | build
+      | dist
+      | archive
+      | experimental
+    )/
+  | arabic_.*_deep_model\.py
+  | .*_broken\.py
+  | fix_.*\.py
+  | ultimate_.*\.py
+  | surgical_.*\.py
+  | comprehensive_.*\.py
+  | winsurf_.*\.py
+  | complete_.*\.py
+  | harakat_engine\.py
+  | morphology_model\.py
+)
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+skip_glob = ["*/__pycache__/*"]
+
+[tool.pylint.messages_control]
+disable = [
+    "broad-except",
+    "unused-variable",
+    "unused-argument",
+    "too-many-arguments",
+    "too-few-public-methods",
+    "invalid-name",
+    "missing-docstring",
+    "line-too-long",
+    "import-error",
+    "no-member",
+    "too-many-locals",
+    "too-many-branches",
+    "redefined-builtin"
+]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = false
+warn_unused_configs = false
+ignore_missing_imports = true
+disable_error_code = ["no-untyped-def", "misc", "override"]
+
+[tool.coverage.run]
+omit = ["*/__pycache__/*", "*/test_*", "*/.venv/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow running tests",
+    "arabic: Arabic language specific tests",
+    "phoneme: Phoneme processing tests",
+    "morphology: Morphology processing tests",
+    "syllable: Syllable processing tests"
+]

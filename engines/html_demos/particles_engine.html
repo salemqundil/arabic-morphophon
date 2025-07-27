@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Particles Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e17055;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #e17055;
+            box-shadow: 0 0 10px rgba(225, 112, 85, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #e17055, #d63031);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #e17055;
+        }
+        .particle-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #e17055;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .particle-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .particle {
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 3px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .particle:hover {
+            transform: scale(1.05);
+        }
+        .modal-particle { background: #3498db; color: white; }
+        .focal-particle { background: #e74c3c; color: white; }
+        .discourse-particle { background: #9b59b6; color: white; }
+        .intensifier-particle { background: #f39c12; color: white; }
+        .limiter-particle { background: #1abc9c; color: white; }
+        .exceptive-particle { background: #34495e; color: white; }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .function-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .usage-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .examples-box {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+        .semantic-effect {
+            background: #f8f9fa;
+            border: 2px dashed #e17055;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .particle-context {
+            background: #e9ecef;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 3px solid #e17055;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك أدوات المعنى</h1>
+            <div class="subtitle">Arabic Particles Engine</div>
+            <div class="subtitle">يحلل أدوات المعنى والحصر والتوكيد في النص العربي</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل النص العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: إنما العلم نور وإن الجهل ظلام" value="إنما العلم نور وإن الجهل ظلام">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('إنما العلم نور وإن الجهل ظلام')">إنما وإن</button>
+            <button class="btn example-btn" onclick="setExample('ما زال الطالب يدرس حتى نجح')">ما زال وحتى</button>
+            <button class="btn example-btn" onclick="setExample('لعل الغائب يأتي قريباً')">لعل</button>
+            <button class="btn example-btn" onclick="setExample('ليت الشباب يعود يوماً')">ليت</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeParticles()"> تحليل الأدوات</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color modal-particle"></div>
+                <span>أدوات مشبهة بالفعل</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color focal-particle"></div>
+                <span>أدوات الحصر</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color discourse-particle"></div>
+                <span>أدوات الخطاب</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color intensifier-particle"></div>
+                <span>أدوات التوكيد</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color limiter-particle"></div>
+                <span>أدوات التحديد</span>
+            </div>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج تحليل أدوات المعنى</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeParticles() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال نص عربي للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateParticleAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateParticleAnalysis(text) {
+            // Database of Arabic particles with semantic effects
+            const particleDatabase = {
+                'إنما': {
+                    type: 'focal-particle',
+                    function: 'أداة حصر وقصر',
+                    semantic_effect: 'الحصر والقصر - تفيد أن الحكم مقصور على ما بعدها',
+                    meaning: 'الحصر والتخصيص',
+                    structure: 'إن + ما الكافة',
+                    examples: ['إنما الصبر عند الصدمة الأولى', 'إنما العلم بالتعلم'],
+                    grammatical_rule: 'تكف "ما" عمل "إن" فلا تنصب الخبر'
+                },
+                'إن': {
+                    type: 'modal-particle',
+                    function: 'حرف توكيد ونصب',
+                    semantic_effect: 'التأكيد - تؤكد مضمون الجملة',
+                    meaning: 'التأكيد والتوكيد',
+                    structure: 'حرف ناسخ',
+                    examples: ['إن الله غفور رحيم', 'إن العلم نور'],
+                    grammatical_rule: 'تنصب المبتدأ وترفع الخبر'
+                },
+                'لعل': {
+                    type: 'modal-particle',
+                    function: 'حرف ترجي ونصب',
+                    semantic_effect: 'الترجي والتوقع - تفيد التوقع المرغوب فيه',
+                    meaning: 'الترجي والرجاء',
+                    structure: 'حرف ناسخ',
+                    examples: ['لعل الفرج قريب', 'لعل الله يحدث بعد ذلك أمراً'],
+                    grammatical_rule: 'تنصب المبتدأ وترفع الخبر'
+                },
+                'ليت': {
+                    type: 'modal-particle',
+                    function: 'حرف تمني ونصب',
+                    semantic_effect: 'التمني - تفيد تمني شيء مستحيل أو بعيد المنال',
+                    meaning: 'التمني والحسرة',
+                    structure: 'حرف ناسخ',
+                    examples: ['ليت الشباب يعود يوماً', 'ليت لي جناحين'],
+                    grammatical_rule: 'تنصب المبتدأ وترفع الخبر'
+                },
+                'كأن': {
+                    type: 'modal-particle',
+                    function: 'حرف تشبيه ونصب',
+                    semantic_effect: 'التشبيه - تفيد التشبيه القوي',
+                    meaning: 'التشبيه والتمثيل',
+                    structure: 'حرف ناسخ',
+                    examples: ['كأن الشمس كرة من نار', 'كأن النجوم عيون تحرس السماء'],
+                    grammatical_rule: 'تنصب المبتدأ وترفع الخبر'
+                },
+                'ما زال': {
+                    type: 'discourse-particle',
+                    function: 'فعل ناقص يفيد الاستمرار',
+                    semantic_effect: 'الاستمرارية - تفيد استمرار الحدث',
+                    meaning: 'الاستمرار والدوام',
+                    structure: 'فعل ناقص + اسم + خبر',
+                    examples: ['ما زال المطر ينزل', 'ما زالت الشمس مشرقة'],
+                    grammatical_rule: 'يرفع المبتدأ وينصب الخبر'
+                },
+                'حتى': {
+                    type: 'limiter-particle',
+                    function: 'حرف غاية وجر',
+                    semantic_effect: 'انتهاء الغاية - تحدد نهاية الفعل أو المدى',
+                    meaning: 'انتهاء الغاية الزمنية أو المكانية',
+                    structure: 'حرف جر أو عطف',
+                    examples: ['درس حتى الفجر', 'سار حتى المسجد'],
+                    grammatical_rule: 'تجر الاسم الذي بعدها'
+                },
+                'إلا': {
+                    type: 'exceptive-particle',
+                    function: 'أداة استثناء',
+                    semantic_effect: 'الاستثناء - تخرج ما بعدها من حكم ما قبلها',
+                    meaning: 'الاستثناء والإخراج',
+                    structure: 'أداة استثناء',
+                    examples: ['جاء الطلاب إلا خالداً', 'ما رأيت أحداً إلا زيداً'],
+                    grammatical_rule: 'تنصب المستثنى في الاستثناء التام المثبت'
+                },
+                'بل': {
+                    type: 'discourse-particle',
+                    function: 'حرف إضراب',
+                    semantic_effect: 'الإضراب - ترك الكلام الأول والانتقال للثاني',
+                    meaning: 'الإضراب والانتقال',
+                    structure: 'حرف عطف',
+                    examples: ['ما جاء محمد بل علي', 'لا تحزن بل ابتسم'],
+                    grammatical_rule: 'تفيد إضراب عما قبلها وإثبات ما بعدها'
+                },
+                'أما': {
+                    type: 'discourse-particle',
+                    function: 'حرف شرط وتفصيل',
+                    semantic_effect: 'التفصيل والتوضيح - تفيد التفصيل والشرح',
+                    meaning: 'التفصيل والبيان',
+                    structure: 'حرف شرط غير جازم',
+                    examples: ['أما العالم فمحترم', 'أما الصبر فجميل'],
+                    grammatical_rule: 'لا تجزم ولكن تلزم الفاء في جوابها'
+                }
+            };
+
+            const words = text.split(/\s+/);
+            const foundParticles = [];
+
+            // Search for particles
+            words.forEach((word, index) => {
+                // Check for exact matches
+                if (particleDatabase[word]) {
+                    foundParticles.push({
+                        particle: word,
+                        position: index,
+                        data: particleDatabase[word],
+                        context: getContext(words, index)
+                    });
+                }
+
+                // Check for compound particles
+                if (index < words.length - 1) {
+                    const compound = word + ' ' + words[index + 1];
+                    if (particleDatabase[compound]) {
+                        foundParticles.push({
+                            particle: compound,
+                            position: index,
+                            data: particleDatabase[compound],
+                            context: getContext(words, index, 2)
+                        });
+                    }
+                }
+            });
+
+            return {
+                input_text: text,
+                total_words: words.length,
+                found_particles: foundParticles,
+                semantic_analysis: generateSemanticAnalysis(foundParticles),
+                discourse_structure: analyzeDiscourseStructure(foundParticles),
+                pragmatic_effects: analyzePragmaticEffects(foundParticles, text)
+            };
+        }
+
+        function getContext(words, index, span = 1) {
+            const start = Math.max(0, index - 2);
+            const end = Math.min(words.length, index + span + 2);
+            return words.slice(start, end).join(' ');
+        }
+
+        function generateSemanticAnalysis(particles) {
+            const effects = particles.map(p => p.data.semantic_effect);
+            const functions = particles.map(p => p.data.function);
+
+            return {
+                semantic_density: particles.length,
+                dominant_effects: getMostCommon(effects),
+                functional_variety: [...new Set(functions)],
+                coherence_markers: particles.filter(p =>
+                    ['discourse-particle', 'limiter-particle'].includes(p.data.type)
+                ).length,
+                emphasis_level: particles.filter(p =>
+                    p.data.type === 'modal-particle'
+                ).length
+            };
+        }
+
+        function analyzeDiscourseStructure(particles) {
+            const structure = {
+                introduction: particles.filter(p => p.position < 3).length,
+                development: particles.filter(p => p.position >= 3 && p.position < 8).length,
+                conclusion: particles.filter(p => p.position >= 8).length
+            };
+
+            return {
+                distribution: structure,
+                complexity: particles.length > 3 ? 'معقد' : particles.length > 1 ? 'متوسط' : 'بسيط',
+                cohesion_strength: calculateCohesionStrength(particles)
+            };
+        }
+
+        function analyzePragmaticEffects(particles, text) {
+            let rhetoricalEffects = [];
+
+            particles.forEach(p => {
+                switch(p.data.type) {
+                    case 'modal-particle':
+                        rhetoricalEffects.push('تأثير عاطفي');
+                        break;
+                    case 'focal-particle':
+                        rhetoricalEffects.push('تركيز الانتباه');
+                        break;
+                    case 'discourse-particle':
+                        rhetoricalEffects.push('تنظيم الخطاب');
+                        break;
+                    case 'exceptive-particle':
+                        rhetoricalEffects.push('توضيح الاستثناءات');
+                        break;
+                }
+            });
+
+            return {
+                rhetorical_effects: [...new Set(rhetoricalEffects)],
+                persuasive_strength: particles.length > 2 ? 'قوي' : 'متوسط',
+                reader_engagement: calculateEngagement(particles),
+                text_formality: particles.length > 3 ? 'رسمي' : 'عادي'
+            };
+        }
+
+        function getMostCommon(array) {
+            const frequency = {};
+            array.forEach(item => frequency[item] = (frequency[item] || 0) + 1);
+            return Object.keys(frequency).reduce((a, b) => frequency[a] > frequency[b] ? a : b, '');
+        }
+
+        function calculateCohesionStrength(particles) {
+            const cohesionParticles = particles.filter(p =>
+                ['discourse-particle', 'limiter-particle'].includes(p.data.type)
+            );
+            return cohesionParticles.length > 2 ? 'قوي' : cohesionParticles.length > 0 ? 'متوسط' : 'ضعيف';
+        }
+
+        function calculateEngagement(particles) {
+            const engagingTypes = ['modal-particle', 'focal-particle'];
+            const score = particles.filter(p => engagingTypes.includes(p.data.type)).length;
+            return score > 2 ? 'عالي' : score > 0 ? 'متوسط' : 'منخفض';
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="stats">
+                    <strong> النص المدخل:</strong> ${analysis.input_text}<br>
+                    <strong> عدد الكلمات:</strong> ${analysis.total_words}<br>
+                    <strong> عدد أدوات المعنى:</strong> ${analysis.found_particles.length}<br>
+                    <strong> الكثافة الدلالية:</strong> ${analysis.semantic_analysis.semantic_density}
+                </div>
+            `;
+
+            if (analysis.found_particles.length > 0) {
+                html += `<div class="particle-analysis">
+                    <div class="word-header"> أدوات المعنى المكتشفة</div>
+                    <div class="particle-list">
+                        ${analysis.found_particles.map(p =>
+                            `<span class="particle ${p.data.type}" title="${p.data.function}: ${p.data.meaning}">
+                                ${p.particle}
+                            </span>`
+                        ).join('')}
+                    </div>
+                </div>`;
+
+                analysis.found_particles.forEach((particle, index) => {
+                    html += `
+                        <div class="particle-analysis">
+                            <div class="word-header"> تحليل ${index + 1}: ${particle.particle}</div>
+
+                            <div class="semantic-effect">
+                                <strong> التأثير الدلالي:</strong><br>
+                                ${particle.data.semantic_effect}
+                            </div>
+
+                            <div class="analysis-grid">
+                                <div class="function-box info-box">
+                                    <strong> الوظيفة النحوية:</strong><br>
+                                    ${particle.data.function}<br><br>
+                                    <strong> المعنى:</strong><br>
+                                    ${particle.data.meaning}<br><br>
+                                    <strong> التركيب:</strong><br>
+                                    ${particle.data.structure}
+                                </div>
+
+                                <div class="usage-box info-box">
+                                    <strong> السياق:</strong><br>
+                                    ${particle.context}<br><br>
+                                    <strong> الموقع:</strong> الكلمة رقم ${particle.position + 1}<br><br>
+                                    <strong> القاعدة النحوية:</strong><br>
+                                    ${particle.data.grammatical_rule}
+                                </div>
+                            </div>
+
+                            <div class="examples-box">
+                                <strong> أمثلة الاستخدام:</strong><br>
+                                ${particle.data.examples.map(ex => ` ${ex}`).join('<br>')}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Add semantic analysis
+            html += `
+                <div class="particle-analysis">
+                    <div class="word-header"> التحليل الدلالي</div>
+
+                    <div class="analysis-grid">
+                        <div class="function-box info-box">
+                            <strong> التأثيرات السائدة:</strong><br>
+                            ${analysis.semantic_analysis.dominant_effects}<br><br>
+                            <strong> التنوع الوظيفي:</strong><br>
+                            ${analysis.semantic_analysis.functional_variety.length} وظائف مختلفة<br><br>
+                            <strong> مؤشرات الترابط:</strong><br>
+                            ${analysis.semantic_analysis.coherence_markers}
+                        </div>
+
+                        <div class="usage-box info-box">
+                            <strong> مستوى التأكيد:</strong><br>
+                            ${analysis.semantic_analysis.emphasis_level}<br><br>
+                            <strong> القوة البلاغية:</strong><br>
+                            ${analysis.pragmatic_effects.persuasive_strength}<br><br>
+                            <strong> إشراك القارئ:</strong><br>
+                            ${analysis.pragmatic_effects.reader_engagement}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add discourse structure analysis
+            html += `
+                <div class="particle-analysis">
+                    <div class="word-header"> تحليل بنية الخطاب</div>
+
+                    <div class="examples-box">
+                        <strong> التوزيع:</strong><br>
+                         المقدمة: ${analysis.discourse_structure.distribution.introduction} أدوات<br>
+                         التطوير: ${analysis.discourse_structure.distribution.development} أدوات<br>
+                         الخاتمة: ${analysis.discourse_structure.distribution.conclusion} أدوات<br><br>
+
+                        <strong> التعقيد:</strong> ${analysis.discourse_structure.complexity}<br>
+                        <strong> قوة التماسك:</strong> ${analysis.discourse_structure.cohesion_strength}<br>
+                        <strong> مستوى الرسمية:</strong> ${analysis.pragmatic_effects.text_formality}
+                    </div>
+
+                    <div class="stats">
+                        <strong> التأثيرات البلاغية:</strong>
+                        ${analysis.pragmatic_effects.rhetorical_effects.join(' | ')}
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeParticles();
+        };
+    </script>
+</body>
+</html>

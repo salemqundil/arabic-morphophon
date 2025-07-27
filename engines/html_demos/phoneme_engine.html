@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Phoneme Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .phoneme-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .phoneme-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .phoneme {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك استخراج الفونيمات العربية</h1>
+            <div class="subtitle">Arabic Phoneme Extraction Engine</div>
+            <div class="subtitle">يستخرج الوحدات الصوتية من النص العربي ويحللها</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل النص العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: كتب الطالب الدرس" value="كتب الطالب الدرس">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('مرحبا بكم في عالم الذكاء الاصطناعي')">مثال ١</button>
+            <button class="btn example-btn" onclick="setExample('القرآن الكريم كتاب الله المقدس')">مثال ٢</button>
+            <button class="btn example-btn" onclick="setExample('تطوير البرمجيات والذكاء الاصطناعي')">مثال ٣</button>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="btn" onclick="analyzePhonemes()"> تحليل الفونيمات</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results" style="display: none;">
+            <h3> نتائج التحليل الفونيمي</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzePhonemes() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال نص عربي للتحليل');
+                return;
+            }
+
+            // Simulate phoneme analysis (since we can't run Python directly in browser)
+            const mockAnalysis = simulatePhonemeAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulatePhonemeAnalysis(text) {
+            const words = text.split(/\s+/);
+            const analysis = [];
+
+            words.forEach(word => {
+                const phonemes = extractPhonemes(word);
+                analysis.push({
+                    word: word,
+                    phonemes: phonemes,
+                    count: phonemes.length,
+                    cv_pattern: generateCVPattern(phonemes)
+                });
+            });
+
+            return {
+                input: text,
+                total_words: words.length,
+                total_phonemes: analysis.reduce((sum, item) => sum + item.count, 0),
+                analysis: analysis
+            };
+        }
+
+        function extractPhonemes(word) {
+            // Simple phoneme extraction simulation
+            const phonemeMap = {
+                'ا': 'a', 'ب': 'b', 'ت': 't', 'ث': '', 'ج': '', 'ح': '',
+                'خ': 'x', 'د': 'd', 'ذ': '', 'ر': 'r', 'ز': 'z', 'س': 's',
+                'ش': '', 'ص': 's', 'ض': 'd', 'ط': 't', 'ظ': '', 'ع': '',
+                'غ': '', 'ف': 'f', 'ق': 'q', 'ك': 'k', 'ل': 'l', 'م': 'm',
+                'ن': 'n', 'ه': 'h', 'و': 'w', 'ي': 'j', 'ة': 'a', 'ى': 'a',
+                'أ': 'a', 'إ': 'i', 'آ': 'a:', 'ء': ''
+            };
+
+            const phonemes = [];
+            for (let char of word) {
+                if (phonemeMap[char]) {
+                    phonemes.push(phonemeMap[char]);
+                }
+            }
+            return phonemes;
+        }
+
+        function generateCVPattern(phonemes) {
+            // Simple CV pattern generation
+            const vowels = ['a', 'i', 'u', 'e', 'o'];
+            let pattern = '';
+
+            phonemes.forEach(phoneme => {
+                if (vowels.some(v => phoneme.includes(v))) {
+                    pattern += 'V';
+                } else {
+                    pattern += 'C';
+                }
+            });
+
+            return pattern || 'CV';
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="stats">
+                    <strong> النص المدخل:</strong> ${analysis.input}<br>
+                    <strong> عدد الكلمات:</strong> ${analysis.total_words}<br>
+                    <strong> إجمالي الفونيمات:</strong> ${analysis.total_phonemes}
+                </div>
+            `;
+
+            analysis.analysis.forEach((item, index) => {
+                html += `
+                    <div class="phoneme-analysis">
+                        <div class="word-header"> الكلمة ${index + 1}: ${item.word}</div>
+                        <div><strong>الفونيمات:</strong></div>
+                        <div class="phoneme-list">
+                            ${item.phonemes.map(p => `<span class="phoneme">${p}</span>`).join('')}
+                        </div>
+                        <div class="stats">
+                            <strong>عدد الفونيمات:</strong> ${item.count} |
+                            <strong>نمط CV:</strong> ${item.cv_pattern}
+                        </div>
+                    </div>
+                `;
+            });
+
+            contentDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzePhonemes();
+        };
+    </script>
+</body>
+</html>

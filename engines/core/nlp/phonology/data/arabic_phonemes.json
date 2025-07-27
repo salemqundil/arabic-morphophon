@@ -1,0 +1,139 @@
+{
+  "phoneme_inventory": {
+    "consonants": {
+      "ends": {
+        "voiceless": [
+          {"symbol": "t", "arabic": "ت", "place": "alveolar", "manner": "end"},
+          {"symbol": "k", "arabic": "ك", "place": "velar", "manner": "end"},
+          {"symbol": "q", "arabic": "ق", "place": "uvular", "manner": "end"},
+          {"symbol": "", "arabic": "ء", "place": "glottal", "manner": "end"}
+        ],
+        "voiced": [
+          {"symbol": "b", "arabic": "ب", "place": "bilabial", "manner": "end"},
+          {"symbol": "d", "arabic": "د", "place": "alveolar", "manner": "end"},
+          {"symbol": "g", "arabic": "ج", "place": "post-alveolar", "manner": "affricate"}
+        ],
+        "emphatic": [
+          {"symbol": "t", "arabic": "ط", "place": "alveolar", "manner": "end", "emphatic": true},
+          {"symbol": "d", "arabic": "ض", "place": "alveolar", "manner": "end", "emphatic": true},
+          {"symbol": "s", "arabic": "ص", "place": "alveolar", "manner": "fricative", "emphatic": true},
+          {"symbol": "", "arabic": "ظ", "place": "interdental", "manner": "fricative", "emphatic": true}
+        ]
+      },
+      "fricatives": {
+        "voiceless": [
+          {"symbol": "f", "arabic": "ف", "place": "labiodental", "manner": "fricative"},
+          {"symbol": "", "arabic": "ث", "place": "interdental", "manner": "fricative"},
+          {"symbol": "s", "arabic": "س", "place": "alveolar", "manner": "fricative"},
+          {"symbol": "", "arabic": "ش", "place": "post-alveolar", "manner": "fricative"},
+          {"symbol": "x", "arabic": "خ", "place": "uvular", "manner": "fricative"},
+          {"symbol": "", "arabic": "ح", "place": "pharyngeal", "manner": "fricative"},
+          {"symbol": "h", "arabic": "ه", "place": "glottal", "manner": "fricative"}
+        ],
+        "voiced": [
+          {"symbol": "", "arabic": "ذ", "place": "interdental", "manner": "fricative"},
+          {"symbol": "z", "arabic": "ز", "place": "alveolar", "manner": "fricative"},
+          {"symbol": "", "arabic": "ج", "place": "post-alveolar", "manner": "fricative"},
+          {"symbol": "", "arabic": "غ", "place": "uvular", "manner": "fricative"},
+          {"symbol": "", "arabic": "ع", "place": "pharyngeal", "manner": "fricative"}
+        ]
+      },
+      "nasals": [
+        {"symbol": "m", "arabic": "م", "place": "bilabial", "manner": "nasal"},
+        {"symbol": "n", "arabic": "ن", "place": "alveolar", "manner": "nasal"}
+      ],
+      "liquids": [
+        {"symbol": "l", "arabic": "ل", "place": "alveolar", "manner": "lateral"},
+        {"symbol": "r", "arabic": "ر", "place": "alveolar", "manner": "trill"}
+      ],
+      "glides": [
+        {"symbol": "w", "arabic": "و", "place": "bilabial", "manner": "glide"},
+        {"symbol": "j", "arabic": "ي", "place": "palatal", "manner": "glide"}
+      ]
+    },
+    "vowels": {
+      "short": [
+        {"symbol": "a", "arabic": "َ", "height": "low", "backness": "central", "length": "short"},
+        {"symbol": "i", "arabic": "ِ", "height": "high", "backness": "front", "length": "short"},
+        {"symbol": "u", "arabic": "ُ", "height": "high", "backness": "back", "length": "short"}
+      ],
+      "long": [
+        {"symbol": "a", "arabic": "ا", "height": "low", "backness": "central", "length": "long"},
+        {"symbol": "i", "arabic": "ي", "height": "high", "backness": "front", "length": "long"},
+        {"symbol": "u", "arabic": "و", "height": "high", "backness": "back", "length": "long"}
+      ]
+    }
+  },
+  "phonological_processes": {
+    "assimilation": {
+      "rules": [
+        {
+          "name": "definite_article_assimilation",
+          "description": "Definite article /l/ assimilates to following coronal consonants",
+          "pattern": "al + [coronal]  a[coronal][coronal]",
+          "examples": [
+            {"input": "الشمس", "output": "aams", "rule": "al +   a"}
+          ]
+        },
+        {
+          "name": "nasal_assimilation",
+          "description": "Nasal consonants assimilate to following consonants",
+          "pattern": "n + [labial]  m",
+          "examples": [
+            {"input": "منبر", "output": "mambar", "rule": "n + b  mb"}
+          ]
+        }
+      ]
+    },
+    "epenthesis": {
+      "rules": [
+        {
+          "name": "vowel_epenthesis",
+          "description": "Vowel insertion to break up consonant clusters",
+          "pattern": "[C][C][C]  [C]i[C][C]",
+          "examples": [
+            {"input": "كتب", "output": "kitab", "rule": "ktb  kitab"}
+          ]
+        }
+      ]
+    }
+  },
+  "syllabic_unit_structure": {
+    "patterns": [
+      {"type": "CV", "structure": "consonant + vowel", "frequency": 0.4},
+      {"type": "CVC", "structure": "consonant + vowel + consonant", "frequency": 0.3},
+      {"type": "CVV", "structure": "consonant + long vowel", "frequency": 0.15},
+      {"type": "CVVC", "structure": "consonant + long vowel + consonant", "frequency": 0.1},
+      {"type": "CVCC", "structure": "consonant + vowel + consonant + consonant", "frequency": 0.05}
+    ],
+    "constraints": {
+      "onset": {
+        "max_consonants": 1,
+        "allowed_clusters": []
+      },
+      "nucleus": {
+        "required": true,
+        "types": ["short_vowel", "long_vowel"]
+      },
+      "coda": {
+        "max_consonants": 2,
+        "allowed_clusters": ["st", "nt", "rd", "kt"]
+      }
+    }
+  },
+  "ipa_transcription": {
+    "phonemes": [
+      {
+        "ipa": "tˤ",
+        "arabic": "ط",
+        "place": "alveolar",
+        "manner": "stop",
+        "feature": ["voiceless", "alveolar", "stop", "pharyngealized"]
+      }
+    ]
+  },
+  "confidence_calculation": {
+    "segment_recognition": 0.8,
+    "rule_application": 0.2
+  }
+}

@@ -1,0 +1,532 @@
+{
+  "root": {
+    "node_id": "root",
+    "node_type": "root",
+    "input_data": [
+      "raw_arabic_text",
+      "user_input"
+    ],
+    "decision_criteria": [
+      "phonetic_compatibility"
+    ],
+    "processing_rules": {
+      "text_normalization": true,
+      "character_validation": true,
+      "encoding_check": "utf-8",
+      "preprocessing_steps": [
+        "remove_extra_spaces",
+        "normalize_arabic_characters",
+        "validate_arabic_script"
+      ]
+    },
+    "output_data": [
+      "normalized_text",
+      "character_stream"
+    ],
+    "confidence_score": 1.0,
+    "next_nodes": [
+      "phoneme_analysis"
+    ],
+    "error_handling": {
+      "invalid_characters": "filter_and_log",
+      "encoding_errors": "convert_to_utf8",
+      "empty_input": "return_error"
+    }
+  },
+  "phoneme_analysis": {
+    "node_id": "phoneme_analysis",
+    "node_type": "phoneme_layer",
+    "input_data": [
+      "character_stream"
+    ],
+    "decision_criteria": [
+      "phonetic_compatibility",
+      "morphological_validity"
+    ],
+    "processing_rules": {
+      "phoneme_classification": {
+        "consonants": [
+          "ب",
+          "ت",
+          "ث",
+          "ج",
+          "ح",
+          "خ",
+          "د",
+          "ذ",
+          "ر",
+          "ز",
+          "س",
+          "ش",
+          "ص",
+          "ض",
+          "ط",
+          "ظ",
+          "ع",
+          "غ",
+          "ف",
+          "ق",
+          "ك",
+          "ل",
+          "م",
+          "ن",
+          "ه",
+          "و",
+          "ي",
+          "ء"
+        ],
+        "vowels": [
+          "َ",
+          "ِ",
+          "ُ",
+          "ا",
+          "و",
+          "ي"
+        ],
+        "diacritics": [
+          "ً",
+          "ٌ",
+          "ٍ",
+          "ْ",
+          "ّ"
+        ],
+        "special": [
+          "آ",
+          "أ",
+          "إ",
+          "ئ",
+          "ؤ",
+          "ة"
+        ]
+      },
+      "phonetic_features": {
+        "manner_of_articulation": [
+          "stop",
+          "fricative",
+          "nasal",
+          "liquid"
+        ],
+        "place_of_articulation": [
+          "bilabial",
+          "dental",
+          "velar",
+          "pharyngeal"
+        ],
+        "voicing": [
+          "voiced",
+          "voiceless"
+        ],
+        "emphasis": [
+          "emphatic",
+          "non_emphatic"
+        ]
+      },
+      "validation_rules": [
+        "check_arabic_phoneme_inventory",
+        "identify_phoneme_boundaries",
+        "extract_phonetic_features"
+      ]
+    },
+    "output_data": [
+      "phoneme_sequence",
+      "phonetic_features",
+      "phoneme_boundaries"
+    ],
+    "confidence_score": 0.95,
+    "next_nodes": [
+      "diacritic_processing"
+    ],
+    "error_handling": {
+      "unknown_phoneme": "mark_as_foreign",
+      "malformed_sequence": "attempt_correction",
+      "feature_extraction_error": "use_default_features"
+    }
+  },
+  "diacritic_processing": {
+    "node_id": "diacritic_processing",
+    "node_type": "diacritic_layer",
+    "input_data": [
+      "phoneme_sequence",
+      "phonetic_features"
+    ],
+    "decision_criteria": [
+      "diacritic_rules",
+      "morphological_validity"
+    ],
+    "processing_rules": {
+      "diacritic_analysis": {
+        "short_vowels": {
+          "َ": {
+            "name": "fatha",
+            "length": "short",
+            "quality": "open"
+          },
+          "ِ": {
+            "name": "kasra",
+            "length": "short",
+            "quality": "front"
+          },
+          "ُ": {
+            "name": "damma",
+            "length": "short",
+            "quality": "back"
+          }
+        },
+        "tanween": {
+          "ً": {
+            "type": "nunation_fath",
+            "case": "accusative"
+          },
+          "ٌ": {
+            "type": "nunation_damm",
+            "case": "nominative"
+          },
+          "ٍ": {
+            "type": "nunation_kasr",
+            "case": "genitive"
+          }
+        },
+        "other_marks": {
+          "ْ": {
+            "type": "sukun",
+            "function": "consonant_cluster"
+          },
+          "ّ": {
+            "type": "shadda",
+            "function": "gemination"
+          }
+        }
+      },
+      "vowelization_rules": [
+        "identify_explicit_vowels",
+        "predict_missing_vowels",
+        "apply_vowel_harmony",
+        "resolve_ambiguous_cases"
+      ],
+      "morphological_constraints": {
+        "root_pattern_matching": true,
+        "inflectional_analysis": true,
+        "derivational_analysis": true
+      }
+    },
+    "output_data": [
+      "vowelized_sequence",
+      "morphological_analysis",
+      "diacritic_features"
+    ],
+    "confidence_score": 0.88,
+    "next_nodes": [
+      "syllable_construction"
+    ],
+    "error_handling": {
+      "missing_vowels": "use_statistical_prediction",
+      "conflicting_diacritics": "apply_priority_rules",
+      "invalid_combinations": "suggest_corrections"
+    }
+  },
+  "syllable_construction": {
+    "node_id": "syllable_construction",
+    "node_type": "syllable_layer",
+    "input_data": [
+      "vowelized_sequence",
+      "morphological_analysis"
+    ],
+    "decision_criteria": [
+      "syllable_structure",
+      "phonotactic_constraints"
+    ],
+    "processing_rules": {
+      "syllable_patterns": {
+        "CV": {
+          "structure": "consonant + short_vowel",
+          "weight": "light"
+        },
+        "CVC": {
+          "structure": "consonant + short_vowel + consonant",
+          "weight": "heavy"
+        },
+        "CVV": {
+          "structure": "consonant + long_vowel",
+          "weight": "heavy"
+        },
+        "CVVC": {
+          "structure": "consonant + long_vowel + consonant",
+          "weight": "super_heavy"
+        },
+        "CVCC": {
+          "structure": "consonant + short_vowel + consonant + consonant",
+          "weight": "super_heavy"
+        }
+      },
+      "syllabification_algorithm": [
+        "identify_syllable_nuclei",
+        "assign_consonants_to_syllables",
+        "apply_maximal_onset_principle",
+        "handle_consonant_clusters",
+        "resolve_ambiguous_boundaries"
+      ],
+      "phonotactic_constraints": {
+        "onset_constraints": [
+          "single_consonant_allowed",
+          "some_clusters_allowed",
+          "avoid_similar_place_clusters"
+        ],
+        "coda_constraints": [
+          "single_consonant_preferred",
+          "limited_clusters",
+          "word_final_exceptions"
+        ],
+        "nucleus_constraints": [
+          "exactly_one_vowel",
+          "long_vowel_exceptions",
+          "diphthong_handling"
+        ]
+      }
+    },
+    "output_data": [
+      "syllable_sequence",
+      "prosodic_structure",
+      "stress_pattern"
+    ],
+    "confidence_score": 0.85,
+    "next_nodes": [
+      "morpheme_analysis"
+    ],
+    "error_handling": {
+      "invalid_syllable_structure": "apply_repair_strategies",
+      "constraint_violations": "find_minimal_violations",
+      "ambiguous_boundaries": "use_frequency_based_decisions"
+    }
+  },
+  "morpheme_analysis": {
+    "node_id": "morpheme_analysis",
+    "node_type": "morpheme_layer",
+    "input_data": [
+      "syllable_sequence",
+      "prosodic_structure"
+    ],
+    "decision_criteria": [
+      "morphological_validity",
+      "semantic_plausibility"
+    ],
+    "processing_rules": {
+      "morpheme_identification": {
+        "root_extraction": {
+          "trilateral_roots": true,
+          "quadrilateral_roots": true,
+          "pattern_matching": [
+            "فعل",
+            "فاعل",
+            "مفعول",
+            "تفعيل"
+          ]
+        },
+        "affix_analysis": {
+          "prefixes": [
+            "ال",
+            "و",
+            "ف",
+            "ب",
+            "ل",
+            "من",
+            "إلى"
+          ],
+          "suffixes": [
+            "ة",
+            "ان",
+            "ين",
+            "ون",
+            "ها",
+            "هم",
+            "هن"
+          ],
+          "infixes": [
+            "ت",
+            "ن",
+            "ا"
+          ]
+        },
+        "stem_formation": [
+          "combine_root_and_pattern",
+          "apply_morphophonemic_rules",
+          "handle_weak_letters",
+          "process_gemination"
+        ]
+      },
+      "morphological_features": {
+        "word_class": [
+          "noun",
+          "verb",
+          "adjective",
+          "particle"
+        ],
+        "inflectional_features": {
+          "gender": [
+            "masculine",
+            "feminine"
+          ],
+          "number": [
+            "singular",
+            "dual",
+            "plural"
+          ],
+          "case": [
+            "nominative",
+            "accusative",
+            "genitive"
+          ],
+          "definiteness": [
+            "definite",
+            "indefinite"
+          ]
+        },
+        "derivational_features": {
+          "verbal_form": [
+            "I",
+            "II",
+            "III",
+            "IV",
+            "V",
+            "VI",
+            "VII",
+            "VIII",
+            "IX",
+            "X"
+          ],
+          "noun_type": [
+            "concrete",
+            "abstract",
+            "agent",
+            "patient"
+          ],
+          "adjective_type": [
+            "qualitative",
+            "relational",
+            "intensive"
+          ]
+        }
+      }
+    },
+    "output_data": [
+      "morpheme_structure",
+      "grammatical_features",
+      "semantic_roles"
+    ],
+    "confidence_score": 0.82,
+    "next_nodes": [
+      "word_formation"
+    ],
+    "error_handling": {
+      "unrecognized_morphemes": "consult_lexicon",
+      "invalid_combinations": "check_morphological_rules",
+      "ambiguous_analysis": "rank_by_frequency"
+    }
+  },
+  "word_formation": {
+    "node_id": "word_formation",
+    "node_type": "word_layer",
+    "input_data": [
+      "morpheme_structure",
+      "grammatical_features"
+    ],
+    "decision_criteria": [
+      "morphological_validity",
+      "semantic_plausibility"
+    ],
+    "processing_rules": {
+      "word_assembly": {
+        "morpheme_ordering": [
+          "prefix_attachment",
+          "stem_formation",
+          "suffix_attachment",
+          "phonological_adjustments"
+        ],
+        "allomorph_selection": {
+          "context_sensitive_rules": true,
+          "phonological_conditioning": true,
+          "lexical_conditioning": true
+        },
+        "morphophonemic_processes": [
+          "vowel_assimilation",
+          "consonant_assimilation",
+          "epenthesis",
+          "deletion",
+          "metathesis"
+        ]
+      },
+      "word_validation": {
+        "lexicon_lookup": true,
+        "productivity_check": true,
+        "semantic_coherence": true,
+        "pragmatic_acceptability": true
+      },
+      "output_formatting": {
+        "vocalization_level": [
+          "none",
+          "partial",
+          "full"
+        ],
+        "orthographic_normalization": true,
+        "presentation_form": [
+          "academic",
+          "modern",
+          "classical"
+        ]
+      }
+    },
+    "output_data": [
+      "formed_word",
+      "confidence_metrics",
+      "alternative_forms"
+    ],
+    "confidence_score": 0.78,
+    "next_nodes": [
+      "final_output"
+    ],
+    "error_handling": {
+      "formation_failure": "provide_closest_valid_form",
+      "low_confidence": "flag_for_manual_review",
+      "multiple_valid_forms": "rank_by_frequency_and_context"
+    }
+  },
+  "final_output": {
+    "node_id": "final_output",
+    "node_type": "final_output",
+    "input_data": [
+      "formed_word",
+      "confidence_metrics"
+    ],
+    "decision_criteria": [
+      "semantic_plausibility"
+    ],
+    "processing_rules": {
+      "quality_assessment": {
+        "linguistic_validity": true,
+        "confidence_threshold": 0.7,
+        "error_detection": true
+      },
+      "output_enrichment": {
+        "add_linguistic_analysis": true,
+        "include_alternatives": true,
+        "provide_explanations": true
+      },
+      "result_presentation": {
+        "format": "comprehensive_analysis",
+        "include_metadata": true,
+        "error_reporting": true
+      }
+    },
+    "output_data": [
+      "final_word",
+      "analysis_report",
+      "processing_metadata"
+    ],
+    "confidence_score": 0.75,
+    "next_nodes": [],
+    "error_handling": {
+      "below_threshold": "return_error_with_explanation",
+      "processing_timeout": "return_partial_results",
+      "system_error": "log_and_return_graceful_failure"
+    }
+  }
+}

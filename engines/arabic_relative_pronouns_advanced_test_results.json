@@ -1,0 +1,808 @@
+{
+  "test_timestamp": 1753372878.1510534,
+  "test_date": "2025-07-24 19:01:18",
+  "precision_tests": {
+    "total_tests": 10,
+    "passed": 10,
+    "failed": 0,
+    "test_details": [
+      {
+        "name": "الذي - مذكر مفرد",
+        "syllables": [
+          "الْ",
+          "ذِي"
+        ],
+        "expected": "الذي",
+        "generated": "الذي",
+        "confidence": 0.7949999999999999,
+        "passed": true,
+        "category": "basic_masculine"
+      },
+      {
+        "name": "التي - مؤنث مفرد",
+        "syllables": [
+          "الْ",
+          "تِي"
+        ],
+        "expected": "التي",
+        "generated": "التي",
+        "confidence": 0.7919999999999999,
+        "passed": true,
+        "category": "basic_feminine"
+      },
+      {
+        "name": "اللذان - مذكر مثنى",
+        "syllables": [
+          "الْ",
+          "لَ",
+          "ذَا",
+          "نِ"
+        ],
+        "expected": "اللذان",
+        "generated": "اللذان",
+        "confidence": 0.7649999999999999,
+        "passed": true,
+        "category": "dual_masculine"
+      },
+      {
+        "name": "اللتان - مؤنث مثنى",
+        "syllables": [
+          "الْ",
+          "لَ",
+          "تَا",
+          "نِ"
+        ],
+        "expected": "اللتان",
+        "generated": "اللتان",
+        "confidence": 0.758,
+        "passed": true,
+        "category": "dual_feminine"
+      },
+      {
+        "name": "الذين - مذكر جمع",
+        "syllables": [
+          "الْ",
+          "ذِي",
+          "نَ"
+        ],
+        "expected": "الذين",
+        "generated": "الذين",
+        "confidence": 0.7879999999999999,
+        "passed": true,
+        "category": "plural_masculine"
+      },
+      {
+        "name": "اللاتي - مؤنث جمع",
+        "syllables": [
+          "الْ",
+          "لَا",
+          "تِي"
+        ],
+        "expected": "اللاتي",
+        "generated": "اللاتي",
+        "confidence": 0.7719999999999999,
+        "passed": true,
+        "category": "plural_feminine"
+      },
+      {
+        "name": "مَن - عام",
+        "syllables": [
+          "مَنْ"
+        ],
+        "expected": "مَن",
+        "generated": "مَن",
+        "confidence": 0.7899999999999999,
+        "passed": true,
+        "category": "general"
+      },
+      {
+        "name": "ما - عام",
+        "syllables": [
+          "مَا"
+        ],
+        "expected": "ما",
+        "generated": "ما",
+        "confidence": 0.9869999999999999,
+        "passed": true,
+        "category": "general"
+      },
+      {
+        "name": "أي - استفهام",
+        "syllables": [
+          "أَيّ"
+        ],
+        "expected": "أي",
+        "generated": "أي",
+        "confidence": 0.976,
+        "passed": true,
+        "category": "interrogative"
+      },
+      {
+        "name": "ذو - مضاف",
+        "syllables": [
+          "ذُو"
+        ],
+        "expected": "ذو",
+        "generated": "ذو",
+        "confidence": 0.945,
+        "passed": true,
+        "category": "possessive"
+      }
+    ],
+    "accuracy_by_category": {
+      "basic_masculine": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "basic_feminine": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "dual_masculine": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "dual_feminine": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "plural_masculine": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "plural_feminine": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "general": {
+        "accuracy": 100.0,
+        "passed": 2,
+        "total": 2
+      },
+      "interrogative": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      },
+      "possessive": {
+        "accuracy": 100.0,
+        "passed": 1,
+        "total": 1
+      }
+    },
+    "overall_accuracy": 100.0
+  },
+  "edge_cases_tests": {
+    "total_tests": 7,
+    "expected_failures": 3,
+    "unexpected_successes": 4,
+    "expected_behaviors": 3,
+    "test_details": [
+      {
+        "name": "مقاطع عشوائية",
+        "syllables": [
+          "xyz",
+          "abc"
+        ],
+        "expected_to_fail": true,
+        "actually_failed": false,
+        "behavior_correct": false,
+        "result": {
+          "success": true,
+          "input_syllables": [
+            "xyz",
+            "abc"
+          ],
+          "syllable_pattern": "CVC-CVC",
+          "syllable_analysis": {
+            "syllables": [
+              "xyz",
+              "abc"
+            ],
+            "pattern": "CVC-CVC",
+            "complexity": 2.5999999999999996,
+            "length": 2,
+            "phonetic_structure": {
+              "total_length": 6,
+              "average_syllable_length": 3.0,
+              "has_long_vowels": false,
+              "has_doubled_consonants": false,
+              "syllable_count": 2
+            }
+          },
+          "matches": [
+            {
+              "relative_pronoun": "الذى",
+              "category": "مذكر_مفرد",
+              "syllables": [
+                "الْ",
+                "ذَى"
+              ],
+              "phonemes": [
+                "a",
+                "l",
+                "dh",
+                "aa"
+              ],
+              "pattern": "CVC-CVC",
+              "frequency": 0.85,
+              "syllable_similarity": 0.0,
+              "pattern_match": true,
+              "confidence": 0.28500000000000003,
+              "usage_contexts": [
+                "جملة الصلة",
+                "النصوص الكلاسيكية"
+              ],
+              "morphological_features": {
+                "gender": "مذكر",
+                "number": "مفرد",
+                "case": "متغير",
+                "definiteness": "معرف"
+              }
+            }
+          ],
+          "total_matches": 1,
+          "best_match": {
+            "relative_pronoun": "الذى",
+            "category": "مذكر_مفرد",
+            "syllables": [
+              "الْ",
+              "ذَى"
+            ],
+            "phonemes": [
+              "a",
+              "l",
+              "dh",
+              "aa"
+            ],
+            "pattern": "CVC-CVC",
+            "frequency": 0.85,
+            "syllable_similarity": 0.0,
+            "pattern_match": true,
+            "confidence": 0.28500000000000003,
+            "usage_contexts": [
+              "جملة الصلة",
+              "النصوص الكلاسيكية"
+            ],
+            "morphological_features": {
+              "gender": "مذكر",
+              "number": "مفرد",
+              "case": "متغير",
+              "definiteness": "معرف"
+            }
+          }
+        }
+      },
+      {
+        "name": "مقاطع فارغة",
+        "syllables": [],
+        "expected_to_fail": true,
+        "actually_failed": true,
+        "behavior_correct": true,
+        "result": {
+          "success": false,
+          "message": "لم يتم العثور على أسماء موصولة مطابقة",
+          "input_syllables": [],
+          "syllable_pattern": "",
+          "suggestions": [
+            "الذي",
+            "التي",
+            "الذى",
+            "اللتي",
+            "الذين"
+          ]
+        }
+      },
+      {
+        "name": "مقطع واحد غير صحيح",
+        "syllables": [
+          "قرص"
+        ],
+        "expected_to_fail": true,
+        "actually_failed": false,
+        "behavior_correct": false,
+        "result": {
+          "success": true,
+          "input_syllables": [
+            "قرص"
+          ],
+          "syllable_pattern": "CVC",
+          "syllable_analysis": {
+            "syllables": [
+              "قرص"
+            ],
+            "pattern": "CVC",
+            "complexity": 1.3,
+            "length": 1,
+            "phonetic_structure": {
+              "total_length": 3,
+              "average_syllable_length": 3.0,
+              "has_long_vowels": false,
+              "has_doubled_consonants": false,
+              "syllable_count": 1
+            }
+          },
+          "matches": [
+            {
+              "relative_pronoun": "مَن",
+              "category": "عام",
+              "syllables": [
+                "مَنْ"
+              ],
+              "phonemes": [
+                "m",
+                "a",
+                "n"
+              ],
+              "pattern": "CVC",
+              "frequency": 0.9,
+              "syllable_similarity": 0.0,
+              "pattern_match": true,
+              "confidence": 0.29000000000000004,
+              "usage_contexts": [
+                "العاقل",
+                "الاستفهام",
+                "الشرط"
+              ],
+              "morphological_features": {
+                "gender": "محايد",
+                "number": "محايد",
+                "case": "مبني",
+                "definiteness": "معرف"
+              }
+            },
+            {
+              "relative_pronoun": "ذات",
+              "category": "مؤنث_مفرد",
+              "syllables": [
+                "ذَاتِ"
+              ],
+              "phonemes": [
+                "dh",
+                "aa",
+                "t"
+              ],
+              "pattern": "CVC",
+              "frequency": 0.42,
+              "syllable_similarity": 0.0,
+              "pattern_match": true,
+              "confidence": 0.24200000000000002,
+              "usage_contexts": [
+                "الإضافة",
+                "الوصف",
+                "النصوص الكلاسيكية"
+              ],
+              "morphological_features": {
+                "gender": "مؤنث",
+                "number": "مفرد",
+                "case": "معرب",
+                "definiteness": "معرف"
+              }
+            }
+          ],
+          "total_matches": 2,
+          "best_match": {
+            "relative_pronoun": "مَن",
+            "category": "عام",
+            "syllables": [
+              "مَنْ"
+            ],
+            "phonemes": [
+              "m",
+              "a",
+              "n"
+            ],
+            "pattern": "CVC",
+            "frequency": 0.9,
+            "syllable_similarity": 0.0,
+            "pattern_match": true,
+            "confidence": 0.29000000000000004,
+            "usage_contexts": [
+              "العاقل",
+              "الاستفهام",
+              "الشرط"
+            ],
+            "morphological_features": {
+              "gender": "محايد",
+              "number": "محايد",
+              "case": "مبني",
+              "definiteness": "معرف"
+            }
+          }
+        }
+      },
+      {
+        "name": "خطأ في تشكيل الذي",
+        "syllables": [
+          "الْ",
+          "ذُو"
+        ],
+        "expected_to_fail": true,
+        "actually_failed": false,
+        "behavior_correct": false,
+        "result": {
+          "success": true,
+          "input_syllables": [
+            "الْ",
+            "ذُو"
+          ],
+          "syllable_pattern": "CV-CV",
+          "syllable_analysis": {
+            "syllables": [
+              "الْ",
+              "ذُو"
+            ],
+            "pattern": "CV-CV",
+            "complexity": 3.0,
+            "length": 2,
+            "phonetic_structure": {
+              "total_length": 6,
+              "average_syllable_length": 3.0,
+              "has_long_vowels": true,
+              "has_doubled_consonants": false,
+              "syllable_count": 2
+            }
+          },
+          "matches": [
+            {
+              "relative_pronoun": "الذي",
+              "category": "مذكر_مفرد",
+              "syllables": [
+                "الْ",
+                "ذِي"
+              ],
+              "phonemes": [
+                "a",
+                "l",
+                "dh",
+                "i"
+              ],
+              "pattern": "CVC-CV",
+              "frequency": 0.95,
+              "syllable_similarity": 0.75,
+              "pattern_match": false,
+              "confidence": 0.6199999999999999,
+              "usage_contexts": [
+                "جملة الصلة",
+                "التعريف",
+                "الوصف"
+              ],
+              "morphological_features": {
+                "gender": "مذكر",
+                "number": "مفرد",
+                "case": "متغير",
+                "definiteness": "معرف"
+              }
+            },
+            {
+              "relative_pronoun": "الذى",
+              "category": "مذكر_مفرد",
+              "syllables": [
+                "الْ",
+                "ذَى"
+              ],
+              "phonemes": [
+                "a",
+                "l",
+                "dh",
+                "aa"
+              ],
+              "pattern": "CVC-CVC",
+              "frequency": 0.85,
+              "syllable_similarity": 0.75,
+              "pattern_match": false,
+              "confidence": 0.6099999999999999,
+              "usage_contexts": [
+                "جملة الصلة",
+                "النصوص الكلاسيكية"
+              ],
+              "morphological_features": {
+                "gender": "مذكر",
+                "number": "مفرد",
+                "case": "متغير",
+                "definiteness": "معرف"
+              }
+            }
+          ],
+          "total_matches": 2,
+          "best_match": {
+            "relative_pronoun": "الذي",
+            "category": "مذكر_مفرد",
+            "syllables": [
+              "الْ",
+              "ذِي"
+            ],
+            "phonemes": [
+              "a",
+              "l",
+              "dh",
+              "i"
+            ],
+            "pattern": "CVC-CV",
+            "frequency": 0.95,
+            "syllable_similarity": 0.75,
+            "pattern_match": false,
+            "confidence": 0.6199999999999999,
+            "usage_contexts": [
+              "جملة الصلة",
+              "التعريف",
+              "الوصف"
+            ],
+            "morphological_features": {
+              "gender": "مذكر",
+              "number": "مفرد",
+              "case": "متغير",
+              "definiteness": "معرف"
+            }
+          }
+        }
+      },
+      {
+        "name": "نقص في المقاطع",
+        "syllables": [
+          "الْ"
+        ],
+        "expected_to_fail": true,
+        "actually_failed": false,
+        "behavior_correct": false,
+        "result": {
+          "success": true,
+          "input_syllables": [
+            "الْ"
+          ],
+          "syllable_pattern": "CV",
+          "syllable_analysis": {
+            "syllables": [
+              "الْ"
+            ],
+            "pattern": "CV",
+            "complexity": 1.5,
+            "length": 1,
+            "phonetic_structure": {
+              "total_length": 3,
+              "average_syllable_length": 3.0,
+              "has_long_vowels": true,
+              "has_doubled_consonants": false,
+              "syllable_count": 1
+            }
+          },
+          "matches": [
+            {
+              "relative_pronoun": "ما",
+              "category": "عام",
+              "syllables": [
+                "مَا"
+              ],
+              "phonemes": [
+                "m",
+                "aa"
+              ],
+              "pattern": "CV",
+              "frequency": 0.87,
+              "syllable_similarity": 0.0,
+              "pattern_match": true,
+              "confidence": 0.28700000000000003,
+              "usage_contexts": [
+                "غير العاقل",
+                "الاستفهام",
+                "الشرط"
+              ],
+              "morphological_features": {
+                "gender": "محايد",
+                "number": "محايد",
+                "case": "مبني",
+                "definiteness": "معرف"
+              }
+            },
+            {
+              "relative_pronoun": "أي",
+              "category": "عام",
+              "syllables": [
+                "أَيّ"
+              ],
+              "phonemes": [
+                "a",
+                "y",
+                "y"
+              ],
+              "pattern": "CV",
+              "frequency": 0.76,
+              "syllable_similarity": 0.0,
+              "pattern_match": true,
+              "confidence": 0.276,
+              "usage_contexts": [
+                "التعميم",
+                "الشرط",
+                "الاستفهام"
+              ],
+              "morphological_features": {
+                "gender": "متغير",
+                "number": "متغير",
+                "case": "معرب",
+                "definiteness": "معرف"
+              }
+            },
+            {
+              "relative_pronoun": "ذو",
+              "category": "مذكر_مفرد",
+              "syllables": [
+                "ذُو"
+              ],
+              "phonemes": [
+                "dh",
+                "u"
+              ],
+              "pattern": "CV",
+              "frequency": 0.45,
+              "syllable_similarity": 0.0,
+              "pattern_match": true,
+              "confidence": 0.24500000000000002,
+              "usage_contexts": [
+                "الإضافة",
+                "الوصف",
+                "النصوص الكلاسيكية"
+              ],
+              "morphological_features": {
+                "gender": "مذكر",
+                "number": "مفرد",
+                "case": "معرب",
+                "definiteness": "معرف"
+              }
+            }
+          ],
+          "total_matches": 3,
+          "best_match": {
+            "relative_pronoun": "ما",
+            "category": "عام",
+            "syllables": [
+              "مَا"
+            ],
+            "phonemes": [
+              "m",
+              "aa"
+            ],
+            "pattern": "CV",
+            "frequency": 0.87,
+            "syllable_similarity": 0.0,
+            "pattern_match": true,
+            "confidence": 0.28700000000000003,
+            "usage_contexts": [
+              "غير العاقل",
+              "الاستفهام",
+              "الشرط"
+            ],
+            "morphological_features": {
+              "gender": "محايد",
+              "number": "محايد",
+              "case": "مبني",
+              "definiteness": "معرف"
+            }
+          }
+        }
+      },
+      {
+        "name": "مقاطع زائدة كثيرة",
+        "syllables": [
+          "الْ",
+          "ذِي",
+          "نَ",
+          "تَا",
+          "مُو",
+          "سَا",
+          "لِي"
+        ],
+        "expected_to_fail": true,
+        "actually_failed": true,
+        "behavior_correct": true,
+        "result": {
+          "success": false,
+          "message": "لم يتم العثور على أسماء موصولة مطابقة",
+          "input_syllables": [
+            "الْ",
+            "ذِي",
+            "نَ",
+            "تَا",
+            "مُو",
+            "سَا",
+            "لِي"
+          ],
+          "syllable_pattern": "CV-CV-CV-CV-CV-CV-CV",
+          "suggestions": [
+            "الذي",
+            "التي",
+            "الذى",
+            "اللتي",
+            "الذين"
+          ]
+        }
+      },
+      {
+        "name": "ترتيب خاطئ لمقاطع اللذان",
+        "syllables": [
+          "ذَا",
+          "الْ",
+          "نِ",
+          "لَ"
+        ],
+        "expected_to_fail": true,
+        "actually_failed": true,
+        "behavior_correct": true,
+        "result": {
+          "success": false,
+          "message": "لم يتم العثور على أسماء موصولة مطابقة",
+          "input_syllables": [
+            "ذَا",
+            "الْ",
+            "نِ",
+            "لَ"
+          ],
+          "syllable_pattern": "CV-CV-CV-CV",
+          "suggestions": [
+            "الذي",
+            "التي",
+            "الذى",
+            "اللتي",
+            "الذين"
+          ]
+        }
+      }
+    ],
+    "robustness_score": 42.857142857142854
+  },
+  "performance_tests": {
+    "speed_test": {
+      "iterations": 100,
+      "total_time_seconds": 0.011362075805664062,
+      "average_time_ms": 0.11362075805664062,
+      "success_rate": 100.0,
+      "calls_per_second": 8801.208662078227
+    },
+    "heavy_load_test": {
+      "iterations": 1000,
+      "total_time_seconds": 0.09964728355407715,
+      "average_time_ms": 0.09964728355407715,
+      "calls_per_second": 10035.396493847365
+    },
+    "performance_grade": "ممتاز (A+)"
+  },
+  "stress_tests": {
+    "memory_consistency": {
+      "total_calls": 50,
+      "successful_calls": 50,
+      "unique_results": 1,
+      "consistent": true,
+      "consistency_percentage": 100
+    },
+    "repeated_calls": {
+      "total_calls": 100,
+      "successful_calls": 100,
+      "success_rate": 100.0,
+      "stability_score": 100
+    },
+    "concurrent_simulation": {
+      "total_concurrent_calls": 20,
+      "successful_concurrent_calls": 20,
+      "concurrent_success_rate": 100.0,
+      "thread_safety_score": 100
+    }
+  },
+  "overall_assessment": {
+    "overall_score": 88.57142857142857,
+    "grade": "جيد جداً (B+)",
+    "component_scores": {
+      "precision": 100.0,
+      "robustness": 42.857142857142854,
+      "performance": 100,
+      "stability": 100
+    },
+    "recommendations": [
+      "تعزيز التعامل مع الحالات الاستثنائية"
+    ]
+  }
+}

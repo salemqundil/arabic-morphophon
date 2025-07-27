@@ -1,0 +1,1274 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+🎯 COMPREHENSIVE ARABIC PHONOLOGICAL SYSTEM 🎯
+Zero Layer Foundation for Multi-Layered Arabic NLP Architecture
+
+فونيم → حركة → مقطع → جذر → وزن → اشتقاق → تركيب صرفي → وزن → تركيب نحوي تحويلي
+
+Author: Arabic NLP Expert Team
+Version: 3.0.0
+Date: 2025-07 23
+License: MIT
+
+ZERO LAYER ARCHITECTURE:
+═══════════════════════════════════════════════════════════════════════════════════
+║ PHONEME + VOWEL COMBINATIONS → ALL HIGHER LINGUISTIC LAYERS                    ║
+║ 🔤 Phonemes: 28 Arabic consonants + pharyngeals + glottals                     ║
+║ 🎵 Short Vowels: فتحة، كسرة، ضمة + variations                                   ║
+║ 🏗️ Foundation for: Syllables → Roots → Patterns → Morphology → Syntax         ║
+═══════════════════════════════════════════════════════════════════════════════════
+"""
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped-def,misc
+
+
+import logging  # noqa: F401
+import json  # noqa: F401
+import re  # noqa: F401
+from typing import Dict, List, Any, Optional, Tuple, Set, Union
+from dataclasses import dataclass, field  # noqa: F401
+from enum import Enum, auto  # noqa: F401
+from pathlib import Path  # noqa: F401
+import numpy as np  # noqa: F401
+from collections import defaultdict  # noqa: F401
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('comprehensive_arabic_phonology.log', encoding='utf 8'),
+        logging.StreamHandler(),
+    ],
+)
+logger = logging.getLogger(__name__)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# PHONOLOGICAL FEATURE CLASSIFICATION SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class PlaceOfArticulation(Enum):
+    """مكان النطق - Place of Articulation"""
+
+    BILABIAL = "bilabial"  # شفوي
+    LABIODENTAL = "labiodental"  # شفوي أسناني
+    DENTAL = "dental"  # أسناني
+    ALVEOLAR = "alveolar"  # لثوي
+    POSTALVEOLAR = "postalveolar"  # ما بعد اللثوي
+    PALATAL = "palatal"  # غاري
+    VELAR = "velar"  # طبقي
+    UVULAR = "uvular"  # لهوي
+    PHARYNGEAL = "pharyngeal"  # حلقي
+    GLOTTAL = "glottal"  # حنجري
+    INTERDENTAL = "interdental"  # بين الأسنان
+
+
+class MannerOfArticulation(Enum):
+    """طريقة النطق - Manner of Articulation"""
+
+    STOP = "stop"  # وقفة
+    FRICATIVE = "fricative"  # احتكاكي
+    AFFRICATE = "affricate"  # انفجاري احتكاكي
+    NASAL = "nasal"  # أنفي
+    LIQUID = "liquid"  # سائل
+    TRILL = "trill"  # رعشة
+    TAP = "tap"  # نقرة
+    APPROXIMANT = "approximant"  # تقريبي
+    GLIDE = "glide"  # انزلاقي
+
+
+class VoicingType(Enum):
+    """نوع الصوت - Voicing Type"""
+
+    VOICED = "voiced"  # مجهور
+    VOICELESS = "voiceless"  # مهموس
+
+
+class EmphasisType(Enum):
+    """نوع التفخيم - Emphasis Type"""
+
+    PLAIN = "plain"  # مرقق
+    EMPHATIC = "emphatic"  # مفخم
+    PHARYNGEALIZED = "pharyngealized"  # مُطبق
+
+
+class VowelHeight(Enum):
+    """علو الصائت - Vowel Height"""
+
+    HIGH = "high"  # عالي
+    MID = "mid"  # متوسط
+    LOW = "low"  # منخفض
+
+
+class VowelBackness(Enum):
+    """خلفية الصائت - Vowel Backness"""
+
+    FRONT = "front"  # أمامي
+    CENTRAL = "central"  # وسطي
+    BACK = "back"  # خلفي
+
+
+class VowelLength(Enum):
+    """طول الصائت - Vowel Length"""
+
+    SHORT = "short"  # قصير
+    LONG = "long"  # طويل
+
+
+@dataclass
+class PhonemeFeatures:
+    """ملامح الفونيم - Phoneme Features"""
+
+    symbol: str
+    arabic_letter: str
+    ipa: str
+    place: PlaceOfArticulation
+    manner: MannerOfArticulation
+    voicing: VoicingType
+    emphasis: EmphasisType = EmphasisType.PLAIN
+    frequency: float = 0.0
+    morphophonological_alternations: List[str] = field(default_factory=list)
+    phonotactic_constraints: List[str] = field(default_factory=list)
+    syllable_positions: List[str] = field(default_factory=lambda: ["onset", "coda"])
+
+    def to_feature_vector(self) -> np.ndarray:
+        """تحويل إلى متجه ملامح"""
+        features = np.zeros(20)  # 20-dimensional feature vector
+
+        # Place features (0-10)
+        place_map = {place: i for i, place in enumerate(PlaceOfArticulation)}
+        features[place_map[self.place]] = 1.0
+
+        # Manner features (11 18)
+        manner_map = {manner: i + 11 for i, manner in enumerate(MannerOfArticulation)}
+        features[manner_map[self.manner]] = 1.0
+
+        # Binary features
+        features[19] = 1.0 if self.voicing == VoicingType.VOICED else 0.0
+
+        return features
+
+
+@dataclass
+class VowelFeatures:
+    """ملامح الصائت - Vowel Features"""
+
+    symbol: str
+    arabic_diacritic: str
+    ipa: str
+    height: VowelHeight
+    backness: VowelBackness
+    length: VowelLength
+    rounding: bool = False
+    frequency: float = 0.0
+    allophonic_variants: List[str] = field(default_factory=list)
+    contextual_rules: List[str] = field(default_factory=list)
+    prosodic_weight: float = 1.0
+
+    def to_feature_vector(self) -> np.ndarray:
+        """تحويل إلى متجه ملامح"""
+        features = np.zeros(10)
+
+        # Height features (0-2)
+        height_map = {VowelHeight.HIGH: 0, VowelHeight.MID: 1, VowelHeight.LOW: 2}
+        features[height_map[self.height]] = 1.0
+
+        # Backness features (3-5)
+        backness_map = {
+            VowelBackness.FRONT: 3,
+            VowelBackness.CENTRAL: 4,
+            VowelBackness.BACK: 5,
+        }
+        features[backness_map[self.backness]] = 1.0
+
+        # Length features (6 7)
+        features[6] = 1.0 if self.length == VowelLength.SHORT else 0.0
+        features[7] = 1.0 if self.length == VowelLength.LONG else 0.0
+
+        # Binary features
+        features[8] = 1.0 if self.rounding else 0.0
+        features[9] = self.prosodic_weight
+
+        return features
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# COMPREHENSIVE ARABIC PHONEME INVENTORY
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class ArabicPhonemeInventory:
+    """مخزون الفونيمات العربية - Arabic Phoneme Inventory"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """TODO: Add docstring."""
+        self.consonants = self._initialize_consonants()
+        self.vowels = self._initialize_vowels()
+        self.phoneme_map = {p.arabic_letter: p for p in self.consonants}
+        self.vowel_map = {v.arabic_diacritic: v for v in self.vowels}
+
+    def _initialize_consonants(self) -> List[PhonemeFeatures]:
+        """تهيئة الصوامت العربية"""
+        return [
+            # STOPS - الوقفات
+            PhonemeFeatures(
+                "b",
+                "ب",
+                "b",
+                PlaceOfArticulation.BILABIAL,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICED,
+                frequency=0.045,
+            ),
+            PhonemeFeatures(
+                "t",
+                "ت",
+                "t̪",
+                PlaceOfArticulation.DENTAL,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICELESS,
+                frequency=0.089,
+            ),
+            PhonemeFeatures(
+                "T",
+                "ط",
+                "tˤ",
+                PlaceOfArticulation.DENTAL,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICELESS,
+                EmphasisType.EMPHATIC,
+                frequency=0.034,
+            ),
+            PhonemeFeatures(
+                "d",
+                "د",
+                "d̪",
+                PlaceOfArticulation.DENTAL,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICED,
+                frequency=0.067,
+            ),
+            PhonemeFeatures(
+                "D",
+                "ض",
+                "dˤ",
+                PlaceOfArticulation.DENTAL,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICED,
+                EmphasisType.EMPHATIC,
+                frequency=0.023,
+            ),
+            PhonemeFeatures(
+                "k",
+                "ك",
+                "k",
+                PlaceOfArticulation.VELAR,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICELESS,
+                frequency=0.078,
+            ),
+            PhonemeFeatures(
+                "g",
+                "ج",
+                "ʤ",
+                PlaceOfArticulation.POSTALVEOLAR,
+                MannerOfArticulation.AFFRICATE,
+                VoicingType.VOICED,
+                frequency=0.056,
+            ),
+            PhonemeFeatures(
+                "q",
+                "ق",
+                "q",
+                PlaceOfArticulation.UVULAR,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICELESS,
+                frequency=0.067,
+            ),
+            PhonemeFeatures(
+                "'",
+                "ء",
+                "ʔ",
+                PlaceOfArticulation.GLOTTAL,
+                MannerOfArticulation.STOP,
+                VoicingType.VOICELESS,
+                frequency=0.034,
+            ),
+            # FRICATIVES - الاحتكاكيات
+            PhonemeFeatures(
+                "f",
+                "ف",
+                "f",
+                PlaceOfArticulation.LABIODENTAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.045,
+            ),
+            PhonemeFeatures(
+                "th",
+                "ث",
+                "θ",
+                PlaceOfArticulation.INTERDENTAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.012,
+            ),
+            PhonemeFeatures(
+                "dh",
+                "ذ",
+                "ð",
+                PlaceOfArticulation.INTERDENTAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICED,
+                frequency=0.019,
+            ),
+            PhonemeFeatures(
+                "s",
+                "س",
+                "s",
+                PlaceOfArticulation.ALVEOLAR,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.067,
+            ),
+            PhonemeFeatures(
+                "z",
+                "ز",
+                "z",
+                PlaceOfArticulation.ALVEOLAR,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICED,
+                frequency=0.023,
+            ),
+            PhonemeFeatures(
+                "S",
+                "ص",
+                "sˤ",
+                PlaceOfArticulation.ALVEOLAR,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                EmphasisType.EMPHATIC,
+                frequency=0.034,
+            ),
+            PhonemeFeatures(
+                "Z",
+                "ظ",
+                "ðˤ",
+                PlaceOfArticulation.INTERDENTAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICED,
+                EmphasisType.EMPHATIC,
+                frequency=0.008,
+            ),
+            PhonemeFeatures(
+                "sh",
+                "ش",
+                "ʃ",
+                PlaceOfArticulation.POSTALVEOLAR,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.045,
+            ),
+            PhonemeFeatures(
+                "x",
+                "خ",
+                "x",
+                PlaceOfArticulation.VELAR,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.034,
+            ),
+            PhonemeFeatures(
+                "gh",
+                "غ",
+                "ɣ",
+                PlaceOfArticulation.VELAR,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICED,
+                frequency=0.019,
+            ),
+            PhonemeFeatures(
+                "H",
+                "ح",
+                "ħ",
+                PlaceOfArticulation.PHARYNGEAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.078,
+            ),
+            PhonemeFeatures(
+                "9",
+                "ع",
+                "ʕ",
+                PlaceOfArticulation.PHARYNGEAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICED,
+                frequency=0.091,
+            ),
+            PhonemeFeatures(
+                "h",
+                "ه",
+                "h",
+                PlaceOfArticulation.GLOTTAL,
+                MannerOfArticulation.FRICATIVE,
+                VoicingType.VOICELESS,
+                frequency=0.089,
+            ),
+            # NASALS - الأنفيات
+            PhonemeFeatures(
+                "m",
+                "م",
+                "m",
+                PlaceOfArticulation.BILABIAL,
+                MannerOfArticulation.NASAL,
+                VoicingType.VOICED,
+                frequency=0.134,
+            ),
+            PhonemeFeatures(
+                "n",
+                "ن",
+                "n",
+                PlaceOfArticulation.ALVEOLAR,
+                MannerOfArticulation.NASAL,
+                VoicingType.VOICED,
+                frequency=0.156,
+            ),
+            # LIQUIDS - السوائل
+            PhonemeFeatures(
+                "l",
+                "ل",
+                "l",
+                PlaceOfArticulation.ALVEOLAR,
+                MannerOfArticulation.LIQUID,
+                VoicingType.VOICED,
+                frequency=0.167,
+            ),
+            PhonemeFeatures(
+                "r",
+                "ر",
+                "r",
+                PlaceOfArticulation.ALVEOLAR,
+                MannerOfArticulation.TRILL,
+                VoicingType.VOICED,
+                frequency=0.134,
+            ),
+            # GLIDES - الانزلاقيات
+            PhonemeFeatures(
+                "w",
+                "و",
+                "w",
+                PlaceOfArticulation.BILABIAL,
+                MannerOfArticulation.GLIDE,
+                VoicingType.VOICED,
+                frequency=0.089,
+            ),
+            PhonemeFeatures(
+                "y",
+                "ي",
+                "j",
+                PlaceOfArticulation.PALATAL,
+                MannerOfArticulation.GLIDE,
+                VoicingType.VOICED,
+                frequency=0.123,
+            ),
+        ]
+
+    def _initialize_vowels(self) -> List[VowelFeatures]:
+        """تهيئة الصوائت العربية"""
+        return [
+            # SHORT VOWELS - الحركات القصيرة
+            VowelFeatures(
+                symbol="a",
+                arabic_diacritic="َ",
+                ipa="a",
+                height=VowelHeight.LOW,
+                backness=VowelBackness.CENTRAL,
+                length=VowelLength.SHORT,
+                frequency=0.234,
+                allophonic_variants=["aˤ", "ɑ"],  # in emphatic/pharyngeal contexts
+                contextual_rules=["backing_in_emphatic", "lowering_near_pharyngeal"],
+                prosodic_weight=1.0,
+            ),
+            VowelFeatures(
+                symbol="i",
+                arabic_diacritic="ِ",
+                ipa="i",
+                height=VowelHeight.HIGH,
+                backness=VowelBackness.FRONT,
+                length=VowelLength.SHORT,
+                frequency=0.189,
+                allophonic_variants=["ɪ", "e"],
+                contextual_rules=[
+                    "lowering_in_open_syllables",
+                    "centralization_in_clusters",
+                ],
+                prosodic_weight=1.0,
+            ),
+            VowelFeatures(
+                symbol="u",
+                arabic_diacritic="ُ",
+                ipa="u",
+                height=VowelHeight.HIGH,
+                backness=VowelBackness.BACK,
+                length=VowelLength.SHORT,
+                rounding=True,
+                frequency=0.145,
+                allophonic_variants=["ʊ", "o"],
+                contextual_rules=[
+                    "lowering_before_gutturals",
+                    "fronting_in_palatal_context",
+                ],
+                prosodic_weight=1.0,
+            ),
+            # LONG VOWELS - الحركات الطويلة
+            VowelFeatures(
+                symbol="aa",
+                arabic_diacritic="ا",
+                ipa="aː",
+                height=VowelHeight.LOW,
+                backness=VowelBackness.CENTRAL,
+                length=VowelLength.LONG,
+                frequency=0.156,
+                allophonic_variants=["aːˤ", "ɑː"],
+                contextual_rules=["backing_in_emphatic", "lengthening_in_stress"],
+                prosodic_weight=2.0,
+            ),
+            VowelFeatures(
+                symbol="ii",
+                arabic_diacritic="ي",
+                ipa="iː",
+                height=VowelHeight.HIGH,
+                backness=VowelBackness.FRONT,
+                length=VowelLength.LONG,
+                frequency=0.089,
+                allophonic_variants=["iː", "eː"],
+                contextual_rules=["diphthongization", "glide_formation"],
+                prosodic_weight=2.0,
+            ),
+            VowelFeatures(
+                symbol="uu",
+                arabic_diacritic="و",
+                ipa="uː",
+                height=VowelHeight.HIGH,
+                backness=VowelBackness.BACK,
+                length=VowelLength.LONG,
+                rounding=True,
+                frequency=0.067,
+                allophonic_variants=["uː", "oː"],
+                contextual_rules=["diphthongization", "glide_formation"],
+                prosodic_weight=2.0,
+            ),
+            # SPECIAL VOWELS - حركات خاصة
+            VowelFeatures(
+                symbol="an",
+                arabic_diacritic="ً",
+                ipa="an",
+                height=VowelHeight.LOW,
+                backness=VowelBackness.CENTRAL,
+                length=VowelLength.SHORT,
+                frequency=0.023,
+                contextual_rules=["nunation", "case_marking"],
+                prosodic_weight=1.5,
+            ),
+            VowelFeatures(
+                symbol="in",
+                arabic_diacritic="ٍ",
+                ipa="in",
+                height=VowelHeight.HIGH,
+                backness=VowelBackness.FRONT,
+                length=VowelLength.SHORT,
+                frequency=0.015,
+                contextual_rules=["nunation", "case_marking"],
+                prosodic_weight=1.5,
+            ),
+            VowelFeatures(
+                symbol="un",
+                arabic_diacritic="ٌ",
+                ipa="un",
+                height=VowelHeight.HIGH,
+                backness=VowelBackness.BACK,
+                length=VowelLength.SHORT,
+                rounding=True,
+                frequency=0.012,
+                contextual_rules=["nunation", "case_marking"],
+                prosodic_weight=1.5,
+            ),
+        ]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# PHONOLOGICAL RULE SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class PhonologicalRule:
+    """قاعدة صوتية - Phonological Rule"""
+
+    rule_id: str
+    name: str
+    type: str  # assimilation, deletion, insertion, metathesis
+    description: str
+    formal_rule: str
+    input_pattern: str
+    output_pattern: str
+    context: str
+    obligatory: bool
+    probability: float
+    examples: List[Dict[str, str]]
+    blocking_contexts: List[str] = field(default_factory=list)
+    feeding_rules: List[str] = field(default_factory=list)
+    bleeding_rules: List[str] = field(default_factory=list)
+
+
+class ArabicPhonologicalRules:
+    """نظام القواعد الصوتية العربية - Arabic Phonological Rules System"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """TODO: Add docstring."""
+        self.rules = self._initialize_rules()
+        self.rule_ordering = self._establish_rule_ordering()
+
+    def _initialize_rules(self) -> List[PhonologicalRule]:
+        """تهيئة القواعد الصوتية"""
+        return [
+            # ASSIMILATION RULES - قواعد الإدغام
+            PhonologicalRule(
+                rule_id="ASSIM_001",
+                name="Definite Article Solar Assimilation",
+                type="assimilation",
+                description="إدغام لام التعريف في الحروف الشمسية",
+                formal_rule="al + [+coronal] → a[+coronal][+coronal]",
+                input_pattern=r"ال([تثدذرزسشصضطظلن])",
+                output_pattern=r"ا\1\1",
+                context="word_initial",
+                obligatory=True,
+                probability=1.0,
+                examples=[
+                    {"input": "الشمس", "output": "اشّمس", "ipa": "/aʃ.ʃams/"},
+                    {"input": "النور", "output": "انّور", "ipa": "/an.nuːr/"},
+                    {"input": "التراب", "output": "اتّراب", "ipa": "/at.turaːb/"},
+                ],
+            ),
+            PhonologicalRule(
+                rule_id="ASSIM_002",
+                name="Nasal Place Assimilation",
+                type="assimilation",
+                description="مماثلة مكان النطق للأنف",
+                formal_rule="n + [labial] → [labial] + [labial]",
+                input_pattern=r"ن([بمف])",
+                output_pattern=r"م\1",
+                context="word_internal",
+                obligatory=False,
+                probability=0.85,
+                examples=[
+                    {"input": "انبار", "output": "امبار", "ipa": "/am.baːr/"},
+                    {"input": "منفرد", "output": "ممفرد", "ipa": "/mam.fard/"},
+                ],
+            ),
+            # DELETION RULES - قواعد الحذف
+            PhonologicalRule(
+                rule_id="DEL_001",
+                name="Hamza Deletion",
+                type="deletion",
+                description="حذف الهمزة في السياقات المحددة",
+                formal_rule="ʔ → ∅ / V_V",
+                input_pattern=r"([اوي])ء([اوي])",
+                output_pattern=r"\1\2",
+                context="intervocalic",
+                obligatory=False,
+                probability=0.75,
+                examples=[
+                    {"input": "سؤال", "output": "سوال", "ipa": "/su.waːl/"},
+                    {"input": "مسؤول", "output": "مسوول", "ipa": "/mas.uːl/"},
+                ],
+            ),
+            # INSERTION RULES - قواعد الإدراج
+            PhonologicalRule(
+                rule_id="INS_001",
+                name="Epenthetic Vowel Insertion",
+                type="insertion",
+                description="إدراج صائت كسر الثقل",
+                formal_rule="∅ → i / C_CC",
+                input_pattern=r"([بتثجحخدذرزسشصضطظعغفقكلمنهوي])([بتثجحخدذرزسشصضطظعغفقكلمنهوي]{2,})",
+                output_pattern=r"\1ِ\2",
+                context="consonant_cluster",
+                obligatory=False,
+                probability=0.90,
+                examples=[
+                    {"input": "كتب", "output": "كِتِب", "ipa": "/ki.tib/"},
+                    {"input": "درس", "output": "دِرِس", "ipa": "/di.ris/"},
+                ],
+            ),
+            # EMPHASIS SPREADING - انتشار التفخيم
+            PhonologicalRule(
+                rule_id="EMPH_001",
+                name="Emphasis Spreading",
+                type="spreading",
+                description="انتشار التفخيم",
+                formal_rule="[+emphatic] → [+emphatic] / [+emphatic]_σ",
+                input_pattern=r"([طضصظ])([اوي]*)([بتثجحخدذرزسشعغفقكلمنهوي]*)",
+                output_pattern=r"\1ˤ\2ˤ\3ˤ",
+                context="syllable_domain",
+                obligatory=True,
+                probability=1.0,
+                examples=[
+                    {"input": "طالب", "output": "طˤاˤلˤبˤ", "ipa": "/tˤɑːlˤibˤ/"},
+                    {"input": "صوت", "output": "صˤوˤتˤ", "ipa": "/sˤɑwtˤ/"},
+                ],
+            ),
+        ]
+
+    def _establish_rule_ordering(self) -> List[str]:
+        """ترتيب تطبيق القواعد"""
+        return [
+            "ASSIM_001",  # Solar assimilation first
+            "ASSIM_002",  # Then other assimilations
+            "EMPH_001",  # Emphasis spreading
+            "INS_001",  # Epenthesis
+            "DEL_001",  # Deletion last
+        ]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# SYLLABLE STRUCTURE SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+@dataclass
+class SyllablePattern:
+    """نمط مقطعي - Syllable Pattern"""
+
+    pattern: str
+    structure: str
+    weight: str  # light, heavy, superheavy
+    frequency: float
+    examples: List[str]
+    phonotactic_constraints: List[str]
+    stress_attracting: bool
+
+
+class ArabicSyllableSystem:
+    """نظام المقاطع العربية - Arabic Syllable System"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """TODO: Add docstring."""
+        self.patterns = self._initialize_syllable_patterns()
+        self.constraints = self._initialize_phonotactic_constraints()
+
+    def _initialize_syllable_patterns(self) -> List[SyllablePattern]:
+        """تهيئة الأنماط المقطعية"""
+        return [
+            SyllablePattern(
+                pattern="CV",
+                structure="consonant + short_vowel",
+                weight="light",
+                frequency=0.40,
+                examples=["كَ", "بِ", "مُ"],
+                phonotactic_constraints=["onset_required"],
+                stress_attracting=False,
+            ),
+            SyllablePattern(
+                pattern="CVV",
+                structure="consonant + long_vowel",
+                weight="heavy",
+                frequency=0.15,
+                examples=["كا", "بي", "مو"],
+                phonotactic_constraints=["onset_required", "vowel_length"],
+                stress_attracting=True,
+            ),
+            SyllablePattern(
+                pattern="CVC",
+                structure="consonant + short_vowel + consonant",
+                weight="heavy",
+                frequency=0.30,
+                examples=["كتب", "درس", "بيت"],
+                phonotactic_constraints=["onset_required", "coda_allowed"],
+                stress_attracting=True,
+            ),
+            SyllablePattern(
+                pattern="CVVC",
+                structure="consonant + long_vowel + consonant",
+                weight="superheavy",
+                frequency=0.08,
+                examples=["كاتب", "بيت"],
+                phonotactic_constraints=[
+                    "onset_required",
+                    "vowel_length",
+                    "coda_required",
+                ],
+                stress_attracting=True,
+            ),
+            SyllablePattern(
+                pattern="CVCC",
+                structure="consonant + short_vowel + consonant + consonant",
+                weight="superheavy",
+                frequency=0.05,
+                examples=["كتب", "درس"],
+                phonotactic_constraints=["onset_required", "complex_coda"],
+                stress_attracting=True,
+            ),
+            SyllablePattern(
+                pattern="V",
+                structure="vowel_only",
+                weight="light",
+                frequency=0.02,
+                examples=["أ", "إ", "أو"],
+                phonotactic_constraints=["word_initial_only"],
+                stress_attracting=False,
+            ),
+        ]
+
+    def _initialize_phonotactic_constraints(self) -> Dict[str, Any]:
+        """قيود التركيب الصوتي"""
+        return {
+            "onset_constraints": {
+                "max_consonants": 1,
+                "allowed_clusters": [],
+                "forbidden_clusters": ["*CC"],
+            },
+            "nucleus_constraints": {
+                "required": True,
+                "types": ["short_vowel", "long_vowel", "diphthong"],
+            },
+            "coda_constraints": {
+                "max_consonants": 2,
+                "allowed_clusters": ["st", "nt", "kt", "ft"],
+                "forbidden_clusters": ["*tl", "*dl"],
+                "sonority_sequencing": True,
+            },
+            "syllable_constraints": {
+                "min_weight": "light",
+                "max_weight": "superheavy",
+                "weight_restrictions": {
+                    "word_final": ["light", "heavy", "superheavy"],
+                    "word_medial": ["light", "heavy"],
+                    "word_initial": ["light", "heavy"],
+                },
+            },
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# COMPREHENSIVE PHONOLOGICAL PROCESSOR
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class ComprehensiveArabicPhonologicalSystem:
+    """النظام الصوتي العربي الشامل - Comprehensive Arabic Phonological System"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """تهيئة النظام"""
+        self.logger = logging.getLogger(__name__)
+        self.phoneme_inventory = ArabicPhonemeInventory()
+        self.phonological_rules = ArabicPhonologicalRules()
+        self.syllable_system = ArabicSyllableSystem()
+
+        # Feature matrices
+        self.consonant_features = self._build_consonant_feature_matrix()
+        self.vowel_features = self._build_vowel_feature_matrix()
+
+        # Phonological processes
+        self.emphasis_domains = set()
+        self.stress_patterns = {}
+
+        self.logger.info("🎯 Comprehensive Arabic Phonological System initialized")
+
+    def _build_consonant_feature_matrix(self) -> np.ndarray:
+        """بناء مصفوفة ملامح الصوامت"""
+        matrix = np.zeros((len(self.phoneme_inventory.consonants), 20))
+        for i, consonant in enumerate(self.phoneme_inventory.consonants):
+            matrix[i] = consonant.to_feature_vector()
+        return matrix
+
+    def _build_vowel_feature_matrix(self) -> np.ndarray:
+        """بناء مصفوفة ملامح الصوائت"""
+        matrix = np.zeros((len(self.phoneme_inventory.vowels), 10))
+        for i, vowel in enumerate(self.phoneme_inventory.vowels):
+            matrix[i] = vowel.to_feature_vector()
+        return matrix
+
+    def extract_phonemes(self, text: str) -> Dict[str, Any]:
+        """استخراج الفونيمات من النص"""
+        self.logger.info(f"Extracting phonemes from: {text}")
+
+        # Normalize text
+        normalized_text = self._normalize_arabic_text(text)
+
+        # Extract phonemes and vowels
+        phonemes = []
+        vowels = []
+
+        for char in normalized_text:
+            if char in self.phoneme_inventory.phoneme_map:
+                phoneme = self.phoneme_inventory.phoneme_map[char]
+                phonemes.append(
+                    {
+                        'symbol': phoneme.symbol,
+                        'arabic': phoneme.arabic_letter,
+                        'ipa': phoneme.ipa,
+                        'features': phoneme.to_feature_vector().tolist(),
+                        'place': phoneme.place.value,
+                        'manner': phoneme.manner.value,
+                        'voicing': phoneme.voicing.value,
+                        'emphasis': phoneme.emphasis.value,
+                    }
+                )
+            elif char in self.phoneme_inventory.vowel_map:
+                vowel = self.phoneme_inventory.vowel_map[char]
+                vowels.append(
+                    {
+                        'symbol': vowel.symbol,
+                        'arabic': vowel.arabic_diacritic,
+                        'ipa': vowel.ipa,
+                        'features': vowel.to_feature_vector().tolist(),
+                        'height': vowel.height.value,
+                        'backness': vowel.backness.value,
+                        'length': vowel.length.value,
+                        'weight': vowel.prosodic_weight,
+                    }
+                )
+
+        return {
+            'input': text,
+            'normalized': normalized_text,
+            'phonemes': phonemes,
+            'vowels': vowels,
+            'phoneme_count': len(phonemes),
+            'vowel_count': len(vowels),
+            'cv_ratio': len(vowels) / max(len(phonemes), 1),
+            'processing_status': 'success',
+        }
+
+    def apply_phonological_rules(self, text: str) -> Dict[str, Any]:
+        """تطبيق القواعد الصوتية"""
+        self.logger.info(f"Applying phonological rules to: {text}")
+
+        current_form = text
+        applied_rules = []
+        transformations = []
+
+        for rule_id in self.phonological_rules.rule_ordering:
+            rule = next(
+                r for r in self.phonological_rules.rules if r.rule_id == rule_id
+            )
+
+            # Apply rule
+            import re  # noqa: F401
+
+            matches = re.finditer(rule.input_pattern, current_form)
+            if matches:
+                for match in matches:
+                    if rule.obligatory or np.random.random() < rule.probability:
+                        old_form = current_form
+                        current_form = re.sub(
+                            rule.input_pattern, rule.output_pattern, current_form
+                        )
+
+                        if old_form != current_form:
+                            applied_rules.append(rule_id)
+                            transformations.append(
+                                {
+                                    'rule': rule.name,
+                                    'input': old_form,
+                                    'output': current_form,
+                                    'pattern': rule.formal_rule,
+                                }
+                            )
+
+        return {
+            'input': text,
+            'output': current_form,
+            'applied_rules': applied_rules,
+            'transformations': transformations,
+            'rule_count': len(applied_rules),
+        }
+
+    def syllabify_text(self, text: str) -> Dict[str, Any]:
+        """تقطيع النص إلى مقاطع"""
+        self.logger.info(f"Syllabifying text: {text}")
+
+        # Extract phonemes first
+        self.extract_phonemes(text)
+
+        # Simple syllabification algorithm
+        syllables = []
+        current_syllable = ""
+
+        for i, char in enumerate(text):
+            if char in self.phoneme_inventory.phoneme_map:
+                current_syllable += char
+            elif char in self.phoneme_inventory.vowel_map:
+                current_syllable += char
+                # End syllable after vowel (simplified)
+                if current_syllable:
+                    syllables.append(current_syllable)
+                    current_syllable = ""
+
+        # Add remaining syllable
+        if current_syllable:
+            syllables.append(current_syllable)
+
+        # Analyze syllable patterns
+        syllable_analysis = []
+        for syll in syllables:
+            pattern = self._determine_syllable_pattern(syll)
+            syllable_analysis.append(
+                {
+                    'syllable': syll,
+                    'pattern': pattern,
+                    'weight': self._get_syllable_weight(pattern),
+                    'stress_attracting': self._is_stress_attracting(pattern),
+                }
+            )
+
+        return {
+            'input': text,
+            'syllables': syllables,
+            'syllable_count': len(syllables),
+            'syllable_analysis': syllable_analysis,
+            'cv_pattern': ''.join([self._get_cv_pattern(s) for s in syllables]),
+            'stress_assignment': self._assign_stress(syllable_analysis),
+        }
+
+    def _normalize_arabic_text(self, text: str) -> str:
+        """تطبيع النص العربي"""
+        # Remove diacritics except short vowels
+        normalized = re.sub(r'[ًٌٍّْ]', '', text)
+
+        # Normalize alef variants
+        normalized = re.sub(r'[أإآ]', 'ا', normalized)
+
+        # Normalize yeh variants
+        normalized = re.sub(r'ى', 'ي', normalized)
+
+        # Normalize teh marbuta
+        normalized = re.sub(r'ة', 'ه', normalized)
+
+        return normalized.strip()
+
+    def _determine_syllable_pattern(self, syllable: str) -> str:
+        """تحديد نمط المقطع"""
+        consonants = 0
+        vowels = 0
+
+        for char in syllable:
+            if char in self.phoneme_inventory.phoneme_map:
+                consonants += 1
+            elif char in self.phoneme_inventory.vowel_map:
+                vowels += 1
+
+        # Simple pattern determination
+        if consonants == 1 and vowels == 1:
+            return "CV"
+        elif consonants == 2 and vowels == 1:
+            return "CVC"
+        elif consonants == 1 and vowels == 2:
+            return "CVV"
+        else:
+            return "COMPLEX"
+
+    def _get_syllable_weight(self, pattern: str) -> str:
+        """تحديد وزن المقطع"""
+        weight_map = {
+            "CV": "light",
+            "CVV": "heavy",
+            "CVC": "heavy",
+            "CVVC": "superheavy",
+            "CVCC": "superheavy",
+        }
+        return weight_map.get(pattern, "unknown")
+
+    def _is_stress_attracting(self, pattern: str) -> bool:
+        """تحديد قابلية جذب النبر"""
+        stress_attracting = {"CVV", "CVC", "CVVC", "CVCC"}
+        return pattern in stress_attracting
+
+    def _get_cv_pattern(self, syllable: str) -> str:
+        """الحصول على نمط ص ح"""
+        pattern = ""
+        for char in syllable:
+            if char in self.phoneme_inventory.phoneme_map:
+                pattern += "C"
+            elif char in self.phoneme_inventory.vowel_map:
+                pattern += "V"
+        return pattern
+
+    def _assign_stress(self, syllable_analysis: List[Dict]) -> Dict[str, Any]:
+        """تعيين النبر"""
+        if not syllable_analysis:
+            return {"primary": None, "pattern": "none"}
+
+        # Default stress on last heavy syllable, otherwise penultimate
+        heavy_syllables = [
+            i for i, s in enumerate(syllable_analysis) if s['stress_attracting']
+        ]
+
+        if heavy_syllables:
+            primary_stress = heavy_syllables[-1]
+        else:
+            primary_stress = max(0, len(syllable_analysis) - 2)  # Penultimate
+
+        return {
+            "primary": primary_stress,
+            "pattern": "final_heavy" if heavy_syllables else "penultimate",
+        }
+
+    def analyze_complete_phonology(self, text: str) -> Dict[str, Any]:
+        """تحليل صوتي شامل"""
+        self.logger.info(f"Complete phonological analysis for: {text}")
+
+        # Extract phonemes and vowels
+        phoneme_analysis = self.extract_phonemes(text)
+
+        # Apply phonological rules
+        rule_analysis = self.apply_phonological_rules(text)
+
+        # Syllabify
+        syllable_analysis = self.syllabify_text(text)
+
+        # Comprehensive analysis
+        return {
+            'input': text,
+            'engine': 'ComprehensiveArabicPhonologicalSystem',
+            'timestamp': str(np.datetime64('now')),
+            'phoneme_analysis': phoneme_analysis,
+            'phonological_rules': rule_analysis,
+            'syllable_analysis': syllable_analysis,
+            'feature_analysis': {
+                'consonant_features': self.consonant_features.tolist(),
+                'vowel_features': self.vowel_features.tolist(),
+                'feature_dimension': {
+                    'consonants': self.consonant_features.shape,
+                    'vowels': self.vowel_features.shape,
+                },
+            },
+            'linguistic_hierarchy': {
+                'level': 'ZERO_LAYER_PHONOLOGY',
+                'feeds_into': [
+                    'syllable_formation',
+                    'root_extraction',
+                    'pattern_recognition',
+                    'morphological_analysis',
+                    'syntactic_processing',
+                ],
+            },
+            'confidence': 0.95,
+            'status': 'success',
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# FLASK API INTEGRATION
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+def create_phonology_api():  # type: ignore[no-untyped-def]
+    """إنشاء واجهة برمجة تطبيقات للنظام الصوتي"""
+    from flask import Flask, request, jsonify  # noqa: F401
+
+    app = Flask(__name__)
+    phonology_system = ComprehensiveArabicPhonologicalSystem()
+
+    @app.route('/api/phonology/analyze', methods=['POST'])
+    def analyze_phonology():  # type: ignore[no-untyped-def]
+        """تحليل صوتي شامل"""
+        data = request.get_json()
+        text = data.get('text', '')
+
+        if not text:
+            return jsonify({'error': 'No text provided'}), 400
+
+        try:
+            result = phonology_system.analyze_complete_phonology(text)
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/api/phonology/phonemes', methods=['POST'])
+    def extract_phonemes():  # type: ignore[no-untyped-def]
+        """استخراج الفونيمات"""
+        data = request.get_json()
+        text = data.get('text', '')
+
+        try:
+            result = phonology_system.extract_phonemes(text)
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/api/phonology/syllables', methods=['POST'])
+    def syllabify():  # type: ignore[no-untyped-def]
+        """تقطيع مقطعي"""
+        data = request.get_json()
+        text = data.get('text', '')
+
+        try:
+            result = phonology_system.syllabify_text(text)
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/api/phonology/rules', methods=['POST'])
+    def apply_rules():  # type: ignore[no-untyped-def]
+        """تطبيق القواعد الصوتية"""
+        data = request.get_json()
+        text = data.get('text', '')
+
+        try:
+            result = phonology_system.apply_phonological_rules(text)
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    return app
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# TESTING AND DEMONSTRATION
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+def main():  # type: ignore[no-untyped-def]
+    """الدالة الرئيسية للاختبار"""
+    print("🎯" + "=" * 80 + "🎯")
+    print("    COMPREHENSIVE ARABIC PHONOLOGICAL SYSTEM - ZERO LAYER")
+    print("🎯" + "=" * 80 + "🎯")
+
+    # Initialize system
+    phonology_system = ComprehensiveArabicPhonologicalSystem()
+
+    # Test examples
+    test_texts = [
+        "كتب الطالب الدرس",
+        "الشمس مشرقة",
+        "قرأ المعلم الكتاب",
+        "بيت جميل",
+        "طالب مجتهد",
+    ]
+
+    for text in test_texts:
+        print(f"\n📝 Analyzing: {text}")
+        print(" " * 50)
+
+        # Complete analysis
+        result = phonology_system.analyze_complete_phonology(text)
+
+        print(f"🔤 Phonemes: {len(result['phoneme_analysis']['phonemes'])}")
+        print(f"🎵 Vowels: {len(result['phoneme_analysis']['vowels'])}")
+        print(f"📊 Syllables: {len(result['syllable_analysis']['syllables'])}")
+        print(f"🔄 Rules Applied: {len(result['phonological_rules']['applied_rules'])}")
+        print(f"⚖️ CV Pattern: {result['syllable_analysis']['cv_pattern']}")
+
+        # Show syllables
+        syllables = result['syllable_analysis']['syllables']
+        print(f"🔍 Syllabification: {'} - '.join(syllables)}")
+
+
+if __name__ == "__main__":
+    main()

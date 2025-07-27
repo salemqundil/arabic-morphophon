@@ -1,0 +1,45 @@
+# Arabic SyllabicUnit Segmentation Configuration
+# Professional Enterprise-Grade Configuration
+# Zero-Tolerance Standards Applied
+
+# SyllabicUnit Length Constraints
+min_syllabic_unit_length: 1
+max_syllabic_unit_length: 4
+
+# Fallback Strategy
+fallback_template: "CV"
+fallback_mode: "single_phoneme"  # "single_phoneme" | "skip" | "error"
+
+# Template Priority (highest to lowest)
+template_priority:
+  - "CVVC"   # كتاب
+  - "CVC"    # كتب
+  - "CVV"    # قال
+  - "CV"     # كا
+  - "VC"     # أم
+  - "V"      # ا
+
+# Arabic-Specific Settings
+arabic_vowels:
+  - "a"   # فتحة
+  - "i"   # كسرة
+  - "u"   # ضمة
+  - ""   # ألف مد
+  - ""   # ياء مد
+  - ""   # واو مد
+  - ""   # شوا
+
+# Processing Options
+greedy_matching: true        # Match longest syllabic_unit first
+allow_empty_syllabic_units: false # Reject empty results
+strict_mode: false          # Allow flexible matching
+
+# Performance Settings
+max_backtrack_depth: 3      # For complex patterns
+cache_patterns: true        # Cache compiled regex patterns
+batch_processing: true      # Enable batch optimization
+
+# Logging and Debug
+log_level: "INFO"           # DEBUG | INFO | WARN | ERROR
+debug_segmentation: false   # Log detailed segmentation steps
+validate_output: true       # Validate syllabic_unit structure

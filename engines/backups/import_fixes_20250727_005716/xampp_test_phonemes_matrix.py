@@ -1,0 +1,257 @@
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped-def,misc
+
+import unittest  # noqa: F401
+import sys  # noqa: F401
+import os  # noqa: F401
+from typing import Dict
+from flask import Flask  # noqa: F401
+from flask_sqlalchemy import SQLAlchemy  # noqa: F401
+
+# Add the parent directory to the path so 'app' can be found
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+# Setup SQLAlchemy
+db = SQLAlchemy()
+
+
+# Define models directly in the test file to avoid circular imports
+class Language(db.Model):
+    """TODO: Add docstring."""
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), nullable=False)
+    iso_code = db.Column(db.String(3), nullable=False)
+
+    def __init__(self, name, iso_code):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    self.name = name
+    self.iso_code = iso_code
+
+    def save(self):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    db.session.add(self)
+    db.session.commit()
+
+
+class Feature(db.Model):
+    """TODO: Add docstring."""
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), nullable=False)
+    values = db.Column(db.JSON)
+
+    def __init__(self, name, values):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    self.name = name
+    self.values = values
+
+    def save(self):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    db.session.add(self)
+    db.session.commit()
+
+
+class Phoneme(db.Model):
+    """TODO: Add docstring."""
+
+    id = db.Column(db.Integer, primary_key=True)
+    symbol = db.Column(db.String(8), nullable=False)
+    language_id = db.Column(db.Integer, db.ForeignKey('language.id'))
+
+    def __init__(self, symbol, language_id):  # type: ignore[no-untyped-def]
+    """TODO: Add docstring."""
+    self.symbol = symbol
+    self.language_id = language_id
+
+    def save(self):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    db.session.add(self)
+    db.session.commit()
+
+
+class PhonemeFeature(db.Model):
+    """TODO: Add docstring."""
+
+    id = db.Column(db.Integer, primary_key=True)
+    phoneme_id = db.Column(db.Integer, db.ForeignKey('phoneme.id'))
+    feature_id = db.Column(db.Integer, db.ForeignKey('feature.id'))
+    value = db.Column(db.String(64))
+
+    phoneme = db.relationship('Phoneme', backref='features')
+    feature = db.relationship('Feature', backref='phoneme_features')
+
+    def __init__(self, phoneme_id, feature_id, value):  # type: ignore[no-untyped-def]
+    """TODO: Add docstring."""
+    self.phoneme_id = phoneme_id
+    self.feature_id = feature_id
+    self.value = value
+
+    def save(self):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    db.session.add(self)
+    db.session.commit()
+
+
+PHONEMES_MATRIX: Dict[str, Dict[str, str]] = {
+    'ɂ': {'type': 'hamza wasl', 'place': 'glottal', 'manner': 'stop'},
+    # Add more phoneme definitions here
+}
+
+
+def generate_phoneme_matrix(language_id=None) -> Dict:
+    """
+    Returns the phoneme matrix for a given language.
+    If no language_id is provided, returns the predefined matrix.
+    """
+    if language_id is None:
+    return PHONEMES_MATRIX
+
+    # Implementation for database-backed phoneme matrix generation
+    phonemes = db.session.query(Phoneme).filter_by(language_id=language_id).all()
+    features = db.session.query(Feature).all()
+
+    # Use a subquery to fetch phoneme-feature associations
+    phoneme_ids = [p.id for p in phonemes]
+    phoneme_features_query = (
+    db.session.query(PhonemeFeature)
+    .join(Phoneme)
+    .filter(Phoneme.id.in_(phoneme_ids))
+    )
+
+    # Debug: Print the generated SQL query
+    print(str(phoneme_features_query))
+
+    phoneme_features = phoneme_features_query.all()
+
+    # Build the matrix
+    result = {
+    'features': [{'name': f.name} for f in features],
+    'phonemes': [{'symbol': p.symbol} for p in phonemes],
+    'matrix': [],
+    }
+
+    # Fill matrix with values
+    for phoneme in phonemes:
+    row = []
+        for feature in features:
+    value = next(
+    (
+    pf.value
+                    for pf in phoneme_features
+                    if pf.phoneme_id == phoneme.id and pf.feature_id == feature.id
+    ),
+    None,
+    )
+    row.append(value)
+    result['matrix'].append(row)
+
+    return result
+
+
+class TestPhonemesMatrix(unittest.TestCase):
+    """TODO: Add docstring."""
+
+    def setUp(self):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+    self.app = create_app('testing')
+    self.app_context = self.app.app_context()
+    self.app_context.push()
+    self.client = self.app.test_client()
+
+        # Create test data
+    self.language = Language(name="Test Language", iso_code="tst")
+    self.language.save()
+
+        # Create some features
+    self.feature1 = Feature(name="voicing", values=["voiced", "voiceless"])
+    self.feature2 = Feature(name="place", values=["bilabial", "alveolar"])
+    self.feature1.save()
+    self.feature2.save()
+
+        # Create some phonemes
+    self.phoneme1 = Phoneme(symbol="p", language_id=self.language.id)
+    self.phoneme2 = Phoneme(symbol="b", language_id=self.language.id)
+    self.phoneme3 = Phoneme(symbol="t", language_id=self.language.id)
+    self.phoneme1.save()
+    self.phoneme2.save()
+    self.phoneme3.save()
+
+        # Assign features to phonemes
+    PhonemeFeature(
+    phoneme_id=self.phoneme1.id, feature_id=self.feature1.id, value="voiceless"
+    ).save()
+    PhonemeFeature(
+    phoneme_id=self.phoneme1.id, feature_id=self.feature2.id, value="bilabial"
+    ).save()
+    PhonemeFeature(
+    phoneme_id=self.phoneme2.id, feature_id=self.feature1.id, value="voiced"
+    ).save()
+    PhonemeFeature(
+    phoneme_id=self.phoneme2.id, feature_id=self.feature2.id, value="bilabial"
+    ).save()
+    PhonemeFeature(
+    phoneme_id=self.phoneme3.id, feature_id=self.feature1.id, value="voiceless"
+    ).save()
+    PhonemeFeature(
+    phoneme_id=self.phoneme3.id, feature_id=self.feature2.id, value="alveolar"
+    ).save()
+
+    def tearDown(self):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+        # Clean up
+    PhonemeFeature.query.delete()
+    Phoneme.query.delete()
+    Feature.query.delete()
+    Language.query.delete()
+    self.app_context.pop()
+
+    def test_phoneme_matrix_generation(self):  # type: ignore[no-untyped-def]
+    matrix = generate_phoneme_matrix(self.language.id)
+
+        # Verify matrix structure
+    self.assertIn('features', matrix)
+    self.assertIn('phonemes', matrix)
+    self.assertIn('matrix', matrix)
+
+        # Check features
+    self.assertEqual(len(matrix['features']), 2)
+    feature_names = [f['name'] for f in matrix['features']]
+    self.assertIn('voicing', feature_names)
+    self.assertIn('place', feature_names)
+
+
+def create_app(config_name):  # type: ignore[no-untyped-def]
+    """TODO: Add docstring."""
+    app = Flask(__name__)
+
+    # Configuration based on environment
+    if config_name == 'testing':
+    app.config['TESTING'] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hafez.db'
+
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    # Initialize extensions
+    db.init_app(app)
+
+    # Register blueprints
+    from app.utils import api_bp  # noqa: F401
+
+    app.register_blueprint(api_bp)
+
+    # Create database tables
+    with app.app_context():
+    db.create_all()
+
+        # Debug: Print database schema
+        for table_name in db.metadata.tables.keys():
+    print(f"Table: {table_name}")
+            for column in db.metadata.tables[table_name].columns:
+    print(f"  Column: {column.name} ({column.type})")
+
+    return app

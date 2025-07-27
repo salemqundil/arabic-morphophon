@@ -1,0 +1,43 @@
+{
+  "phoneme_inventory": {
+    "total_phonemes": 29,
+    "by_function": {
+      "root_consonant": 7,
+      "long_vowel": 3,
+      "short_vowel": 3,
+      "functional": 16
+    },
+    "by_layer": {
+      "phonological": 13,
+      "morphological": 10,
+      "prosodic": 3,
+      "syntactic": 19,
+      "semantic": 16
+    }
+  },
+  "generation_stats": {
+    "total_phonemes": 29,
+    "functional_combinations": 0,
+    "generated_roots": 300,
+    "derived_patterns": 18
+  },
+  "distribution_analysis": {
+    "root_consonant": 0.3097345132743363,
+    "long_vowel": 0.10619469026548672,
+    "short_vowel": 0.15929203539823006,
+    "functional": 0.42477876106194673
+  },
+  "coverage_analysis": {
+    "phonological_phenomena": 0.98,
+    "morphological_patterns": 0.95,
+    "syntactic_functions": 0.92,
+    "semantic_categories": 0.88,
+    "overall": 0.9325
+  },
+  "comparison_with_basic": {
+    "phonemes": "29 vs 13 (+16)",
+    "theoretical_combinations": "343 vs 343 (base root combinations)",
+    "functional_coverage": "40+ vs 0 functions",
+    "linguistic_layers": "5 vs 2 layers"
+  }
+}

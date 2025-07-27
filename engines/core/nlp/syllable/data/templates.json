@@ -1,0 +1,69 @@
+{
+  "description": "Arabic SyllabicUnit Templates - Professional Implementation",
+  "version": "1.0.0",
+  "last_updated": "2025-07-21",
+  "templates": [
+    {
+      "pattern": "CVVC",
+      "description": "Consonant-Vowel-Vowel-Consonant (كتاب)",
+      "priority": 5,
+      "examples": ["كتاب", "حمار", "جمال"],
+      "frequency": "common"
+    },
+    {
+      "pattern": "CVC", 
+      "description": "Consonant-Vowel-Consonant (كتب)",
+      "priority": 4,
+      "examples": ["كتب", "درس", "حمل"],
+      "frequency": "very_common"
+    },
+    {
+      "pattern": "CVV",
+      "description": "Consonant-Vowel-Vowel (قال)",
+      "priority": 3,
+      "examples": ["قال", "باع", "ناس"],
+      "frequency": "common"
+    },
+    {
+      "pattern": "CV",
+      "description": "Consonant-Vowel (كا)",
+      "priority": 2,
+      "examples": ["كا", "با", "ما"],
+      "frequency": "very_common"
+    },
+    {
+      "pattern": "VC",
+      "description": "Vowel-Consonant (أم)",
+      "priority": 1,
+      "examples": ["أم", "إن", "أو"],
+      "frequency": "common"
+    },
+    {
+      "pattern": "V",
+      "description": "Single Vowel (ا)",
+      "priority": 0,
+      "examples": ["ا", "ي", "و"],
+      "frequency": "rare"
+    }
+  ],
+  "phoneme_mapping": {
+    "vowels": {
+      "short": ["a", "i", "u"],
+      "long": ["", "", ""],
+      "neutral": [""]
+    },
+    "consonants": {
+      "ends": ["b", "t", "d", "k", "g", "q", ""],
+      "fricatives": ["f", "", "", "s", "z", "", "x", "", "", "", "h"],
+      "nasals": ["m", "n"],
+      "liquids": ["l", "r"],
+      "glides": ["w", "j"]
+    }
+  },
+  "validation_rules": {
+    "min_length": 1,
+    "max_length": 4,
+    "allow_consonant_clusters": false,
+    "require_vowel_nucleus": true
+  }
+}

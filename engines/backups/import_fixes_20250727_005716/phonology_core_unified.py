@@ -1,0 +1,1281 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+""""
+🎯 HIERARCHICAL ARABIC WORD TRACING ENGINE 🎯
+Zero Layer Phonology Core - Unified Foundation System
+
+فونيم → حركة → مقطع → جذر → وزن → اشتقاق → تركيب صرفي → وزن → تركيب نحوي
+
+Author: Arabic NLP Expert Team
+Version: 3.0.0
+Date: 2025-07 23
+License: MIT
+
+ZERO LAYER ARCHITECTURE (الطبقة الصفر):
+═══════════════════════════════════════════════════════════════════════════════════
+║ PHONEME + HARAKAT COMBINATIONS → ALL HIGHER LINGUISTIC LAYERS                  ║
+║ 🔤 28 Arabic Consonants + Pharyngeals + Glottals                               ║
+║ 🎵 Short Vowels: فتحة، كسرة، ضمة + variations + sukun + shadda + tanween      ║
+║ 🏗️ Foundation: Phonology → Syllables → Roots → Patterns → Morphology → Syntax ║
+═══════════════════════════════════════════════════════════════════════════════════
+""""
+
+import logging
+from typing import Dict, List, Any, Tuple
+from dataclasses import dataclass
+from enum import Enum
+from collections import defaultdict
+
+# Configure comprehensive logging
+logging.basicConfig()
+    logging.basicConfig(level=logging.INFO,)
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s','
+    handlers=[
+    logging.FileHandler('hierarchical_arabic_tracing.log', encoding='utf 8'),'
+    logging.StreamHandler(),
+    ])
+logger = logging.getLogger(__name__)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# ZERO LAYER: PHONOLOGICAL FEATURE CLASSIFICATION SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class ArabicPhonemeType(Enum):
+    """تصنيف أنواع الفونيمات العربية""""
+
+    CONSONANT = "consonant"  # صامت"
+    VOWEL_SHORT = "vowel_short"  # حركة قصيرة"
+    VOWEL_LONG = "vowel_long"  # حركة طويلة"
+    DIACRITIC = "diacritic"  # تشكيل"
+    SUKUN = "sukun"  # سكون"
+    SHADDA = "shadda"  # شدة"
+    TANWEEN = "tanween"  # تنوين"
+
+
+class ArabicConsonantFeatures(Enum):
+    """خصائص الأصوات الصامتة العربية""""
+
+    # Place of Articulation - مكان النطق
+    BILABIAL = "bilabial"  # شفوي"
+    LABIODENTAL = "labiodental"  # شفوي أسناني"
+    DENTAL = "dental"  # أسناني"
+    ALVEOLAR = "alveolar"  # لثوي"
+    POSTALVEOLAR = "postalveolar"  # ما بعد اللثوي"
+    PALATAL = "palatal"  # غاري"
+    VELAR = "velar"  # طبقي"
+    UVULAR = "uvular"  # لهوي"
+    PHARYNGEAL = "pharyngeal"  # حلقي"
+    GLOTTAL = "glottal"  # حنجري"
+
+    # Manner of Articulation - طريقة النطق
+    STOP = "stop"  # وقفة"
+    FRICATIVE = "fricative"  # احتكاكي"
+    NASAL = "nasal"  # أنفي"
+    LIQUID = "liquid"  # سائل"
+    TRILL = "trill"  # رعشة"
+    APPROXIMANT = "approximant"  # تقريبي"
+
+    # Voicing - الهمس والجهر
+    VOICED = "voiced"  # مجهور"
+    VOICELESS = "voiceless"  # مهموس"
+
+    # Emphasis - التفخيم
+    PLAIN = "plain"  # مرقق"
+    EMPHATIC = "emphatic"  # مفخم"
+    PHARYNGEALIZED = "pharyngealized"  # مُطبق"
+
+
+class ShortVowelType(Enum):
+    """تصنيف الحركات القصيرة العربية""""
+
+    FATHA = "fatha"  # فتحة - a"
+    KASRA = "kasra"  # كسرة - i"
+    DAMMA = "damma"  # ضمة - u"
+    FATHATAN = "fathatan"  # فتحتان - an"
+    KASRATAN = "kasratan"  # كسرتان - in"
+    DAMMATAN = "dammatan"  # ضمتان - un"
+
+
+@dataclass
+class PhonemeVector:
+    """متجه الفونيم - Phoneme Vector Representation""""
+
+    symbol: str  # الرمز
+    arabic_letter: str  # الحرف العربي
+    ipa: str  # الرموز الصوتية الدولية
+    phoneme_type: ArabicPhonemeType  # نوع الفونيم
+    features: List[str]  # الخصائص الصوتية
+    frequency: float  # تكرار الاستخدام
+    vector_representation: List[float]  # التمثيل الرقمي
+    morphological_weight: float  # الوزن الصرفي
+    syllable_position: List[str]  # مواضع في المقطع
+    phonological_rules: List[str]  # القواعد الصوتية
+
+
+@dataclass
+class HarakatVector:
+    """متجه الحركة - Harakat Vector Representation""""
+
+    symbol: str  # رمز الحركة
+    arabic_diacritic: str  # التشكيل العربي
+    vowel_type: ShortVowelType  # نوع الحركة
+    ipa: str  # الرمز الصوتي الدولي
+    morphological_function: List[str]  # الوظيفة الصرفية
+    syntactic_function: List[str]  # الوظيفة النحوية
+    syllable_weight: float  # وزن المقطع
+    vector_representation: List[float]  # التمثيل الرقمي
+    frequency: float  # تكرار الاستخدام
+    contextual_rules: List[str]  # القواعد السياقية
+
+
+@dataclass
+class CVSegment:
+    """مقطع صوتي - CV Segment Representation""""
+
+    onset: List[str]  # البداية
+    nucleus: List[str]  # النواة
+    coda: List[str]  # النهاية
+    cv_pattern: str  # نمط CV
+    syllable_weight: str  # وزن المقطع: خفيف/ثقيل
+    stress: bool  # النبر
+    position_in_word: str  # موضع في الكلمة
+    vector_representation: List[float]  # التمثيل الرقمي
+
+
+@dataclass
+class VectorTrace:
+    """تتبع متجه الكلمة - Hierarchical Vector Trace""""
+
+    word: str  # الكلمة
+    phonemes: List[PhonemeVector]  # الفونيمات
+    harakat: List[HarakatVector]  # الحركات
+    syllables: List[CVSegment]  # المقاطع
+    root: Tuple[str, ...]  # الجذر
+    pattern: str  # الوزن/البحر
+    derivation_type: str  # نوع الاشتقاق
+    morphological_status: str  # الحالة الصرفية
+    syntactic_features: Dict[str, str]  # الخصائص النحوية
+    confidence: float  # درجة الثقة
+    final_vector: List[float]  # المتجه النهائي
+    tracing_steps: List[Dict[str, Any]]  # خطوات التتبع
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# PHONOLOGY CORE ENGINE - UNIFIED FOUNDATION SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class PhonologyCoreEngine:
+    """محرك الصوتيات الأساسي الموحد - Zero Layer Foundation""""
+
+    def __init__(self):
+    """تهيئة النظام الصوتي الموحد""""
+    self.logger = logging.getLogger('PhonologyCoreEngine')'
+    self._setup_logging()
+
+        # Initialize phoneme inventory
+    self.phoneme_inventory = self._initialize_phoneme_inventory()
+    self.harakat_inventory = self._initialize_harakat_inventory()
+
+        # Phonological rules
+    self.phonological_rules = self._initialize_phonological_rules()
+
+        # CV patterns and syllable templates
+    self.cv_patterns = self._initialize_cv_patterns()
+
+        # Integration with existing engines
+    self.engine_integration = self._setup_engine_integration()
+
+    self.logger.info()
+    "🎯 PhonologyCoreEngine initialized - Zero Layer Foundation Ready""
+    )
+
+    def _setup_logging(self) -> None:
+    """إعداد نظام السجلات""""
+        if not self.logger.handlers:
+    handler = logging.StreamHandler()
+            formatter = logging.Formatter()
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s''
+    )
+    handler.setFormatter(formatter)
+    self.logger.addHandler(handler)
+    self.logger.setLevel(logging.INFO)
+
+    def _initialize_phoneme_inventory(self) -> Dict[str, PhonemeVector]:
+    """تهيئة مخزون الفونيمات العربية""""
+    phonemes = {}
+
+        # Arabic Consonants - الأصوات الصامتة
+    consonant_data = [
+            # [symbol, arabic, ipa, features, frequency]
+    ('b', 'ب', 'b', ['bilabial', 'stop', 'voiced'], 0.089),'
+    ('t', 'ت', 't', ['dental', 'stop', 'voiceless'], 0.156),'
+    ('th', 'ث', 'θ', ['dental', 'fricative', 'voiceless'], 0.012),'
+    ('j', 'ج', 'ʤ', ['postalveolar', 'affricate', 'voiced'], 0.056),'
+    ('H', 'ح', 'ħ', ['pharyngeal', 'fricative', 'voiceless'], 0.078),'
+    ('kh', 'خ', 'x', ['uvular', 'fricative', 'voiceless'], 0.034),'
+    ('d', 'د', 'd', ['dental', 'stop', 'voiced'], 0.067),'
+    ('dh', 'ذ', 'ð', ['dental', 'fricative', 'voiced'], 0.019),'
+    ('r', 'ر', 'r', ['alveolar', 'trill', 'voiced'], 0.145),'
+    ('z', 'ز', 'z', ['alveolar', 'fricative', 'voiced'], 0.023),'
+    ('s', 'س', 's', ['alveolar', 'fricative', 'voiceless'], 0.098),'
+    ('sh', 'ش', 'ʃ', ['postalveolar', 'fricative', 'voiceless'], 0.045),'
+    ('S', 'ص', 'sˤ', ['alveolar', 'fricative', 'voiceless', 'emphatic'], 0.067),'
+    ('D', 'ض', 'dˤ', ['dental', 'stop', 'voiced', 'emphatic'], 0.023),'
+    ('T', 'ط', 'tˤ', ['dental', 'stop', 'voiceless', 'emphatic'], 0.034),'
+    ('Z', 'ظ', 'ðˤ', ['dental', 'fricative', 'voiced', 'emphatic'], 0.008),'
+    ('c', 'ع', 'ʕ', ['pharyngeal', 'fricative', 'voiced'], 0.091),'
+    ('gh', 'غ', 'ɣ', ['uvular', 'fricative', 'voiced'], 0.028),'
+    ('f', 'ف', 'f', ['labiodental', 'fricative', 'voiceless'], 0.045),'
+    ('q', 'ق', 'q', ['uvular', 'stop', 'voiceless'], 0.067),'
+    ('k', 'ك', 'k', ['velar', 'stop', 'voiceless'], 0.078),'
+    ('l', 'ل', 'l', ['alveolar', 'liquid', 'voiced'], 0.134),'
+    ('m', 'م', 'm', ['bilabial', 'nasal', 'voiced'], 0.123),'
+    ('n', 'ن', 'n', ['alveolar', 'nasal', 'voiced'], 0.167),'
+    ('h', 'ه', 'h', ['glottal', 'fricative', 'voiceless'], 0.089),'
+    ('w', 'و', 'w', ['labial', 'approximant', 'voiced'], 0.098),'
+    ('y', 'ي', 'j', ['palatal', 'approximant', 'voiced'], 0.134),'
+    ('hamza', 'ء', 'ʔ', ['glottal', 'stop', 'voiceless'], 0.045),'
+    ]
+
+        for symbol, arabic, ipa, features, freq in consonant_data:
+    vector_rep = self._create_phoneme_vector(features, freq)
+    syllable_pos = ()
+    ['onset', 'coda']'
+                if symbol not in ['w', 'y']'
+                else ['onset', 'nucleus', 'coda']'
+    )
+
+    phonemes[arabic] = PhonemeVector()
+    symbol=symbol,
+    arabic_letter=arabic,
+    ipa=ipa,
+    phoneme_type=ArabicPhonemeType.CONSONANT,
+    features=features,
+    frequency=freq,
+    vector_representation=vector_rep,
+    morphological_weight=self._calculate_morphological_weight(features),
+    syllable_position=syllable_pos,
+    phonological_rules=self._get_phonological_rules(symbol))
+
+    return phonemes
+
+    def _initialize_harakat_inventory(self) -> Dict[str, HarakatVector]:
+    """تهيئة مخزون الحركات العربية""""
+    harakat = {}
+
+        # Short Vowels Data - بيانات الحركات القصيرة
+    harakat_data = [
+            # [symbol, diacritic, vowel_type, ipa, morph_func, synt_func, weight, freq]
+    ()
+    'a','
+    'َ','
+    ShortVowelType.FATHA,
+    'a','
+    ['past_verb', 'verbal_noun'],'
+    ['accusative'],'
+    1.0,
+    0.234),
+    ()
+    'i','
+    'ِ','
+    ShortVowelType.KASRA,
+    'i','
+    ['feminine', 'active_participle'],'
+    ['genitive'],'
+    1.0,
+    0.189),
+    ()
+    'u','
+    'ُ','
+    ShortVowelType.DAMMA,
+    'u','
+    ['present_verb', 'passive_participle'],'
+    ['nominative'],'
+    1.0,
+    0.145),
+    ()
+    'an','
+    'ً','
+    ShortVowelType.FATHATAN,
+    'an','
+    ['indefinite'],'
+    ['nunation', 'accusative'],'
+    1.5,
+    0.023),
+    ()
+    'in','
+    'ٍ','
+    ShortVowelType.KASRATAN,
+    'in','
+    ['indefinite'],'
+    ['nunation', 'genitive'],'
+    1.5,
+    0.015),
+    ()
+    'un','
+    'ٌ','
+    ShortVowelType.DAMMATAN,
+    'un','
+    ['indefinite'],'
+    ['nunation', 'nominative'],'
+    1.5,
+    0.012),
+    ()
+    'sukun','
+    'ْ','
+    ShortVowelType.FATHA,
+    '','
+    ['consonant_cluster'],'
+    ['cluster_formation'],'
+    0.0,
+    0.078),
+    ()
+    'shadda','
+    'ّ','
+    ShortVowelType.FATHA,
+    '','
+    ['gemination', 'emphasis'],'
+    ['intensification'],'
+    2.0,
+    0.034),
+    ]
+
+        for ()
+    symbol,
+    diacritic,
+    vowel_type,
+    ipa,
+    morph_func,
+    synt_func,
+    weight,
+    freq) in harakat_data:
+    vector_rep = self._create_harakat_vector(vowel_type, weight, freq)
+    contextual_rules = self._get_harakat_rules(symbol)
+
+    harakat[diacritic] = HarakatVector()
+    symbol=symbol,
+    arabic_diacritic=diacritic,
+    vowel_type=vowel_type,
+    ipa=ipa,
+    morphological_function=morph_func,
+    syntactic_function=synt_func,
+    syllable_weight=weight,
+    vector_representation=vector_rep,
+    frequency=freq,
+    contextual_rules=contextual_rules)
+
+    return harakat
+
+    def _initialize_phonological_rules(self) -> Dict[str, Dict[str, Any]]:
+    """تهيئة القواعد الصوتية العربية""""
+    return {
+    'assimilation': {'
+    'solar_assimilation': {'
+    'rule': 'al + solar_consonant → a + solar_consonant + solar_consonant','
+    'solar_letters': ['
+    'ت','
+    'ث','
+    'د','
+    'ذ','
+    'ر','
+    'ز','
+    'س','
+    'ش','
+    'ص','
+    'ض','
+    'ط','
+    'ظ','
+    'ل','
+    'ن','
+    ],
+    'examples': {'الشمس': 'اشّمس', 'التراب': 'اتّراب'},'
+    'confidence': 0.98,'
+    },
+    'nasal_assimilation': {'
+    'rule': 'n + consonant → consonant assimilation','
+    'examples': {'منبر': 'ممبر', 'إنكار': 'إككار'},'
+    'confidence': 0.85,'
+    },
+    },
+    'deletion': {'
+    'vowel_deletion': {'
+    'rule': 'short_vowel → ∅ / unstressed','
+    'examples': {'كاتب': 'كاتب', 'مدرسة': 'مدرسة'},'
+    'confidence': 0.75,'
+    }
+    },
+    'insertion': {'
+    'epenthesis': {'
+    'rule': '∅ → vowel / consonant_cluster','
+    'examples': {'كتب': 'كُتُب', 'قلم': 'قَلَم'},'
+    'confidence': 0.80,'
+    }
+    },
+    'emphasis_spreading': {'
+    'rule': '[+emphatic] → [+emphatic] / syllable_domain','
+    'emphatic_consonants': ['ص', 'ض', 'ط', 'ظ', 'ق'],'
+    'examples': {'طالب': 'tˤɑːlˤibˤ', 'صابر': 'sˤɑːbˤirˤ'},'
+    'confidence': 0.92,'
+    },
+    }
+
+    def _initialize_cv_patterns(self) -> Dict[str, Dict[str, Any]]:
+    """تهيئة أنماط CV والقوالب المقطعية""""
+    return {
+    'cv_types': {'
+    'V': {'weight': 'light', 'frequency': 0.05, 'examples': ['أ', 'إ']},'
+    'CV': {'weight': 'light', 'frequency': 0.40, 'examples': ['ما', 'لا']},'
+    'CVC': {'weight': 'heavy', 'frequency': 0.30, 'examples': ['من', 'إن']},'
+    'CVV': {'
+    'weight': 'heavy','
+    'frequency': 0.15,'
+    'examples': ['جاء', 'قال'],'
+    },
+    'CVVC': {'
+    'weight': 'superheavy','
+    'frequency': 0.08,'
+    'examples': ['باب', 'نور'],'
+    },
+    'CVCC': {'
+    'weight': 'superheavy','
+    'frequency': 0.02,'
+    'examples': ['بنت', 'كتب'],'
+    },
+    },
+    'syllable_templates': {'
+    'monosyllabic': ['CV', 'CVC', 'CVV'],'
+    'disyllabic': ['CV.CV', 'CV.CVC', 'CVC.CV'],'
+    'trisyllabic': ['CV.CV.CV', 'CV.CVC.CV', 'CVC.CV.CV'],'
+    },
+    'stress_rules': {'
+    'primary_stress': 'penultimate','
+    'secondary_stress': 'initial','
+    'weight_sensitive': True,'
+    },
+    }
+
+    def _setup_engine_integration(self) -> Dict[str, str]:
+    """إعداد التكامل مع المحركات الموجودة""""
+    return {
+    'syllable_engine': 'nlp.syllable.engine.SyllableEngine','
+    'derivation_engine': 'nlp.derivation.engine.DerivationEngine','
+    'morphology_engine': 'nlp.morphology.engine.MorphologyEngine','
+    'phonological_engine': 'nlp.phonological.engine.PhonologicalEngine','
+    'weight_engine': 'nlp.weight.engine.WeightEngine','
+    'root_engine': 'nlp.frozen_root.engine.FrozenRootEngine','
+    }
+
+    # ═══════════════════════════════════════════════════════════════════════════════════
+    # CORE WORD TRACING FUNCTIONALITY - الوظيفة المركزية لتتبع الكلمات
+    # ═══════════════════════════════════════════════════════════════════════════════════
+
+    def trace_word(self, word: str) -> VectorTrace:
+    """"
+    تتبع هرمي للكلمة العربية من الفونيم إلى المعنى
+    Hierarchical Arabic word tracing from phoneme to meaning
+
+    Args:
+    word: الكلمة العربية للتحليل
+
+    Returns:
+    VectorTrace: تتبع متجه شامل للكلمة
+    """"
+        try:
+    self.logger.info(f"🔍 Starting hierarchical tracing for word: {word}")"
+
+            # Step 1: Phoneme Extraction - استخراج الفونيمات
+    phonemes = self._extract_phonemes(word)
+
+            # Step 2: Harakat Analysis - تحليل الحركات
+    harakat = self._extract_harakat(word)
+
+            # Step 3: CV Segmentation - تقطيع CV
+    syllables = self._segment_syllables(word, phonemes, harakat)
+
+            # Step 4: Root Extraction - استخراج الجذر
+    root = self._extract_root(word, phonemes)
+
+            # Step 5: Pattern Recognition - التعرف على الوزن
+    pattern = self._recognize_pattern(word, root, syllables)
+
+            # Step 6: Derivation Analysis - تحليل الاشتقاق
+    derivation_type = self._analyze_derivation(word, root, pattern)
+
+            # Step 7: Morphological Status - الحالة الصرفية
+    morphological_status = self._determine_morphological_status(word, pattern)
+
+            # Step 8: Syntactic Features - الخصائص النحوية
+    syntactic_features = self._extract_syntactic_features(word, harakat)
+
+            # Step 9: Confidence Calculation - حساب درجة الثقة
+    confidence = self._calculate_confidence(phonemes, harakat, syllables, root)
+
+            # Step 10: Final Vector Generation - توليد المتجه النهائي
+    final_vector = self._generate_final_vector()
+    phonemes, harakat, syllables, root, pattern
+    )
+
+            # Create trace steps
+    tracing_steps = self._create_tracing_steps()
+    word, phonemes, harakat, syllables, root, pattern
+    )
+
+    trace = VectorTrace()
+    word=word,
+    phonemes=phonemes,
+    harakat=harakat,
+    syllables=syllables,
+    root=root,
+    pattern=pattern,
+    derivation_type=derivation_type,
+    morphological_status=morphological_status,
+    syntactic_features=syntactic_features,
+    confidence=confidence,
+    final_vector=final_vector,
+    tracing_steps=tracing_steps)
+
+    self.logger.info(f"✅ Hierarchical tracing completed for: {word}")"
+    return trace
+
+        except Exception as e:
+    self.logger.error(f"❌ Error in word tracing: {e}")"
+    return self._create_error_trace(word, str(e))
+
+    def _extract_phonemes(self, word: str) -> List[PhonemeVector]:
+    """استخراج الفونيمات من الكلمة""""
+    phonemes = []
+
+        for char in word:
+            if char in self.phoneme_inventory:
+    phonemes.append(self.phoneme_inventory[char])
+            elif char not in ['َ', 'ُ', 'ِ', 'ً', 'ٌ', 'ٍ', 'ْ', 'ّ']:  # Skip diacritics'
+                # Handle unknown characters
+    unknown_phoneme = PhonemeVector()
+    symbol=char,
+    arabic_letter=char,
+    ipa=char,
+    phoneme_type=ArabicPhonemeType.CONSONANT,
+    features=['unknown'],'
+    frequency=0.001,
+    vector_representation=[0.0] * 10,
+    morphological_weight=1.0,
+    syllable_position=['onset'],'
+    phonological_rules=[])
+    phonemes.append(unknown_phoneme)
+
+    return phonemes
+
+    def _extract_harakat(self, word: str) -> List[HarakatVector]:
+    """استخراج الحركات من الكلمة""""
+    harakat = []
+
+        for char in word:
+            if char in self.harakat_inventory:
+    harakat.append(self.harakat_inventory[char])
+
+        # If no diacritics found, infer basic vowels
+        if not harakat:
+            # Simple vowel inference based on syllable structure
+    inferred_harakat = self._infer_harakat(word)
+    harakat.extend(inferred_harakat)
+
+    return harakat
+
+    def _segment_syllables()
+    self, word: str, phonemes: List[PhonemeVector], harakat: List[HarakatVector]
+    ) -> List[CVSegment]:
+    """تقطيع الكلمة إلى مقاطع CV""""
+    syllables = []
+
+        # Simple CV segmentation algorithm
+    cv_string = self._create_cv_string(phonemes, harakat)
+    cv_segments = self._segment_cv_string(cv_string)
+
+        for i, cv_pattern in enumerate(cv_segments):
+    weight = self._calculate_syllable_weight(cv_pattern)
+    stress = self._determine_stress(i, len(cv_segments), weight)
+    position = self._determine_position(i, len(cv_segments))
+
+            # Extract actual phonemes for this syllable
+    onset, nucleus, coda = self._extract_syllable_phonemes()
+    cv_pattern, phonemes, harakat, i
+    )
+
+    syllable = CVSegment()
+    onset=onset,
+    nucleus=nucleus,
+    coda=coda,
+    cv_pattern=cv_pattern,
+    syllable_weight=weight,
+    stress=stress,
+    position_in_word=position,
+    vector_representation=self._create_syllable_vector()
+    cv_pattern, weight, stress
+    ))
+    syllables.append(syllable)
+
+    return syllables
+
+    def _extract_root()
+    self, word: str, phonemes: List[PhonemeVector]
+    ) -> Tuple[str, ...]:
+    """استخراج الجذر من الكلمة""""
+        # Simple root extraction (trilateral focus)
+    consonants = [
+    p.arabic_letter
+            for p in phonemes
+            if p.phoneme_type == ArabicPhonemeType.CONSONANT
+    ]
+
+        # Remove common prefixes and suffixes
+    filtered_consonants = self._filter_root_consonants(consonants, word)
+
+        # Take first 3 consonants as potential root
+        if len(filtered_consonants) >= 3:
+    return tuple(filtered_consonants[:3])
+        elif len(filtered_consonants) == 2:
+    return tuple(filtered_consonants + [''])  # Defective root'
+        else:
+    return tuple(consonants[:3] if len(consonants) >= 3 else consonants)
+
+    def _recognize_pattern()
+    self, word: str, root: Tuple[str, ...], syllables: List[CVSegment]
+    ) -> str:
+    """التعرف على الوزن الصرفي""""
+        # Create CV pattern string
+    cv_pattern = ''.join([s.cv_pattern for s in syllables])'
+
+        # Common Arabic patterns
+    pattern_map = {
+    'CVC': 'فَعْ','
+    'CVCV': 'فَعَلَ','
+    'CVCVC': 'فَاعِل','
+    'CVCVCV': 'فَعَّالَة','
+    'CVCVCVC': 'مَفْعُول','
+    'CVCVCVCV': 'فَعَّالِيَّة','
+    }
+
+    return pattern_map.get(cv_pattern, f'Pattern_{cv_pattern}')'
+
+    def _analyze_derivation()
+    self, word: str, root: Tuple[str, ...], pattern: str
+    ) -> str:
+    """تحليل نوع الاشتقاق""""
+        if pattern.startswith('فَعَل'):'
+    return 'basic_verb''
+        elif 'فَاعِل' in pattern:'
+    return 'active_participle''
+        elif 'مَفْعُول' in pattern:'
+    return 'passive_participle''
+        elif pattern.startswith('مُ'):'
+    return 'participial_noun''
+        elif pattern.endswith('ة'):'
+    return 'feminine_noun''
+        else:
+    return 'derived_form''
+
+    def _determine_morphological_status(self, word: str, pattern: str) -> str:
+    """تحديد الحالة الصرفية (معرب/مبني)""""
+        # Simple heuristics
+        if word.endswith(('ت', 'ن', 'وا', 'تم', 'تن')):'
+    return 'mabni'  # مبني'
+        elif any(word.endswith(ending) for ending in ['ٌ', 'ً', 'ٍ', 'ُ', 'َ', 'ِ']):'
+    return 'murab'  # معرب'
+        else:
+    return 'murab'  # Default to murab'
+
+    def _extract_syntactic_features()
+    self, word: str, harakat: List[HarakatVector]
+    ) -> Dict[str, str]:
+    """استخراج الخصائص النحوية""""
+    features = {}
+
+        # Gender determination
+        if word.endswith(('ة', 'اء', 'ى')):'
+    features['gender'] = 'feminine''
+        else:
+    features['gender'] = 'masculine''
+
+        # Number determination
+        if word.endswith(('ون', 'ين')):'
+    features['number'] = 'plural''
+        elif word.endswith(('ان', 'ين')):'
+    features['number'] = 'dual''
+        else:
+    features['number'] = 'singular''
+
+        # Case determination from harakat
+        for h in harakat:
+            if 'nominative' in h.syntactic_function:'
+    features['case'] = 'nominative''
+            elif 'accusative' in h.syntactic_function:'
+    features['case'] = 'accusative''
+            elif 'genitive' in h.syntactic_function:'
+    features['case'] = 'genitive''
+
+        # Definiteness
+        if word.startswith('ال'):'
+    features['definiteness'] = 'definite''
+        else:
+    features['definiteness'] = 'indefinite''
+
+    return features
+
+    # ═══════════════════════════════════════════════════════════════════════════════════
+    # UTILITY METHODS - الطرق المساعدة
+    # ═══════════════════════════════════════════════════════════════════════════════════
+
+    def _create_phoneme_vector()
+    self, features: List[str], frequency: float
+    ) -> List[float]:
+    """إنشاء متجه الفونيم""""
+        # Create 10-dimensional vector based on features and frequency
+    vector = [0.0] * 10
+
+        # Feature encoding
+    feature_map = {
+    'voiced': 0,'
+    'voiceless': 1,'
+    'stop': 2,'
+    'fricative': 3,'
+    'nasal': 4,'
+    'liquid': 5,'
+    'emphatic': 6,'
+    'pharyngeal': 7,'
+    'bilabial': 8,'
+    'dental': 9,'
+    }
+
+        for feature in features:
+            if feature in feature_map:
+    vector[feature_map[feature]] = 1.0
+
+        # Add frequency as weight
+    vector = [v * frequency for v in vector]
+
+    return vector
+
+    def _create_harakat_vector()
+    self, vowel_type: ShortVowelType, weight: float, frequency: float
+    ) -> List[float]:
+    """إنشاء متجه الحركة""""
+    vector = [0.0] * 8
+
+        # Vowel type encoding
+        if vowel_type == ShortVowelType.FATHA:
+    vector[0] = 1.0
+        elif vowel_type == ShortVowelType.KASRA:
+    vector[1] = 1.0
+        elif vowel_type == ShortVowelType.DAMMA:
+    vector[2] = 1.0
+        elif vowel_type == ShortVowelType.FATHATAN:
+    vector[3] = 1.0
+        elif vowel_type == ShortVowelType.KASRATAN:
+    vector[4] = 1.0
+        elif vowel_type == ShortVowelType.DAMMATAN:
+    vector[5] = 1.0
+
+        # Weight and frequency
+    vector[6] = weight
+    vector[7] = frequency
+
+    return vector
+
+    def _calculate_morphological_weight(self, features: List[str]) -> float:
+    """حساب الوزن الصرفي للفونيم""""
+    weight = 1.0
+
+        if 'emphatic' in features:'
+    weight += 0.5
+        if 'pharyngeal' in features:'
+    weight += 0.3
+        if 'liquid' in features:'
+    weight += 0.2
+
+    return weight
+
+    def _get_phonological_rules(self, symbol: str) -> List[str]:
+    """الحصول على القواعد الصوتية للفونيم""""
+    rules = []
+
+        if symbol in [
+    't','
+    'th','
+    'd','
+    'dh','
+    'r','
+    'z','
+    's','
+    'sh','
+    'S','
+    'D','
+    'T','
+    'Z','
+    'l','
+    'n','
+    ]:
+    rules.append('solar_assimilation')'
+
+        if symbol in ['S', 'D', 'T', 'Z', 'q']:'
+    rules.append('emphasis_spreading')'
+
+        if symbol in ['w', 'y']:'
+    rules.append('glide_formation')'
+
+    return rules
+
+    def _get_harakat_rules(self, symbol: str) -> List[str]:
+    """الحصول على قواعد الحركة""""
+    rules = []
+
+        if symbol in ['an', 'in', 'un']:'
+    rules.append('nunation')'
+    rules.append('case_marking')'
+
+        if symbol == 'sukun':'
+    rules.append('cluster_formation')'
+    rules.append('syllable_closure')'
+
+        if symbol == 'shadda':'
+    rules.append('gemination')'
+    rules.append('emphasis')'
+
+    return rules
+
+    def _create_cv_string()
+    self, phonemes: List[PhonemeVector], harakat: List[HarakatVector]
+    ) -> str:
+    """إنشاء سلسلة CV من الفونيمات والحركات""""
+    cv_string = """
+
+        for phoneme in phonemes:
+            if phoneme.phoneme_type == ArabicPhonemeType.CONSONANT:
+    cv_string += "C""
+
+        # Add vowels based on harakat
+        for harakat_item in harakat:
+            if harakat_item.symbol not in ['sukun', 'shadda']:'
+    cv_string += "V""
+
+    return cv_string
+
+    def _segment_cv_string(self, cv_string: str) -> List[str]:
+    """تقطيع سلسلة CV إلى مقاطع""""
+    segments = []
+    current_segment = """
+
+    i = 0
+        while i < len(cv_string):
+            if cv_string[i] == 'C':'
+    current_segment += 'C''
+            elif cv_string[i] == 'V':'
+    current_segment += 'V''
+                # End segment after vowel (simple rule)
+    segments.append(current_segment)
+    current_segment = """
+
+    i += 1
+
+        if current_segment:
+    segments.append(current_segment)
+
+    return segments if segments else ['CV']'
+
+    def _calculate_syllable_weight(self, cv_pattern: str) -> str:
+    """حساب وزن المقطع""""
+        if cv_pattern in ['V', 'CV']:'
+    return 'light''
+        elif cv_pattern in ['CVC', 'CVV']:'
+    return 'heavy''
+        else:
+    return 'superheavy''
+
+    def _determine_stress()
+    self, position: int, total_syllables: int, weight: str
+    ) -> bool:
+    """تحديد النبر""""
+        # Penultimate stress rule
+        if total_syllables > 1 and position == total_syllables - 2:
+    return True
+        elif total_syllables == 1:
+    return True
+        else:
+    return False
+
+    def _determine_position(self, index: int, total: int) -> str:
+    """تحديد موضع المقطع في الكلمة""""
+        if index == 0:
+    return 'initial''
+        elif index == total - 1:
+    return 'final''
+        else:
+    return 'medial''
+
+    def _extract_syllable_phonemes()
+    self,
+    cv_pattern: str,
+    phonemes: List[PhonemeVector],
+    harakat: List[HarakatVector],
+    syllable_index: int) -> Tuple[List[str], List[str], List[str]]:
+    """استخراج الفونيمات لمقطع محدد""""
+        # Simplified extraction
+    onset = []
+    nucleus = []
+    coda = []
+
+        # Basic segmentation based on CV pattern
+        if 'C' in cv_pattern:'
+            if syllable_index < len(phonemes):
+    onset.append(phonemes[syllable_index].arabic_letter)
+
+        if 'V' in cv_pattern:'
+            if syllable_index < len(harakat):
+    nucleus.append(harakat[syllable_index].symbol)
+
+    return onset, nucleus, coda
+
+    def _create_syllable_vector()
+    self, cv_pattern: str, weight: str, stress: bool
+    ) -> List[float]:
+    """إنشاء متجه المقطع""""
+    vector = [0.0] * 6
+
+        # CV pattern encoding
+        if cv_pattern == 'CV':'
+    vector[0] = 1.0
+        elif cv_pattern == 'CVC':'
+    vector[1] = 1.0
+        elif cv_pattern == 'CVV':'
+    vector[2] = 1.0
+
+        # Weight encoding
+        if weight == 'light':'
+    vector[3] = 1.0
+        elif weight == 'heavy':'
+    vector[4] = 2.0
+
+        # Stress encoding
+        if stress:
+    vector[5] = 1.0
+
+    return vector
+
+    def _filter_root_consonants(self, consonants: List[str], word: str) -> List[str]:
+    """تصفية الصوامت لاستخراج الجذر""""
+        # Remove common prefixes and suffixes
+    filtered = consonants.copy()
+
+        # Remove definite article
+        if word.startswith('ال') and len(len(filtered)  > 2) > 2:'
+    filtered = filtered[1:]  # Remove the 'ل' from 'ال''
+
+        # Remove common prefixes
+    prefixes = ['م', 'ت', 'س', 'أ', 'ي', 'ن']'
+        if filtered and filtered[0] in prefixes and len(len(filtered)  > 3) > 3:
+    filtered = filtered[1:]
+
+        # Remove common suffixes
+    suffixes = ['ت', 'ه', 'ة', 'ن', 'ون', 'ين']'
+        if filtered and len(len(filtered)  > 3) > 3:
+            for suffix in suffixes:
+                if word.endswith(suffix):
+    filtered = filtered[:-1]
+    break
+
+    return filtered
+
+    def _infer_harakat(self, word: str) -> List[HarakatVector]:
+    """استنباط الحركات الأساسية""""
+        # Simple harakat inference
+    inferred = []
+
+        # Add basic fatha for each consonant (simplified)
+    consonant_count = len([c for c in word if c in self.phoneme_inventory])
+
+        for _ in range(max(1, consonant_count - 1)):
+            if 'َ' in self.harakat_inventory:'
+    inferred.append(self.harakat_inventory['َ'])'
+
+    return inferred
+
+    def _calculate_confidence()
+    self,
+    phonemes: List[PhonemeVector],
+    harakat: List[HarakatVector],
+    syllables: List[CVSegment],
+    root: Tuple[str, ...]) -> float:
+    """حساب درجة الثقة الإجمالية""""
+    confidence = 0.0
+
+        # Phoneme confidence
+        if phonemes:
+    phoneme_conf = sum(p.frequency for p in phonemes) / len(phonemes)
+    confidence += phoneme_conf * 0.3
+
+        # Harakat confidence
+        if harakat:
+    harakat_conf = sum(h.frequency for h in harakat) / len(harakat)
+    confidence += harakat_conf * 0.2
+
+        # Syllable confidence
+        if syllables:
+    confidence += 0.3
+
+        # Root confidence
+        if root and len([r for r in root if r]):
+    confidence += 0.2
+
+    return min(confidence, 1.0)
+
+    def _generate_final_vector()
+    self,
+    phonemes: List[PhonemeVector],
+    harakat: List[HarakatVector],
+    syllables: List[CVSegment],
+    root: Tuple[str, ...],
+    pattern: str) -> List[float]:
+    """توليد المتجه النهائي""""
+    final_vector = []
+
+        # Concatenate phoneme vectors
+        for phoneme in phonemes[:5]:  # Limit to first 5 phonemes
+    final_vector.extend(phoneme.vector_representation)
+
+        # Pad to ensure fixed size
+        while len(final_vector) < 50:
+    final_vector.append(0.0)
+
+        # Add harakat vectors
+        for harakat_item in harakat[:3]:  # Limit to first 3 harakat
+    final_vector.extend(harakat_item.vector_representation)
+
+        # Pad to ensure fixed size
+        while len(final_vector) < 74:
+    final_vector.append(0.0)
+
+        # Add syllable information
+    final_vector.extend([len(syllables), len(root), len(pattern)])
+
+    return final_vector[:100]  # Fixed size vector
+
+    def _create_tracing_steps()
+    self,
+    word: str,
+    phonemes: List[PhonemeVector],
+    harakat: List[HarakatVector],
+    syllables: List[CVSegment],
+    root: Tuple[str, ...],
+    pattern: str) -> List[Dict[str, Any]]:
+    """إنشاء خطوات التتبع""""
+    steps = [
+    {
+    'step': 1,'
+    'name': 'phoneme_extraction','
+    'description': 'استخراج الفونيمات','
+    'input': word,'
+    'output': [p.arabic_letter for p in phonemes],'
+    'confidence': 0.95,'
+    },
+    {
+    'step': 2,'
+    'name': 'harakat_analysis','
+    'description': 'تحليل الحركات','
+    'input': word,'
+    'output': [h.arabic_diacritic for h in harakat],'
+    'confidence': 0.85,'
+    },
+    {
+    'step': 3,'
+    'name': 'syllable_segmentation','
+    'description': 'تقطيع المقاطع','
+    'input': [p.arabic_letter for p in phonemes],'
+    'output': [s.cv_pattern for s in syllables],'
+    'confidence': 0.90,'
+    },
+    {
+    'step': 4,'
+    'name': 'root_extraction','
+    'description': 'استخراج الجذر','
+    'input': [p.arabic_letter for p in phonemes],'
+    'output': list(root),'
+    'confidence': 0.80,'
+    },
+    {
+    'step': 5,'
+    'name': 'pattern_recognition','
+    'description': 'التعرف على الوزن','
+    'input': list(root),'
+    'output': pattern,'
+    'confidence': 0.75,'
+    },
+    ]
+
+    return steps
+
+    def _create_error_trace(self, word: str, error: str) -> VectorTrace:
+    """إنشاء تتبع خطأ""""
+    return VectorTrace()
+    word=word,
+    phonemes=[],
+    harakat=[],
+    syllables=[],
+    root=('', '', ''),'
+    pattern='ERROR','
+    derivation_type='error','
+    morphological_status='error','
+    syntactic_features={'error': error},'
+    confidence=0.0,
+    final_vector=[0.0] * 100,
+    tracing_steps=[
+    {
+    'step': 0,'
+    'name': 'error','
+    'description': f'خطأ في التحليل: {error}','
+    'input': word,'
+    'output': 'ERROR','
+    'confidence': 0.0,'
+    }
+    ])
+
+    # ═══════════════════════════════════════════════════════════════════════════════════
+    # API INTERFACE METHODS - طرق واجهة برمجة التطبيقات
+    # ═══════════════════════════════════════════════════════════════════════════════════
+
+    def batch_trace_words(self, words: List[str]) -> List[VectorTrace]:
+    """تتبع مجموعة من الكلمات""""
+    traces = []
+
+        for word in words:
+    trace = self.trace_word(word)
+    traces.append(trace)
+
+    return traces
+
+    def get_phoneme_inventory(self) -> Dict[str, PhonemeVector]:
+    """الحصول على مخزون الفونيمات""""
+    return self.phoneme_inventory
+
+    def get_harakat_inventory(self) -> Dict[str, HarakatVector]:
+    """الحصول على مخزون الحركات""""
+    return self.harakat_inventory
+
+    def get_phonological_rules(self) -> Dict[str, Dict[str, Any]]:
+    """الحصول على القواعد الصوتية""""
+    return self.phonological_rules
+
+    def analyze_text_hierarchy(self, text: str) -> Dict[str, Any]:
+    """تحليل هرمي للنص الكامل""""
+    words = text.split()
+    word_traces = self.batch_trace_words(words)
+
+    return {
+    'text': text,'
+    'word_count': len(words),'
+    'word_traces': word_traces,'
+    'overall_confidence': ()'
+    sum(trace.confidence for trace in word_traces) / len(word_traces)
+                if word_traces
+                else 0.0
+    ),
+    'phoneme_distribution': self._analyze_phoneme_distribution(word_traces),'
+    'syllable_patterns': self._analyze_syllable_patterns(word_traces),'
+    'root_families': self._analyze_root_families(word_traces),'
+    }
+
+    def _analyze_phoneme_distribution()
+    self, traces: List[VectorTrace]
+    ) -> Dict[str, int]:
+    """تحليل توزيع الفونيمات""""
+    distribution = defaultdict(int)
+
+        for trace in traces:
+            for phoneme in trace.phonemes:
+    distribution[phoneme.arabic_letter] += 1
+
+    return dict(distribution)
+
+    def _analyze_syllable_patterns(self, traces: List[VectorTrace]) -> Dict[str, int]:
+    """تحليل أنماط المقاطع""""
+    patterns = defaultdict(int)
+
+        for trace in traces:
+            for syllable in trace.syllables:
+    patterns[syllable.cv_pattern] += 1
+
+    return dict(patterns)
+
+    def _analyze_root_families()
+    self, traces: List[VectorTrace]
+    ) -> Dict[Tuple[str, ...], List[str]]:
+    """تحليل عائلات الجذور""""
+    families = defaultdict(list)
+
+        for trace in traces:
+            if trace.root and any(trace.root):
+    families[trace.root].append(trace.word)
+
+    return dict(families)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# TESTING AND DEMONSTRATION
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+def main():
+    """اختبار النظام الموحد""""
+    print("🎯 HIERARCHICAL ARABIC WORD TRACING ENGINE")"
+    print("=" * 70)"
+
+    # Initialize the engine
+    engine = PhonologyCoreEngine()
+
+    # Test words
+    test_words = [
+    "كتب",  # wrote"
+    "مدرسة",  # school"
+    "الطالب",  # the student"
+    "يدرسون",  # they study"
+    "الكتاب",  # the book"
+    "مكتبة",  # library"
+    ]
+
+    print("\n📊 TESTING HIERARCHICAL WORD TRACING:")"
+    print(" " * 50)"
+
+    for word in test_words:
+    print(f"\n🔍 Analyzing: {word}")"
+    trace = engine.trace_word(word)
+
+    print(f"   📱 Phonemes: {[p.arabic_letter for p} in trace.phonemes]}")"
+    print(f"   🎵 Harakat: {[h.arabic_diacritic for h} in trace.harakat]}")"
+    print(f"   🏗️ Syllables: {[s.cv_pattern for s} in trace.syllables]}")"
+    print(f"   🌱 Root: {trace.root}")"
+    print(f"   ⚖️ Pattern: {trace.pattern}")"
+    print(f"   🔄 Derivation: {trace.derivation_type}")"
+    print(f"   📈 Confidence: {trace.confidence:.2f}")"
+
+    # Test text analysis
+    test_text = "كتب الطالب في المدرسة""
+    print(f"\n📝 TESTING TEXT HIERARCHY: {test_text}")"
+    print(" " * 50)"
+
+    analysis = engine.analyze_text_hierarchy(test_text)
+    print(f"   📊 Word Count: {analysis['word_count']}")'"
+    print(f"   📈 Overall Confidence: {analysis['overall_confidence']:.2f}")'"
+    print()
+    f"   🔤 Phoneme Distribution: {dict(list(analysis['phoneme_distribution'].items())[:5])}"'"
+    )
+    print(f"   🏗️ Syllable Patterns: {analysis['syllable_patterns']}")'"
+    print(f"   🌱 Root Families: {analysis['root_families']}")'"
+
+    print("\n✅ HIERARCHICAL ARABIC WORD TRACING ENGINE - COMPLETE!")"
+    print("=" * 70)"
+
+
+if __name__ == "__main__":"
+    main()
+

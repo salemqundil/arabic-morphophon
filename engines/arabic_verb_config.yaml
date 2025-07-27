@@ -1,0 +1,190 @@
+# Arabic Verb Conjugation Configuration
+# =====================================
+# ملف إعدادات مولد تصريف الأفعال العربية
+
+# System Configuration
+system:
+  version: "3.0.0"
+  encoding: "utf-8"
+  language: "Arabic"
+  script: "Arabic"
+  locale: "ar_SA"
+
+# Generation Parameters
+generation:
+  max_verbs_per_form: 100
+  max_total_verbs: 1000
+  include_weak_verbs: true
+  include_quadriliteral: false  # Not implemented in v3.0
+  generate_passive_voice: false  # Future enhancement
+
+# Verb Form Coverage
+verb_forms:
+  enabled_forms:
+    - "FORM_I"      # فَعَلَ
+    - "FORM_II"     # فَعَّلَ
+    - "FORM_IV"     # أَفْعَلَ
+
+  future_forms:
+    - "FORM_III"    # فَاعَلَ
+    - "FORM_V"      # تَفَعَّلَ
+    - "FORM_VI"     # تَفَاعَلَ
+    - "FORM_VII"    # انْفَعَلَ
+    - "FORM_VIII"   # افْتَعَلَ
+    - "FORM_IX"     # افْعَلَّ
+    - "FORM_X"      # اسْتَفْعَلَ
+
+# Tense and Mood Coverage
+tenses:
+  enabled_tenses:
+    - "PAST"                 # الماضي
+    - "PRESENT_INDICATIVE"   # المضارع المرفوع
+    - "IMPERATIVE"          # الأمر
+
+  future_tenses:
+    - "PRESENT_SUBJUNCTIVE" # المضارع المنصوب
+    - "PRESENT_JUSSIVE"     # المضارع المجزوم
+
+# Person Coverage
+persons:
+  enabled_persons:
+    - "FIRST_SINGULAR"       # أنا
+    - "SECOND_SINGULAR_MASC" # أنت (مذكر)
+    - "SECOND_SINGULAR_FEM"  # أنت (مؤنث)
+    - "THIRD_SINGULAR_MASC"  # هو
+    - "THIRD_SINGULAR_FEM"   # هي
+    - "FIRST_PLURAL"         # نحن
+    - "SECOND_PLURAL_MASC"   # أنتم
+    - "SECOND_PLURAL_FEM"    # أنتن
+    - "THIRD_PLURAL_MASC"    # هم
+    - "THIRD_PLURAL_FEM"     # هن
+    - "DUAL_MASC"           # هما (مذكر)
+    - "DUAL_FEM"            # هما (مؤنث)
+
+# Root Generation Settings
+root_generation:
+  phonological_constraints:
+    enforce_constraints: true
+    forbidden_combinations:
+      - ["ع", "غ"]
+      - ["ح", "خ"]
+      - ["ق", "ك"]
+
+  morphological_constraints:
+    max_weak_letters: 1
+    allow_identical_radicals: false
+    enforce_arabic_phonotactics: true
+
+  semantic_constraints:
+    prefer_common_roots: true
+    frequency_threshold: 0.1
+    semantic_fields:
+      - "basic_actions"
+      - "motion_verbs"
+      - "cognitive_verbs"
+      - "communication_verbs"
+
+# Morphological Processing
+morphological_processing:
+  apply_ilal_ibdal: true
+  apply_assimilation: true
+  apply_hamza_rules: true
+  apply_vowel_harmony: true
+  normalize_unicode: true
+
+  rule_priorities:
+    1: "phonological_constraints"
+    2: "ilal_ibdal_rules"
+    3: "assimilation_rules"
+    4: "hamza_alif_rules"
+    5: "final_cleanup"
+
+# Validation Settings
+validation:
+  zero_error_tolerance: true
+  phonotactic_validation: true
+  morphological_validation: true
+  semantic_validation: false
+
+  error_handling:
+    log_errors: true
+    skip_invalid: true
+    generate_alternatives: false
+
+# Output Settings
+output:
+  include_vocalization: true
+  include_phonetic: true
+  include_morphological_analysis: true
+  include_applied_rules: true
+  include_statistics: true
+
+  export_formats:
+    - "json"
+    - "csv"
+    - "xml"
+
+# Performance Settings
+performance:
+  parallel_processing: false
+  batch_size: 100
+  memory_limit_mb: 512
+  timeout_seconds: 300
+
+  optimization:
+    cache_patterns: true
+    precompile_regexes: true
+    optimize_memory: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_file: "arabic_verb_conjugation.log"
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_encoding: "utf-8"
+
+  log_sections:
+    initialization: true
+    generation: true
+    validation: true
+    statistics: true
+    errors: true
+
+# Integration Settings
+integration:
+  weights_database: "complete_arabic_morphological_weights.json"
+  inflection_engine: "arabic_inflection_ultimate_fixed.py"
+  output_database: "arabic_verbs_conjugated.json"
+
+  external_tools:
+    enable_spellchecker: false
+    enable_semantic_analyzer: false
+    enable_frequency_analyzer: false
+
+# Quality Assurance
+quality_assurance:
+  minimum_success_rate: 85.0
+  maximum_error_rate: 15.0
+  require_validation: true
+
+  test_cases:
+    sound_verbs: ["كتب", "فهم", "جلس"]
+    hollow_verbs: ["قول", "باع", "نام"]
+    defective_verbs: ["رمي", "دعا", "جرى"]
+
+  acceptance_criteria:
+    phonological_accuracy: 95.0
+    morphological_accuracy: 90.0
+    orthographic_accuracy: 98.0
+
+# Experimental Features (Future Enhancements)
+experimental:
+  enable_machine_learning: false
+  enable_context_awareness: false
+  enable_dialectal_forms: false
+  enable_historical_forms: false
+
+  ml_models:
+    pattern_prediction: false
+    vowel_prediction: false
+    stress_prediction: false

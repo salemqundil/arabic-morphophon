@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arabic-morphophon
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arabic-morphophon-config
+  namespace: arabic-morphophon
+data:
+  ENVIRONMENT: "production"
+  DB_HOST: "postgres-service"
+  DB_PORT: "5432"
+  DB_NAME: "arabic_morphophon"
+  REDIS_URL: "redis://redis-service:6379/0"
+  LOG_LEVEL: "INFO"
+  ENABLE_CORS: "true"
+  ALLOWED_ORIGINS: "https://arabic-morphophon.example.com"
+  API_URL: "https://api.arabic-morphophon.example.com/api"
+  WAIT_FOR_SERVICES: "true"
+  RUN_MIGRATIONS: "true"
+  CREATE_INITIAL_DATA: "true"

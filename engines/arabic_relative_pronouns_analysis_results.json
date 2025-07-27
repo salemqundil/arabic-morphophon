@@ -1,0 +1,361 @@
+{
+  "metadata": {
+    "analysis_date": "2025-07-24T18:34:37.317241",
+    "analyzer_version": "1.0.0",
+    "total_pronouns_analyzed": 17
+  },
+  "pattern_analysis": {
+    "total_patterns": 7,
+    "pattern_distribution": {
+      "CVC-CV": {
+        "count": 2,
+        "percentage": 11.76470588235294,
+        "pronouns": [
+          "الذي",
+          "التي"
+        ],
+        "complexity_score": 2.7
+      },
+      "CVC-CVC": {
+        "count": 1,
+        "percentage": 5.88235294117647,
+        "pronouns": [
+          "الذى"
+        ],
+        "complexity_score": 3.0
+      },
+      "CVC-CV-CV": {
+        "count": 3,
+        "percentage": 17.647058823529413,
+        "pronouns": [
+          "اللتي",
+          "الذين",
+          "اللاتي"
+        ],
+        "complexity_score": 3.9000000000000004
+      },
+      "CVC-CV-CV-CV": {
+        "count": 5,
+        "percentage": 29.411764705882355,
+        "pronouns": [
+          "اللذان",
+          "اللذين",
+          "اللتان",
+          "اللتين",
+          "اللواتي"
+        ],
+        "complexity_score": 5.1000000000000005
+      },
+      "CVC-COMPLEX": {
+        "count": 1,
+        "percentage": 5.88235294117647,
+        "pronouns": [
+          "اللائي"
+        ],
+        "complexity_score": 3.5
+      },
+      "CVC": {
+        "count": 2,
+        "percentage": 11.76470588235294,
+        "pronouns": [
+          "مَن",
+          "ذات"
+        ],
+        "complexity_score": 1.5
+      },
+      "CV": {
+        "count": 3,
+        "percentage": 17.647058823529413,
+        "pronouns": [
+          "ما",
+          "أي",
+          "ذو"
+        ],
+        "complexity_score": 1.2
+      }
+    },
+    "most_common_pattern": "CVC-CV-CV-CV",
+    "average_complexity": 2.985714285714286
+  },
+  "morphological_analysis": {
+    "category_distribution": {
+      "مذكر_مفرد": 3,
+      "مؤنث_مفرد": 3,
+      "مذكر_مثنى": 2,
+      "مؤنث_مثنى": 2,
+      "مذكر_جمع": 1,
+      "مؤنث_جمع": 3,
+      "عام": 3
+    },
+    "syllable_count_distribution": {
+      "2": 4,
+      "3": 3,
+      "4": 5,
+      "1": 5
+    },
+    "frequency_analysis": {
+      "mean_frequency": 0.7176470588235295,
+      "median_frequency": 0.72,
+      "std_frequency": 0.15820795740248697,
+      "high_frequency_pronouns": [
+        "الذي",
+        "الذى",
+        "التي",
+        "الذين",
+        "مَن",
+        "ما"
+      ],
+      "low_frequency_pronouns": [
+        "ذو",
+        "ذات"
+      ]
+    },
+    "usage_context_analysis": {
+      "total_contexts": 20,
+      "context_distribution": {
+        "جملة الصلة": 3,
+        "التعريف": 2,
+        "الوصف": 4,
+        "النصوص الكلاسيكية": 4,
+        "النصوص الفصيحة": 5,
+        "الكتابة الرسمية": 1,
+        "المثنى المرفوع": 1,
+        "المثنى المنصوب والمجرور": 1,
+        "المثنى المؤنث المرفوع": 1,
+        "المثنى المؤنث المنصوب والمجرور": 1,
+        "جمع المذكر السالم": 1,
+        "جمع التكسير": 2,
+        "جمع المؤنث السالم": 1,
+        "جمع المؤنث": 2,
+        "العاقل": 1,
+        "الاستفهام": 3,
+        "الشرط": 3,
+        "غير العاقل": 1,
+        "التعميم": 1,
+        "الإضافة": 2
+      },
+      "most_common_context": "النصوص الفصيحة"
+    }
+  },
+  "generation_performance": {
+    "total_tests": 14,
+    "successful_matches": 13,
+    "failed_matches": 1,
+    "high_confidence_matches": 4,
+    "low_confidence_matches": 9,
+    "average_confidence": 0.7861538461538461,
+    "test_details": [
+      {
+        "test_id": 1,
+        "input_syllables": [
+          "الْ",
+          "ذِي"
+        ],
+        "success": true,
+        "confidence": 0.7949999999999999,
+        "best_match": "الذي"
+      },
+      {
+        "test_id": 2,
+        "input_syllables": [
+          "الْ",
+          "تِي"
+        ],
+        "success": true,
+        "confidence": 0.7919999999999999,
+        "best_match": "التي"
+      },
+      {
+        "test_id": 3,
+        "input_syllables": [
+          "الْ",
+          "لَ",
+          "ذَا",
+          "نِ"
+        ],
+        "success": true,
+        "confidence": 0.7649999999999999,
+        "best_match": "اللذان"
+      },
+      {
+        "test_id": 4,
+        "input_syllables": [
+          "الْ",
+          "لَ",
+          "تَا",
+          "نِ"
+        ],
+        "success": true,
+        "confidence": 0.758,
+        "best_match": "اللتان"
+      },
+      {
+        "test_id": 5,
+        "input_syllables": [
+          "الْ",
+          "ذِي",
+          "نَ"
+        ],
+        "success": true,
+        "confidence": 0.7879999999999999,
+        "best_match": "الذين"
+      },
+      {
+        "test_id": 6,
+        "input_syllables": [
+          "الْ",
+          "لَا",
+          "تِي"
+        ],
+        "success": true,
+        "confidence": 0.7719999999999999,
+        "best_match": "اللاتي"
+      },
+      {
+        "test_id": 7,
+        "input_syllables": [
+          "مَنْ"
+        ],
+        "success": true,
+        "confidence": 0.7899999999999999,
+        "best_match": "مَن"
+      },
+      {
+        "test_id": 8,
+        "input_syllables": [
+          "مَا"
+        ],
+        "success": true,
+        "confidence": 0.9869999999999999,
+        "best_match": "ما"
+      },
+      {
+        "test_id": 9,
+        "input_syllables": [
+          "أَيّ"
+        ],
+        "success": true,
+        "confidence": 0.976,
+        "best_match": "أي"
+      },
+      {
+        "test_id": 10,
+        "input_syllables": [
+          "ذُو"
+        ],
+        "success": true,
+        "confidence": 0.945,
+        "best_match": "ذو"
+      },
+      {
+        "test_id": 11,
+        "input_syllables": [
+          "ذَاتِ"
+        ],
+        "success": true,
+        "confidence": 0.942,
+        "best_match": "ذات"
+      },
+      {
+        "test_id": 12,
+        "input_syllables": [
+          "الْ",
+          "ذُو"
+        ],
+        "success": true,
+        "confidence": 0.6199999999999999,
+        "best_match": "الذي"
+      },
+      {
+        "test_id": 13,
+        "input_syllables": [
+          "الْ",
+          "لَا"
+        ],
+        "success": false,
+        "confidence": 0.0,
+        "best_match": null
+      },
+      {
+        "test_id": 14,
+        "input_syllables": [
+          "xyz"
+        ],
+        "success": true,
+        "confidence": 0.29000000000000004,
+        "best_match": "مَن"
+      }
+    ],
+    "success_rate": 92.85714285714286
+  },
+  "deep_model_performance": {
+    "individual_models": {
+      "lstm_model": {
+        "training_accuracy": 30.4,
+        "test_accuracy": 33.3,
+        "training_loss": 2.85,
+        "convergence_epochs": 20,
+        "model_size_mb": 2.3
+      },
+      "gru_model": {
+        "training_accuracy": 78.3,
+        "test_accuracy": 83.3,
+        "training_loss": 1.42,
+        "convergence_epochs": 15,
+        "model_size_mb": 2.1
+      },
+      "transformer_model": {
+        "training_accuracy": 95.7,
+        "test_accuracy": 100.0,
+        "training_loss": 0.18,
+        "convergence_epochs": 12,
+        "model_size_mb": 4.7
+      }
+    },
+    "comparative_analysis": {
+      "best_model": "transformer_model",
+      "worst_model": "lstm_model",
+      "accuracy_range": {
+        "min": 33.3,
+        "max": 100.0,
+        "average": 72.2
+      },
+      "model_rankings": [
+        {
+          "model": "Transformer",
+          "score": 100.0
+        },
+        {
+          "model": "GRU",
+          "score": 83.3
+        },
+        {
+          "model": "LSTM",
+          "score": 33.3
+        }
+      ]
+    },
+    "recommendations": [
+      "النظام يحقق دقة ممتازة - جاهز للإنتاج",
+      "نموذج Transformer هو الأفضل للاستخدام"
+    ]
+  },
+  "overall_quality_assessment": {
+    "overall_score": 82.03781512605043,
+    "grade": "جيد جداً (A)",
+    "components": {
+      "pattern_diversity_score": 100.0,
+      "generation_success_score": 92.85714285714286,
+      "model_accuracy_score": 100.0,
+      "frequency_coverage_score": 35.294117647058826
+    },
+    "strengths": [
+      "تنوع ممتاز في الأنماط المقطعية",
+      "معدل نجاح عالي في التوليد",
+      "دقة متميزة في نماذج التعلم العميق"
+    ],
+    "improvement_areas": [
+      "إضافة المزيد من الأسماء الموصولة عالية التكرار"
+    ]
+  }
+}

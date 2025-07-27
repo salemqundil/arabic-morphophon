@@ -1,0 +1,99 @@
+2025-07-23 23:09:41,102 - __main__ - INFO - 🌟 Starting Arabic Phonological Foundation System
+2025-07-23 23:09:41,103 - __main__ - INFO - 📍 Working Directory: C:\Users\Administrator\new engine\engines
+2025-07-23 23:09:41,103 - __main__ - INFO - 🔧 Python Version: 3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+2025-07-23 23:09:41,103 - __main__ - INFO - 🎯 UTF-8 Support: ✅
+2025-07-23 23:09:41,103 - ArabicPhonologicalFoundation - INFO - 🚀 Initializing Arabic Phonological Foundation System
+2025-07-23 23:09:41,103 - ArabicPhonologicalFoundation - INFO - ✅ Foundation initialized - 29 phonemes, 10 diacritics
+2025-07-23 23:09:41,104 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كَتَبَ
+2025-07-23 23:09:41,104 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 65.19% confidence
+2025-07-23 23:09:41,106 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: يَكْتُبُ
+2025-07-23 23:09:41,106 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.36% confidence
+2025-07-23 23:09:41,107 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُدَرِّسٌ
+2025-07-23 23:09:41,108 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 53.82% confidence
+2025-07-23 23:09:41,109 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كِتَابٌ
+2025-07-23 23:09:41,109 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 67.14% confidence
+2025-07-23 23:09:41,111 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: قَرَأْتُ
+2025-07-23 23:09:41,111 - ArabicPhonologicalFoundation - WARNING - ⚠️ Unknown character at position 4: أ
+2025-07-23 23:09:41,111 - ArabicPhonologicalFoundation - ERROR - ❌ Error analyzing word 'قَرَأْتُ': Unknown character in strict mode: أ
+2025-07-23 23:09:41,112 - __main__ - ERROR - 💥 Critical error in main execution: Unknown character in strict mode: أ
+2025-07-23 23:12:26,124 - __main__ - INFO - 🌟 Starting Arabic Phonological Foundation System
+2025-07-23 23:12:26,124 - __main__ - INFO - 📍 Working Directory: C:\Users\Administrator\new engine\engines
+2025-07-23 23:12:26,124 - __main__ - INFO - 🔧 Python Version: 3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+2025-07-23 23:12:26,125 - __main__ - INFO - 🎯 UTF-8 Support: ✅
+2025-07-23 23:12:26,125 - ArabicPhonologicalFoundation - INFO - 🚀 Initializing Arabic Phonological Foundation System
+2025-07-23 23:12:26,125 - ArabicPhonologicalFoundation - INFO - ✅ Foundation initialized - 34 phonemes, 10 diacritics
+2025-07-23 23:12:26,125 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كَتَبَ
+2025-07-23 23:12:26,125 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 65.19% confidence
+2025-07-23 23:12:26,127 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: يَكْتُبُ
+2025-07-23 23:12:26,127 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.36% confidence
+2025-07-23 23:12:26,129 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُدَرِّسٌ
+2025-07-23 23:12:26,129 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 53.82% confidence
+2025-07-23 23:12:26,131 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كِتَابٌ
+2025-07-23 23:12:26,131 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 67.14% confidence
+2025-07-23 23:12:26,133 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: قَرَأْتُ
+2025-07-23 23:12:26,133 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.22% confidence
+2025-07-23 23:12:26,136 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: الْبَيْتُ
+2025-07-23 23:12:26,136 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 67.12% confidence
+2025-07-23 23:12:26,138 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: فَعَّلَ
+2025-07-23 23:12:26,138 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 50.46% confidence
+2025-07-23 23:12:26,140 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مَسْؤُولٌ
+2025-07-23 23:12:26,140 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 66.32% confidence
+2025-07-23 23:12:26,142 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُسْتَشْفَى
+2025-07-23 23:12:26,142 - ArabicPhonologicalFoundation - WARNING - ⚠️ Unknown character at position 10: ى
+2025-07-23 23:12:26,142 - ArabicPhonologicalFoundation - ERROR - ❌ Error analyzing word 'مُسْتَشْفَى': Unknown character in strict mode: ى
+2025-07-23 23:12:26,142 - __main__ - ERROR - 💥 Critical error in main execution: Unknown character in strict mode: ى
+2025-07-23 23:12:50,032 - __main__ - INFO - 🌟 Starting Arabic Phonological Foundation System
+2025-07-23 23:12:50,032 - __main__ - INFO - 📍 Working Directory: C:\Users\Administrator\new engine\engines
+2025-07-23 23:12:50,032 - __main__ - INFO - 🔧 Python Version: 3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+2025-07-23 23:12:50,032 - __main__ - INFO - 🎯 UTF-8 Support: ✅
+2025-07-23 23:12:50,033 - ArabicPhonologicalFoundation - INFO - 🚀 Initializing Arabic Phonological Foundation System
+2025-07-23 23:12:50,033 - ArabicPhonologicalFoundation - INFO - ✅ Foundation initialized - 35 phonemes, 10 diacritics
+2025-07-23 23:12:50,033 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كَتَبَ
+2025-07-23 23:12:50,033 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 65.19% confidence
+2025-07-23 23:12:50,035 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: يَكْتُبُ
+2025-07-23 23:12:50,035 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.36% confidence
+2025-07-23 23:12:50,038 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُدَرِّسٌ
+2025-07-23 23:12:50,038 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 53.82% confidence
+2025-07-23 23:12:50,040 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كِتَابٌ
+2025-07-23 23:12:50,041 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 67.14% confidence
+2025-07-23 23:12:50,042 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: قَرَأْتُ
+2025-07-23 23:12:50,043 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.22% confidence
+2025-07-23 23:12:50,045 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: الْبَيْتُ
+2025-07-23 23:12:50,045 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 67.12% confidence
+2025-07-23 23:12:50,047 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: فَعَّلَ
+2025-07-23 23:12:50,047 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 50.46% confidence
+2025-07-23 23:12:50,049 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مَسْؤُولٌ
+2025-07-23 23:12:50,049 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 66.32% confidence
+2025-07-23 23:12:50,051 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُسْتَشْفَى
+2025-07-23 23:12:50,052 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 6 phonemes, 5 diacritics, 65.94% confidence
+2025-07-23 23:12:50,054 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: جَامِعَةٌ
+2025-07-23 23:12:50,054 - ArabicPhonologicalFoundation - WARNING - ⚠️ Unknown character at position 7: ة
+2025-07-23 23:12:50,054 - ArabicPhonologicalFoundation - ERROR - ❌ Error analyzing word 'جَامِعَةٌ': Unknown character in strict mode: ة
+2025-07-23 23:12:50,054 - __main__ - ERROR - 💥 Critical error in main execution: Unknown character in strict mode: ة
+2025-07-23 23:13:10,749 - __main__ - INFO - 🌟 Starting Arabic Phonological Foundation System
+2025-07-23 23:13:10,749 - __main__ - INFO - 📍 Working Directory: C:\Users\Administrator\new engine\engines
+2025-07-23 23:13:10,749 - __main__ - INFO - 🔧 Python Version: 3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]
+2025-07-23 23:13:10,750 - __main__ - INFO - 🎯 UTF-8 Support: ✅
+2025-07-23 23:13:10,750 - ArabicPhonologicalFoundation - INFO - 🚀 Initializing Arabic Phonological Foundation System
+2025-07-23 23:13:10,750 - ArabicPhonologicalFoundation - INFO - ✅ Foundation initialized - 36 phonemes, 10 diacritics
+2025-07-23 23:13:10,750 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كَتَبَ
+2025-07-23 23:13:10,751 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 65.19% confidence
+2025-07-23 23:13:10,753 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: يَكْتُبُ
+2025-07-23 23:13:10,753 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.36% confidence
+2025-07-23 23:13:10,755 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُدَرِّسٌ
+2025-07-23 23:13:10,755 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 53.82% confidence
+2025-07-23 23:13:10,757 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: كِتَابٌ
+2025-07-23 23:13:10,757 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 67.14% confidence
+2025-07-23 23:13:10,759 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: قَرَأْتُ
+2025-07-23 23:13:10,759 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 65.22% confidence
+2025-07-23 23:13:10,761 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: الْبَيْتُ
+2025-07-23 23:13:10,761 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 67.12% confidence
+2025-07-23 23:13:10,763 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: فَعَّلَ
+2025-07-23 23:13:10,764 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 50.46% confidence
+2025-07-23 23:13:10,766 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مَسْؤُولٌ
+2025-07-23 23:13:10,766 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 66.32% confidence
+2025-07-23 23:13:10,768 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: مُسْتَشْفَى
+2025-07-23 23:13:10,768 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 6 phonemes, 5 diacritics, 65.94% confidence
+2025-07-23 23:13:10,771 - ArabicPhonologicalFoundation - INFO - 🔬 Analyzing word: جَامِعَةٌ
+2025-07-23 23:13:10,771 - ArabicPhonologicalFoundation - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 66.40% confidence
+2025-07-23 23:13:10,774 - __main__ - INFO - 🏁 Arabic Phonological Foundation System execution completed successfully

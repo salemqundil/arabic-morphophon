@@ -1,0 +1,1021 @@
+{
+  "batch_tests": {
+    "start_time": "2025-07-26T23:53:18.589956",
+    "test_count": 30,
+    "engines_tested": [
+      "morphological",
+      "inflection",
+      "weight"
+    ],
+    "results": [
+      {
+        "test_id": 1,
+        "input_text": "كتاب",
+        "success": true,
+        "processing_time_ms": 0.39,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 2,
+        "input_text": "قلم",
+        "success": true,
+        "processing_time_ms": 0.29,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 3,
+        "input_text": "بيت",
+        "success": true,
+        "processing_time_ms": 0.38,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 4,
+        "input_text": "شجرة",
+        "success": true,
+        "processing_time_ms": 0.35,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 5,
+        "input_text": "نهر",
+        "success": true,
+        "processing_time_ms": 0.28,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 6,
+        "input_text": "يكتب",
+        "success": true,
+        "processing_time_ms": 0.31,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 7,
+        "input_text": "كتب",
+        "success": true,
+        "processing_time_ms": 0.37,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 8,
+        "input_text": "اكتب",
+        "success": true,
+        "processing_time_ms": 0.37,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 9,
+        "input_text": "مكتوب",
+        "success": true,
+        "processing_time_ms": 0.45,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 10,
+        "input_text": "استكشاف",
+        "success": true,
+        "processing_time_ms": 0.35,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 11,
+        "input_text": "استخراج",
+        "success": true,
+        "processing_time_ms": 0.35,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 12,
+        "input_text": "تفسير",
+        "success": true,
+        "processing_time_ms": 0.32,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 13,
+        "input_text": "مناقشة",
+        "success": true,
+        "processing_time_ms": 0.36,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 14,
+        "input_text": "الكتاب على الطاولة",
+        "success": true,
+        "processing_time_ms": 0.37,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 15,
+        "input_text": "الطالب يدرس في المكتبة",
+        "success": true,
+        "processing_time_ms": 0.3,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 16,
+        "input_text": "هذا كتاب جميل ومفيد جداً",
+        "success": true,
+        "processing_time_ms": 0.58,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 17,
+        "input_text": "أ",
+        "success": true,
+        "processing_time_ms": 0.31,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 18,
+        "input_text": "في",
+        "success": true,
+        "processing_time_ms": 0.35,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 19,
+        "input_text": "من",
+        "success": true,
+        "processing_time_ms": 0.29,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 20,
+        "input_text": "إلى",
+        "success": true,
+        "processing_time_ms": 0.27,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 21,
+        "input_text": "الجمهورية العربية السورية",
+        "success": true,
+        "processing_time_ms": 0.28,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 22,
+        "input_text": "كِتَابٌ جَمِيلٌ",
+        "success": true,
+        "processing_time_ms": 0.33,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 23,
+        "input_text": "الطَّالِبُ المُجْتَهِدُ",
+        "success": true,
+        "processing_time_ms": 0.3,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 24,
+        "input_text": "كتاب 2024",
+        "success": true,
+        "processing_time_ms": 0.32,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 25,
+        "input_text": "الفصل الأول",
+        "success": true,
+        "processing_time_ms": 0.35,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 26,
+        "input_text": "صفحة 15",
+        "success": true,
+        "processing_time_ms": 0.3,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 27,
+        "input_text": "",
+        "success": true,
+        "processing_time_ms": 0.29,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 28,
+        "input_text": "   ",
+        "success": true,
+        "processing_time_ms": 0.37,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 29,
+        "input_text": "123",
+        "success": true,
+        "processing_time_ms": 0.33,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      },
+      {
+        "test_id": 30,
+        "input_text": "abc",
+        "success": true,
+        "processing_time_ms": 0.34,
+        "engines_used": [
+          "morphological",
+          "inflection",
+          "weight"
+        ],
+        "result_summary": {
+          "engines_count": 3,
+          "has_results": true,
+          "confidence_avg": 0.95
+        },
+        "error": null
+      }
+    ],
+    "statistics": {
+      "total_tests": 30,
+      "successful_tests": 30,
+      "failed_tests": 0,
+      "success_rate": 100.0,
+      "avg_processing_time": 0.34,
+      "total_processing_time": 10.24
+    },
+    "end_time": "2025-07-26T23:53:18.600451",
+    "total_duration_ms": 10.5
+  },
+  "performance_benchmark": {
+    "iterations": 20,
+    "test_text": "كتاب جميل في اللغة العربية",
+    "start_time": "2025-07-26T23:53:18.600740",
+    "individual_times": [
+      0.33,
+      0.29,
+      0.5,
+      0.39,
+      0.52,
+      0.37,
+      0.32,
+      0.36,
+      0.35,
+      0.3,
+      0.33,
+      0.31,
+      0.34,
+      0.3,
+      0.3,
+      0.3,
+      0.27,
+      0.28,
+      0.26,
+      0.24
+    ],
+    "statistics": {
+      "min_time_ms": 0.24,
+      "max_time_ms": 0.52,
+      "avg_time_ms": 0.33,
+      "total_time_ms": 6.66,
+      "throughput_per_second": 3003.0
+    },
+    "end_time": "2025-07-26T23:53:18.607551"
+  },
+  "stress_test": {
+    "concurrent_requests": 25,
+    "total_duration_ms": 8.9,
+    "requests_per_second": 2809.92,
+    "batch_results": {
+      "start_time": "2025-07-26T23:53:18.607844",
+      "test_count": 25,
+      "engines_tested": [
+        "morphological",
+        "inflection",
+        "weight"
+      ],
+      "results": [
+        {
+          "test_id": 1,
+          "input_text": "اختبار رقم 0 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.41,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 2,
+          "input_text": "اختبار رقم 1 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.68,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 3,
+          "input_text": "اختبار رقم 2 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.32,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 4,
+          "input_text": "اختبار رقم 3 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.29,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 5,
+          "input_text": "اختبار رقم 4 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.29,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 6,
+          "input_text": "اختبار رقم 5 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.24,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 7,
+          "input_text": "اختبار رقم 6 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.34,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 8,
+          "input_text": "اختبار رقم 7 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.24,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 9,
+          "input_text": "اختبار رقم 8 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.36,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 10,
+          "input_text": "اختبار رقم 9 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.31,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 11,
+          "input_text": "اختبار رقم 10 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.28,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 12,
+          "input_text": "اختبار رقم 11 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.27,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 13,
+          "input_text": "اختبار رقم 12 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.29,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 14,
+          "input_text": "اختبار رقم 13 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.28,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 15,
+          "input_text": "اختبار رقم 14 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.3,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 16,
+          "input_text": "اختبار رقم 15 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.29,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 17,
+          "input_text": "اختبار رقم 16 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.32,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 18,
+          "input_text": "اختبار رقم 17 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.33,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 19,
+          "input_text": "اختبار رقم 18 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.31,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 20,
+          "input_text": "اختبار رقم 19 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.25,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 21,
+          "input_text": "اختبار رقم 20 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.3,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 22,
+          "input_text": "اختبار رقم 21 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.41,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 23,
+          "input_text": "اختبار رقم 22 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.55,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 24,
+          "input_text": "اختبار رقم 23 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.5,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        },
+        {
+          "test_id": 25,
+          "input_text": "اختبار رقم 24 للضغط على النظام",
+          "success": true,
+          "processing_time_ms": 0.58,
+          "engines_used": [
+            "morphological",
+            "inflection",
+            "weight"
+          ],
+          "result_summary": {
+            "engines_count": 3,
+            "has_results": true,
+            "confidence_avg": 0.95
+          },
+          "error": null
+        }
+      ],
+      "statistics": {
+        "total_tests": 25,
+        "successful_tests": 25,
+        "failed_tests": 0,
+        "success_rate": 100.0,
+        "avg_processing_time": 0.35,
+        "total_processing_time": 8.71
+      },
+      "end_time": "2025-07-26T23:53:18.616732",
+      "total_duration_ms": 8.89
+    },
+    "system_stability": "stable"
+  },
+  "generated_at": "2025-07-26T23:53:18.616903"
+}

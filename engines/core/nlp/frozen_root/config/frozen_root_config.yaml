@@ -1,0 +1,95 @@
+#  FrozenRootsEngine Configuration
+# إعدادات محرك الجذور الجامدة
+
+# إعدادات الأوزان والمعايير
+weights:
+  # أوزان التصنيف
+  database_match: 1.0      # مطابقة قاعدة البيانات المباشرة
+  verb_pattern: 0.8        # تحليل أنماط الأفعال
+  syllabic_unit_analysis: 0.6   # تحليل البنية المقطعية
+  length_factor: 0.3       # عامل طول الكلمة
+  
+  # عتبات التصنيف
+  frozen_threshold: 0.6    # عتبة اعتبار الجذر جامد
+  confidence_threshold: 0.5 # الحد الأدنى لدرجة الثقة
+
+# إعدادات التحليل المقطعي
+syllabic_unit_config:
+  max_syllabic_units: 6         # أقصى عدد مقاطع متوقع
+  complexity_threshold: 0.5 # عتبة تعقد البنية المقطعية
+  dominant_pattern_weight: 0.4 # وزن النمط السائد
+
+# إعدادات أنماط الأفعال
+verb_patterns:
+  enable_trilateral: true   # تفعيل الأنماط الثلاثية
+  enable_augmented: true    # تفعيل الأنماط المزيدة
+  enable_quadrilateral: true # تفعيل الأنماط الرباعية
+  
+  # أوزان أنماط الاشتقاق
+  derivability_weights:
+    high: 0.9
+    medium: 0.6
+    low: 0.3
+    none: 0.0
+
+# إعدادات قاعدة البيانات
+database:
+  auto_import_data: true          # تحميل تلقائي لقاعدة البيانات
+  cache_size: 1000         # حجم التخزين المؤقت
+  update_interval: 3600    # فترة تحديث البيانات (بالثواني)
+
+# إعدادات الأداء
+performance:
+  enable_caching: true     # تفعيل التخزين المؤقت
+  batch_size: 100          # حجم المعالجة المجمعة
+  max_processing_time: 5.0 # أقصى وقت معالجة (بالثواني)
+
+# إعدادات التسجيل
+logging:
+  level: "INFO"            # مستوى التسجيل
+  enable_performance_logs: true # تسجيل أداء العمليات
+  log_classifications: false    # تسجيل نتائج التصنيف
+
+# إعدادات API
+api:
+  enable_batch_processing: true # تفعيل المعالجة المجمعة
+  max_batch_size: 50           # أقصى حجم للمعالجة المجمعة
+  timeout: 30                  # مهلة انتظار API (بالثواني)
+  enable_detailed_response: true # استجابة مفصلة
+
+# إعدادات الجودة
+quality:
+  min_word_length: 1       # أقل طول للكلمة
+  max_word_length: 20      # أقصى طول للكلمة
+  enable_validation: true  # تفعيل التحقق من صحة البيانات
+  
+# الأنماط المدعومة
+supported_patterns:
+  - "CV"      # يا، لا
+  - "VC"      # إن، أن  
+  - "CVC"     # من، لن، قد
+  - "CVCV"    # هذا، ماذا
+  - "CVCVC"   # كتب، ذلك
+  - "CVVCVC"  # قاتل، شارك
+  - "CVCCVC"  # كسّر، درّس
+  - "CCVCVC"  # استخرج
+
+# الفئات المدعومة
+categories:
+  frozen:
+    - "interrogative_particle"   # أدوات الاستفهام
+    - "negation_particle"        # أدوات النفي
+    - "conditional_particle"     # أدوات الشرط
+    - "vocative_particle"        # أدوات النداء
+    - "demonstrative_pronoun"    # الضمائر الإشارية
+    - "affirmation_particle"     # أدوات التأكيد
+    - "complementizer"           # أدوات الربط
+    - "purpose_particle"         # أدوات الغرض
+    - "adversative_particle"     # أدوات الاستدراك
+    - "future_particle"          # أدوات المستقبل
+    - "negation_verb"            # أفعال النفي
+  
+  derivable:
+    - "trilateral_root"          # الجذور الثلاثية
+    - "augmented_root"           # الجذور المزيدة
+    - "quadrilateral_root"       # الجذور الرباعية

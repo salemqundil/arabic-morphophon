@@ -1,0 +1,1205 @@
+{
+  "total_combinations": 12,
+  "verb_analysis": [
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "I",
+      "pattern": "فَعَلَ",
+      "constructed_verb": "كَتَبَ",
+      "phonologically_adjusted": "كَتَبَ",
+      "syllable_structure": [
+        "CV",
+        "CV",
+        "CV"
+      ],
+      "syllable_count": 3,
+      "complexity_score": 1.2,
+      "phonological_processes": [],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ف",
+          "ع",
+          "ل"
+        ],
+        "meaning": "basic_action",
+        "type": "ثلاثي_مجرد"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "II",
+      "pattern": "فَعَّلَ",
+      "constructed_verb": "كَتَّبَ",
+      "phonologically_adjusted": "كَتَّبَ",
+      "syllable_structure": [
+        "CV",
+        "CVCCV"
+      ],
+      "syllable_count": 2,
+      "complexity_score": 1.1,
+      "phonological_processes": [
+        "إدغام"
+      ],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ف",
+          "عّ",
+          "ل"
+        ],
+        "meaning": "intensive/causative",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "IV",
+      "pattern": "أَفْعَلَ",
+      "constructed_verb": "أَكْتَبَ",
+      "phonologically_adjusted": "أَكْتَبَ",
+      "syllable_structure": [
+        "VCCV",
+        "CV"
+      ],
+      "syllable_count": 2,
+      "complexity_score": 1.1,
+      "phonological_processes": [],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "أ",
+          "فع",
+          "ل"
+        ],
+        "meaning": "causative",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "V",
+      "pattern": "تَفَعَّلَ",
+      "constructed_verb": "تَكَتَّبَ",
+      "phonologically_adjusted": "تَكَتَّبَ",
+      "syllable_structure": [
+        "CV",
+        "CV",
+        "CVCCV"
+      ],
+      "syllable_count": 3,
+      "complexity_score": 1.13,
+      "phonological_processes": [
+        "إدغام"
+      ],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ت",
+          "ف",
+          "عّ",
+          "ل"
+        ],
+        "meaning": "reflexive",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "I",
+      "pattern": "فَعَلَ",
+      "constructed_verb": "دَرَسَ",
+      "phonologically_adjusted": "دَرَسَ",
+      "syllable_structure": [
+        "CV",
+        "CV",
+        "CV"
+      ],
+      "syllable_count": 3,
+      "complexity_score": 1.2,
+      "phonological_processes": [],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ف",
+          "ع",
+          "ل"
+        ],
+        "meaning": "basic_action",
+        "type": "ثلاثي_مجرد"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "II",
+      "pattern": "فَعَّلَ",
+      "constructed_verb": "دَرَّسَ",
+      "phonologically_adjusted": "دَرَّسَ",
+      "syllable_structure": [
+        "CV",
+        "CVCCV"
+      ],
+      "syllable_count": 2,
+      "complexity_score": 1.1,
+      "phonological_processes": [
+        "إدغام"
+      ],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ف",
+          "عّ",
+          "ل"
+        ],
+        "meaning": "intensive/causative",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "IV",
+      "pattern": "أَفْعَلَ",
+      "constructed_verb": "أَدْرَسَ",
+      "phonologically_adjusted": "أَدْرَسَ",
+      "syllable_structure": [
+        "VCCV",
+        "CV"
+      ],
+      "syllable_count": 2,
+      "complexity_score": 1.1,
+      "phonological_processes": [],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "أ",
+          "فع",
+          "ل"
+        ],
+        "meaning": "causative",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "V",
+      "pattern": "تَفَعَّلَ",
+      "constructed_verb": "تَدَرَّسَ",
+      "phonologically_adjusted": "تَدَرَّسَ",
+      "syllable_structure": [
+        "CV",
+        "CV",
+        "CVCCV"
+      ],
+      "syllable_count": 3,
+      "complexity_score": 1.13,
+      "phonological_processes": [
+        "إدغام"
+      ],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ت",
+          "ف",
+          "عّ",
+          "ل"
+        ],
+        "meaning": "reflexive",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "I",
+      "pattern": "فَعَلَ",
+      "constructed_verb": "مَمَمَ",
+      "phonologically_adjusted": "مَمَمَ",
+      "syllable_structure": [
+        "CV",
+        "CV",
+        "CV"
+      ],
+      "syllable_count": 3,
+      "complexity_score": 1.2,
+      "phonological_processes": [],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ف",
+          "ع",
+          "ل"
+        ],
+        "meaning": "basic_action",
+        "type": "ثلاثي_مجرد"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "II",
+      "pattern": "فَعَّلَ",
+      "constructed_verb": "مَمَّمَ",
+      "phonologically_adjusted": "مَمَّمَ",
+      "syllable_structure": [
+        "CV",
+        "CVCCV"
+      ],
+      "syllable_count": 2,
+      "complexity_score": 1.1,
+      "phonological_processes": [
+        "إدغام"
+      ],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ف",
+          "عّ",
+          "ل"
+        ],
+        "meaning": "intensive/causative",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "IV",
+      "pattern": "أَفْعَلَ",
+      "constructed_verb": "أَمْمَمَ",
+      "phonologically_adjusted": "أَمْمَمَ",
+      "syllable_structure": [
+        "VCCV",
+        "CV"
+      ],
+      "syllable_count": 2,
+      "complexity_score": 1.1,
+      "phonological_processes": [],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "أ",
+          "فع",
+          "ل"
+        ],
+        "meaning": "causative",
+        "type": "ثلاثي_مزيد"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "V",
+      "pattern": "تَفَعَّلَ",
+      "constructed_verb": "تَمَمَّمَ",
+      "phonologically_adjusted": "تَمَمَّمَ",
+      "syllable_structure": [
+        "CV",
+        "CV",
+        "CVCCV"
+      ],
+      "syllable_count": 3,
+      "complexity_score": 1.13,
+      "phonological_processes": [
+        "إدغام"
+      ],
+      "pronoun_variants": [],
+      "morphological_analysis": {
+        "morphemes": [
+          "ت",
+          "ف",
+          "عّ",
+          "ل"
+        ],
+        "meaning": "reflexive",
+        "type": "ثلاثي_مزيد"
+      }
+    }
+  ],
+  "source_analysis": [
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "I",
+      "source_word": "كَتْب",
+      "phonologically_adjusted": "كَتْب",
+      "syllable_pattern": "CVC",
+      "analyzed_patterns": [
+        "CVCC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "مقطع_مغلق",
+        "قلقلة"
+      ],
+      "complexity_score": 2.5,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "I",
+      "source_word": "كُتُوب",
+      "phonologically_adjusted": "كُتُوِب",
+      "syllable_pattern": "CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CV",
+        "CVC"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "مقطع_مركب",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.3,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "I",
+      "source_word": "كِتَاب",
+      "phonologically_adjusted": "كِتَاب",
+      "syllable_pattern": "CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CVVC"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "صائت_طويل",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.6,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "I",
+      "source_word": "كَتَابَة",
+      "phonologically_adjusted": "كَتَابَة",
+      "syllable_pattern": "CV-CV-CV",
+      "analyzed_patterns": [
+        "CV",
+        "CVV",
+        "CV"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "تاء_التأنيث",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.4,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "I",
+      "source_word": "مَكْتَب",
+      "phonologically_adjusted": "مَكْتَب",
+      "syllable_pattern": "CVC-CV",
+      "analyzed_patterns": [
+        "CVCCVC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "ميم_زائدة",
+        "قلقلة"
+      ],
+      "complexity_score": 1.0,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "II",
+      "source_word": "تَكْتِيب",
+      "phonologically_adjusted": "تَكْتِيِب",
+      "syllable_pattern": "CVC-CVVC",
+      "analyzed_patterns": [
+        "CVCCV",
+        "CVC"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "تنشيط",
+        "مقطع_طويل",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.25,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التكثير_والسببية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "II",
+      "source_word": "تَكْتِبَة",
+      "phonologically_adjusted": "تَكْتِبَة",
+      "syllable_pattern": "CVC-CV-CV",
+      "analyzed_patterns": [
+        "CVCCV",
+        "CV"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "تاء_التأنيث",
+        "قلقلة"
+      ],
+      "complexity_score": 1.1,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التكثير_والسببية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "IV",
+      "source_word": "إِكْتَاب",
+      "phonologically_adjusted": "إِكْتَاب",
+      "syllable_pattern": "VC-CVC",
+      "analyzed_patterns": [
+        "VCCVVC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "همزة_وصل",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.0,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "السببية_والتعدية"
+      }
+    },
+    {
+      "root": [
+        "ك",
+        "ت",
+        "ب"
+      ],
+      "verb_form": "V",
+      "source_word": "تَكَتُّب",
+      "phonologically_adjusted": "تَكَتُّب",
+      "syllable_pattern": "CV-CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CV",
+        "CVCC"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "تشديد",
+        "قلقلة"
+      ],
+      "complexity_score": 1.63,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التدرج_والانفعال"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "I",
+      "source_word": "دَرْس",
+      "phonologically_adjusted": "دَرْس",
+      "syllable_pattern": "CVC",
+      "analyzed_patterns": [
+        "CVCC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "مقطع_مغلق",
+        "قلقلة"
+      ],
+      "complexity_score": 2.5,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "I",
+      "source_word": "دُرُوس",
+      "phonologically_adjusted": "دُرُوِس",
+      "syllable_pattern": "CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CV",
+        "CVC"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "مقطع_مركب",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.3,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "I",
+      "source_word": "دِرَاس",
+      "phonologically_adjusted": "دِرَاس",
+      "syllable_pattern": "CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CVVC"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "صائت_طويل",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.6,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "I",
+      "source_word": "دَرَاسَة",
+      "phonologically_adjusted": "دَرَاسَة",
+      "syllable_pattern": "CV-CV-CV",
+      "analyzed_patterns": [
+        "CV",
+        "CVV",
+        "CV"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "تاء_التأنيث",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.4,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "I",
+      "source_word": "مَدْرَس",
+      "phonologically_adjusted": "مَدْرَس",
+      "syllable_pattern": "CVC-CV",
+      "analyzed_patterns": [
+        "CVCCVC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "ميم_زائدة",
+        "قلقلة"
+      ],
+      "complexity_score": 1.0,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "II",
+      "source_word": "تَدْرِيس",
+      "phonologically_adjusted": "تَدْرِيِس",
+      "syllable_pattern": "CVC-CVVC",
+      "analyzed_patterns": [
+        "CVCCV",
+        "CVC"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "تنشيط",
+        "مقطع_طويل",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.25,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التكثير_والسببية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "II",
+      "source_word": "تَدْرِسَة",
+      "phonologically_adjusted": "تَدْرِسَة",
+      "syllable_pattern": "CVC-CV-CV",
+      "analyzed_patterns": [
+        "CVCCV",
+        "CV"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "تاء_التأنيث",
+        "قلقلة"
+      ],
+      "complexity_score": 1.1,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التكثير_والسببية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "IV",
+      "source_word": "إِدْرَاس",
+      "phonologically_adjusted": "إِدْرَاس",
+      "syllable_pattern": "VC-CVC",
+      "analyzed_patterns": [
+        "VCCVVC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "همزة_وصل",
+        "قلقلة",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.0,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "السببية_والتعدية"
+      }
+    },
+    {
+      "root": [
+        "د",
+        "ر",
+        "س"
+      ],
+      "verb_form": "V",
+      "source_word": "تَدَرُّس",
+      "phonologically_adjusted": "تَدَرُّس",
+      "syllable_pattern": "CV-CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CV",
+        "CVCC"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "تشديد",
+        "قلقلة"
+      ],
+      "complexity_score": 1.63,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التدرج_والانفعال"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "I",
+      "source_word": "مَمْم",
+      "phonologically_adjusted": "مَمْم",
+      "syllable_pattern": "CVC",
+      "analyzed_patterns": [
+        "CVCC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "مقطع_مغلق"
+      ],
+      "complexity_score": 2.5,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "I",
+      "source_word": "مُمُوم",
+      "phonologically_adjusted": "مُمُوِم",
+      "syllable_pattern": "CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CV",
+        "CVC"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "مقطع_مركب",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.3,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "I",
+      "source_word": "مِمَام",
+      "phonologically_adjusted": "مِمَام",
+      "syllable_pattern": "CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CVVC"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "صائت_طويل",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.6,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "I",
+      "source_word": "مَمَامَة",
+      "phonologically_adjusted": "مَمَامَة",
+      "syllable_pattern": "CV-CV-CV",
+      "analyzed_patterns": [
+        "CV",
+        "CVV",
+        "CV"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "تاء_التأنيث",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.4,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "I",
+      "source_word": "مَمْمَم",
+      "phonologically_adjusted": "مَمْمَم",
+      "syllable_pattern": "CVC-CV",
+      "analyzed_patterns": [
+        "CVCCVC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "ميم_زائدة"
+      ],
+      "complexity_score": 1.0,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "الأفعال_الأساسية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "II",
+      "source_word": "تَمْمِيم",
+      "phonologically_adjusted": "تَمْمِيِم",
+      "syllable_pattern": "CVC-CVVC",
+      "analyzed_patterns": [
+        "CVCCV",
+        "CVC"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "تنشيط",
+        "مقطع_طويل",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.25,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التكثير_والسببية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "II",
+      "source_word": "تَمْمِمَة",
+      "phonologically_adjusted": "تَمْمِمَة",
+      "syllable_pattern": "CVC-CV-CV",
+      "analyzed_patterns": [
+        "CVCCV",
+        "CV"
+      ],
+      "syllable_count": 2,
+      "is_standard": true,
+      "phonological_features": [
+        "تاء_التأنيث"
+      ],
+      "complexity_score": 1.1,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التكثير_والسببية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "IV",
+      "source_word": "إِمْمَام",
+      "phonologically_adjusted": "إِمْمَام",
+      "syllable_pattern": "VC-CVC",
+      "analyzed_patterns": [
+        "VCCVVC"
+      ],
+      "syllable_count": 1,
+      "is_standard": true,
+      "phonological_features": [
+        "همزة_وصل",
+        "مد_طبيعي"
+      ],
+      "complexity_score": 1.0,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "السببية_والتعدية"
+      }
+    },
+    {
+      "root": [
+        "ع",
+        "ل",
+        "م"
+      ],
+      "verb_form": "V",
+      "source_word": "تَمَمُّم",
+      "phonologically_adjusted": "تَمَمُّم",
+      "syllable_pattern": "CV-CV-CVC",
+      "analyzed_patterns": [
+        "CV",
+        "CV",
+        "CVCC"
+      ],
+      "syllable_count": 3,
+      "is_standard": true,
+      "phonological_features": [
+        "تشديد"
+      ],
+      "complexity_score": 1.63,
+      "morphological_analysis": {
+        "source_type": "قياسي",
+        "semantic_field": "التدرج_والانفعال"
+      }
+    }
+  ],
+  "statistics": {
+    "syllable_patterns": {
+      "CV": 45,
+      "CVCC": 6,
+      "CVC": 6,
+      "CVVC": 3,
+      "CVV": 3,
+      "CVCCVC": 3,
+      "CVCCV": 12,
+      "VCCV": 3,
+      "VCCVVC": 3
+    },
+    "complexity_distribution": [
+      1.2,
+      2.5,
+      1.3,
+      1.6,
+      1.4,
+      1.0,
+      1.1,
+      1.25,
+      1.1,
+      1.1,
+      1.0,
+      1.13,
+      1.63,
+      1.2,
+      2.5,
+      1.3,
+      1.6,
+      1.4,
+      1.0,
+      1.1,
+      1.25,
+      1.1,
+      1.1,
+      1.0,
+      1.13,
+      1.63,
+      1.2,
+      2.5,
+      1.3,
+      1.6,
+      1.4,
+      1.0,
+      1.1,
+      1.25,
+      1.1,
+      1.1,
+      1.0,
+      1.13,
+      1.63
+    ],
+    "phonological_processes": {
+      "إدغام": 6
+    },
+    "verb_types": {
+      "ثلاثي_مجرد": 3,
+      "ثلاثي_مزيد": 9
+    }
+  },
+  "coverage_analysis": {
+    "covered_patterns": [
+      "CV",
+      "VCCV",
+      "CVCCV"
+    ],
+    "new_patterns": [],
+    "complexity_range": {
+      "min": 1.1,
+      "max": 1.2
+    }
+  },
+  "final_statistics": {
+    "total_unique_patterns": 9,
+    "most_common_patterns": [
+      [
+        "CV",
+        45
+      ],
+      [
+        "CVCCV",
+        12
+      ],
+      [
+        "CVCC",
+        6
+      ],
+      [
+        "CVC",
+        6
+      ],
+      [
+        "CVVC",
+        3
+      ],
+      [
+        "CVV",
+        3
+      ],
+      [
+        "CVCCVC",
+        3
+      ],
+      [
+        "VCCV",
+        3
+      ],
+      [
+        "VCCVVC",
+        3
+      ]
+    ],
+    "average_complexity": 1.3315384615384616,
+    "complexity_range": {
+      "min": 1.0,
+      "max": 2.5
+    },
+    "most_common_processes": [
+      [
+        "إدغام",
+        6
+      ]
+    ],
+    "verb_type_distribution": {
+      "ثلاثي_مجرد": 3,
+      "ثلاثي_مزيد": 9
+    },
+    "coverage_percentage": 21.428571428571427
+  }
+}

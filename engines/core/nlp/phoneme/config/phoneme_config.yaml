@@ -1,0 +1,26 @@
+# Arabic Phoneme Engine Configuration
+# Professional Enterprise-Grade Configuration
+
+# Input Processing
+preserve_case: false
+process_diacritics: true
+fallback_to_original: true
+normalize_input: true
+
+# Character Mapping Options
+use_ipa_symbols: true
+transliteration_scheme: "scientific"
+
+# Processing Options
+skip_punctuation: true
+skip_whitespace: true
+merge_diacritics: false
+
+# Output Options
+include_stress: false
+include_length: true
+phoneme_separator: ""
+
+# Logging
+log_level: "INFO"
+debug_mapping: false

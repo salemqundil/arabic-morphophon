@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Phonological Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #fd79a8;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #fd79a8;
+            box-shadow: 0 0 10px rgba(253, 121, 168, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #fd79a8;
+        }
+        .phonological-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #fd79a8;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .phonemes-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .features-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .rules-box {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .phoneme-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .phoneme {
+            background: #fd79a8;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .phoneme:hover {
+            transform: scale(1.1);
+            background: #e84393;
+        }
+        .rule-item {
+            background: #e9ecef;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 2px solid #fd79a8;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .transformation-box {
+            background: #f8f9fa;
+            border: 2px dashed #fd79a8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .arrow {
+            color: #fd79a8;
+            font-size: 1.5em;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك التحليل الصوتي</h1>
+            <div class="subtitle">Arabic Phonological Analysis Engine</div>
+            <div class="subtitle">يحلل القواعد الصوتية والتحولات الفونيمية</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل النص العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: الشمس الجميلة" value="الشمس الجميلة">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('الشمس الجميلة')">الشمس الجميلة</button>
+            <button class="btn example-btn" onclick="setExample('الطالب المجتهد')">الطالب المجتهد</button>
+            <button class="btn example-btn" onclick="setExample('من المدرسة')">من المدرسة</button>
+            <button class="btn example-btn" onclick="setExample('إلى البيت')">إلى البيت</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzePhonological()"> تحليل صوتي</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج التحليل الصوتي</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzePhonological() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال نص عربي للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulatePhonologicalAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulatePhonologicalAnalysis(text) {
+            const words = text.split(/\s+/);
+            const analysis = [];
+
+            words.forEach(word => {
+                const phonemes = extractPhonemes(word);
+                const features = analyzePhonologicalFeatures(phonemes);
+                const rules = applyPhonologicalRules(word, phonemes);
+
+                analysis.push({
+                    word: word,
+                    phonemes: phonemes,
+                    features: features,
+                    applied_rules: rules,
+                    transformations: generateTransformations(word),
+                    stress_pattern: generateStressPattern(word),
+                    phonological_processes: identifyPhonologicalProcesses(word)
+                });
+            });
+
+            return {
+                input: text,
+                total_words: words.length,
+                total_phonemes: analysis.reduce((sum, item) => sum + item.phonemes.length, 0),
+                analysis: analysis,
+                overall_features: extractOverallFeatures(analysis)
+            };
+        }
+
+        function extractPhonemes(word) {
+            // Simplified phoneme extraction
+            const arabicToIPA = {
+                'ا': 'a', 'ب': 'b', 'ت': 't', 'ث': '', 'ج': 'd',
+                'ح': '', 'خ': 'x', 'د': 'd', 'ذ': '', 'ر': 'r',
+                'ز': 'z', 'س': 's', 'ش': '', 'ص': 's', 'ض': 'd',
+                'ط': 't', 'ظ': '', 'ع': '', 'غ': '', 'ف': 'f',
+                'ق': 'q', 'ك': 'k', 'ل': 'l', 'م': 'm', 'ن': 'n',
+                'ه': 'h', 'و': 'w', 'ي': 'j', 'ى': 'a', 'ة': 'a',
+                'أ': 'a', 'إ': 'i', 'آ': 'a'
+            };
+
+            const phonemes = [];
+            for (let char of word) {
+                if (arabicToIPA[char]) {
+                    phonemes.push({
+                        grapheme: char,
+                        phoneme: arabicToIPA[char],
+                        features: getPhonemeFeatures(arabicToIPA[char])
+                    });
+                }
+            }
+            return phonemes;
+        }
+
+        function getPhonemeFeatures(phoneme) {
+            const features = {
+                'b': ['صامت', 'شفوي', 'انفجاري', 'مجهور'],
+                't': ['صامت', 'أسناني', 'انفجاري', 'مهموس'],
+                's': ['صامت', 'أسناني', 'احتكاكي', 'مهموس'],
+                '': ['صامت', 'غاري', 'احتكاكي', 'مهموس'],
+                'a': ['صائت', 'مفتوح', 'خلفي', 'طويل'],
+                'l': ['صامت', 'أسناني', 'جانبي', 'مجهور']
+            };
+            return features[phoneme] || ['غير محدد'];
+        }
+
+        function analyzePhonologicalFeatures(phonemes) {
+            const consonants = phonemes.filter(p => p.features.includes('صامت')).length;
+            const vowels = phonemes.filter(p => p.features.includes('صائت')).length;
+            const voiced = phonemes.filter(p => p.features.includes('مجهور')).length;
+            const voiceless = phonemes.filter(p => p.features.includes('مهموس')).length;
+
+            return {
+                consonant_count: consonants,
+                vowel_count: vowels,
+                voiced_count: voiced,
+                voiceless_count: voiceless,
+                cv_ratio: vowels > 0 ? (consonants / vowels).toFixed(2) : 'غير محدد'
+            };
+        }
+
+        function applyPhonologicalRules(word, phonemes) {
+            const rules = [];
+
+            // التماثل الصوتي (Assimilation)
+            if (word.includes('الش') || word.includes('الص') || word.includes('الت')) {
+                rules.push({
+                    name: 'إدغام اللام الشمسية',
+                    description: 'اللام تُدغم في الحرف الشمسي',
+                    example: 'ال + شمس  اشّمس'
+                });
+            }
+
+            // الحذف (Deletion)
+            if (word.includes('من ال')) {
+                rules.push({
+                    name: 'حذف همزة الوصل',
+                    description: 'همزة الوصل تُحذف في درج الكلام',
+                    example: 'من الـ  منل'
+                });
+            }
+
+            // الإبدال (Substitution)
+            if (word.includes('ة')) {
+                rules.push({
+                    name: 'إبدال التاء المربوطة',
+                    description: 'التاء المربوطة تُنطق هاء في الوقف',
+                    example: 'مدرسة  مدرسه'
+                });
+            }
+
+            return rules;
+        }
+
+        function generateTransformations(word) {
+            const transformations = [];
+
+            // تحويلات شائعة
+            if (word.includes('ال')) {
+                transformations.push({
+                    process: 'تعريف',
+                    before: word.replace('ال', ''),
+                    after: word,
+                    rule: 'إضافة أل التعريف'
+                });
+            }
+
+            return transformations;
+        }
+
+        function generateStressPattern(word) {
+            // نمط النبر المبسط
+            const syllabic_units = word.length <= 4 ? 1 : Math.ceil(word.length / 2);
+            if (syllabic_units === 1) return ['نبر أساسي'];
+            if (syllabic_units === 2) return ['نبر ثانوي', 'نبر أساسي'];
+            return ['نبر ثانوي', 'نبر أساسي', 'نبر ثانوي'];
+        }
+
+        function identifyPhonologicalProcesses(word) {
+            const processes = [];
+
+            if (word.includes('الش')) {
+                processes.push('إدغام شمسي');
+            }
+            if (word.includes('من')) {
+                processes.push('حذف همزة الوصل');
+            }
+            if (word.length > 5) {
+                processes.push('تطويل صوتي');
+            }
+
+            return processes.length > 0 ? processes : ['لا توجد عمليات صوتية خاصة'];
+        }
+
+        function extractOverallFeatures(analysis) {
+            const allPhonemes = analysis.flatMap(item => item.phonemes);
+            const totalConsonants = allPhonemes.filter(p => p.features.includes('صامت')).length;
+            const totalVowels = allPhonemes.filter(p => p.features.includes('صائت')).length;
+
+            return {
+                dominant_type: totalConsonants > totalVowels ? 'نص غني بالصوامت' : 'نص غني بالصوائت',
+                complexity: analysis.length > 3 ? 'عالي التعقيد' : 'بسيط',
+                phonological_density: (analysis.reduce((sum, item) => sum + item.applied_rules.length, 0) / analysis.length).toFixed(1)
+            };
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="stats">
+                    <strong> النص المدخل:</strong> ${analysis.input}<br>
+                    <strong> عدد الكلمات:</strong> ${analysis.total_words}<br>
+                    <strong> إجمالي الفونيمات:</strong> ${analysis.total_phonemes}<br>
+                    <strong> النوع السائد:</strong> ${analysis.overall_features.dominant_type}
+                </div>
+            `;
+
+            analysis.analysis.forEach((item, index) => {
+                html += `
+                    <div class="phonological-analysis">
+                        <div class="word-header"> تحليل الكلمة ${index + 1}: ${item.word}</div>
+
+                        <div class="analysis-grid">
+                            <div class="phonemes-box info-box">
+                                <strong> الفونيمات:</strong><br>
+                                <div class="phoneme-list">
+                                    ${item.phonemes.map(p =>
+                                        `<span class="phoneme" title="${p.features.join(', ')}">${p.grapheme} [${p.phoneme}]</span>`
+                                    ).join('')}
+                                </div>
+                            </div>
+
+                            <div class="features-box info-box">
+                                <strong> الخصائص الصوتية:</strong><br>
+                                 الصوامت: ${item.features.consonant_count}<br>
+                                 الصوائت: ${item.features.vowel_count}<br>
+                                 المجهورة: ${item.features.voiced_count}<br>
+                                 المهموسة: ${item.features.voiceless_count}
+                            </div>
+                        </div>
+
+                        ${item.transformations.length > 0 ? `
+                        <div class="transformation-box">
+                            <strong> التحولات:</strong><br>
+                            ${item.transformations.map(t =>
+                                `<span>${t.before}</span> <span class="arrow"></span> <span>${t.after}</span> (${t.rule})`
+                            ).join('<br>')}
+                        </div>
+                        ` : ''}
+
+                        <div class="rules-box">
+                            <strong> القواعد المطبقة:</strong><br>
+                            ${item.applied_rules.length > 0 ?
+                                item.applied_rules.map(rule =>
+                                    `<div class="rule-item">
+                                        <strong>${rule.name}:</strong> ${rule.description}
+                                        <br><em>مثال: ${rule.example}</em>
+                                    </div>`
+                                ).join('') :
+                                '<div class="rule-item">لا توجد قواعد صوتية خاصة</div>'
+                            }
+                        </div>
+
+                        <div class="stats">
+                            <strong> نمط النبر:</strong> ${item.stress_pattern.join(' - ')} |
+                            <strong> العمليات الصوتية:</strong> ${item.phonological_processes.join(', ')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzePhonological();
+        };
+    </script>
+</body>
+</html>

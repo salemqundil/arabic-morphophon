@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Frozen Root Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #74b9ff;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #74b9ff;
+            box-shadow: 0 0 10px rgba(116, 185, 255, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #74b9ff;
+        }
+        .frozen-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #74b9ff;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .frozen-status {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        .frozen {
+            background: #ff6b6b;
+            color: white;
+        }
+        .not-frozen {
+            background: #00b894;
+            color: white;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .characteristics-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .examples-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .syllable-info {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .frozen-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .frozen-word {
+            background: #ff7675;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك الجذور المجمدة</h1>
+            <div class="subtitle">Arabic Frozen Root Detection Engine</div>
+            <div class="subtitle">يكشف الجذور المجمدة والكلمات غير القابلة للتصريف</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل الكلمة العربية:</label>
+            <input type="text" id="arabicText" placeholder="مثال: أمس أو حيث" value="أمس">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('أمس')">أمس</button>
+            <button class="btn example-btn" onclick="setExample('حيث')">حيث</button>
+            <button class="btn example-btn" onclick="setExample('كتب')">كتب</button>
+            <button class="btn example-btn" onclick="setExample('إذ')">إذ</button>
+            <button class="btn example-btn" onclick="setExample('منذ')">منذ</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeFrozenRoot()"> فحص الجذر المجمد</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج فحص الجذر المجمد</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeFrozenRoot() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال كلمة عربية للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateFrozenRootAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateFrozenRootAnalysis(word) {
+            // Database of frozen roots and characteristics
+            const frozenRoots = {
+                'أمس': {
+                    is_frozen: true,
+                    type: 'ظرف زمان',
+                    characteristics: ['غير قابل للتصريف', 'ملازم للبناء', 'دلالة زمنية ثابتة'],
+                    reason: 'كلمة ظرفية مبنية لا تقبل التغيير',
+                    similar_words: ['اليوم', 'غداً', 'البارحة'],
+                    syllable_structure: 'أ-مس',
+                    grammatical_function: 'ظرف زمان مبني على الكسر'
+                },
+                'حيث': {
+                    is_frozen: true,
+                    type: 'ظرف مكان',
+                    characteristics: ['اسم موصول', 'مبني', 'يحتاج إلى صلة'],
+                    reason: 'اسم موصول مبني لا يتغير شكله',
+                    similar_words: ['أين', 'كيف', 'متى'],
+                    syllable_structure: 'حي-ث',
+                    grammatical_function: 'اسم موصول مبني على الضم'
+                },
+                'إذ': {
+                    is_frozen: true,
+                    type: 'ظرف زمان',
+                    characteristics: ['ظرف للماضي', 'مبني', 'يفيد التعليل أحياناً'],
+                    reason: 'ظرف زمان مبني لا يقبل الإعراب',
+                    similar_words: ['إذا', 'حين', 'لما'],
+                    syllable_structure: 'إذ',
+                    grammatical_function: 'ظرف زمان مبني على السكون'
+                },
+                'منذ': {
+                    is_frozen: true,
+                    type: 'ظرف زمان',
+                    characteristics: ['يفيد ابتداء الغاية', 'مبني', 'يتعلق بزمن الماضي'],
+                    reason: 'ظرف زمان مبني لا يتغير',
+                    similar_words: ['مذ', 'لدن', 'قبل'],
+                    syllable_structure: 'من-ذ',
+                    grammatical_function: 'ظرف زمان مبني على الضم'
+                },
+                'كتب': {
+                    is_frozen: false,
+                    type: 'فعل',
+                    characteristics: ['قابل للتصريف', 'له مشتقات', 'جذر ثلاثي'],
+                    reason: 'فعل عادي قابل للتصريف والاشتقاق',
+                    similar_words: ['قرأ', 'درس', 'علم'],
+                    syllable_structure: 'ك-تب',
+                    grammatical_function: 'فعل ماض مبني على الفتح'
+                }
+            };
+
+            const data = frozenRoots[word] || createGenericAnalysis(word);
+
+            return {
+                input_word: word,
+                analysis: data,
+                confidence: data.is_frozen ? 0.95 : 0.80,
+                linguistic_context: generateLinguisticContext(data),
+                recommendations: generateRecommendations(data)
+            };
+        }
+
+        function createGenericAnalysis(word) {
+            // Simple heuristics for unknown words
+            const vowelPatterns = /[اويةىأإآ]/;
+            const hasVowels = vowelPatterns.test(word);
+
+            return {
+                is_frozen: word.length <= 3 && !hasVowels,
+                type: 'غير محدد',
+                characteristics: ['يحتاج تحليل إضافي'],
+                reason: 'الكلمة غير موجودة في قاعدة البيانات',
+                similar_words: [],
+                syllable_structure: word,
+                grammatical_function: 'غير محدد'
+            };
+        }
+
+        function generateLinguisticContext(data) {
+            return {
+                historical_note: data.is_frozen ? 'هذه الكلمة حافظت على شكلها عبر التاريخ' : 'كلمة قابلة للتطور والتغيير',
+                usage_frequency: data.is_frozen ? 'عالية في النصوص الكلاسيكية' : 'متغيرة حسب السياق',
+                learning_difficulty: data.is_frozen ? 'سهلة - شكل ثابت' : 'متوسطة - تحتاج حفظ تصاريف'
+            };
+        }
+
+        function generateRecommendations(data) {
+            if (data.is_frozen) {
+                return [
+                    'احفظ الكلمة كما هي - لا تحاول تصريفها',
+                    'انتبه للوظيفة النحوية الثابتة',
+                    'تدرب على استخدامها في السياق المناسب'
+                ];
+            } else {
+                return [
+                    'تعلم تصاريف هذه الكلمة',
+                    'مارس استخدامها في أزمنة مختلفة',
+                    'اربطها بمشتقاتها الأخرى'
+                ];
+            }
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            const statusClass = analysis.analysis.is_frozen ? 'frozen' : 'not-frozen';
+            const statusText = analysis.analysis.is_frozen ? ' جذر مجمد' : ' جذر متحرك';
+
+            let html = `
+                <div class="frozen-analysis">
+                    <div class="word-header"> تحليل الكلمة: ${analysis.input_word}</div>
+
+                    <div class="frozen-status ${statusClass}">
+                        ${statusText}
+                    </div>
+
+                    <div class="analysis-grid">
+                        <div class="characteristics-box info-box">
+                            <strong> الخصائص:</strong><br>
+                            ${analysis.analysis.characteristics.map(c => ` ${c}`).join('<br>')}
+                        </div>
+
+                        <div class="examples-box info-box">
+                            <strong> كلمات مشابهة:</strong><br>
+                            ${analysis.analysis.similar_words.length > 0 ?
+                                analysis.analysis.similar_words.map(w => ` ${w}`).join('<br>') :
+                                'لا توجد كلمات مشابهة'}
+                        </div>
+                    </div>
+
+                    <div class="syllable-info">
+                        <strong> التركيب المقطعي:</strong> ${analysis.analysis.syllable_structure}<br>
+                        <strong> الوظيفة النحوية:</strong> ${analysis.analysis.grammatical_function}<br>
+                        <strong> النوع:</strong> ${analysis.analysis.type}
+                    </div>
+
+                    <div class="syllable-info">
+                        <strong> السبب:</strong> ${analysis.analysis.reason}
+                    </div>
+
+                    <div class="syllable-info">
+                        <strong> التوصيات:</strong><br>
+                        ${analysis.recommendations.map(r => ` ${r}`).join('<br>')}
+                    </div>
+
+                    <div class="stats">
+                        <strong> الإحصائيات:</strong>
+                        مستوى الثقة: ${(analysis.confidence * 100).toFixed(1)}% |
+                        صعوبة التعلم: ${analysis.linguistic_context.learning_difficulty} |
+                        تكرار الاستخدام: ${analysis.linguistic_context.usage_frequency}
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeFrozenRoot();
+        };
+    </script>
+</body>
+</html>

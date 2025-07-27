@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module Dependency Graph</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #mynetworkid { width: 100%; height: 800px; border: 1px solid lightgray; }
+        .controls { margin: 10px 0; }
+        .legend { margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+        .legend-item { margin: 5px 0; }
+        .color-box { display: inline-block; width: 20px; height: 20px; margin-right: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>🔁 Module Dependency Graph</h1>
+    <p><strong>Generated:</strong> 2025-07-27T01:44:34.731350</p>
+    <p><strong>Modules:</strong> 89 | <strong>Dependencies:</strong> 134</p>
+
+    <div class="legend">
+        <h3>Legend:</h3>
+        <div class="legend-item"><span class="color-box" style="background: #ff4444;"></span>High Fan-In (Many Dependents)</div>
+        <div class="legend-item"><span class="color-box" style="background: #ffaa00;"></span>High Fan-Out (Many Dependencies)</div>
+        <div class="legend-item"><span class="color-box" style="background: #4444ff;"></span>Normal Coupling</div>
+        <div class="legend-item"><span class="color-box" style="background: #888888;"></span>Isolated Module</div>
+    </div>
+
+    <div class="controls">
+        <button onclick="network.fit()">Fit to Screen</button>
+        <button onclick="togglePhysics()">Toggle Physics</button>
+        <button onclick="exportNetwork()">Export as PNG</button>
+    </div>
+
+    <div id="mynetworkid"></div>
+
+    <div id="info">
+        <h3>Click on a node to see details</h3>
+        <div id="nodeInfo"></div>
+    </div>
+
+    <script type="text/javascript">
+        var nodes = new vis.DataSet([
+  {
+    "id": "backups.import_fixes_20250727_005716.run_syntax_fixes",
+    "label": "run_syntax_fixes",
+    "title": "backups.import_fixes_20250727_005716.run_syntax_fixes\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.morphology",
+    "label": "morphology",
+    "title": "backups.import_fixes_20250727_005716.morphology\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "controlled_syntax_scanner",
+    "label": "controlled_syntax_sc",
+    "title": "controlled_syntax_scanner\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_zero_layer_comprehensive",
+    "label": "test_zero_layer_comp",
+    "title": "backups.import_fixes_20250727_005716.test_zero_layer_comprehensive\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.project_status_checker",
+    "label": "project_status_check",
+    "title": "backups.import_fixes_20250727_005716.project_status_checker\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "ultra_precise_syntax_fixer",
+    "label": "ultra_precise_syntax",
+    "title": "ultra_precise_syntax_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.targeted_syntax_scanner",
+    "label": "targeted_syntax_scan",
+    "title": "backups.import_fixes_20250727_005716.targeted_syntax_scanner\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "controlled_repair_analysis",
+    "label": "controlled_repair_an",
+    "title": "controlled_repair_analysis\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "controlled_string_fixer",
+    "label": "controlled_string_fi",
+    "title": "controlled_string_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "phonology_core_unified",
+    "label": "phonology_core_unifi",
+    "title": "phonology_core_unified\\nImports: 0\\nImported by: 6",
+    "size": 18,
+    "color": "#4444ff",
+    "group": 1
+  },
+  {
+    "id": "unified_phonemes",
+    "label": "unified_phonemes",
+    "title": "unified_phonemes\\nImports: 0\\nImported by: 4",
+    "size": 12,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.simple_test",
+    "label": "simple_test",
+    "title": "backups.import_fixes_20250727_005716.simple_test\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "surgical_indentation_fixer",
+    "label": "surgical_indentation",
+    "title": "surgical_indentation_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.rule_base",
+    "label": "rule_base",
+    "title": "backups.import_fixes_20250727_005716.rule_base\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.xampp_test_phonemes_matrix",
+    "label": "xampp_test_phonemes_",
+    "title": "backups.import_fixes_20250727_005716.xampp_test_phonemes_matrix\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_phoneme_processing",
+    "label": "test_phoneme_process",
+    "title": "backups.import_fixes_20250727_005716.test_phoneme_processing\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_advanced_tester",
+    "label": "arabic_relative_pron",
+    "title": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_advanced_tester\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.utf8_terminal_cleaner",
+    "label": "utf8_terminal_cleane",
+    "title": "backups.import_fixes_20250727_005716.utf8_terminal_cleaner\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.critical_syntax_fixer",
+    "label": "critical_syntax_fixe",
+    "title": "backups.import_fixes_20250727_005716.critical_syntax_fixer\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "advanced_syntax_validator",
+    "label": "advanced_syntax_vali",
+    "title": "advanced_syntax_validator\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.conftest",
+    "label": "conftest",
+    "title": "backups.import_fixes_20250727_005716.conftest\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "arabic_nlp_status_report",
+    "label": "arabic_nlp_status_re",
+    "title": "arabic_nlp_status_report\\nImports: 0\\nImported by: 2",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.comprehensive_arabic_phonological_system",
+    "label": "comprehensive_arabic",
+    "title": "backups.import_fixes_20250727_005716.comprehensive_arabic_phonological_system\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.inflection",
+    "label": "inflection",
+    "title": "backups.import_fixes_20250727_005716.inflection\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "complete_arabic_phonological_foundation",
+    "label": "complete_arabic_phon",
+    "title": "complete_arabic_phonological_foundation\\nImports: 0\\nImported by: 1",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.fix_empty_imports",
+    "label": "fix_empty_imports",
+    "title": "backups.import_fixes_20250727_005716.fix_empty_imports\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.fix_fstring_issues",
+    "label": "fix_fstring_issues",
+    "title": "backups.import_fixes_20250727_005716.fix_fstring_issues\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.create_working_engines",
+    "label": "create_working_engin",
+    "title": "backups.import_fixes_20250727_005716.create_working_engines\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.arabic_normalizer",
+    "label": "arabic_normalizer",
+    "title": "backups.import_fixes_20250727_005716.arabic_normalizer\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_core_integration",
+    "label": "test_core_integratio",
+    "title": "backups.import_fixes_20250727_005716.test_core_integration\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 1
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.targeted_critical_syntax_fixer",
+    "label": "targeted_critical_sy",
+    "title": "backups.import_fixes_20250727_005716.targeted_critical_syntax_fixer\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "zero_layer_phonology",
+    "label": "zero_layer_phonology",
+    "title": "zero_layer_phonology\\nImports: 0\\nImported by: 1",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.fix_common_fstring_errors",
+    "label": "fix_common_fstring_e",
+    "title": "backups.import_fixes_20250727_005716.fix_common_fstring_errors\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "advanced_arabic_phonology_system",
+    "label": "advanced_arabic_phon",
+    "title": "advanced_arabic_phonology_system\\nImports: 0\\nImported by: 15",
+    "size": 45,
+    "color": "#ff4444",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.engine",
+    "label": "engine",
+    "title": "backups.import_fixes_20250727_005716.engine\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "step2_indentation_fixer",
+    "label": "step2_indentation_fi",
+    "title": "step2_indentation_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "arabic_relative_pronouns_generator",
+    "label": "arabic_relative_pron",
+    "title": "arabic_relative_pronouns_generator\\nImports: 0\\nImported by: 2",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.advanced_arabic_engine",
+    "label": "advanced_arabic_engi",
+    "title": "backups.import_fixes_20250727_005716.advanced_arabic_engine\\nImports: 0\\nImported by: 2",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.simple_arrow_syntax_fixer",
+    "label": "simple_arrow_syntax_",
+    "title": "backups.import_fixes_20250727_005716.simple_arrow_syntax_fixer\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.quick_status",
+    "label": "quick_status",
+    "title": "backups.import_fixes_20250727_005716.quick_status\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_word",
+    "label": "test_word",
+    "title": "backups.import_fixes_20250727_005716.test_word\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_analyzer",
+    "label": "arabic_relative_pron",
+    "title": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_analyzer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.batch_syntax_fixer",
+    "label": "batch_syntax_fixer",
+    "title": "backups.import_fixes_20250727_005716.batch_syntax_fixer\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.engine_new",
+    "label": "engine_new",
+    "title": "backups.import_fixes_20250727_005716.engine_new\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "syllable_phonological_engine",
+    "label": "syllable_phonologica",
+    "title": "syllable_phonological_engine\\nImports: 0\\nImported by: 1",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "circular_import_analyzer",
+    "label": "circular_import_anal",
+    "title": "circular_import_analyzer\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "arabic_morphological_weight_generator",
+    "label": "arabic_morphological",
+    "title": "arabic_morphological_weight_generator\\nImports: 0\\nImported by: 1",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.fix_broken_comparisons",
+    "label": "fix_broken_compariso",
+    "title": "backups.import_fixes_20250727_005716.fix_broken_comparisons\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.phonology",
+    "label": "phonology",
+    "title": "backups.import_fixes_20250727_005716.phonology\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "fix_logging_config",
+    "label": "fix_logging_config",
+    "title": "fix_logging_config\\nImports: 0\\nImported by: 32",
+    "size": 50,
+    "color": "#ff4444",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_morphological_weights",
+    "label": "test_morphological_w",
+    "title": "backups.import_fixes_20250727_005716.test_morphological_weights\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.syllable_phonological_engine",
+    "label": "syllable_phonologica",
+    "title": "backups.import_fixes_20250727_005716.syllable_phonological_engine\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.remove_arabic_forever",
+    "label": "remove_arabic_foreve",
+    "title": "backups.import_fixes_20250727_005716.remove_arabic_forever\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.hafez_syllables",
+    "label": "hafez_syllables",
+    "title": "backups.import_fixes_20250727_005716.hafez_syllables\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.final_arrow_syntax_fixer",
+    "label": "final_arrow_syntax_f",
+    "title": "backups.import_fixes_20250727_005716.final_arrow_syntax_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "arabic_relative_pronouns_deep_model_simplified",
+    "label": "arabic_relative_pron",
+    "title": "arabic_relative_pronouns_deep_model_simplified\\nImports: 0\\nImported by: 1",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "phase3_fstring_bracket_fixes",
+    "label": "phase3_fstring_brack",
+    "title": "phase3_fstring_bracket_fixes\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.emergency_fstring_fixer",
+    "label": "emergency_fstring_fi",
+    "title": "backups.import_fixes_20250727_005716.emergency_fstring_fixer\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "core",
+    "label": "core",
+    "title": "core\\nImports: 0\\nImported by: 6",
+    "size": 18,
+    "color": "#4444ff",
+    "group": 1
+  },
+  {
+    "id": "nlp",
+    "label": "nlp",
+    "title": "nlp\\nImports: 0\\nImported by: 2",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.arabic_pronouns_generator",
+    "label": "arabic_pronouns_gene",
+    "title": "backups.import_fixes_20250727_005716.arabic_pronouns_generator\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.validate_broken_files",
+    "label": "validate_broken_file",
+    "title": "backups.import_fixes_20250727_005716.validate_broken_files\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.hafez_phonemes",
+    "label": "hafez_phonemes",
+    "title": "backups.import_fixes_20250727_005716.hafez_phonemes\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.simple_text_cleaner",
+    "label": "simple_text_cleaner",
+    "title": "backups.import_fixes_20250727_005716.simple_text_cleaner\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.pattern_embed",
+    "label": "pattern_embed",
+    "title": "backups.import_fixes_20250727_005716.pattern_embed\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.segmenter",
+    "label": "segmenter",
+    "title": "backups.import_fixes_20250727_005716.segmenter\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.arabic_interrogative_pronouns_generator",
+    "label": "arabic_interrogative",
+    "title": "backups.import_fixes_20250727_005716.arabic_interrogative_pronouns_generator\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "arabic_inflection_corrected",
+    "label": "arabic_inflection_co",
+    "title": "arabic_inflection_corrected\\nImports: 0\\nImported by: 36",
+    "size": 50,
+    "color": "#ff4444",
+    "group": 0
+  },
+  {
+    "id": "core.nlp.full_pipeline",
+    "label": "full_pipeline",
+    "title": "core.nlp.full_pipeline\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 1
+  },
+  {
+    "id": "precise_string_fixer",
+    "label": "precise_string_fixer",
+    "title": "precise_string_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "advanced_syntax_fixer",
+    "label": "advanced_syntax_fixe",
+    "title": "advanced_syntax_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.utf8_encoding_fixer",
+    "label": "utf8_encoding_fixer",
+    "title": "backups.import_fixes_20250727_005716.utf8_encoding_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_phoneme_integration",
+    "label": "test_phoneme_integra",
+    "title": "backups.import_fixes_20250727_005716.test_phoneme_integration\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "advanced_arabic_function_words_generator",
+    "label": "advanced_arabic_func",
+    "title": "advanced_arabic_function_words_generator\\nImports: 0\\nImported by: 1",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 0
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.arabic_phoneme_word_decision_tree",
+    "label": "arabic_phoneme_word_",
+    "title": "backups.import_fixes_20250727_005716.arabic_phoneme_word_decision_tree\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.deletion",
+    "label": "deletion",
+    "title": "backups.import_fixes_20250727_005716.deletion\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_syllable_readiness",
+    "label": "test_syllable_readin",
+    "title": "backups.import_fixes_20250727_005716.test_syllable_readiness\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "version_alignment_toolkit",
+    "label": "version_alignment_to",
+    "title": "version_alignment_toolkit\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 3
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.fix_logging_config",
+    "label": "fix_logging_config",
+    "title": "backups.import_fixes_20250727_005716.fix_logging_config\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "core.nlp.phonological",
+    "label": "phonological",
+    "title": "core.nlp.phonological\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 1
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_syllable_processing",
+    "label": "test_syllable_proces",
+    "title": "backups.import_fixes_20250727_005716.test_syllable_processing\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.fix_arrow_comparisons",
+    "label": "fix_arrow_comparison",
+    "title": "backups.import_fixes_20250727_005716.fix_arrow_comparisons\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.xampp_arabic_phonology",
+    "label": "xampp_arabic_phonolo",
+    "title": "backups.import_fixes_20250727_005716.xampp_arabic_phonology\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.debug_output",
+    "label": "debug_output",
+    "title": "backups.import_fixes_20250727_005716.debug_output\\nImports: 2\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.violation_elimination_system",
+    "label": "violation_eliminatio",
+    "title": "backups.import_fixes_20250727_005716.violation_elimination_system\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "final_comprehensive_syntax_fixer",
+    "label": "final_comprehensive_",
+    "title": "final_comprehensive_syntax_fixer\\nImports: 3\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 4
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.test_phoneme_simple",
+    "label": "test_phoneme_simple",
+    "title": "backups.import_fixes_20250727_005716.test_phoneme_simple\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 2
+  },
+  {
+    "id": "backups.import_fixes_20250727_005716.validate_tools_ast",
+    "label": "validate_tools_ast",
+    "title": "backups.import_fixes_20250727_005716.validate_tools_ast\\nImports: 1\\nImported by: 0",
+    "size": 10,
+    "color": "#4444ff",
+    "group": 3
+  },
+  {
+    "id": "advanced_ast_syntax_fixer",
+    "label": "advanced_ast_syntax_",
+    "title": "advanced_ast_syntax_fixer\\nImports: 0\\nImported by: 21",
+    "size": 50,
+    "color": "#ff4444",
+    "group": 4
+  }
+]);
+        var edges = new vis.DataSet([
+  {
+    "from": "advanced_syntax_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "advanced_syntax_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "advanced_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "advanced_syntax_validator",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "advanced_syntax_validator",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "advanced_syntax_validator",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "circular_import_analyzer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "circular_import_analyzer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "controlled_repair_analysis",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "controlled_string_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "controlled_string_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "controlled_string_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "controlled_syntax_scanner",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "final_comprehensive_syntax_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "final_comprehensive_syntax_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "final_comprehensive_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "phase3_fstring_bracket_fixes",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "phase3_fstring_bracket_fixes",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "precise_string_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "precise_string_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "precise_string_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "step2_indentation_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "step2_indentation_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "step2_indentation_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "surgical_indentation_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "surgical_indentation_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "surgical_indentation_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "ultra_precise_syntax_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "ultra_precise_syntax_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "ultra_precise_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "version_alignment_toolkit",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "version_alignment_toolkit",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "version_alignment_toolkit",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_interrogative_pronouns_generator",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_interrogative_pronouns_generator",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_normalizer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_phoneme_word_decision_tree",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_pronouns_generator",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_pronouns_generator",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_pronouns_generator",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_advanced_tester",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_advanced_tester",
+    "to": "arabic_relative_pronouns_generator",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_analyzer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_analyzer",
+    "to": "arabic_relative_pronouns_generator",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.arabic_relative_pronouns_analyzer",
+    "to": "arabic_relative_pronouns_deep_model_simplified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.batch_syntax_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.batch_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.comprehensive_arabic_phonological_system",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.comprehensive_arabic_phonological_system",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.conftest",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.create_working_engines",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.critical_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.debug_output",
+    "to": "nlp",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.debug_output",
+    "to": "arabic_nlp_status_report",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.deletion",
+    "to": "backups.import_fixes_20250727_005716.advanced_arabic_engine",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.emergency_fstring_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.emergency_fstring_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.engine",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.engine_new",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.engine_new",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.final_arrow_syntax_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.final_arrow_syntax_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.final_arrow_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_arrow_comparisons",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_broken_comparisons",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_broken_comparisons",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_common_fstring_errors",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_common_fstring_errors",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_empty_imports",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_empty_imports",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_empty_imports",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_fstring_issues",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_logging_config",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.fix_logging_config",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.hafez_phonemes",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.hafez_syllables",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.inflection",
+    "to": "phonology_core_unified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.inflection",
+    "to": "core",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.morphology",
+    "to": "phonology_core_unified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.morphology",
+    "to": "core",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.pattern_embed",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.pattern_embed",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.phonology",
+    "to": "phonology_core_unified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.phonology",
+    "to": "core",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.project_status_checker",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.quick_status",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.remove_arabic_forever",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.remove_arabic_forever",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.rule_base",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.run_syntax_fixes",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.run_syntax_fixes",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.segmenter",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.segmenter",
+    "to": "backups.import_fixes_20250727_005716.advanced_arabic_engine",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.segmenter",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.simple_arrow_syntax_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.simple_arrow_syntax_fixer",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.simple_test",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.simple_test",
+    "to": "arabic_nlp_status_report",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.simple_test",
+    "to": "nlp",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.simple_text_cleaner",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.syllable_phonological_engine",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.syllable_phonological_engine",
+    "to": "complete_arabic_phonological_foundation",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.syllable_phonological_engine",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.targeted_critical_syntax_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.targeted_syntax_scanner",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_core_integration",
+    "to": "phonology_core_unified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_core_integration",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_core_integration",
+    "to": "core",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_morphological_weights",
+    "to": "arabic_morphological_weight_generator",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_phoneme_integration",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_phoneme_integration",
+    "to": "unified_phonemes",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_phoneme_processing",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_phoneme_simple",
+    "to": "unified_phonemes",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_syllable_processing",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_syllable_readiness",
+    "to": "syllable_phonological_engine",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_word",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_word",
+    "to": "unified_phonemes",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_zero_layer_comprehensive",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_zero_layer_comprehensive",
+    "to": "zero_layer_phonology",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.test_zero_layer_comprehensive",
+    "to": "unified_phonemes",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.utf8_encoding_fixer",
+    "to": "fix_logging_config",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.utf8_encoding_fixer",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.utf8_encoding_fixer",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.utf8_terminal_cleaner",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.validate_broken_files",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.validate_tools_ast",
+    "to": "advanced_ast_syntax_fixer",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.violation_elimination_system",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.xampp_arabic_phonology",
+    "to": "advanced_arabic_function_words_generator",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.xampp_arabic_phonology",
+    "to": "arabic_inflection_corrected",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "backups.import_fixes_20250727_005716.xampp_test_phonemes_matrix",
+    "to": "advanced_arabic_phonology_system",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "core.nlp.full_pipeline",
+    "to": "phonology_core_unified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "core.nlp.full_pipeline",
+    "to": "core",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "core.nlp.phonological",
+    "to": "phonology_core_unified",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  },
+  {
+    "from": "core.nlp.phonological",
+    "to": "core",
+    "arrows": "to",
+    "color": {
+      "opacity": 0.6
+    }
+  }
+]);
+
+        var container = document.getElementById('mynetworkid');
+        var data = { nodes: nodes, edges: edges };
+
+        var options = {
+            groups: {
+                0: { color: { background: '#97C2FC', border: '#2B7CE9' } },
+                1: { color: { background: '#FFAB91', border: '#FF5722' } },
+                2: { color: { background: '#C8E6C9', border: '#4CAF50' } },
+                3: { color: { background: '#FFE082', border: '#FFC107' } },
+                4: { color: { background: '#F8BBD9', border: '#E91E63' } }
+            },
+            physics: {
+                stabilization: { iterations: 100 },
+                barnesHut: { gravitationalConstant: -2000, springConstant: 0.001, springLength: 200 }
+            },
+            interaction: { hover: true },
+            nodes: {
+                borderWidth: 2,
+                shadow: true,
+                font: { size: 14, color: '#000000' }
+            },
+            edges: {
+                width: 2,
+                shadow: true,
+                smooth: { type: 'continuous' }
+            }
+        };
+
+        var network = new vis.Network(container, data, options);
+
+        // Click event
+        network.on('click', function(params) {
+            if (params.nodes.length > 0) {
+                var nodeId = params.nodes[0];
+                var node = nodes.get(nodeId);
+                document.getElementById('nodeInfo').innerHTML =
+                    '<h4>' + node.id + '</h4>' +
+                    '<p>' + node.title.replace(/\\n/g, '<br>') + '</p>';
+            }
+        });
+
+        var physicsEnabled = true;
+        function togglePhysics() {
+            physicsEnabled = !physicsEnabled;
+            network.setOptions({ physics: { enabled: physicsEnabled } });
+        }
+
+        function exportNetwork() {
+            var canvas = document.querySelector('#mynetworkid canvas');
+            var link = document.createElement('a');
+            link.download = 'dependency_graph.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

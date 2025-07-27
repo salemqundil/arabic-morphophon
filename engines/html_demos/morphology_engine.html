@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Morphology Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #55a3ff 0%, #003d82 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #55a3ff;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #55a3ff;
+            box-shadow: 0 0 10px rgba(85, 163, 255, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #55a3ff, #003d82);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #55a3ff;
+        }
+        .morphology-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #55a3ff;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .morphemes-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .features-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .inflection-box {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .morpheme-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+            align-items: center;
+        }
+        .morpheme {
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .morpheme:hover {
+            transform: scale(1.05);
+        }
+        .prefix { background: #e74c3c; color: white; }
+        .root { background: #2ecc71; color: white; }
+        .suffix { background: #3498db; color: white; }
+        .infix { background: #f39c12; color: white; }
+        .template { background: #9b59b6; color: white; }
+        .separator {
+            color: #55a3ff;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        .feature-item {
+            background: #55a3ff;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.8em;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .inflection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .inflection-table th,
+        .inflection-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .inflection-table th {
+            background: #55a3ff;
+            color: white;
+        }
+        .morphological-process {
+            background: #f8f9fa;
+            border: 2px dashed #55a3ff;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك التحليل الصرفي</h1>
+            <div class="subtitle">Arabic Morphological Analysis Engine</div>
+            <div class="subtitle">يحلل البنية الصرفية والمورفيمات العربية</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل الكلمة العربية:</label>
+            <input type="text" id="arabicText" placeholder="مثال: المُستخدمون" value="المُستخدمون">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('المُستخدمون')">المُستخدمون</button>
+            <button class="btn example-btn" onclick="setExample('كاتبات')">كاتبات</button>
+            <button class="btn example-btn" onclick="setExample('مُدرّسة')">مُدرّسة</button>
+            <button class="btn example-btn" onclick="setExample('استقبال')">استقبال</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeMorphology()"> تحليل صرفي</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج التحليل الصرفي</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeMorphology() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال كلمة عربية للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateMorphologyAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateMorphologyAnalysis(word) {
+            // Complex morphological analysis database
+            const morphologyDatabase = {
+                'المُستخدمون': {
+                    morphemes: [
+                        { text: 'ال', type: 'prefix', function: 'التعريف', meaning: 'أداة التعريف' },
+                        { text: 'مُ', type: 'prefix', function: 'اسم فاعل', meaning: 'بادئة اسم الفاعل' },
+                        { text: 'ست', type: 'infix', function: 'زيادة', meaning: 'زيادة للمبالغة' },
+                        { text: 'خدم', type: 'root', function: 'الجذر', meaning: 'جذر الخدمة' },
+                        { text: 'ون', type: 'suffix', function: 'جمع مذكر سالم', meaning: 'علامة الجمع والإعراب' }
+                    ],
+                    template: 'ال + مُ + فعل + ون',
+                    morphological_pattern: 'المُفعِلون',
+                    root: 'خ-د-م',
+                    word_class: 'اسم فاعل جمع مذكر سالم',
+                    features: {
+                        'number': 'جمع',
+                        'gender': 'مذكر',
+                        'case': 'مرفوع',
+                        'definiteness': 'معرف',
+                        'voice': 'فاعل'
+                    }
+                },
+                'كاتبات': {
+                    morphemes: [
+                        { text: 'كتب', type: 'root', function: 'الجذر', meaning: 'جذر الكتابة' },
+                        { text: 'ا', type: 'infix', function: 'حركة طويلة', meaning: 'مد للوزن' },
+                        { text: 'ت', type: 'suffix', function: 'تأنيث', meaning: 'علامة التأنيث' },
+                        { text: 'ات', type: 'suffix', function: 'جمع مؤنث سالم', meaning: 'علامة الجمع المؤنث' }
+                    ],
+                    template: 'فاعل + ات',
+                    morphological_pattern: 'فاعلات',
+                    root: 'ك-ت-ب',
+                    word_class: 'اسم فاعل جمع مؤنث سالم',
+                    features: {
+                        'number': 'جمع',
+                        'gender': 'مؤنث',
+                        'case': 'مرفوع',
+                        'definiteness': 'نكرة',
+                        'voice': 'فاعل'
+                    }
+                },
+                'مُدرّسة': {
+                    morphemes: [
+                        { text: 'مُ', type: 'prefix', function: 'اسم فاعل', meaning: 'بادئة اسم الفاعل' },
+                        { text: 'درس', type: 'root', function: 'الجذر', meaning: 'جذر التدريس' },
+                        { text: 'ّ', type: 'infix', function: 'تشديد', meaning: 'تضعيف للمبالغة' },
+                        { text: 'ة', type: 'suffix', function: 'تأنيث', meaning: 'علامة التأنيث' }
+                    ],
+                    template: 'مُ + فعّل + ة',
+                    morphological_pattern: 'مُفعِّلة',
+                    root: 'د-ر-س',
+                    word_class: 'اسم فاعل مفرد مؤنث',
+                    features: {
+                        'number': 'مفرد',
+                        'gender': 'مؤنث',
+                        'case': 'مرفوع',
+                        'definiteness': 'نكرة',
+                        'voice': 'فاعل',
+                        'intensity': 'مبالغة'
+                    }
+                },
+                'استقبال': {
+                    morphemes: [
+                        { text: 'است', type: 'prefix', function: 'استفعال', meaning: 'بادئة الطلب' },
+                        { text: 'قبل', type: 'root', function: 'الجذر', meaning: 'جذر القبول' },
+                        { text: 'ال', type: 'suffix', function: 'مصدر', meaning: 'علامة المصدر' }
+                    ],
+                    template: 'است + فعل + ال',
+                    morphological_pattern: 'استفعال',
+                    root: 'ق-ب-ل',
+                    word_class: 'مصدر',
+                    features: {
+                        'number': 'مفرد',
+                        'gender': 'مذكر',
+                        'case': 'مرفوع',
+                        'definiteness': 'نكرة',
+                        'type': 'مصدر',
+                        'pattern': 'استفعال'
+                    }
+                }
+            };
+
+            const data = morphologyDatabase[word] || createGenericMorphAnalysis(word);
+
+            return {
+                input_word: word,
+                analysis: data,
+                inflection_paradigm: generateInflectionParadigm(data),
+                morphological_processes: identifyMorphProcesses(data),
+                productivity_analysis: analyzeProductivity(data),
+                comparative_analysis: generateComparativeMorphAnalysis(word, data)
+            };
+        }
+
+        function createGenericMorphAnalysis(word) {
+            // Extract basic morphological information for unknown words
+            const morphemes = [];
+            let remaining = word;
+
+            // Check for definite article
+            if (word.startsWith('ال')) {
+                morphemes.push({ text: 'ال', type: 'prefix', function: 'التعريف', meaning: 'أداة التعريف' });
+                remaining = remaining.substring(2);
+            }
+
+            // Check for common prefixes
+            const prefixes = ['مُ', 'يُ', 'تُ', 'أُ', 'است'];
+            for (const prefix of prefixes) {
+                if (remaining.startsWith(prefix)) {
+                    morphemes.push({ text: prefix, type: 'prefix', function: 'بادئة', meaning: 'بادئة صرفية' });
+                    remaining = remaining.substring(prefix.length);
+                    break;
+                }
+            }
+
+            // Extract root (simplified)
+            const rootLength = Math.min(3, remaining.length);
+            if (rootLength > 0) {
+                const root = remaining.substring(0, rootLength);
+                morphemes.push({ text: root, type: 'root', function: 'الجذر', meaning: 'الجذر الأساسي' });
+                remaining = remaining.substring(rootLength);
+            }
+
+            // Check for common suffixes
+            const suffixes = ['ة', 'ان', 'ون', 'ين', 'ات', 'ها', 'هم', 'هن'];
+            for (const suffix of suffixes) {
+                if (remaining.endsWith(suffix)) {
+                    morphemes.push({ text: suffix, type: 'suffix', function: 'لاحقة', meaning: 'لاحقة صرفية' });
+                    break;
+                }
+            }
+
+            return {
+                morphemes: morphemes,
+                template: 'نمط عام',
+                morphological_pattern: 'غير محدد',
+                root: 'غير معروف',
+                word_class: 'غير محدد',
+                features: {
+                    'analysis': 'تحليل تقريبي'
+                }
+            };
+        }
+
+        function generateInflectionParadigm(data) {
+            // Generate inflection paradigm based on word class
+            if (data.word_class.includes('جمع مذكر سالم')) {
+                return {
+                    type: 'جمع مذكر سالم',
+                    nominative: data.root + 'ون',
+                    accusative: data.root + 'ين',
+                    genitive: data.root + 'ين',
+                    cases: [
+                        { case: 'مرفوع', form: data.root + 'ون', example: 'المُستخدمون نشطون' },
+                        { case: 'منصوب', form: data.root + 'ين', example: 'رأيت المُستخدمين' },
+                        { case: 'مجرور', form: data.root + 'ين', example: 'سلمت على المُستخدمين' }
+                    ]
+                };
+            } else if (data.word_class.includes('جمع مؤنث سالم')) {
+                return {
+                    type: 'جمع مؤنث سالم',
+                    nominative: data.root + 'ات',
+                    accusative: data.root + 'ات',
+                    genitive: data.root + 'ات',
+                    cases: [
+                        { case: 'مرفوع', form: data.root + 'اتٌ', example: 'الكاتباتُ مُجتهدات' },
+                        { case: 'منصوب', form: data.root + 'اتٍ', example: 'رأيت الكاتباتِ' },
+                        { case: 'مجرور', form: data.root + 'اتٍ', example: 'سلمت على الكاتباتِ' }
+                    ]
+                };
+            } else {
+                return {
+                    type: 'تصريف عام',
+                    cases: [
+                        { case: 'مرفوع', form: data.template, example: 'مثال في الرفع' },
+                        { case: 'منصوب', form: data.template, example: 'مثال في النصب' },
+                        { case: 'مجرور', form: data.template, example: 'مثال في الجر' }
+                    ]
+                };
+            }
+        }
+
+        function identifyMorphProcesses(data) {
+            const processes = [];
+
+            // Check for common morphological processes
+            if (data.morphemes.some(m => m.type === 'prefix')) {
+                processes.push({
+                    name: 'الإلحاق بالبادئة',
+                    description: 'إضافة مورفيم في بداية الكلمة',
+                    examples: ['ال + كتاب', 'مُ + علم']
+                });
+            }
+
+            if (data.morphemes.some(m => m.type === 'suffix')) {
+                processes.push({
+                    name: 'الإلحاق بالللاحقة',
+                    description: 'إضافة مورفيم في نهاية الكلمة',
+                    examples: ['كتاب + ة', 'مُعلم + ون']
+                });
+            }
+
+            if (data.morphemes.some(m => m.function.includes('تشديد'))) {
+                processes.push({
+                    name: 'التضعيف',
+                    description: 'تشديد أحد حروف الجذر للمبالغة',
+                    examples: ['درّس', 'كرّم', 'علّم']
+                });
+            }
+
+            if (data.template.includes('است')) {
+                processes.push({
+                    name: 'الاستفعال',
+                    description: 'بناء صيغة طلب الفعل',
+                    examples: ['استقبل', 'استخدم', 'استفهم']
+                });
+            }
+
+            return processes;
+        }
+
+        function analyzeProductivity(data) {
+            // Analyze the productivity of the morphological pattern
+            let score = 0;
+            let factors = [];
+
+            // Common patterns are more productive
+            if (['فاعل', 'مفعول', 'فعيل'].includes(data.morphological_pattern)) {
+                score += 3;
+                factors.push('نمط شائع ومنتج');
+            }
+
+            // Presence of productive affixes
+            if (data.morphemes.some(m => ['ال', 'مُ', 'ت'].includes(m.text))) {
+                score += 2;
+                factors.push('سوابق منتجة');
+            }
+
+            // Root type affects productivity
+            if (data.root.includes('-')) {
+                score += 1;
+                factors.push('جذر ثلاثي منتظم');
+            }
+
+            return {
+                score: score,
+                level: score >= 5 ? 'عالي الإنتاجية' : score >= 3 ? 'متوسط الإنتاجية' : 'محدود الإنتاجية',
+                factors: factors
+            };
+        }
+
+        function generateComparativeMorphAnalysis(word, data) {
+            const relatedWords = [];
+
+            // Generate related words based on the same root
+            if (data.root && data.root !== 'غير معروف') {
+                const baseRoot = data.root.replace(/-/g, '');
+                relatedWords.push({
+                    word: baseRoot,
+                    relation: 'الجذر الأساسي',
+                    pattern: 'فعل'
+                });
+
+                relatedWords.push({
+                    word: baseRoot + 'ة',
+                    relation: 'المصدر المؤنث',
+                    pattern: 'فعلة'
+                });
+
+                relatedWords.push({
+                    word: 'مُ' + baseRoot,
+                    relation: 'اسم الفاعل',
+                    pattern: 'مُفعل'
+                });
+            }
+
+            return {
+                morphological_family: relatedWords,
+                complexity_comparison: data.morphemes.length > 4 ? 'معقد' : data.morphemes.length > 2 ? 'متوسط' : 'بسيط',
+                pattern_frequency: ['فاعل', 'مفعول', 'فعيل'].includes(data.morphological_pattern) ? 'عالي' : 'متوسط'
+            };
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="morphology-analysis">
+                    <div class="word-header"> تحليل الكلمة: ${analysis.input_word}</div>
+
+                    <div class="morphological-process">
+                        <strong> القالب الصرفي:</strong> ${analysis.analysis.template}<br>
+                        <strong> الوزن:</strong> ${analysis.analysis.morphological_pattern}<br>
+                        <strong> الجذر:</strong> ${analysis.analysis.root}<br>
+                        <strong> نوع الكلمة:</strong> ${analysis.analysis.word_class}
+                    </div>
+
+                    <div class="inflection-box">
+                        <strong> تفكيك المورفيمات:</strong><br>
+                        <div class="morpheme-breakdown">
+                            ${analysis.analysis.morphemes.map((morpheme, index) =>
+                                `<span class="morpheme ${morpheme.type}" title="${morpheme.function}: ${morpheme.meaning}">
+                                    ${morpheme.text}
+                                </span>
+                                ${index < analysis.analysis.morphemes.length - 1 ? '<span class="separator">+</span>' : ''}`
+                            ).join('')}
+                        </div>
+                    </div>
+
+                    <div class="analysis-grid">
+                        <div class="morphemes-box info-box">
+                            <strong> تفاصيل المورفيمات:</strong><br>
+                            ${analysis.analysis.morphemes.map(morpheme =>
+                                `<div style="margin: 5px 0; padding: 5px; background: #f9f9f9; border-radius: 4px;">
+                                    <strong>${morpheme.text}:</strong> ${morpheme.function}<br>
+                                    <em>${morpheme.meaning}</em>
+                                </div>`
+                            ).join('')}
+                        </div>
+
+                        <div class="features-box info-box">
+                            <strong> الخصائص الصرفية:</strong><br>
+                            <div class="feature-list">
+                                ${Object.entries(analysis.analysis.features).map(([key, value]) =>
+                                    `<span class="feature-item">${key}: ${value}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add inflection paradigm
+            if (analysis.inflection_paradigm && analysis.inflection_paradigm.cases) {
+                html += `
+                    <div class="morphology-analysis">
+                        <div class="word-header"> نموذج التصريف</div>
+                        <div class="inflection-box">
+                            <strong>نوع التصريف:</strong> ${analysis.inflection_paradigm.type}<br><br>
+                            <table class="inflection-table">
+                                <thead>
+                                    <tr>
+                                        <th>الحالة الإعرابية</th>
+                                        <th>الشكل</th>
+                                        <th>مثال</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${analysis.inflection_paradigm.cases.map(caseForm =>
+                                        `<tr>
+                                            <td>${caseForm.case}</td>
+                                            <td>${caseForm.form}</td>
+                                            <td>${caseForm.example}</td>
+                                        </tr>`
+                                    ).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Add morphological processes
+            if (analysis.morphological_processes.length > 0) {
+                html += `
+                    <div class="morphology-analysis">
+                        <div class="word-header"> العمليات الصرفية</div>
+                        ${analysis.morphological_processes.map(process =>
+                            `<div class="inflection-box">
+                                <strong>${process.name}:</strong><br>
+                                ${process.description}<br>
+                                <strong>أمثلة:</strong> ${process.examples.join(' - ')}
+                            </div>`
+                        ).join('')}
+                    </div>
+                `;
+            }
+
+            // Add comparative analysis
+            html += `
+                <div class="morphology-analysis">
+                    <div class="word-header"> التحليل المقارن</div>
+
+                    <div class="analysis-grid">
+                        <div class="morphemes-box info-box">
+                            <strong> العائلة الصرفية:</strong><br>
+                            ${analysis.comparative_analysis.morphological_family.map(word =>
+                                `<div style="margin: 3px 0;"> ${word.word} (${word.relation})</div>`
+                            ).join('')}
+                        </div>
+
+                        <div class="features-box info-box">
+                            <strong> مؤشرات الإنتاجية:</strong><br>
+                            <strong>مستوى الإنتاجية:</strong> ${analysis.productivity_analysis.level}<br>
+                            <strong>النقاط:</strong> ${analysis.productivity_analysis.score}<br>
+                            <strong>العوامل:</strong><br>
+                            ${analysis.productivity_analysis.factors.map(f => ` ${f}`).join('<br>')}
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <strong> الإحصائيات:</strong>
+                        عدد المورفيمات: ${analysis.analysis.morphemes.length} |
+                        التعقيد: ${analysis.comparative_analysis.complexity_comparison} |
+                        شيوع النمط: ${analysis.comparative_analysis.pattern_frequency}
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeMorphology();
+        };
+    </script>
+</body>
+</html>

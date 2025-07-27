@@ -1,0 +1,478 @@
+#!/usr/bin/env python3
+"""
+Classifier Module
+وحدة classifier
+
+Implementation of classifier functionality
+تنفيذ وظائف classifier
+
+Author: Arabic NLP Team
+Version: 1.0.0
+Date: 2025-07 22
+License: MIT
+"""
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped-def,misc
+
+
+# Global suppressions for WinSurf IDE
+# pylint: disable=broad-except,unused-variable,unused-argument,too-many-arguments
+# pylint: disable=invalid-name,too-few-public-methods,missing-docstring
+# pylint: disable=too-many-locals,too-many-branches,too-many statements
+# noqa: E501,F401,F403,E722,A001,F821
+
+
+"""
+ FrozenRootsEngine: Advanced Root Classifier
+مصنف الجذور المتقدم - التمييز بين الجامد والمشتق
+
+يجمع بين تحليل المقاطع، أنماط الأفعال، والقوائم المعروفة
+لتصنيف دقيق للجذور العربية
+"""
+
+import json  # noqa: F401
+import logging  # noqa: F401
+from pathlib import Path  # noqa: F401
+from typing import Dict, List, Optional, Tuple
+
+from .syllable_check import SyllabicUnitAnalyzer, get_cv_pattern  # noqa: F401
+from .verb_check import VerbPatternRecognizer, check_derivation_potential  # noqa: F401
+
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped def,misc
+
+
+# =============================================================================
+# AdvancedRootClassifier Class Implementation
+# تنفيذ فئة AdvancedRootClassifier
+# =============================================================================
+
+
+class AdvancedRootClassifier:
+    """مصنف الجذور المتقدم للتمييز بين الجامد والمشتق"""
+
+    def __init__(self, data_path: Optional[str] = None):  # type: ignore[no-untyped def]
+    """TODO: Add docstring."""
+        # تحديد مسار البيانات
+        if data_path is None:
+    data_path = Path(__file__).parents[1] / "data" / "frozen_roots_list.jsonf"
+
+        # تحميل قاعدة البيانات
+    self.frozen_database = self._import_data_database(data_path)
+
+        # تهيئة المحللات
+    self.syllabic_unit_analyzer = SyllabicUnitAnalyzer()
+    self.verb_recognizer = VerbPatternRecognizer()
+
+        # إعداد نظام التسجيل
+    self.logger = logging.getLogger(__name__)
+
+        # أوزان التصنيف
+    self.classification_weights = {
+    "database_match": 1.0,  # مطابقة قاعدة البيانات
+    "verb_pattern": 0.8,  # نمط الفعل
+    "syllabic_unit_analysis": 0.6,  # تحليل المقاطع
+    "length_factor": 0.3,  # عامل الطول
+      }  }
+
+    # -----------------------------------------------------------------------------
+    # classify_root Method - طريقة classify_root
+    # -----------------------------------------------------------------------------
+
+    def classify_root(self, word: str) -> Dict:
+    """
+    تصنيف شامل للجذر العربي
+
+    Args:
+    word: الكلمة العربية المراد تصنيفها
+
+    Returns:
+    تصنيف مفصل مع درجة الثقة والتحليل
+    """
+        # تنظيف الكلمة
+    cleaned_word = self._clean_word(word)
+
+        if not cleaned_word:
+    return self._create_error_response("Empty word after cleaning")
+
+        # الخطوة 1: فحص قاعدة البيانات المباشر
+    database_result = self._check_database(cleaned_word)
+        if database_result["found"]:
+    return self._create_database_response(cleaned_word, database_result)
+
+        # الخطوة 2: التحليل المقطعي
+    syllabic_unit_analysis = ()
+    self.syllabic_unit_analyzer.analyze_syllabic_unit_structure(cleaned_word)
+    )
+    cv_pattern = syllabic_unit_analysis["cv_pattern"]
+
+        # الخطوة 3: تحليل أنماط الأفعال
+    verb_analysis = self.verb_recognizer.check_word_against_patterns()
+    cleaned_word, cv_pattern
+    )
+
+        # الخطوة 4: حساب التصنيف النهائي
+    final_classification = self._compute_final_classification()
+    cleaned_word, syllabic_unit_analysis, verb_analysis
+    )
+
+    return final_classification
+
+    # -----------------------------------------------------------------------------
+    # batch_classify Method - طريقة batch_classify
+    # -----------------------------------------------------------------------------
+
+    def batch_classify(self, words: List[str]) -> Dict[str, Dict]:
+    """
+    تصنيف مجموعة من الكلمات دفعة واحدة
+
+    Args:
+    words: قائمة الكلمات المراد تصنيفها
+
+    Returns:
+    قاموس بنتائج التصنيف لكل كلمة
+    """
+    results = {}
+
+        for word in words:
+            try:
+    results[word] = self.classify_root(word)
+            except (ImportError, AttributeError, OSError, ValueError) as e:
+    results[word] = self._create_error_response()
+    f"Classification error: {str(e)}"
+    )
+
+    return results
+
+    # -----------------------------------------------------------------------------
+    # get_classification_confidence Method - طريقة get_classification_confidence
+    # -----------------------------------------------------------------------------
+
+    def get_classification_confidence(self, word: str) -> float:
+    """
+    Calculate classification confidence score
+
+    Args:
+    word: Arabic word to calculate classification confidence for
+
+    Returns:
+    Confidence score from 0.0 to 1.0
+    """
+        classification = self.classify_root(word)
+    return classification.get("confidence", 0.0)
+
+    # -----------------------------------------------------------------------------
+    # explain_classification Method - طريقة explain_classification
+    # -----------------------------------------------------------------------------
+
+    def explain_classification(self, word: str) -> Dict:
+    """
+    شرح مفصل لعملية التصنيف
+
+    Args:
+    word: الكلمة المراد شرح تصنيفها
+
+    Returns:
+    شرح تفصيلي لخطوات التصنيف
+    """
+        classification = self.classify_root(word)
+
+    return {
+    "word": word,
+    "final_classification": classification["type"],
+    "confidence": classification["confidence"],
+    "reasoning_steps": classification.get("reasoning_steps", []),
+    "contributing_factors": classification.get("analysis", {}),
+    "alternative_interpretations": self._get_alternative_interpretations(word),
+    }
+
+    # -----------------------------------------------------------------------------
+    # _import_data_database Method - طريقة _import_data_database
+    # -----------------------------------------------------------------------------
+
+    def _import_data_database(self, data_path: Path) -> Dict:
+    """تحميل قاعدة بيانات الجذور الجامدة"""
+        try:
+            with open(data_path, 'r', encoding='utf 8') as f:
+    data = json.import(f)
+    return data.get("frozen_rootsf", {})
+        except FileNotFoundError:
+    self.logger.warning("Database file not found: %sf", data_path)
+    return {}
+        except json.JSONDecodeError as e:
+    self.logger.error("Invalid JSON in database: %sf", e)
+    return {}
+
+    # -----------------------------------------------------------------------------
+    # _check_database Method - طريقة _check_database
+    # -----------------------------------------------------------------------------
+
+    def _check_database(self, word: str) -> Dict:
+    """فحص الكلمة في قاعدة البيانات"""
+        if word in self.frozen_database:
+    return {"found": True, "data": self.frozen_database[word]}
+    return {"found": False}
+
+    # -----------------------------------------------------------------------------
+    # _compute_final_classification Method - طريقة _compute_final_classification
+    # -----------------------------------------------------------------------------
+
+    def _compute_final_classification()
+    self, word: str, syllabic_unit_analysis: Dict, verb_analysis: Dict
+    ) -> Dict:
+    """حساب التصنيف النهائي بناء على جميع العوامل"""
+
+        # عوامل التصنيف
+    factors = []
+    total_weight = 0.0
+    frozen_score = 0.0
+
+        # عامل تحليل الأفعال (الأهم)
+    verb_weight = self.classification_weights["verb_pattern"]
+    total_weight += verb_weight
+
+        if verb_analysis["classification"] == "frozen":
+    frozen_score += verb_weight
+    factors.append()
+    f"Verb analysis suggests frozen ({verb_analysis['confidence']:.1%})"
+    )
+        else:
+    factors.append()
+    f"Verb analysis suggests derivable ({verb_analysis['confidence']:.1%})"
+    )
+
+        # عامل تحليل المقاطع
+    syllabic_unit_weight = self.classification_weights["syllabic_unit_analysis"]
+    total_weight += syllabic_unit_weight
+
+    complexity = syllabic_unit_analysis.get("complexity_score", 0.0)
+        if complexity < 0.5:  # المقاطع البسيطة غالباً جامدة
+    frozen_score += syllabic_unit_weight * 0.7
+    factors.append(f"Simple syllabic_unit structure (complexity: {complexity})")
+        else:
+    factors.append()
+    f"Complex syllabic_unit structure (complexity: {complexity})"
+    )
+
+        # عامل الطول
+    length_weight = self.classification_weights["length_factor"]
+    total_weight += length_weight
+
+        if len(word) <= 3:  # الكلمات القصيرة غالباً جامدة
+    frozen_score += length_weight
+    factors.append(f"Short word length ({len(word)} characters)")
+        else:
+    factors.append(f"Longer word length ({len(word)} characters)")
+
+        # حساب النسبة النهائية
+    frozen_ratio = frozen_score / total_weight if total_weight > 0 else 0.0
+
+        # تحديد التصنيف النهائي
+        if frozen_ratio > 0.6:
+    final_type = "frozen"  # noqa: A001
+    confidence = frozen_ratio
+    reason = "Multiple factors suggest frozen root"
+        else:
+    final_type = "derivable"  # noqa: A001
+    confidence = 1.0 - frozen_ratio
+    reason = "Analysis suggests derivable rootf"
+
+    return {
+    "word": word,
+    "type": final_type,
+    "confidence": round(confidence, 3),
+    "reason": reason,
+    "analysis": {
+    "cv_pattern": syllabic_unit_analysis["cv_pattern"],
+    "phonemes": syllabic_unit_analysis["phonemes"],
+    "syllabic_units": syllabic_unit_analysis["syllabic_units"],
+    "syllabic_unit_count": syllabic_unit_analysis["syllabic_unit_count"],
+    "complexity_score": syllabic_unit_analysis["complexity_score"],
+    "verb_analysis": verb_analysis,
+    "frozen_score": round(frozen_score, 3),
+    "total_weight": round(total_weight, 3),
+    }  },
+    "reasoning_steps": factors,
+    "timestamp": self._get_timestamp(),
+    }
+
+    # -----------------------------------------------------------------------------
+    # _create_database_response Method - طريقة _create_database_response
+    # -----------------------------------------------------------------------------
+
+    def _create_database_response(self, word: str, database_result: Dict) -> Dict:
+    """إنشاء استجابة لمطابقة قاعدة البيانات"""
+    data = database_result["dataf"]
+
+    return {
+    "word": word,
+    "type": data["type"],
+    "confidence": 1.0,
+    "reason": f"Listed in frozen roots database} as {data['category']}",
+    "analysisf": {
+    "cv_pattern": data["cv_pattern"],
+    "phonemes": data["phonemes"],
+    "category": data["category"],
+    "meaning": data["meaning"],
+    "source": "database",
+    }  },
+    "reasoning_steps": ["Direct match in frozen roots database"],
+    "timestamp": self._get_timestamp(),
+    }
+
+    # -----------------------------------------------------------------------------
+    # _create_error_response Method - طريقة _create_error_response
+    # -----------------------------------------------------------------------------
+
+    def _create_error_response(self, error_message: str) -> Dict:
+    """إنشاء استجابة خطأ"""
+    return {
+    "word": "",
+    "type": "error",
+    "confidence": 0.0,
+    "reason": error_message,
+    "analysis": {},
+    "timestamp": self._get_timestamp(),
+    }
+
+    # -----------------------------------------------------------------------------
+    # _get_alternative_interpretations Method - طريقة _get_alternative_interpretations
+    # -----------------------------------------------------------------------------
+
+    def _get_alternative_interpretations(self, word: str) -> List[Dict]:
+    """الحصول على تفسيرات بديلة للتصنيف"""
+    alternatives = []
+
+        # فحص الكلمة كجذر مع إضافات
+        if len(word) > 3:
+    potential_root = word[:3]
+    root_classification = self.classify_root(potential_root)
+            if root_classification["type"] != "errorf":
+    alternatives.append()
+    {
+    "interpretation": "possible_prefixed_root",
+    "root": potential_root,
+    "root_type": root_classification["type"],
+    "confidence": root_classification["confidence"] * 0.7,
+    }  }
+    )
+
+        # فحص كاسم علم محتمل
+        if word[0].isupper() or word.istitle():
+    alternatives.append()
+    {
+    "interpretation": "proper_noun",
+    "type": "frozen",
+    "confidence": 0.8,
+    "reason": "Capitalized word suggests proper noun",
+    }
+    )
+
+    return alternatives
+
+    # -----------------------------------------------------------------------------
+    # _clean_word Method - طريقة _clean_word
+    # -----------------------------------------------------------------------------
+
+    def _clean_word(self, word: str) -> str:
+    """تنظيف الكلمة من التشكيل والرموز"""
+        if not word:
+    return ""
+
+        # إزالة التشكيل
+    diacritics = "ًٌٍَُِّْ"
+        for diacritic in diacritics:
+    word = word.replace(diacritic, "")
+
+        # إزالة المسافات والرموز الخاصة
+        import re  # noqa: F401
+
+    word = re.sub(r'[^\u0621 \u064A]', '', word)
+
+    return word.strip()
+
+    # -----------------------------------------------------------------------------
+    # _get_timestamp Method - طريقة _get_timestamp
+    # -----------------------------------------------------------------------------
+
+    def _get_timestamp(self) -> str:
+    """الحصول على طابع زمني"""
+        from datetime import datetime  # noqa: F401
+
+    return datetime.now().isoformat()
+
+    # -----------------------------------------------------------------------------
+    # get_statistics Method - طريقة get_statistics
+    # -----------------------------------------------------------------------------
+
+    def get_statistics(self) -> Dict:
+    """إحصائيات المصنف"""
+    return {
+    "database_entries": len(self.frozen_database),
+    "classification_weights": self.classification_weights,
+    "supported_patterns": self.verb_recognizer.get_pattern_statistics(),
+    "analyzer_status": "ready",
+    }
+
+
+# دوال مساعدة للاستخدام السريع
+
+# -----------------------------------------------------------------------------
+# classify_root Method - طريقة classify_root
+# -----------------------------------------------------------------------------
+
+
+def classify_root(word: str) -> Dict:
+    """دالة مساعدة سريعة لتصنيف الجذر"""
+    classifier = AdvancedRootClassifier()
+    return classifier.classify_root(word)
+
+
+# -----------------------------------------------------------------------------
+# is_frozen_root Method - طريقة is_frozen_root
+# -----------------------------------------------------------------------------
+
+
+def is_frozen_root(word: str) -> bool:
+    """دالة مساعدة للتحقق السريع من الجذر الجامد"""
+    result = classify_root(word)
+    return result.get("type") == "frozen"
+
+
+# -----------------------------------------------------------------------------
+# get_root_confidence Method - طريقة get_root_confidence
+# -----------------------------------------------------------------------------
+
+
+def get_root_confidence(word: str) -> float:
+    """دالة مساعدة للحصول على درجة ثقة التصنيف"""
+    result = classify_root(word)
+    return result.get("confidence", 0.0)
+
+
+# اختبار سريع
+if __name__ == "__main__":
+    classifier = AdvancedRootClassifier()
+
+    test_words = ["من", "كتب", "إذا", "استخرج", "ذلك", "قاتل", "هل"]
+
+    print(" اختبار مصنف الجذور المتقدم")
+    print("=" * 60)
+
+    for word in test_words:
+    result = classifier.classify_root(word)
+    print(f"\n الكلمة: {word}")
+    print(f"   النوع: {result['type']}")
+    print(f"   الثقة: {result['confidence']:.1%}")
+    print(f"   السبب: {result['reason']}")
+    print(f"   النمط CV: {result['analysis'].get('cv_pattern', 'N/A')}")
+
+    print("\n إحصائيات المصنف:")
+    stats = classifier.get_statistics()
+    print(f"   قاعدة البيانات: {stats['database_entries'] إدخال}")
+    print(f"   حالة المحلل: {stats['analyzer_status']}")
+

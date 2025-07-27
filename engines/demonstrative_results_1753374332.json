@@ -1,0 +1,223 @@
+{
+  "test_session_id": "demo_test_1753374332",
+  "timestamp": "2025-07-24 19:25:32",
+  "total_tests": 78,
+  "models_performance": {
+    "rule_based": {
+      "model_name": "rule_based",
+      "accuracy": 0.01282051282051282,
+      "precision": 0.01282051282051282,
+      "recall": 0.01282051282051282,
+      "f1_score": 0.01282051282051282,
+      "avg_confidence": 0.07446153846153847,
+      "avg_response_time": 0.0013074538646600186,
+      "total_tests": 78,
+      "correct_predictions": 1,
+      "category_accuracy": {
+        "FAR_MASCULINE_DUAL": 0.0,
+        "FAR_FEMININE_SINGULAR": 0.0,
+        "NEAR_MASCULINE_SINGULAR": 0.0,
+        "NEAR_PLURAL": 0.0,
+        "FAR_FEMININE_DUAL": 0.0,
+        "NEAR_MASCULINE_DUAL": 0.0,
+        "NEAR_FEMININE_DUAL": 0.0,
+        "PLACE_NEAR": 0.16666666666666666,
+        "PLACE_FAR": 0.0,
+        "FAR_MASCULINE_SINGULAR": 0.0,
+        "FAR_PLURAL": 0.0,
+        "NEAR_FEMININE_SINGULAR": 0.0
+      }
+    }
+  },
+  "category_analysis": {
+    "FAR_MASCULINE_DUAL": {
+      "accuracy": 0.0,
+      "total_tests": 2,
+      "correct_predictions": 0,
+      "avg_confidence": 0.0685,
+      "avg_response_time": 0.0010612010955810547,
+      "common_errors": [
+        "ذانك -> خطأ نظام",
+        "ذانك -> هاهنا"
+      ]
+    },
+    "FAR_FEMININE_SINGULAR": {
+      "accuracy": 0.0,
+      "total_tests": 6,
+      "correct_predictions": 0,
+      "avg_confidence": 0.067,
+      "avg_response_time": 0.0009032090504964193,
+      "common_errors": [
+        "تلك -> خطأ نظام",
+        "تلك -> ذانك"
+      ]
+    },
+    "NEAR_MASCULINE_SINGULAR": {
+      "accuracy": 0.0,
+      "total_tests": 20,
+      "correct_predictions": 0,
+      "avg_confidence": 0.07005,
+      "avg_response_time": 0.001866602897644043,
+      "common_errors": [
+        "هذا -> خطأ نظام",
+        "هذا -> هاهنا",
+        "غير معروف -> خطأ نظام"
+      ]
+    },
+    "NEAR_PLURAL": {
+      "accuracy": 0.0,
+      "total_tests": 8,
+      "correct_predictions": 0,
+      "avg_confidence": 0.071375,
+      "avg_response_time": 0.0011436641216278076,
+      "common_errors": [
+        "هؤلاء -> خطأ نظام",
+        "هؤلاء -> هاهنا"
+      ]
+    },
+    "FAR_FEMININE_DUAL": {
+      "accuracy": 0.0,
+      "total_tests": 2,
+      "correct_predictions": 0,
+      "avg_confidence": 0.0665,
+      "avg_response_time": 0.0010519027709960938,
+      "common_errors": [
+        "تانك -> خطأ نظام",
+        "تانك -> ذلك"
+      ]
+    },
+    "NEAR_MASCULINE_DUAL": {
+      "accuracy": 0.0,
+      "total_tests": 6,
+      "correct_predictions": 0,
+      "avg_confidence": 0.09766666666666667,
+      "avg_response_time": 0.001243869463602702,
+      "common_errors": [
+        "هذان -> خطأ نظام",
+        "هذان -> هاهنا"
+      ]
+    },
+    "NEAR_FEMININE_DUAL": {
+      "accuracy": 0.0,
+      "total_tests": 6,
+      "correct_predictions": 0,
+      "avg_confidence": 0.077,
+      "avg_response_time": 0.0011889139811197917,
+      "common_errors": [
+        "هاتان -> خطأ نظام",
+        "هاتان -> هاهنا"
+      ]
+    },
+    "PLACE_NEAR": {
+      "accuracy": 0.16666666666666666,
+      "total_tests": 6,
+      "correct_predictions": 1,
+      "avg_confidence": 0.06216666666666667,
+      "avg_response_time": 0.0010503530502319336,
+      "common_errors": [
+        "هنا -> خطأ نظام",
+        "هنا -> هاهنا",
+        "هاهنا -> خطأ نظام"
+      ]
+    },
+    "PLACE_FAR": {
+      "accuracy": 0.0,
+      "total_tests": 6,
+      "correct_predictions": 0,
+      "avg_confidence": 0.06166666666666667,
+      "avg_response_time": 0.001150051752726237,
+      "common_errors": [
+        "هناك -> خطأ نظام",
+        "هناك -> هاهنا",
+        "هنالك -> خطأ نظام"
+      ]
+    },
+    "FAR_MASCULINE_SINGULAR": {
+      "accuracy": 0.0,
+      "total_tests": 6,
+      "correct_predictions": 0,
+      "avg_confidence": 0.06683333333333333,
+      "avg_response_time": 0.001141945521036784,
+      "common_errors": [
+        "ذلك -> خطأ نظام",
+        "ذلك -> هاهنا",
+        "ذلك -> هذا"
+      ]
+    },
+    "FAR_PLURAL": {
+      "accuracy": 0.0,
+      "total_tests": 2,
+      "correct_predictions": 0,
+      "avg_confidence": 0.09,
+      "avg_response_time": 0.0010524988174438477,
+      "common_errors": [
+        "أولئك -> خطأ نظام",
+        "أولئك -> ذانك"
+      ]
+    },
+    "NEAR_FEMININE_SINGULAR": {
+      "accuracy": 0.0,
+      "total_tests": 8,
+      "correct_predictions": 0,
+      "avg_confidence": 0.099,
+      "avg_response_time": 0.0011373460292816162,
+      "common_errors": [
+        "هذه -> خطأ نظام",
+        "هذه -> هاهنا"
+      ]
+    }
+  },
+  "error_analysis": {
+    "خطأ نظام": 41,
+    "تصنيف خاطئ": 36
+  },
+  "confusion_matrices": {
+    "general": [
+      [
+        0,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "recommendations": [
+    "🏆 أفضل أداء: rule_based بدقة 1.3%",
+    "⚠️  جميع النماذج تحتاج تحسين - دقة أقل من 80%",
+    "❌ rule_based يحتاج مراجعة جذرية - دقة أقل من 50%",
+    "🔍 الخطأ الأكثر شيوعاً: خطأ نظام (41 مرة)",
+    "🎯 يُنصح بتحسين خوارزميات التصنيف",
+    "💡 استخدم مجموعة أكبر من بيانات التدريب",
+    "🔧 اضبط معايير الثقة للنماذج",
+    "📊 راقب الأداء باستمرار مع البيانات الجديدة"
+  ]
+}

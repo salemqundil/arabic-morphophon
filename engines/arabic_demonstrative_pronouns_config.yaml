@@ -1,0 +1,245 @@
+# Arabic Demonstrative Pronouns Configuration
+# إعدادات نظام أسماء الإشارة العربية
+
+# معلومات النظام
+system:
+  name: "Arabic Demonstrative Pronouns Generator"
+  name_arabic: "مولد أسماء الإشارة العربية"
+  version: "1.0.0"
+  description: "نظام توليد أسماء الإشارة العربية من المقاطع الصوتية"
+  language: "Arabic"
+  author: "Arabic NLP Expert Team - GitHub Copilot"
+  date: "2025-07-24"
+
+# إعدادات التطابق
+matching:
+  similarity_threshold: 0.6        # حد أدنى للتشابه (0.0 - 1.0)
+  max_candidates: 5                # العدد الأقصى للمرشحين
+  phonetic_weight: 0.7             # وزن التشابه الصوتي
+  frequency_weight: 0.3            # وزن تكرار الاستخدام
+  enable_fuzzy_matching: true      # تفعيل البحث الضبابي
+  case_sensitive: false            # حساسية الأحرف الكبيرة/الصغيرة
+  length_tolerance: 1              # التساهل في عدد المقاطع
+
+# أوزان الأصوات
+phoneme_weights:
+  # أصوات شائعة في أسماء الإشارة
+  consonants:
+    h: 0.95      # ه (هذا، هذه، هنا، هناك)
+    dh: 0.90     # ذ (هذا، هذه، ذلك)
+    l: 0.85      # ل (ذلك، هؤلاء، هنالك)
+    k: 0.80      # ك (ذلك، تلك، هناك)
+    t: 0.75      # ت (تلك، هاتان)
+    n: 0.70      # ن (هذان، هاتان، هنا)
+    w: 0.65      # و (أولئك)
+    q: 0.60      # ء (هؤلاء، أولئك)
+
+  vowels:
+    aa: 0.88     # ا (معظم أسماء الإشارة)
+    a: 0.82      # َ
+    i: 0.78      # ِ
+    u: 0.75      # ُ
+    ay: 0.70     # ي (في المثنى منصوب/مجرور)
+    aw: 0.65     # و (في بعض الصيغ)
+
+# فئات أسماء الإشارة
+categories:
+  proximity:
+    near: "قريب"     # للقريب (هذا، هذه، هؤلاء)
+    far: "بعيد"      # للبعيد (ذلك، تلك، أولئك)
+    locative: "مكاني" # المكانية (هنا، هناك)
+
+  gender:
+    masculine: "مذكر"
+    feminine: "مؤنث"
+    neutral: "محايد"
+
+  number:
+    singular: "مفرد"
+    dual: "مثنى"
+    plural: "جمع"
+    locative: "مكاني"
+
+  grammatical_case:
+    nominative: "مرفوع"
+    accusative: "منصوب"
+    genitive: "مجرور"
+
+# أنماط المقاطع الصوتية
+syllable_patterns:
+  types:
+    - "CV"          # صامت + صائت
+    - "CVC"         # صامت + صائت + صامت
+    - "CVCC"        # صامت + صائت + صامت + صامت
+    - "COMPLEX"     # أنماط معقدة
+
+  common_patterns:
+    - "CV-CV"           # هذا، هنا
+    - "CV-CVC"          # هذه، تلك
+    - "CV-CV-CV"        # هذان، هاتان، هناك
+    - "CV-CV-CV-CV"     # هؤلاء، هنالك
+    - "CVC-CV-CV-CV"    # أولئك
+
+# قائمة أسماء الإشارة المدعومة
+demonstrative_pronouns:
+  near_singular:
+    masculine:
+      - text: "هذا"
+        syllables: ["هَا", "ذَا"]
+        frequency: 0.95
+        contexts: ["الإشارة للقريب المذكر", "التعريف", "التخصيص"]
+
+    feminine:
+      - text: "هذه"
+        syllables: ["هَا", "ذِهِ"]
+        frequency: 0.93
+        contexts: ["الإشارة للقريبة المؤنثة", "التعريف", "التخصيص"]
+
+  far_singular:
+    masculine:
+      - text: "ذلك"
+        syllables: ["ذَا", "لِكَ"]
+        frequency: 0.91
+        contexts: ["الإشارة للبعيد المذكر", "التفسير", "الإحالة"]
+
+    feminine:
+      - text: "تلك"
+        syllables: ["تِل", "كَ"]
+        frequency: 0.89
+        contexts: ["الإشارة للبعيدة المؤنثة", "التفسير", "الإحالة"]
+
+  near_dual:
+    masculine:
+      - text: "هذان"
+        syllables: ["هَا", "ذَا", "نِ"]
+        frequency: 0.72
+        case: "nominative"
+      - text: "هذين"
+        syllables: ["هَا", "ذَيْ", "نِ"]
+        frequency: 0.68
+        case: "accusative/genitive"
+
+    feminine:
+      - text: "هاتان"
+        syllables: ["هَا", "تَا", "نِ"]
+        frequency: 0.65
+        case: "nominative"
+      - text: "هاتين"
+        syllables: ["هَا", "تَيْ", "نِ"]
+        frequency: 0.62
+        case: "accusative/genitive"
+
+  plural:
+    near:
+      - text: "هؤلاء"
+        syllables: ["هَا", "ؤُ", "لَا", "ءِ"]
+        frequency: 0.87
+        contexts: ["الإشارة لجمع قريب", "العموم القريب"]
+
+    far:
+      - text: "أولئك"
+        syllables: ["أُو", "لَا", "ئِ", "كَ"]
+        frequency: 0.84
+        contexts: ["الإشارة لجمع بعيد", "العموم البعيد"]
+
+  locative:
+    near:
+      - text: "هنا"
+        syllables: ["هُ", "نَا"]
+        frequency: 0.92
+        contexts: ["الإشارة المكانية القريبة", "تحديد المكان"]
+      - text: "هاهنا"
+        syllables: ["هَا", "هُ", "نَا"]
+        frequency: 0.58
+        contexts: ["الإشارة المكانية القريبة المؤكدة"]
+
+    far:
+      - text: "هناك"
+        syllables: ["هُ", "نَا", "كَ"]
+        frequency: 0.89
+        contexts: ["الإشارة المكانية البعيدة", "تحديد المكان البعيد"]
+      - text: "هنالك"
+        syllables: ["هُ", "نَا", "لِ", "كَ"]
+        frequency: 0.73
+        contexts: ["الإشارة المكانية البعيدة المؤكدة"]
+
+# إعدادات تحليل المقاطع
+syllable_analysis:
+  enable_phonetic_analysis: true    # تفعيل التحليل الصوتي
+  enable_pattern_recognition: true  # تفعيل التعرف على الأنماط
+  enable_morphological_analysis: true # تفعيل التحليل الصرفي
+  complexity_threshold: 3.0         # حد تعقيد المقاطع
+  min_syllables: 1                  # الحد الأدنى لعدد المقاطع
+  max_syllables: 5                  # الحد الأقصى لعدد المقاطع
+
+# إعدادات الأداء
+performance:
+  cache_results: true               # تخزين النتائج مؤقتاً
+  max_cache_size: 1000             # الحد الأقصى لحجم التخزين المؤقت
+  enable_parallel_processing: false # المعالجة المتوازية (لاحقاً)
+  timeout_seconds: 30              # مهلة الاستجابة بالثواني
+
+# إعدادات التسجيل
+logging:
+  level: "INFO"                    # مستوى التسجيل
+  log_syllable_analysis: true     # تسجيل تحليل المقاطع
+  log_matching_process: true      # تسجيل عملية التطابق
+  log_performance_metrics: true   # تسجيل مؤشرات الأداء
+
+# إعدادات الإخراج
+output:
+  include_confidence: true         # تضمين درجة الثقة
+  include_alternatives: true      # تضمين البدائل
+  include_analysis: true          # تضمين التحليل التفصيلي
+  max_alternatives: 3             # العدد الأقصى للبدائل
+  format: "detailed"              # تنسيق الإخراج (simple/detailed)
+
+# معايير التقييم
+evaluation:
+  accuracy_threshold: 0.8         # حد دقة النظام
+  precision_threshold: 0.85       # حد الدقة في التصنيف
+  recall_threshold: 0.80          # حد الاستدعاء
+  f1_threshold: 0.82              # حد F1-Score
+
+# إعدادات التطوير والاختبار
+development:
+  enable_debug_mode: false        # وضع التصحيح
+  generate_test_data: true        # توليد بيانات اختبار
+  save_analysis_reports: true    # حفظ تقارير التحليل
+  benchmark_performance: true    # قياس الأداء
+
+# مسارات الملفات
+file_paths:
+  database: "arabic_demonstrative_pronouns_database.json"
+  config: "arabic_demonstrative_pronouns_config.yaml"
+  logs: "logs/demonstrative_pronouns.log"
+  reports: "reports/"
+  cache: "cache/demonstrative_cache.json"
+
+# معلومات إضافية
+metadata:
+  supported_dialects:
+    - "Modern Standard Arabic"
+    - "Classical Arabic"
+
+  linguistic_features:
+    - "Proximity marking"
+    - "Gender agreement"
+    - "Number agreement"
+    - "Case marking"
+    - "Spatial deixis"
+
+  applications:
+    - "Speech recognition"
+    - "Text analysis"
+    - "Language learning"
+    - "Linguistic research"
+    - "Machine translation"
+
+# ملاحظات للمطورين
+notes:
+  - "النظام يدعم جميع أشكال أسماء الإشارة في العربية الفصحى"
+  - "يمكن توسيع النظام لدعم اللهجات المحلية"
+  - "التحليل الصوتي يعتمد على النمط المقطعي"
+  - "النظام قابل للتخصيص عبر تعديل الإعدادات"
+  - "يمكن دمج النظام مع تطبيقات معالجة اللغة الطبيعية"

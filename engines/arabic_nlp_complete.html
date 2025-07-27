@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Arabic NLP Engine - All Features</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .input-section {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 24px;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Traditional Arabic', 'Arial Unicode MS', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .analyze-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
+        }
+
+        .sample-words {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sample-word {
+            padding: 8px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Traditional Arabic', 'Arial Unicode MS', sans-serif;
+        }
+
+        .sample-word:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .results-container {
+            padding: 30px;
+            display: none;
+        }
+
+        .engine-section {
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .engine-section:hover {
+            border-color: #3498db;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.1);
+        }
+
+        .engine-header {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .engine-header h3 {
+            font-size: 1.4em;
+            margin: 0;
+        }
+
+        .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .engine-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .engine-content {
+            padding: 25px;
+            background: #fff;
+            display: none;
+        }
+
+        .engine-content.active {
+            display: block;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .feature-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .feature-value {
+            color: #555;
+            font-family: 'Traditional Arabic', 'Arial Unicode MS', monospace;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .phoneme-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .phoneme-item {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .syllable-breakdown {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .syllable-item {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .comparison-section {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .comparison-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .alternative-forms {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .alternative-item {
+            background: #27ae60;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Traditional Arabic', 'Arial Unicode MS', sans-serif;
+            direction: rtl;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .success {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .phoneme-breakdown {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔬 Complete Arabic NLP Engine</h1>
+            <p>Comprehensive Arabic Processing Pipeline - All Engines Integrated</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-group">
+                <input type="text" id="arabicInput" class="input-field"
+                       placeholder="أدخل كلمة عربية هنا..."
+                       value="كَتَبَ">
+                <button onclick="analyzeWord()" class="analyze-btn">🔍 Analyze</button>
+            </div>
+
+            <div class="sample-words">
+                <button class="sample-word" onclick="setWord('كتب')">كتب</button>
+                <button class="sample-word" onclick="setWord('كَتَبَ')">كَتَبَ</button>
+                <button class="sample-word" onclick="setWord('كِتَاب')">كِتَاب</button>
+                <button class="sample-word" onclick="setWord('مُدَرِّس')">مُدَرِّس</button>
+                <button class="sample-word" onclick="setWord('الكِتَاب')">الكِتَاب</button>
+                <button class="sample-word" onclick="setWord('مدرسة')">مدرسة</button>
+                <button class="sample-word" onclick="setWord('يَكْتُبُ')">يَكْتُبُ</button>
+                <button class="sample-word" onclick="setWord('مَكْتُوب')">مَكْتُوب</button>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" class="results-container">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Arabic NLP Engine Data
+        const arabicData = {
+            phonemes: {
+                "ك": { ipa: "/k/", features: ["stop", "voiceless", "velar"] },
+                "ت": { ipa: "/t/", features: ["stop", "voiceless", "dental"] },
+                "ب": { ipa: "/b/", features: ["stop", "voiced", "bilabial"] },
+                "د": { ipa: "/d/", features: ["stop", "voiced", "dental"] },
+                "ج": { ipa: "/dʒ/", features: ["affricate", "voiced", "postalveolar"] },
+                "ق": { ipa: "/q/", features: ["stop", "voiceless", "uvular"] },
+                "ط": { ipa: "/tˤ/", features: ["stop", "voiceless", "pharyngealized"] },
+                "ف": { ipa: "/f/", features: ["fricative", "voiceless", "labiodental"] },
+                "ث": { ipa: "/θ/", features: ["fricative", "voiceless", "dental"] },
+                "ذ": { ipa: "/ð/", features: ["fricative", "voiced", "dental"] },
+                "س": { ipa: "/s/", features: ["fricative", "voiceless", "alveolar"] },
+                "ش": { ipa: "/ʃ/", features: ["fricative", "voiceless", "postalveolar"] },
+                "ص": { ipa: "/sˤ/", features: ["fricative", "voiceless", "pharyngealized"] },
+                "ض": { ipa: "/dˤ/", features: ["stop", "voiced", "pharyngealized"] },
+                "ز": { ipa: "/z/", features: ["fricative", "voiced", "alveolar"] },
+                "خ": { ipa: "/x/", features: ["fricative", "voiceless", "uvular"] },
+                "غ": { ipa: "/ɣ/", features: ["fricative", "voiced", "uvular"] },
+                "ح": { ipa: "/ħ/", features: ["fricative", "voiceless", "pharyngeal"] },
+                "ع": { ipa: "/ʕ/", features: ["fricative", "voiced", "pharyngeal"] },
+                "ه": { ipa: "/h/", features: ["fricative", "voiceless", "glottal"] },
+                "م": { ipa: "/m/", features: ["nasal", "voiced", "bilabial"] },
+                "ن": { ipa: "/n/", features: ["nasal", "voiced", "alveolar"] },
+                "ر": { ipa: "/r/", features: ["liquid", "voiced", "alveolar"] },
+                "ل": { ipa: "/l/", features: ["liquid", "voiced", "alveolar"] },
+                "و": { ipa: "/w/", features: ["glide", "voiced", "bilabial"] },
+                "ي": { ipa: "/j/", features: ["glide", "voiced", "palatal"] },
+                "ا": { ipa: "/aː/", features: ["vowel", "long", "low"] },
+                "ة": { ipa: "/a/", features: ["vowel", "short", "low"] }
+            },
+
+            harakat: {
+                "َ": { name: "fatha", ipa: "a", type: "short_vowel" },
+                "ُ": { name: "damma", ipa: "u", type: "short_vowel" },
+                "ِ": { name: "kasra", ipa: "i", type: "short_vowel" },
+                "ّ": { name: "shadda", ipa: "ː", type: "gemination" },
+                "ْ": { name: "sukun", ipa: "", type: "silence" },
+                "ً": { name: "tanwin_fath", ipa: "an", type: "nunation" },
+                "ٌ": { name: "tanwin_damm", ipa: "un", type: "nunation" },
+                "ٍ": { name: "tanwin_kasr", ipa: "in", type: "nunation" }
+            },
+
+            syllableTemplates: {
+                "CV": { weight: "light", mora: 1, stress: false },
+                "CVC": { weight: "heavy", mora: 2, stress: true },
+                "CVV": { weight: "heavy", mora: 2, stress: true },
+                "CVVC": { weight: "superheavy", mora: 3, stress: true },
+                "CVCC": { weight: "superheavy", mora: 3, stress: true }
+            }
+        };
+
+        // Core Engine Functions
+        class UnifiedArabicEngine {
+            constructor() {
+                this.data = arabicData;
+            }
+
+            // Harakat Engine
+            analyzeHarakat(word) {
+                const harakatChars = "َُِّْٰٱًٌٍ";
+                const hasHarakat = Array.from(word).some(char => harakatChars.includes(char));
+
+                const harakatPositions = [];
+                Array.from(word).forEach((char, index) => {
+                    if (this.data.harakat[char]) {
+                        harakatPositions.push({
+                            position: index,
+                            mark: char,
+                            name: this.data.harakat[char].name,
+                            ipa: this.data.harakat[char].ipa
+                        });
+                    }
+                });
+
+                const unvocalized = word.replace(/[َُِّْٰٱًٌٍ]/g, '');
+                const vowelPattern = this.extractVowelPattern(word);
+                const ipaTranscription = this.wordToIPA(word);
+
+                return {
+                    hasHarakat,
+                    harakatCount: harakatPositions.length,
+                    harakatPositions,
+                    unvocalized,
+                    vowelPattern,
+                    ipaTranscription
+                };
+            }
+
+            extractVowelPattern(word) {
+                const vowelMap = { "َ": "a", "ُ": "u", "ِ": "i", "ْ": "0" };
+                return Array.from(word)
+                    .filter(char => vowelMap[char])
+                    .map(char => vowelMap[char])
+                    .join('');
+            }
+
+            wordToIPA(word) {
+                let ipa = "";
+                for (let i = 0; i < word.length; i++) {
+                    const char = word[i];
+                    if (this.data.phonemes[char]) {
+                        ipa += this.data.phonemes[char].ipa.slice(1, -1); // Remove /.../ brackets
+                    } else if (this.data.harakat[char]) {
+                        ipa += this.data.harakat[char].ipa;
+                    }
+                }
+                return `/${ipa}/`;
+            }
+
+            // Phoneme Engine
+            analyzePhonemes(word, harakatAnalysis) {
+                const phonemeBreakdown = [];
+                const unvocalized = harakatAnalysis.unvocalized;
+
+                for (let i = 0; i < word.length; i++) {
+                    const char = word[i];
+                    if (this.data.phonemes[char]) {
+                        const phonemeInfo = {
+                            char: char,
+                            ipa: this.data.phonemes[char].ipa,
+                            features: this.data.phonemes[char].features
+                        };
+
+                        // Check for harakat after this consonant
+                        if (i + 1 < word.length && this.data.harakat[word[i + 1]]) {
+                            phonemeInfo.harakat = {
+                                mark: word[i + 1],
+                                name: this.data.harakat[word[i + 1]].name,
+                                ipa: this.data.harakat[word[i + 1]].ipa
+                            };
+                        }
+
+                        phonemeBreakdown.push(phonemeInfo);
+                    }
+                }
+
+                const consonantCount = phonemeBreakdown.filter(p =>
+                    p.features.some(f => ["stop", "fricative", "nasal", "liquid"].includes(f))
+                ).length;
+
+                const vowelCount = harakatAnalysis.harakatPositions.filter(h =>
+                    h.name.includes("fatha") || h.name.includes("damma") || h.name.includes("kasra")
+                ).length;
+
+                return {
+                    phonemeCount: phonemeBreakdown.length,
+                    consonantCount,
+                    vowelCount,
+                    phonemeBreakdown,
+                    ipaTranscription: harakatAnalysis.ipaTranscription
+                };
+            }
+
+            // Syllable Engine
+            analyzeSyllables(word, harakatAnalysis) {
+                const syllables = this.syllabifyWord(word, harakatAnalysis.hasHarakat);
+
+                return {
+                    syllableCount: syllables.length,
+                    syllables,
+                    totalMora: syllables.reduce((sum, syl) => sum + syl.mora, 0),
+                    weightSequence: syllables.map(syl => syl.weight).join(' → '),
+                    stressPattern: this.generateStressPattern(syllables)
+                };
+            }
+
+            syllabifyWord(word, hasHarakat) {
+                if (hasHarakat) {
+                    return this.syllabifyWithHarakat(word);
+                } else {
+                    return this.syllabifyWithoutHarakat(word);
+                }
+            }
+
+            syllabifyWithHarakat(word) {
+                const syllables = [];
+                let currentSyllable = "";
+                let consonantCount = 0;
+                let hasVowel = false;
+
+                for (let i = 0; i < word.length; i++) {
+                    const char = word[i];
+                    currentSyllable += char;
+
+                    if (this.data.phonemes[char]) {
+                        consonantCount++;
+                    } else if (this.data.harakat[char] && ["fatha", "damma", "kasra"].includes(this.data.harakat[char].name)) {
+                        hasVowel = true;
+                    }
+
+                    // Check if syllable is complete
+                    if (hasVowel && (i === word.length - 1 || this.isNextConsonant(word, i + 1))) {
+                        const sylInfo = this.analyzeSyllableStructure(currentSyllable);
+                        syllables.push(sylInfo);
+                        currentSyllable = "";
+                        consonantCount = 0;
+                        hasVowel = false;
+                    }
+                }
+
+                if (currentSyllable) {
+                    const sylInfo = this.analyzeSyllableStructure(currentSyllable);
+                    syllables.push(sylInfo);
+                }
+
+                return syllables;
+            }
+
+            syllabifyWithoutHarakat(word) {
+                return [{
+                    syllable: word,
+                    type: "CVCC+",
+                    weight: "superheavy",
+                    mora: 3,
+                    stress: true,
+                    ipa: `/${word}/`
+                }];
+            }
+
+            isNextConsonant(word, index) {
+                if (index >= word.length) return false;
+                return this.data.phonemes[word[index]] &&
+                       !this.data.harakat[word[index]];
+            }
+
+            analyzeSyllableStructure(syllable) {
+                const clean = syllable.replace(/[َُِّْٰٱًٌٍ]/g, '');
+                const hasLongVowel = /[اوي]/.test(syllable);
+                const hasShortVowel = /[َُِ]/.test(syllable);
+                const consonantCount = clean.replace(/[اوي]/g, '').length;
+
+                let type, weight, mora;
+
+                if (hasLongVowel && consonantCount >= 2) {
+                    type = "CVVC";
+                    weight = "superheavy";
+                    mora = 3;
+                } else if (hasShortVowel && consonantCount >= 2) {
+                    type = "CVC";
+                    weight = "heavy";
+                    mora = 2;
+                } else if (hasLongVowel) {
+                    type = "CVV";
+                    weight = "heavy";
+                    mora = 2;
+                } else {
+                    type = "CV";
+                    weight = "light";
+                    mora = 1;
+                }
+
+                return {
+                    syllable,
+                    type,
+                    weight,
+                    mora,
+                    stress: weight !== "light",
+                    ipa: `/${clean}/`
+                };
+            }
+
+            generateStressPattern(syllables) {
+                let pattern = "";
+                syllables.forEach((syl, index) => {
+                    if (syl.stress && index === 0) {
+                        pattern += "ˈ" + syl.syllable;
+                    } else if (syl.stress) {
+                        pattern += "ˌ" + syl.syllable;
+                    } else {
+                        pattern += syl.syllable;
+                    }
+                    if (index < syllables.length - 1) pattern += ".";
+                });
+                return pattern;
+            }
+
+            // Morphological Engine
+            analyzeMorphology(word, harakatAnalysis) {
+                const wordType = this.classifyWordType(word);
+                const caseMarking = this.detectCaseMarking(harakatAnalysis);
+                const definiteness = word.startsWith("ال") ? "definite" : "indefinite";
+                const gemination = word.includes("ّ") ? this.detectGemination(word) : null;
+
+                return {
+                    wordType,
+                    caseMarking,
+                    definiteness,
+                    gemination,
+                    inflectionalFeatures: this.getInflectionalFeatures(harakatAnalysis),
+                    derivationalFeatures: { rootType: "triliteral", patternType: "basic" }
+                };
+            }
+
+            classifyWordType(word) {
+                if (word.startsWith("ال")) return "noun";
+                if (word.length === 3) return "verb";
+                return "noun";
+            }
+
+            detectCaseMarking(harakatAnalysis) {
+                const lastHarakat = harakatAnalysis.harakatPositions.slice(-1)[0];
+                if (!lastHarakat) return null;
+
+                const caseMap = {
+                    "damma": "nominative",
+                    "fatha": "accusative",
+                    "kasra": "genitive"
+                };
+
+                return caseMap[lastHarakat.name] || null;
+            }
+
+            detectGemination(word) {
+                const positions = [];
+                Array.from(word).forEach((char, index) => {
+                    if (char === "ّ") {
+                        positions.push({ position: index, type: "shadda" });
+                    }
+                });
+                return positions;
+            }
+
+            getInflectionalFeatures(harakatAnalysis) {
+                const features = {};
+                const vowelPattern = harakatAnalysis.vowelPattern;
+
+                if (vowelPattern.endsWith("u")) features.case = "nominative";
+                else if (vowelPattern.endsWith("a")) features.case = "accusative";
+                else if (vowelPattern.endsWith("i")) features.case = "genitive";
+
+                return features;
+            }
+
+            // Derivational Engine
+            analyzeDerivation(word, morphologicalAnalysis) {
+                const unvocalized = word.replace(/[َُِّْٰٱًٌٍ]/g, '');
+                const root = this.extractRoot(unvocalized);
+                const verbForm = this.identifyVerbForm(word);
+
+                return {
+                    root,
+                    verbForm,
+                    patternInfo: this.identifyPattern(word),
+                    semanticField: "general"
+                };
+            }
+
+            extractRoot(word) {
+                const clean = word.replace("ال", "").replace("ة", "");
+                if (clean.length >= 3) {
+                    return {
+                        root: clean.slice(0, 3),
+                        type: "triliteral",
+                        confidence: clean.length === 3 ? 0.9 : 0.7
+                    };
+                }
+                return { root: clean, type: "irregular", confidence: 0.5 };
+            }
+
+            identifyVerbForm(word) {
+                const unvocalized = word.replace(/[َُِّْٰٱًٌٍ]/g, '');
+                if (unvocalized.length === 3) return "Form I";
+                if (unvocalized.length === 4) return "Form II";
+                return "Unknown";
+            }
+
+            identifyPattern(word) {
+                return { pattern: "فَعَل", confidence: 0.6 };
+            }
+
+            // Prosodic Engine
+            analyzeProsody(word, syllableAnalysis) {
+                const syllables = syllableAnalysis.syllables;
+
+                return {
+                    syllableCount: syllables.length,
+                    moraCount: syllableAnalysis.totalMora,
+                    weightPattern: syllableAnalysis.weightSequence,
+                    rhythmicPattern: this.generateRhythmicPattern(syllables),
+                    metricalFeet: this.analyzeMetricalFeet(syllables)
+                };
+            }
+
+            generateRhythmicPattern(syllables) {
+                return syllables.map(syl => {
+                    if (syl.weight === "light") return "♪";
+                    if (syl.weight === "heavy") return "♫";
+                    return "𝅗𝅥";
+                }).join('');
+            }
+
+            analyzeMetricalFeet(syllables) {
+                const count = syllables.length;
+                if (count === 1) return "monopodic";
+                if (count === 2) return "dipodic";
+                if (count === 3) return "tripodic";
+                return "complex";
+            }
+
+            // Comparison Engine
+            compareWithWithoutHarakat(word) {
+                const withHarakat = this.analyzeWord(word);
+                const withoutHarakat = this.analyzeWord(word.replace(/[َُِّْٰٱًٌٍ]/g, ''));
+
+                return {
+                    harakatImpact: {
+                        syllableChange: `${withoutHarakat.syllableAnalysis.syllableCount} → ${withHarakat.syllableAnalysis.syllableCount}`,
+                        stressChange: `${withoutHarakat.syllableAnalysis.stressPattern} → ${withHarakat.syllableAnalysis.stressPattern}`,
+                        ipaChange: `${withoutHarakat.harakatAnalysis.ipaTranscription} → ${withHarakat.harakatAnalysis.ipaTranscription}`
+                    },
+                    withHarakat,
+                    withoutHarakat
+                };
+            }
+
+            // Alternative Forms Generator
+            generateAlternativeForms(word) {
+                const unvocalized = word.replace(/[َُِّْٰٱًٌٍ]/g, '');
+
+                if (unvocalized.length !== 3) return [];
+
+                const [r1, r2, r3] = unvocalized;
+
+                return [
+                    `${r1}َ${r2}َ${r3}َ`,    // Perfect
+                    `يَ${r1}ْ${r2}ُ${r3}ُ`,   // Imperfect
+                    `${r1}َا${r2}ِ${r3}`,    // Active participle
+                    `مَ${r1}ْ${r2}ُو${r3}`,  // Passive participle
+                    `${r1}ِ${r2}َا${r3}`,    // Noun
+                    `مُ${r1}َ${r2}ِّ${r3}`   // Agent noun
+                ];
+            }
+
+            // Main Analysis Function
+            analyzeWord(word) {
+                const harakatAnalysis = this.analyzeHarakat(word);
+                const phonemeAnalysis = this.analyzePhonemes(word, harakatAnalysis);
+                const syllableAnalysis = this.analyzeSyllables(word, harakatAnalysis);
+                const morphologicalAnalysis = this.analyzeMorphology(word, harakatAnalysis);
+                const derivationalAnalysis = this.analyzeDerivation(word, morphologicalAnalysis);
+                const prosodicAnalysis = this.analyzeProsody(word, syllableAnalysis);
+                const alternativeForms = this.generateAlternativeForms(word);
+
+                return {
+                    word,
+                    harakatAnalysis,
+                    phonemeAnalysis,
+                    syllableAnalysis,
+                    morphologicalAnalysis,
+                    derivationalAnalysis,
+                    prosodicAnalysis,
+                    alternativeForms
+                };
+            }
+        }
+
+        // Initialize engine
+        const engine = new UnifiedArabicEngine();
+
+        // UI Functions
+        function setWord(word) {
+            document.getElementById('arabicInput').value = word;
+        }
+
+        function showLoading() {
+            document.getElementById('resultsContainer').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing Arabic word through all engines...</p>
+                </div>
+            `;
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+
+        function analyzeWord() {
+            const word = document.getElementById('arabicInput').value.trim();
+
+            if (!word) {
+                showError("Please enter an Arabic word");
+                return;
+            }
+
+            showLoading();
+
+            // Simulate processing time
+            setTimeout(() => {
+                try {
+                    const analysis = engine.analyzeWord(word);
+                    const comparison = engine.compareWithWithoutHarakat(word);
+                    displayResults(analysis, comparison);
+                } catch (error) {
+                    showError("Error analyzing word: " + error.message);
+                }
+            }, 1000);
+        }
+
+        function showError(message) {
+            document.getElementById('resultsContainer').innerHTML = `
+                <div class="error">
+                    <strong>Error:</strong> ${message}
+                </div>
+            `;
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+
+        function displayResults(analysis, comparison) {
+            const html = `
+                <div class="success">
+                    ✅ Analysis completed successfully for: <strong>${analysis.word}</strong>
+                </div>
+
+                <!-- Harakat Engine Results -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>🔤 Harakat Engine</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content active">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-label">Has Harakat</div>
+                                <div class="feature-value">${analysis.harakatAnalysis.hasHarakat ? 'Yes ✅' : 'No ❌'}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Harakat Count</div>
+                                <div class="feature-value">${analysis.harakatAnalysis.harakatCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Vowel Pattern</div>
+                                <div class="feature-value">${analysis.harakatAnalysis.vowelPattern || 'none'}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Unvocalized Form</div>
+                                <div class="feature-value">${analysis.harakatAnalysis.unvocalized}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">IPA Transcription</div>
+                                <div class="feature-value">${analysis.harakatAnalysis.ipaTranscription}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phoneme Engine Results -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>📝 Phoneme Engine</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-label">Total Phonemes</div>
+                                <div class="feature-value">${analysis.phonemeAnalysis.phonemeCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Consonants</div>
+                                <div class="feature-value">${analysis.phonemeAnalysis.consonantCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Vowels</div>
+                                <div class="feature-value">${analysis.phonemeAnalysis.vowelCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">IPA</div>
+                                <div class="feature-value">${analysis.phonemeAnalysis.ipaTranscription}</div>
+                            </div>
+                        </div>
+
+                        <h4>Phoneme Breakdown:</h4>
+                        <div class="phoneme-breakdown">
+                            ${analysis.phonemeAnalysis.phonemeBreakdown.map(p => `
+                                <div class="phoneme-item">
+                                    <strong>${p.char}</strong><br>
+                                    ${p.ipa}<br>
+                                    <small>${p.features.join(', ')}</small>
+                                    ${p.harakat ? `<br><span style="color: #ffeb3b;">+ ${p.harakat.mark}</span>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllable Engine Results -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>🔊 Syllable Engine</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-label">Syllable Count</div>
+                                <div class="feature-value">${analysis.syllableAnalysis.syllableCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Total Mora</div>
+                                <div class="feature-value">${analysis.syllableAnalysis.totalMora}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Weight Sequence</div>
+                                <div class="feature-value">${analysis.syllableAnalysis.weightSequence}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Stress Pattern</div>
+                                <div class="feature-value">${analysis.syllableAnalysis.stressPattern}</div>
+                            </div>
+                        </div>
+
+                        <h4>Syllable Breakdown:</h4>
+                        <div class="syllable-breakdown">
+                            ${analysis.syllableAnalysis.syllables.map((syl, index) => `
+                                <div class="syllable-item">
+                                    <strong>${index + 1}. ${syl.syllable}</strong><br>
+                                    ${syl.ipa}<br>
+                                    <small>${syl.type} • ${syl.weight}</small><br>
+                                    <small>${syl.mora} mora • ${syl.stress ? 'stressed' : 'unstressed'}</small>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Morphological Engine Results -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>📚 Morphological Engine</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-label">Word Type</div>
+                                <div class="feature-value">${analysis.morphologicalAnalysis.wordType}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Definiteness</div>
+                                <div class="feature-value">${analysis.morphologicalAnalysis.definiteness}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Case Marking</div>
+                                <div class="feature-value">${analysis.morphologicalAnalysis.caseMarking || 'none detected'}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Inflectional Features</div>
+                                <div class="feature-value">${JSON.stringify(analysis.morphologicalAnalysis.inflectionalFeatures)}</div>
+                            </div>
+                        </div>
+
+                        ${analysis.morphologicalAnalysis.gemination ? `
+                            <h4>Gemination Detected:</h4>
+                            <div class="feature-item">
+                                <div class="feature-value">${JSON.stringify(analysis.morphologicalAnalysis.gemination)}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+
+                <!-- Derivational Engine Results -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>🌱 Derivational Engine</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-label">Root</div>
+                                <div class="feature-value">${analysis.derivationalAnalysis.root.root}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Root Type</div>
+                                <div class="feature-value">${analysis.derivationalAnalysis.root.type}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Confidence</div>
+                                <div class="feature-value">${(analysis.derivationalAnalysis.root.confidence * 100).toFixed(1)}%</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Verb Form</div>
+                                <div class="feature-value">${analysis.derivationalAnalysis.verbForm}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Pattern</div>
+                                <div class="feature-value">${analysis.derivationalAnalysis.patternInfo.pattern}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Semantic Field</div>
+                                <div class="feature-value">${analysis.derivationalAnalysis.semanticField}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prosodic Engine Results -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>🎵 Prosodic Engine</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-label">Syllable Count</div>
+                                <div class="feature-value">${analysis.prosodicAnalysis.syllableCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Mora Count</div>
+                                <div class="feature-value">${analysis.prosodicAnalysis.moraCount}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Weight Pattern</div>
+                                <div class="feature-value">${analysis.prosodicAnalysis.weightPattern}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Rhythmic Pattern</div>
+                                <div class="feature-value" style="font-size: 1.5em;">${analysis.prosodicAnalysis.rhythmicPattern}</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-label">Metrical Feet</div>
+                                <div class="feature-value">${analysis.prosodicAnalysis.metricalFeet}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison: With vs Without Harakat -->
+                <div class="comparison-section">
+                    <h3>⚡ Harakat Impact Analysis</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-item">
+                            <h4>🔤 With Harakat</h4>
+                            <p><strong>Word:</strong> ${comparison.withHarakat.word}</p>
+                            <p><strong>IPA:</strong> ${comparison.withHarakat.harakatAnalysis.ipaTranscription}</p>
+                            <p><strong>Syllables:</strong> ${comparison.withHarakat.syllableAnalysis.syllableCount}</p>
+                            <p><strong>Stress:</strong> ${comparison.withHarakat.syllableAnalysis.stressPattern}</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>❌ Without Harakat</h4>
+                            <p><strong>Word:</strong> ${comparison.withoutHarakat.word}</p>
+                            <p><strong>IPA:</strong> ${comparison.withoutHarakat.harakatAnalysis.ipaTranscription}</p>
+                            <p><strong>Syllables:</strong> ${comparison.withoutHarakat.syllableAnalysis.syllableCount}</p>
+                            <p><strong>Stress:</strong> ${comparison.withoutHarakat.syllableAnalysis.stressPattern}</p>
+                        </div>
+                    </div>
+
+                    <h4>📊 Impact Summary:</h4>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-label">Syllable Change</div>
+                            <div class="feature-value">${comparison.harakatImpact.syllableChange}</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">IPA Change</div>
+                            <div class="feature-value">${comparison.harakatImpact.ipaChange}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alternative Forms -->
+                <div class="engine-section">
+                    <div class="engine-header" onclick="toggleEngine(this)">
+                        <h3>🔄 Alternative Forms Generator</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="engine-content">
+                        <h4>Generated Alternative Forms:</h4>
+                        <div class="alternative-forms">
+                            ${analysis.alternativeForms.map((form, index) => `
+                                <div class="alternative-item" onclick="setWord('${form}')">${form}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('resultsContainer').innerHTML = html;
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+
+        function toggleEngine(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                header.classList.remove('active');
+                content.style.display = 'none';
+            } else {
+                content.classList.add('active');
+                header.classList.add('active');
+                content.style.display = 'block';
+            }
+        }
+
+        // Initialize with sample analysis
+        document.addEventListener('DOMContentLoaded', function() {
+            analyzeWord();
+        });
+
+        // Enter key support
+        document.getElementById('arabicInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                analyzeWord();
+            }
+        });
+    </script>
+</body>
+</html>

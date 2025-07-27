@@ -1,0 +1,261 @@
+# Arabic Interrogative Pronouns Deep Learning Configuration
+# ================================================
+# إعدادات التعلم العميق لأسماء الاستفهام العربية
+#
+# Advanced configuration for deep learning models
+# (LSTM, GRU, Transformer) for Arabic interrogative pronouns
+
+# Model Architecture Settings
+model_settings:
+  lstm:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.3
+    bidirectional: true
+    gradient_clipping: 1.0
+
+  gru:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.3
+    bidirectional: true
+    attention_heads: 4
+    gradient_clipping: 1.0
+
+  transformer:
+    d_model: 128
+    num_heads: 8
+    num_layers: 4
+    dropout: 0.1
+    feedforward_dim: 512
+    activation: "gelu"
+    gradient_clipping: 1.0
+
+# Training Configuration
+training:
+  batch_size: 32
+  epochs: 35
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: "adam"
+  scheduler:
+    type: "step"
+    step_size: 15
+    gamma: 0.1
+
+  # Data Settings
+  train_split: 0.8
+  validation_split: 0.2
+  num_synthetic_samples: 1600
+  noise_probability: 0.15
+  augmentation_factor: 1.5
+
+# Phonetic Processing Settings
+phonetic_processing:
+  max_sequence_length: 15
+  feature_dimensions: 12
+  vocab_size: 56  # Arabic phonemes + compounds
+
+  # Feature Categories
+  phonetic_features:
+    consonant_flag: true
+    vowel_flag: true
+    interrogative_marker: true
+    distinctive_interrogative: true
+    lateral_nasal: true
+    fricative: true
+    stop_consonant: true
+    long_vowel: true
+    short_vowel: true
+    articulatory_position: true
+    diacritics: true
+    compound_interrogative: true
+
+# Interrogative Categories Configuration
+interrogative_categories:
+  person:
+    weight: 0.12
+    pronouns: ["مَن", "مَنْ ذَا"]
+
+  thing:
+    weight: 0.15
+    pronouns: ["مَا", "مَاذَا", "مَهْمَا"]
+
+  time:
+    weight: 0.12
+    pronouns: ["مَتَى", "أَيَّانَ"]
+
+  place:
+    weight: 0.15
+    pronouns: ["أَيْنَ", "أَنَّى", "أَيْنَمَا"]
+
+  manner:
+    weight: 0.12
+    pronouns: ["كَيْفَ", "كَيْفَمَا"]
+
+  quantity:
+    weight: 0.10
+    pronouns: ["كَمْ", "كَأَيِّنْ"]
+
+  choice:
+    weight: 0.08
+    pronouns: ["أَيّ", "أَيُّهَا"]
+
+  reason:
+    weight: 0.08
+    pronouns: ["لِمَاذَا", "لِمَ"]
+
+  state:
+    weight: 0.04
+    pronouns: ["أَنَّى"]
+
+  possession:
+    weight: 0.04
+    pronouns: ["لِمَن"]
+
+# Model Performance Thresholds
+performance:
+  minimum_accuracy: 0.95
+  target_accuracy: 0.98
+  confidence_threshold: 0.85
+  top_k_predictions: 3
+
+  # Evaluation Metrics
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "confusion_matrix"
+
+# Inference Settings
+inference:
+  default_model: "transformer"
+  ensemble_voting: false
+  uncertainty_quantification: true
+  confidence_calibration: true
+
+  # Output Formatting
+  output_format:
+    include_alternatives: true
+    max_alternatives: 3
+    include_confidence: true
+    include_features: false
+
+# Arabic Language Specific Settings
+arabic_linguistics:
+  # Phoneme Categories
+  phoneme_classification:
+    consonants: ["ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه"]
+    long_vowels: ["ا", "و", "ي", "آ", "ى"]
+    short_vowels: ["َ", "ُ", "ِ"]
+    diacritics: ["ً", "ٌ", "ٍ", "ْ", "ّ"]
+
+  # Interrogative-Specific Phonemes
+  interrogative_phonemes:
+    primary: ["م", "أ", "ك", "ل"]
+    secondary: ["ن", "ت", "ي", "ذ", "ه", "ف"]
+    compounds: ["مَ", "أَ", "كَ", "لِ", "اذَ", "يَّ"]
+
+  # Syllable Patterns
+  syllable_patterns:
+    cv: "صامت + صائت"
+    cvc: "صامت + صائت + صامت"
+    cvcc: "صامت + صائت + صامت + صامت"
+    ccv: "صامت + صامت + صائت"
+    ccvc: "صامت + صامت + صائت + صامت"
+
+# Data Augmentation Settings
+data_augmentation:
+  enabled: true
+  techniques:
+    - "phonetic_variation"
+    - "syllable_permutation"
+    - "vowel_substitution"
+    - "noise_injection"
+
+  variation_rates:
+    phonetic: 0.15
+    syllable: 0.10
+    vowel: 0.20
+    noise: 0.05
+
+# Validation and Testing
+validation:
+  cross_validation_folds: 5
+  stratified_sampling: true
+  random_seed: 42
+
+  test_cases:
+    basic:
+      - syllables: ["مَنْ"]
+        expected: "مَن"
+      - syllables: ["مَا"]
+        expected: "مَا"
+      - syllables: ["مَ", "تَى"]
+        expected: "مَتَى"
+      - syllables: ["أَيْ", "نَ"]
+        expected: "أَيْنَ"
+      - syllables: ["كَيْ", "فَ"]
+        expected: "كَيْفَ"
+
+    advanced:
+      - syllables: ["لِ", "مَا", "ذَا"]
+        expected: "لِمَاذَا"
+      - syllables: ["كَأَيْ", "يِنْ"]
+        expected: "كَأَيِّنْ"
+      - syllables: ["أَيْ", "نَ", "مَا"]
+        expected: "أَيْنَمَا"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "arabic_interrogative_deep_model.log"
+  console_output: true
+
+  # Training Logs
+  training_logs:
+    save_frequency: 10  # epochs
+    metrics_tracking: true
+    model_checkpoints: true
+
+# Hardware Configuration
+hardware:
+  device: "auto"  # auto, cpu, cuda
+  mixed_precision: true
+  dataloader_workers: 4
+  pin_memory: true
+
+  # Memory Management
+  memory:
+    batch_accumulation: 1
+    gradient_checkpointing: false
+    cache_dataset: true
+
+# Export Settings
+export:
+  save_models: true
+  model_format: "pytorch"
+  save_path: "./models/interrogative_pronouns/"
+  include_metadata: true
+
+  # Model Serialization
+  serialization:
+    save_weights_only: false
+    save_optimizer_state: false
+    compression: true
+
+# Advanced Features
+advanced_features:
+  attention_visualization: true
+  feature_importance: true
+  error_analysis: true
+  model_interpretability: true
+
+  # Research Extensions
+  experimental:
+    multi_task_learning: false
+    knowledge_distillation: false
+    adversarial_training: false
+    self_supervised_pretraining: false

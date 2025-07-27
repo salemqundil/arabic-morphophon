@@ -1,0 +1,238 @@
+file,full_path,lineno,msg,text,type
+arabic_function_words_analyzer.py,arabic_function_words_analyzer.py,13,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_inflection_corrected.py,arabic_inflection_corrected.py,13,unterminated string literal (detected at line 13),"""""""""",unterminated_string
+arabic_inflection_rules_engine.py,arabic_inflection_rules_engine.py,33,unterminated string literal (detected at line 33),"""""""""",unterminated_string
+arabic_inflection_ultimate.py,arabic_inflection_ultimate.py,34,unterminated string literal (detected at line 34),"""""""""",unterminated_string
+arabic_inflection_ultimate_fixed.py,arabic_inflection_ultimate_fixed.py,12,unterminated string literal (detected at line 12),"""""""""",unterminated_string
+arabic_interrogative_pronouns_deep_model.py,arabic_interrogative_pronouns_deep_model.py,17,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_interrogative_pronouns_enhanced.py,arabic_interrogative_pronouns_enhanced.py,17,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_interrogative_pronouns_final.py,arabic_interrogative_pronouns_final.py,16,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_interrogative_pronouns_test_analysis.py,arabic_interrogative_pronouns_test_analysis.py,19,unexpected indent,import numpy as np  # noqa: F401,unexpected_indent
+arabic_normalizer.py,arabic_normalizer.py,8,unexpected indent,from dataclasses import dataclass,unexpected_indent
+arabic_phoneme_word_decision_tree.py,arabic_phoneme_word_decision_tree.py,18,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_phonological_foundation.py,arabic_phonological_foundation.py,25,unterminated string literal (detected at line 25),"""""""""",unterminated_string
+arabic_pronouns_analyzer.py,arabic_pronouns_analyzer.py,20,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_pronouns_deep_model.py,arabic_pronouns_deep_model.py,17,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_relative_pronouns_analyzer.py,arabic_relative_pronouns_analyzer.py,19,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_relative_pronouns_deep_model.py,arabic_relative_pronouns_deep_model.py,17,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_relative_pronouns_deep_model_simplified.py,arabic_relative_pronouns_deep_model_simplified.py,17,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_test.py,arabic_test.py,6,unterminated string literal (detected at line 6),"""""""""",unterminated_string
+arabic_vector_engine.py,arabic_vector_engine.py,13,unterminated string literal (detected at line 13),"""""""""",unterminated_string
+arabic_verb_conjugator.py,arabic_verb_conjugator.py,32,unterminated string literal (detected at line 32),"""""""""",unterminated_string
+ast_validator.py,ast_validator.py,10,unexpected indent,import os,unexpected_indent
+batch_syntax_fixer.py,batch_syntax_fixer.py,8,unexpected indent,import re,unexpected_indent
+citation_standardization_system.py,citation_standardization_system.py,19,unexpected indent,import json,unexpected_indent
+complete_all_13_engines.py,complete_all_13_engines.py,20,unterminated string literal (detected at line 20),"""""""""",unterminated_string
+complete_arabic_phonological_coverage.py,complete_arabic_phonological_coverage.py,17,unterminated string literal (detected at line 17),"""""""""",unterminated_string
+complete_arabic_phonological_foundation.py,complete_arabic_phonological_foundation.py,19,unterminated string literal (detected at line 19),"""""""""",unterminated_string
+complete_arabic_tracer.py,complete_arabic_tracer.py,15,unterminated string literal (detected at line 15),"""""""""",unterminated_string
+complex_word_analysis_demo.py,complex_word_analysis_demo.py,18,unexpected indent,from advanced_arabic_phonology_system import (),unexpected_indent
+comprehensive_arabic_phonological_system.py,comprehensive_arabic_phonological_system.py,23,unexpected indent,import logging  # noqa: F401,unexpected_indent
+comprehensive_encoding_fix.py,comprehensive_encoding_fix.py,11,unexpected indent,import subprocess,unexpected_indent
+comprehensive_engine_analysis.py,comprehensive_engine_analysis.py,14,unexpected indent,import os  # noqa: F401,unexpected_indent
+comprehensive_phoneme_engine.py,comprehensive_phoneme_engine.py,17,unexpected indent,import json  # noqa: F401,unexpected_indent
+comprehensive_progressive_system.py,comprehensive_progressive_system.py,27,unterminated string literal (detected at line 27),"""""""""",unterminated_string
+create_working_engines.py,create_working_engines.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+debug_output.py,debug_output.py,10,unexpected indent,from nlp.syllable.engine import SyllabicUnitEngine  # noqa: F401,unexpected_indent
+debug_test.py,debug_test.py,10,unexpected indent,"from nlp.syllable.engine import SyllabicUnitEngine  # noqa: F401,",unexpected_indent
+emergency_fstring_fixer.py,emergency_fstring_fixer.py,8,unexpected indent,import re,unexpected_indent
+engine_fix_guide.py,engine_fix_guide.py,14,unexpected indent,def failed_engines_fix_guide():  # type: ignore[no-untyped def],unexpected_indent
+enhanced_final_analysis.py,enhanced_final_analysis.py,18,unexpected indent,from arabic_pronouns_analyzer import (),unexpected_indent
+enhanced_system_architecture.py,enhanced_system_architecture.py,20,unexpected indent,import asyncio,unexpected_indent
+final_comprehensive_comparison.py,final_comprehensive_comparison.py,18,unexpected indent,import json  # noqa: F401,unexpected_indent
+fix_arrow_comparisons.py,fix_arrow_comparisons.py,8,unexpected indent,"import re,",unexpected_indent
+fix_broken_comparisons.py,fix_broken_comparisons.py,8,unexpected indent,import os,unexpected_indent
+fix_common_fstring_errors.py,fix_common_fstring_errors.py,8,unexpected indent,import os,unexpected_indent
+fix_comparison_operators.py,fix_comparison_operators.py,10,unexpected indent,"from pathlib import Path,",unexpected_indent
+fix_empty_imports.py,fix_empty_imports.py,8,unexpected indent,import ast,unexpected_indent
+fix_fstring_issues.py,fix_fstring_issues.py,8,unexpected indent,"import re,",unexpected_indent
+fix_fstring_syntax.py,fix_fstring_syntax.py,10,unterminated string literal (detected at line 10),"""""""""",unterminated_string
+fix_import_data.py,fix_import_data.py,13,unexpected indent,from pathlib import Path,unexpected_indent
+fix_logging_config.py,fix_logging_config.py,8,unexpected indent,import logging,unexpected_indent
+fix_numeric_comparisons.py,fix_numeric_comparisons.py,10,unexpected indent,import re,unexpected_indent
+fix_return_type_arrow.py,fix_return_type_arrow.py,13,unexpected indent,from pathlib import Path,unexpected_indent
+fix_syntax_errors.py,fix_syntax_errors.py,13,unexpected indent,import os  # noqa: F401,unexpected_indent
+fix_winsurf_issues.py,fix_winsurf_issues.py,17,unexpected indent,import ast  # noqa: F401,unexpected_indent
+forensic_audit.py,forensic_audit.py,11,unexpected indent,import os,unexpected_indent
+hafez_morphology_reactor.py,hafez_morphology_reactor.py,24,unexpected indent,import re,unexpected_indent
+hafez_phonemes.py,hafez_phonemes.py,8,unexpected indent,import re  # noqa: F401,unexpected_indent
+hafez_syllables.py,hafez_syllables.py,8,unexpected indent,"from typing import List, Dict, Tuple",unexpected_indent
+harakat_engine.py,harakat_engine.py,17,unexpected indent,import json  # noqa: F401,unexpected_indent
+hierarchical_demo.py,hierarchical_demo.py,15,unexpected indent,from pathlib import Path,unexpected_indent
+integrated_engine.py,integrated_engine.py,18,unexpected indent,import json  # noqa: F401,unexpected_indent
+integrated_progressive_system.py,integrated_progressive_system.py,19,unexpected indent,import time,unexpected_indent
+interactive_progressive_analyzer.py,interactive_progressive_analyzer.py,30,unexpected indent,import sys  # noqa: F401,unexpected_indent
+manual_test_fix.py,manual_test_fix.py,9,trailing comma not allowed without surrounding parentheses,"from pathlib import Path,",unknown
+morphology_model.py,morphology_model.py,12,unexpected indent,"from dataclasses import dataclass, field  # noqa: F401",unexpected_indent
+phonemes_harakat_analyzer.py,phonemes_harakat_analyzer.py,11,unexpected indent,import json  # noqa: F401,unexpected_indent
+phoneme_model.py,phoneme_model.py,12,unexpected indent,from dataclasses import dataclass  # noqa: F401,unexpected_indent
+phoneme_weight_map.py,phoneme_weight_map.py,10,unexpected indent,import json  # noqa: F401,unexpected_indent
+phonology_core_unified.py,phonology_core_unified.py,18,unterminated string literal (detected at line 18),"""""""""",unterminated_string
+progressive_integration_analysis.py,progressive_integration_analysis.py,14,unexpected indent,def analyze_progressive_integration():  # type: ignore[no-untyped def],unexpected_indent
+progressive_vector_tracker.py,progressive_vector_tracker.py,34,unterminated string literal (detected at line 34),"""""""""",unterminated_string
+remove_arabic_forever.py,remove_arabic_forever.py,14,unexpected indent,import os  # noqa: F401,unexpected_indent
+run_all_nlp_engines.py,run_all_nlp_engines.py,6,unterminated string literal (detected at line 6),"""""""""",unterminated_string
+run_syntax_fixes.py,run_syntax_fixes.py,8,unexpected indent,import logging,unexpected_indent
+simple_test.py,simple_test.py,10,unexpected indent,import sys  # noqa: F401,unexpected_indent
+surgical_syntax_repair.py,surgical_syntax_repair.py,13,unexpected indent,import ast,unexpected_indent
+syllable_accomplishments.py,syllable_accomplishments.py,15,unexpected indent,def syllable_accomplishments_summary():  # type: ignore[no-untyped def],unexpected_indent
+syllable_encoder.py,syllable_encoder.py,3,unexpected indent,"from typing import Optional,",unexpected_indent
+syllable_mission_accomplished.py,syllable_mission_accomplished.py,14,unexpected indent,import json  # noqa: F401,unexpected_indent
+syllable_model.py,syllable_model.py,12,unexpected indent,from dataclasses import dataclass  # noqa: F401,unexpected_indent
+syllable_phonological_engine.py,syllable_phonological_engine.py,26,unexpected indent,import sys,unexpected_indent
+targeted_syntax_scanner.py,targeted_syntax_scanner.py,9,unexpected indent,import os,unexpected_indent
+ultimate_syntax_fix.py,ultimate_syntax_fix.py,8,unexpected indent,import re,unexpected_indent
+ultimate_violation_eliminator.py,ultimate_violation_eliminator.py,25,unexpected indent,import re,unexpected_indent
+ultimate_winsurf_eliminator.py,ultimate_winsurf_eliminator.py,21,unexpected indent,import ast,unexpected_indent
+unified_phonemes.py,unified_phonemes.py,13,unexpected indent,from dataclasses import dataclass  # noqa: F401,unexpected_indent
+validate_broken_files.py,validate_broken_files.py,8,unexpected indent,import os,unexpected_indent
+validate_citations.py,validate_citations.py,14,unexpected indent,import re,unexpected_indent
+verify_string_fixes.py,verify_string_fixes.py,7,unexpected indent,"import os,",unexpected_indent
+violation_elimination_system.py,violation_elimination_system.py,14,unexpected indent,import re,unexpected_indent
+winsurf_standards_library.py,winsurf_standards_library.py,21,unexpected indent,"from typing import Dict, List, Optional, Union, Any, Tuple, Set",unexpected_indent
+winsurf_verification_system.py,winsurf_verification_system.py,17,unexpected indent,import json,unexpected_indent
+xampp_arabic_phonology.py,xampp_arabic_phonology.py,5,unexpected indent,from __future__ import annotations,unexpected_indent
+xampp_test_phonemes_matrix.py,xampp_test_phonemes_matrix.py,5,unexpected indent,import unittest  # noqa: F401,unexpected_indent
+yellow_line_eliminator.py,yellow_line_eliminator.py,21,unexpected indent,import re,unexpected_indent
+zero_layer_phonology.py,zero_layer_phonology.py,25,unexpected indent,import logging  # noqa: F401,unexpected_indent
+backup_unified_plugin_manager.py,archive\backup_unified_plugin_manager.py,11,unexpected indent,import logging,unexpected_indent
+base_engine.py,core\base_engine.py,28,unexpected indent,from datetime import datetime,unexpected_indent
+engine.py,core\engine.py,16,unexpected indent,"from typing import Dict, List, Any, Optional",unexpected_indent
+hierarchical_graph_engine.py,core\hierarchical_graph_engine.py,10,unexpected indent,import logging,unexpected_indent
+inflection.py,core\inflection.py,15,unexpected indent,class InflectionEngine:,unexpected_indent
+morphology.py,core\morphology.py,15,unexpected indent,class MorphologyEngine:,unexpected_indent
+phonology.py,core\phonology.py,15,unexpected indent,class PhonologyEngine:,unexpected_indent
+unified_arabic_engine.py,core\unified_arabic_engine.py,14,unexpected indent,import sys,unexpected_indent
+__init__.py,core\__init__.py,21,unexpected indent,from .phonology import PhonologyEngine,unexpected_indent
+advanced_arabic_function_words_generator.py,experimental\advanced_arabic_function_words_generator.py,15,unexpected indent,import sys  # noqa: F401,unexpected_indent
+advanced_arabic_phonology_system.py,experimental\advanced_arabic_phonology_system.py,22,unexpected indent,"from typing import Dict, List, Set, Tuple, Optional, Any",unexpected_indent
+advanced_arabic_proper_names_generator.py,experimental\advanced_arabic_proper_names_generator.py,17,unexpected indent,import random,unexpected_indent
+advanced_arabic_vector_generator.py,experimental\advanced_arabic_vector_generator.py,20,unexpected indent,import re,unexpected_indent
+advanced_ast_syntax_fixer.py,experimental\advanced_ast_syntax_fixer.py,11,unterminated string literal (detected at line 11),"""""""""",unterminated_string
+advanced_complex_word_demo.py,experimental\advanced_complex_word_demo.py,21,unexpected indent,from complete_arabic_phonological_coverage import (,unexpected_indent
+arabic_demonstrative_evaluation.py,experimental\arabic_demonstrative_evaluation.py,19,unexpected indent,import torch  # noqa: F401,unexpected_indent
+arabic_demonstrative_pronouns_deep_model.py,experimental\arabic_demonstrative_pronouns_deep_model.py,17,unexpected indent,import torch.nn as nn,unexpected_indent
+arabic_demonstrative_pronouns_generator.py,experimental\arabic_demonstrative_pronouns_generator.py,19,unexpected indent,import logging  # noqa: F401,unexpected_indent
+arabic_function_words_generator.py,experimental\arabic_function_words_generator.py,28,unexpected indent,import re,unexpected_indent
+arabic_function_words_generator_clean.py,experimental\arabic_function_words_generator_clean.py,15,unexpected indent,import random,unexpected_indent
+arabic_interrogative_pronouns_generator.py,experimental\arabic_interrogative_pronouns_generator.py,18,unexpected indent,import logging  # noqa: F401,unexpected_indent
+arabic_mathematical_generator.py,experimental\arabic_mathematical_generator.py,19,unexpected indent,import random,unexpected_indent
+ARABIC_MATH_GENERATOR_COMPLETION_REPORT.py,experimental\ARABIC_MATH_GENERATOR_COMPLETION_REPORT.py,18,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_morphological_weight_generator.py,experimental\arabic_morphological_weight_generator.py,31,unexpected indent,import sys,unexpected_indent
+arabic_pronouns_generator.py,experimental\arabic_pronouns_generator.py,21,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_pronouns_generator_enhanced.py,experimental\arabic_pronouns_generator_enhanced.py,17,unexpected indent,import re,unexpected_indent
+arabic_relative_pronouns_advanced_tester.py,experimental\arabic_relative_pronouns_advanced_tester.py,19,unexpected indent,import json  # noqa: F401,unexpected_indent
+arabic_relative_pronouns_generator.py,experimental\arabic_relative_pronouns_generator.py,17,unexpected indent,import logging,unexpected_indent
+arabic_syllable_generator.py,experimental\arabic_syllable_generator.py,30,unexpected indent,import sys,unexpected_indent
+comprehensive_arabic_verb_syllable_generator.py,experimental\comprehensive_arabic_verb_syllable_generator.py,21,unexpected indent,from dataclasses import dataclass,unexpected_indent
+final_comprehensive_report_generator.py,experimental\final_comprehensive_report_generator.py,18,unexpected indent,import json  # noqa: F401,unexpected_indent
+visual_heatmap_generator.py,experimental\visual_heatmap_generator.py,11,unexpected indent,import matplotlib.pyplot as plt,unexpected_indent
+conftest.py,tests\conftest.py,10,unexpected indent,import pytest  # noqa: F401,unexpected_indent
+engine_batch_runner.py,tests\engine_batch_runner.py,10,unexpected indent,import time,unexpected_indent
+engine_health_monitor.py,tests\engine_health_monitor.py,10,unexpected indent,from pathlib import Path,unexpected_indent
+test_all_fixed_engines.py,tests\test_all_fixed_engines.py,14,unexpected indent,import sys  # noqa: F401,unexpected_indent
+test_arabic_math_concepts.py,tests\test_arabic_math_concepts.py,18,unexpected indent,import sys  # noqa: F401,unexpected_indent
+test_arabic_system.py,tests\test_arabic_system.py,10,unexpected indent,import pytest  # noqa: F401,unexpected_indent
+test_comprehensive_engines.py,tests\test_comprehensive_engines.py,10,unexpected indent,import sys,unexpected_indent
+test_core_integration.py,tests\test_core_integration.py,10,unexpected indent,import sys,unexpected_indent
+test_hello_world.py,tests\test_hello_world.py,5,unexpected indent,def test_hello_world():  # type: ignore[no-untyped-def],unexpected_indent
+test_morphological_weights.py,tests\test_morphological_weights.py,11,unexpected indent,try:,unexpected_indent
+test_phoneme_integration.py,tests\test_phoneme_integration.py,11,unexpected indent,import sys  # noqa: F401,unexpected_indent
+test_phoneme_processing.py,tests\test_phoneme_processing.py,10,unexpected indent,import pytest  # noqa: F401,unexpected_indent
+test_phoneme_simple.py,tests\test_phoneme_simple.py,10,unexpected indent,def test_phoneme_simple():  # type: ignore[no-untyped def],unexpected_indent
+test_proper_names_examples.py,tests\test_proper_names_examples.py,12,unexpected indent,"from advanced_arabic_proper_names_generator import (  # noqa: F401,",unexpected_indent
+test_syllable_engine.py,tests\test_syllable_engine.py,13,unexpected indent,import sys  # noqa: F401,unexpected_indent
+test_syllable_generator.py,tests\test_syllable_generator.py,11,unexpected indent,try:,unexpected_indent
+test_syllable_processing.py,tests\test_syllable_processing.py,10,unexpected indent,import pytest  # noqa: F401,unexpected_indent
+test_syllable_readiness.py,tests\test_syllable_readiness.py,10,unexpected indent,try:,unexpected_indent
+test_waw_hamza.py,tests\test_waw_hamza.py,13,unexpected indent,def test_arabic_waw_hamza():  # type: ignore[no-untyped def],unexpected_indent
+test_word.py,tests\test_word.py,10,unexpected indent,import sys  # noqa: F401,unexpected_indent
+test_zero_layer_comprehensive.py,tests\test_zero_layer_comprehensive.py,15,unexpected indent,import sys  # noqa: F401,unexpected_indent
+arabic_nlp_status_report.py,tools\arabic_nlp_status_report.py,12,unexpected indent,def main():  # type: ignore[no-untyped def],unexpected_indent
+cli_text_processor.py,tools\cli_text_processor.py,10,unexpected indent,import json,unexpected_indent
+comprehensive_file_analysis.py,tools\comprehensive_file_analysis.py,15,unexpected indent,import os,unexpected_indent
+comprehensive_syntax_batch_fixer.py,tools\comprehensive_syntax_batch_fixer.py,14,unexpected indent,import os,unexpected_indent
+critical_syntax_fixer.py,tools\critical_syntax_fixer.py,9,unexpected indent,import re,unexpected_indent
+emergency_syntax_fixer.py,tools\emergency_syntax_fixer.py,9,unexpected indent,import os,unexpected_indent
+final_arrow_syntax_fixer.py,tools\final_arrow_syntax_fixer.py,13,unexpected indent,import logging,unexpected_indent
+final_comprehensive_report.py,tools\final_comprehensive_report.py,13,unexpected indent,from pathlib import Path,unexpected_indent
+precision_violation_fixer.py,tools\precision_violation_fixer.py,15,unexpected indent,import re,unexpected_indent
+PROJECT_COMPLETION_REPORT.py,tools\PROJECT_COMPLETION_REPORT.py,232,unexpected indent,print(__doc__),unexpected_indent
+project_status_checker.py,tools\project_status_checker.py,8,unexpected indent,import ast,unexpected_indent
+quality_status_report.py,tools\quality_status_report.py,9,unexpected indent,from pathlib import Path,unexpected_indent
+quick_status.py,tools\quick_status.py,7,unexpected indent,"import ast,",unexpected_indent
+simple_arrow_syntax_fixer.py,tools\simple_arrow_syntax_fixer.py,10,unexpected indent,from pathlib import Path,unexpected_indent
+simple_text_cleaner.py,tools\simple_text_cleaner.py,13,unexpected indent,import os  # noqa: F401,unexpected_indent
+strategic_action_plan.py,tools\strategic_action_plan.py,11,unexpected indent,import os,unexpected_indent
+surgical_syntax_fixer_v2.py,tools\surgical_syntax_fixer_v2.py,18,unexpected indent,self.error_files: Set[str] = set(),unexpected_indent
+surgical_syntax_fixer_v3.py,tools\surgical_syntax_fixer_v3.py,18,unexpected indent,import argparse,unexpected_indent
+targeted_critical_syntax_fixer.py,tools\targeted_critical_syntax_fixer.py,14,unexpected indent,from pathlib import Path,unexpected_indent
+text_heatmap_generator.py,tools\text_heatmap_generator.py,12,unexpected indent,import os,unexpected_indent
+utf8_encoding_fixer.py,tools\utf8_encoding_fixer.py,27,unexpected indent,import os  # noqa: F401,unexpected_indent
+utf8_terminal_cleaner.py,tools\utf8_terminal_cleaner.py,14,unexpected indent,import os  # noqa: F401,unexpected_indent
+validate_tools_ast.py,tools\validate_tools_ast.py,1,invalid syntax,"import ast,",unknown
+test_base_engine.py,tests\test_core\test_base_engine.py,5,unexpected indent,def test_base_engine_functionality():  # type: ignore[no-untyped-def],unexpected_indent
+test_config.py,tests\test_core\test_config.py,5,unexpected indent,def test_configuration_loading():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_derivation\test_engine.py,5,unexpected indent,def test_derivation_engine():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_derivation\__init__.py,5,unexpected indent,def test_placeholder():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_frozen_root\test_engine.py,5,unexpected indent,def test_frozen_root():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_frozen_root\__init__.py,5,unexpected indent,def test_placeholder():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_inflection\test_engine.py,5,unexpected indent,def test_inflection_engine():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_inflection\__init__.py,5,unexpected indent,def test_hello_world():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_morphology\test_engine.py,5,unexpected indent,def test_morphology_engine():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_morphology\__init__.py,5,unexpected indent,def test_placeholder():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_phoneme\test_engine.py,5,unexpected indent,def test_phoneme_processing():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_phoneme\__init__.py,5,unexpected indent,def test_phoneme_processing():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_phonological\test_engine.py,5,unexpected indent,def test_phonological_processing():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_phonological\__init__.py,5,unexpected indent,def test_phonological_processing():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_syllable\test_engine.py,5,unexpected indent,def test_syllable_processing():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_syllable\__init__.py,5,unexpected indent,def test_hello_world():  # type: ignore[no-untyped-def],unexpected_indent
+test_engine.py,tests\test_nlp\test_weight\test_engine.py,5,unexpected indent,def test_weight_calculation():  # type: ignore[no-untyped-def],unexpected_indent
+__init__.py,tests\test_nlp\test_weight\__init__.py,5,unexpected indent,def test_weight_calculation():  # type: ignore[no-untyped-def],unexpected_indent
+base_engine.py,core\nlp\base_engine.py,2,unexpected indent,import ast,unexpected_indent
+engine.py,core\nlp\derivation\engine.py,13,unexpected indent,import logging  # noqa: F401,unexpected_indent
+__init__.py,core\nlp\derivation\__init__.py,18,unexpected indent,from .engine import (  # noqa: F401,unexpected_indent
+engine.py,core\nlp\frozen_root\engine.py,13,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine_new.py,core\nlp\frozen_root\engine_new.py,13,unexpected indent,import logging  # noqa: F401,unexpected_indent
+__init__.py,core\nlp\frozen_root\__init__.py,36,unexpected indent,from .models.classifier import (,unexpected_indent
+engine.py,core\nlp\full_pipeline\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine.py,core\nlp\grammatical_particles\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+__init__.py,core\nlp\grammatical_particles\__init__.py,31,unexpected indent,__all__ = ['GrammaticalParticlesEngine'],unexpected_indent
+engine.py,core\nlp\inflection\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+__init__.py,core\nlp\inflection\__init__.py,26,unexpected indent,"from .engine import InflectionEngine, ConjugationResult  # noqa: F401,",unexpected_indent
+engine.py,core\nlp\morphology\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine.py,core\nlp\particles\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine.py,core\nlp\phoneme\engine.py,13,unexpected indent,import logging  # noqa: F401,unexpected_indent
+__init__.py,core\nlp\phoneme\__init__.py,12,unexpected indent,"from .engine from unified_phonemes import get_unified_phonemes, extract_phonemes, get_phonetic_features, is_emphatic",unexpected_indent
+engine.py,core\nlp\phoneme_advanced\engine.py,27,unexpected indent,"from typing import Dict, List, Tuple, Optional, Union",unexpected_indent
+api.py,core\nlp\phonological\api.py,12,unexpected indent,"from flask import Flask, request, jsonify, Blueprint",unexpected_indent
+engine.py,core\nlp\phonological\engine.py,13,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine_old.py,core\nlp\phonological\engine_old.py,13,unexpected indent,import yaml,unexpected_indent
+engine.py,core\nlp\phonology\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine_clean.py,core\nlp\phonology\engine_clean.py,27,unexpected indent,import logging,unexpected_indent
+engine.py,core\nlp\syllable\engine.py,13,unexpected indent,import logging  # noqa: F401,unexpected_indent
+engine_advanced.py,core\nlp\syllable\engine_advanced.py,8,unexpected indent,import logging,unexpected_indent
+__init__.py,core\nlp\syllable\__init__.py,17,unexpected indent,from .engine import SyllabicUnitEngine  # noqa: F401,unexpected_indent
+engine.py,core\nlp\weight\engine.py,12,unexpected indent,import logging  # noqa: F401,unexpected_indent
+analyzer.py,core\nlp\weight\models\analyzer.py,33,unexpected indent,import re,unexpected_indent
+segmenter.py,core\nlp\syllable\models\segmenter.py,18,unexpected indent,import logging  # noqa: F401,unexpected_indent
+templates.py,core\nlp\syllable\models\templates.py,18,unexpected indent,import json  # noqa: F401,unexpected_indent
+__init__.py,core\nlp\syllable\models\__init__.py,16,unexpected indent,"from .templates import SyllabicUnitTemplateImporter, SyllabicUnitTemplate  # noqa: F401",unexpected_indent
+assimilation.py,core\nlp\phonological\models\assimilation.py,17,unexpected indent,"from typing import List, Dict, Any",unexpected_indent
+deletion.py,core\nlp\phonological\models\deletion.py,17,unexpected indent,"from typing import List, Dict, Any",unexpected_indent
+inversion.py,core\nlp\phonological\models\inversion.py,17,unexpected indent,"from typing import List, Dict, Any",unexpected_indent
+rule_base.py,core\nlp\phonological\models\rule_base.py,17,unexpected indent,"from abc import ABC, abstractmethod  # noqa: F401",unexpected_indent
+__init__.py,core\nlp\phonological\models\__init__.py,17,unexpected indent,"from .rule_base import PhonoRule, ContextualRule, SequentialRule  # noqa: F401",unexpected_indent
+particle_classify.py,core\nlp\particles\models\particle_classify.py,11,unterminated string literal (detected at line 11),"""""""""",unterminated_string
+particle_segment.py,core\nlp\particles\models\particle_segment.py,35,unexpected indent,"Enterprise grade Arabic grammatical particles phoneme and syllabic_unit segmentation,",unexpected_indent
+morphological_models.py,core\nlp\morphology\models\morphological_models.py,21,unexpected indent,import re,unexpected_indent
+feature_space.py,core\nlp\inflection\models\feature_space.py,7,unterminated string literal (detected at line 7),"""""""""",unterminated_string
+inflect.py,core\nlp\inflection\models\inflect.py,14,unexpected indent,import logging,unexpected_indent
+classifier.py,core\nlp\frozen_root\models\classifier.py,33,unexpected indent,import logging  # noqa: F401,unexpected_indent
+syllable_check.py,core\nlp\frozen_root\models\syllable_check.py,33,unexpected indent,"from typing import List, Dict, Tuple",unexpected_indent
+verb_check.py,core\nlp\frozen_root\models\verb_check.py,33,unexpected indent,"from typing import Dict, List, Set, Tuple",unexpected_indent
+__init__.py,core\nlp\frozen_root\models\__init__.py,40,unexpected indent,from .syllable_check import (,unexpected_indent
+comparative.py,core\nlp\derivation\models\comparative.py,17,unexpected indent,import logging,unexpected_indent
+derive.py,core\nlp\derivation\models\derive.py,18,unexpected indent,import logging  # noqa: F401,unexpected_indent
+pattern_embed.py,core\nlp\derivation\models\pattern_embed.py,18,unexpected indent,import numpy as np  # noqa: F401,unexpected_indent
+root_embed.py,core\nlp\derivation\models\root_embed.py,18,unexpected indent,import numpy as np  # noqa: F401,unexpected_indent

@@ -1,0 +1,355 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Arabic Syllable Engine - Pure Phonological Foundation Implementation
+===================================================================
+Enterprise-Grade Syllable Analysis Using ONLY Phonological Foundation
+Zero External Dependencies - Pure Arabic Linguistic Science
+
+This module implements Arabic syllabification using EXCLUSIVELY our
+complete Arabic phonological foundation system. No external sources,
+no other dependencies - pure phonological science.
+
+Key Features:
+- Pure phonological foundation-based syllable detection
+- Enterprise-grade Arabic syllable patterns (CV, CVC, CVV, CVVC, CVCC)
+- Atomic function-based weight calculation
+- Professional prosodic analysis using only phonological data
+- Zero-tolerance accuracy with comprehensive logging
+
+Author: Arabic NLP Expert Team - GitHub Copilot
+Version: 1.0.0 - PURE PHONOLOGICAL IMPLEMENTATION
+Date: 2025-07-24
+License: MIT
+Encoding: UTF 8
+"""
+
+import logging
+import sys
+from typing import List, Dict, Tuple, Any
+from dataclasses import dataclass, field
+from enum import Enum
+
+# EXCLUSIVE IMPORT: Only our phonological foundation
+from complete_arabic_phonological_foundation import CompletePhonologicalFunctionResolver
+
+# Configure professional logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('syllable_phonological_engine.log', encoding='utf 8'),
+        logging.StreamHandler(sys.stdout),
+    ],
+)
+
+logger = logging.getLogger(__name__)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# ARABIC SYLLABLE PATTERN CLASSIFICATION
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class ArabicSyllablePattern(Enum):
+    """Arabic syllable patterns based on phonological structure"""
+
+    # Light Syllables (مقاطع خفيفة)
+    CV = "CV"  # Consonant + Short Vowel (فَ)
+    CVV = "CVV"  # Consonant + Long Vowel (فا)
+
+    # Heavy Syllables (مقاطع ثقيلة)
+    CVC = "CVC"  # Consonant + Short Vowel + Consonant (فَت)
+    CVVC = "CVVC"  # Consonant + Long Vowel + Consonant (فات)
+
+    # Super Heavy Syllables (مقاطع فائقة الثقل)
+    CVCC = "CVCC"  # Consonant + Short Vowel + Two Consonants (فَتر)
+    CVVCC = "CVVCC"  # Consonant + Long Vowel + Two Consonants (فاتر)
+
+
+@dataclass
+class SyllableUnit:
+    """Professional syllable unit with phonological analysis"""
+
+    pattern: ArabicSyllablePattern
+    onset: List[str] = field(default_factory=list)  # Initial consonant(s)
+    nucleus: List[str] = field(default_factory=list)  # Vowel core
+    coda: List[str] = field(default_factory=list)  # Final consonant(s)
+    weight: float = 1.0  # Prosodic weight
+    position: int = 0  # Position in word
+    stress: bool = False  # Stress marking
+
+    def __post_init__(self):
+        """Calculate syllable weight based on phonological foundation"""
+        self.weight = self._calculate_prosodic_weight()
+
+    def _calculate_prosodic_weight(self) -> float:
+        """Calculate prosodic weight using phonological foundation only"""
+        base_weight = 1.0
+
+        # Nucleus weight (vowel core)
+        if len(self.nucleus) == 1:  # Short vowel
+            base_weight += 0.5
+        elif len(self.nucleus) == 2:  # Long vowel
+            base_weight += 1.0
+
+        # Coda weight (final consonants)
+        if len(self.coda) == 1:  # One consonant
+            base_weight += 1.0
+        elif len(self.coda) == 2:  # Two consonants
+            base_weight += 2.0
+
+        return base_weight
+
+    def get_syllable_string(self) -> str:
+        """Get syllable as string representation"""
+        return ''.join(self.onset + self.nucleus + self.coda)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# PURE PHONOLOGICAL SYLLABLE ENGINE
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class PurePhonologicalSyllableEngine:
+    """
+    Enterprise grade Arabic syllable engine using ONLY phonological foundation
+
+    This engine implements Arabic syllabification using exclusively our
+    complete phonological foundation system without any external dependencies.
+    """
+
+    def __init__(self):
+        """Initialize with pure phonological foundation"""
+        self.phonological_resolver = CompletePhonologicalFunctionResolver()
+        logger.info(
+            "PurePhonologicalSyllableEngine initialized with phonological foundation"
+        )
+
+    def syllabify_word(self, arabic_text: str) -> List[SyllableUnit]:
+        """
+        Syllabify Arabic word using pure phonological foundation analysis
+
+        Args:
+            arabic_text: Arabic word to syllabify
+
+        Returns:
+            List of SyllableUnit objects with complete phonological analysis
+        """
+        logger.info(f"Starting syllabification of: {arabic_text}")
+
+        # Get phonological analysis using the correct method
+        phonological_analysis = self.phonological_resolver.resolve_complete(arabic_text)
+
+        # Extract phonemes and diacritics from analysis
+        phonemes = [p.symbol for p in phonological_analysis.phonemes]
+        diacritics = [d.symbol for d in phonological_analysis.diacritics]
+
+        # Build syllables using phonological patterns
+        syllables = self._build_syllables_from_phonology(
+            phonemes, diacritics, phonological_analysis
+        )
+
+        logger.info(f"Syllabification complete: {len(syllables)} syllables found")
+        return syllables
+
+    def _build_syllables_from_phonology(
+        self, phonemes: List[str], diacritics: List[str], analysis
+    ) -> List[SyllableUnit]:
+        """Build syllables using pure phonological foundation analysis"""
+
+        syllables = []
+        i = 0
+        diacritic_idx = 0
+
+        while i < len(phonemes):
+            syllable = SyllableUnit(
+                pattern=ArabicSyllablePattern.CV, position=len(syllables)
+            )
+
+            # Onset: Initial consonant(s)
+            if i < len(phonemes) and self._is_consonant_phonologically(
+                phonemes[i], analysis
+            ):
+                syllable.onset.append(phonemes[i])
+                i += 1
+
+            # Nucleus: Vowel core (from diacritics or long vowels)
+            if diacritic_idx < len(diacritics):
+                # Short vowel from diacritic
+                syllable.nucleus.append(diacritics[diacritic_idx])
+                diacritic_idx += 1
+
+                # Check for long vowel extension
+                if i < len(phonemes) and self._is_long_vowel_phonologically(
+                    phonemes[i]
+                ):
+                    syllable.nucleus.append(phonemes[i])
+                    i += 1
+            elif i < len(phonemes) and self._is_long_vowel_phonologically(phonemes[i]):
+                # Long vowel without diacritic
+                syllable.nucleus.append(phonemes[i])
+                i += 1
+
+            # Coda: Final consonant(s)
+            coda_count = 0
+            while (
+                i < len(phonemes)
+                and self._is_consonant_phonologically(phonemes[i], analysis)
+                and coda_count < 2
+            ):
+                syllable.coda.append(phonemes[i])
+                i += 1
+                coda_count += 1
+
+            # Determine syllable pattern
+            syllable.pattern = self._determine_syllable_pattern(syllable)
+
+            syllables.append(syllable)
+
+        return syllables
+
+    def _is_consonant_phonologically(self, phoneme: str, analysis) -> bool:
+        """Check if phoneme is consonant using phonological foundation"""
+        # Find the phoneme in analysis using optimized approach
+        phoneme_entry = next(
+            (p for p in analysis.phonemes if p.symbol == phoneme), None
+        )
+        return phoneme_entry.phoneme_type == 'consonant' if phoneme_entry else True
+
+    def _is_long_vowel_phonologically(self, phoneme: str) -> bool:
+        """Check if phoneme is long vowel using phonological foundation"""
+        # Long vowel letters in Arabic
+        long_vowels = ['ا', 'و', 'ي']
+        return phoneme in long_vowels
+
+    def _determine_syllable_pattern(
+        self, syllable: SyllableUnit
+    ) -> ArabicSyllablePattern:
+        """Determine syllable pattern based on phonological structure"""
+
+        len(syllable.onset)
+        nucleus_count = len(syllable.nucleus)
+        coda_count = len(syllable.coda)
+
+        # Pattern determination logic
+        if nucleus_count == 1:  # Short vowel
+            if coda_count == 0:
+                return ArabicSyllablePattern.CV
+            elif coda_count == 1:
+                return ArabicSyllablePattern.CVC
+            elif coda_count == 2:
+                return ArabicSyllablePattern.CVCC
+        elif nucleus_count == 2:  # Long vowel
+            if coda_count == 0:
+                return ArabicSyllablePattern.CVV
+            elif coda_count == 1:
+                return ArabicSyllablePattern.CVVC
+            elif coda_count == 2:
+                return ArabicSyllablePattern.CVVCC
+
+        # Default to CV pattern
+        return ArabicSyllablePattern.CV
+
+    def analyze_prosodic_structure(
+        self, syllables: List[SyllableUnit]
+    ) -> Dict[str, Any]:
+        """Analyze prosodic structure using pure phonological foundation"""
+
+        total_weight = sum(syl.weight for syl in syllables)
+        light_syllables = [syl for syl in syllables if syl.weight <= 2.0]
+        heavy_syllables = [syl for syl in syllables if syl.weight > 2.0]
+
+        pattern_distribution = {}
+        for syllable in syllables:
+            pattern = syllable.pattern.value
+            pattern_distribution[pattern] = pattern_distribution.get(pattern, 0) + 1
+
+        return {
+            'total_syllables': len(syllables),
+            'total_prosodic_weight': total_weight,
+            'average_weight': total_weight / len(syllables) if syllables else 0,
+            'light_syllables': len(light_syllables),
+            'heavy_syllables': len(heavy_syllables),
+            'pattern_distribution': pattern_distribution,
+            'syllable_details': [
+                {
+                    'pattern': syl.pattern.value,
+                    'weight': syl.weight,
+                    'string': syl.get_syllable_string(),
+                    'position': syl.position,
+                }
+                for syl in syllables
+            ],
+        }
+
+    def get_syllable_boundaries(self, arabic_text: str) -> List[Tuple[int, int]]:
+        """Get syllable boundaries as character positions"""
+        syllables = self.syllabify_word(arabic_text)
+        boundaries = []
+        pos = 0
+
+        for syllable in syllables:
+            syllable_text = syllable.get_syllable_string()
+            start_pos = pos
+            end_pos = pos + len(syllable_text)
+            boundaries.append((start_pos, end_pos))
+            pos = end_pos
+
+        return boundaries
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# DEMONSTRATION AND TESTING
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+def demonstrate_pure_phonological_syllabification():
+    """Demonstrate pure phonological syllabification"""
+
+    engine = PurePhonologicalSyllableEngine()
+
+    # Test words with different syllable patterns
+    test_words = [
+        "كَتَبَ",  # ka-ta-ba (CV-CV CV)
+        "مُدَرِّسٌ",  # mu-dar-ri-sun (CV-CVC-CV CVC)
+        "كِتَابٌ",  # ki-ta-bun (CV-CV CVC)
+        "يَكْتُبُ",  # yak-tu-bu (CVC-CV CV)
+        "الْبَيْتُ",  # al-bay-tu (CVC-CVC CV)
+        "مُسْتَشْفَى",  # mus-tash-fa (CVC-CVC CV)
+    ]
+
+    print("🔬 PURE PHONOLOGICAL SYLLABIFICATION ANALYSIS")
+    print("=" * 60)
+
+    for word in test_words:
+        print(f"\n📝 Word: {word}")
+
+        # Syllabify
+        syllables = engine.syllabify_word(word)
+
+        # Display syllables
+        syllable_strings = [syl.get_syllable_string() for syl in syllables]
+        print(f"🔤 Syllables: {'} - '.join(syllable_strings)}")
+
+        # Pattern analysis
+        patterns = [syl.pattern.value for syl in syllables]
+        print(f"📊 Patterns: {'} - '.join(patterns)}")
+
+        # Prosodic analysis
+        prosodic_analysis = engine.analyze_prosodic_structure(syllables)
+        print(f"⚖️  Total Weight: {prosodic_analysis['total_prosodic_weight']:.1f}")
+        print(
+            f"📈 Light/Heavy: {prosodic_analysis['light_syllables']}/{prosodic_analysis['heavy_syllables']}"
+        )
+
+        # Boundaries
+        boundaries = engine.get_syllable_boundaries(word)
+        print(f"🎯 Boundaries: {boundaries}")
+
+    print("\n✅ Pure phonological syllabification complete!")
+    print("💎 Using ONLY our phonological foundation - zero external dependencies!")
+
+
+if __name__ == "__main__":
+    demonstrate_pure_phonological_syllabification()

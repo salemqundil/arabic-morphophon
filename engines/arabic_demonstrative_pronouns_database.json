@@ -1,0 +1,504 @@
+{
+  "demonstrative_pronouns": [
+    {
+      "text": "هذا",
+      "category": "DemonstrativeCategory.NEAR_MASCULINE_SINGULAR",
+      "syllables": [
+        "هَا",
+        "ذَا"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "dh",
+        "aa"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "مذكر",
+      "number": "مفرد",
+      "usage_contexts": [
+        "الإشارة للقريب المذكر",
+        "التعريف",
+        "التخصيص"
+      ],
+      "frequency_score": 0.95,
+      "morphological_pattern": "CV-CV"
+    },
+    {
+      "text": "هذه",
+      "category": "DemonstrativeCategory.NEAR_FEMININE_SINGULAR",
+      "syllables": [
+        "هَا",
+        "ذِهِ"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "dh",
+        "i",
+        "h",
+        "i"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "مؤنث",
+      "number": "مفرد",
+      "usage_contexts": [
+        "الإشارة للقريبة المؤنثة",
+        "التعريف",
+        "التخصيص"
+      ],
+      "frequency_score": 0.93,
+      "morphological_pattern": "CV-CVC"
+    },
+    {
+      "text": "ذلك",
+      "category": "DemonstrativeCategory.FAR_MASCULINE_SINGULAR",
+      "syllables": [
+        "ذَا",
+        "لِكَ"
+      ],
+      "phonetic_features": [
+        "dh",
+        "aa",
+        "l",
+        "i",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "مذكر",
+      "number": "مفرد",
+      "usage_contexts": [
+        "الإشارة للبعيد المذكر",
+        "التفسير",
+        "الإحالة"
+      ],
+      "frequency_score": 0.91,
+      "morphological_pattern": "CV-CVC"
+    },
+    {
+      "text": "تلك",
+      "category": "DemonstrativeCategory.FAR_FEMININE_SINGULAR",
+      "syllables": [
+        "تِل",
+        "كَ"
+      ],
+      "phonetic_features": [
+        "t",
+        "i",
+        "l",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "مؤنث",
+      "number": "مفرد",
+      "usage_contexts": [
+        "الإشارة للبعيدة المؤنثة",
+        "التفسير",
+        "الإحالة"
+      ],
+      "frequency_score": 0.89,
+      "morphological_pattern": "CVC-CV"
+    },
+    {
+      "text": "هذان",
+      "category": "DemonstrativeCategory.NEAR_MASCULINE_DUAL",
+      "syllables": [
+        "هَا",
+        "ذَا",
+        "نِ"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "dh",
+        "aa",
+        "n",
+        "i"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "مذكر",
+      "number": "مثنى",
+      "usage_contexts": [
+        "الإشارة لاثنين قريبين مذكرين",
+        "التخصيص المزدوج"
+      ],
+      "frequency_score": 0.72,
+      "morphological_pattern": "CV-CV-CV"
+    },
+    {
+      "text": "هذين",
+      "category": "DemonstrativeCategory.NEAR_MASCULINE_DUAL",
+      "syllables": [
+        "هَا",
+        "ذَيْ",
+        "نِ"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "dh",
+        "ay",
+        "n",
+        "i"
+      ],
+      "grammatical_case": "GrammaticalCase.ACCUSATIVE",
+      "distance": "قريب",
+      "gender": "مذكر",
+      "number": "مثنى",
+      "usage_contexts": [
+        "الإشارة لاثنين قريبين مذكرين منصوب/مجرور"
+      ],
+      "frequency_score": 0.68,
+      "morphological_pattern": "CV-CVC-CV"
+    },
+    {
+      "text": "هاتان",
+      "category": "DemonstrativeCategory.NEAR_FEMININE_DUAL",
+      "syllables": [
+        "هَا",
+        "تَا",
+        "نِ"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "t",
+        "aa",
+        "n",
+        "i"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "مؤنث",
+      "number": "مثنى",
+      "usage_contexts": [
+        "الإشارة لاثنتين قريبتين مؤنثتين"
+      ],
+      "frequency_score": 0.65,
+      "morphological_pattern": "CV-CV-CV"
+    },
+    {
+      "text": "هاتين",
+      "category": "DemonstrativeCategory.NEAR_FEMININE_DUAL",
+      "syllables": [
+        "هَا",
+        "تَيْ",
+        "نِ"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "t",
+        "ay",
+        "n",
+        "i"
+      ],
+      "grammatical_case": "GrammaticalCase.ACCUSATIVE",
+      "distance": "قريب",
+      "gender": "مؤنث",
+      "number": "مثنى",
+      "usage_contexts": [
+        "الإشارة لاثنتين قريبتين مؤنثتين منصوب/مجرور"
+      ],
+      "frequency_score": 0.62,
+      "morphological_pattern": "CV-CVC-CV"
+    },
+    {
+      "text": "ذانك",
+      "category": "DemonstrativeCategory.FAR_MASCULINE_DUAL",
+      "syllables": [
+        "ذَا",
+        "نِ",
+        "كَ"
+      ],
+      "phonetic_features": [
+        "dh",
+        "aa",
+        "n",
+        "i",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "مذكر",
+      "number": "مثنى",
+      "usage_contexts": [
+        "الإشارة لاثنين بعيدين مذكرين"
+      ],
+      "frequency_score": 0.45,
+      "morphological_pattern": "CV-CV-CV"
+    },
+    {
+      "text": "تانك",
+      "category": "DemonstrativeCategory.FAR_FEMININE_DUAL",
+      "syllables": [
+        "تَا",
+        "نِ",
+        "كَ"
+      ],
+      "phonetic_features": [
+        "t",
+        "aa",
+        "n",
+        "i",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "مؤنث",
+      "number": "مثنى",
+      "usage_contexts": [
+        "الإشارة لاثنتين بعيدتين مؤنثتين"
+      ],
+      "frequency_score": 0.42,
+      "morphological_pattern": "CV-CV-CV"
+    },
+    {
+      "text": "هؤلاء",
+      "category": "DemonstrativeCategory.NEAR_PLURAL",
+      "syllables": [
+        "هَا",
+        "ؤُ",
+        "لَا",
+        "ءِ"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "u",
+        "l",
+        "aa",
+        "i"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "محايد",
+      "number": "جمع",
+      "usage_contexts": [
+        "الإشارة لجمع قريب",
+        "العموم القريب"
+      ],
+      "frequency_score": 0.87,
+      "morphological_pattern": "CV-CV-CV-CV"
+    },
+    {
+      "text": "أولئك",
+      "category": "DemonstrativeCategory.FAR_PLURAL",
+      "syllables": [
+        "أُو",
+        "لَا",
+        "ئِ",
+        "كَ"
+      ],
+      "phonetic_features": [
+        "u",
+        "w",
+        "l",
+        "aa",
+        "i",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "محايد",
+      "number": "جمع",
+      "usage_contexts": [
+        "الإشارة لجمع بعيد",
+        "العموم البعيد"
+      ],
+      "frequency_score": 0.84,
+      "morphological_pattern": "CVC-CV-CV-CV"
+    },
+    {
+      "text": "هنا",
+      "category": "DemonstrativeCategory.LOCATIVE_NEAR",
+      "syllables": [
+        "هُ",
+        "نَا"
+      ],
+      "phonetic_features": [
+        "h",
+        "u",
+        "n",
+        "aa"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "محايد",
+      "number": "مكاني",
+      "usage_contexts": [
+        "الإشارة المكانية القريبة",
+        "تحديد المكان"
+      ],
+      "frequency_score": 0.92,
+      "morphological_pattern": "CV-CV"
+    },
+    {
+      "text": "هاهنا",
+      "category": "DemonstrativeCategory.LOCATIVE_NEAR",
+      "syllables": [
+        "هَا",
+        "هُ",
+        "نَا"
+      ],
+      "phonetic_features": [
+        "h",
+        "aa",
+        "h",
+        "u",
+        "n",
+        "aa"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "قريب",
+      "gender": "محايد",
+      "number": "مكاني",
+      "usage_contexts": [
+        "الإشارة المكانية القريبة المؤكدة"
+      ],
+      "frequency_score": 0.58,
+      "morphological_pattern": "CV-CV-CV"
+    },
+    {
+      "text": "هناك",
+      "category": "DemonstrativeCategory.LOCATIVE_FAR",
+      "syllables": [
+        "هُ",
+        "نَا",
+        "كَ"
+      ],
+      "phonetic_features": [
+        "h",
+        "u",
+        "n",
+        "aa",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "محايد",
+      "number": "مكاني",
+      "usage_contexts": [
+        "الإشارة المكانية البعيدة",
+        "تحديد المكان البعيد"
+      ],
+      "frequency_score": 0.89,
+      "morphological_pattern": "CV-CV-CV"
+    },
+    {
+      "text": "هنالك",
+      "category": "DemonstrativeCategory.LOCATIVE_FAR",
+      "syllables": [
+        "هُ",
+        "نَا",
+        "لِ",
+        "كَ"
+      ],
+      "phonetic_features": [
+        "h",
+        "u",
+        "n",
+        "aa",
+        "l",
+        "i",
+        "k",
+        "a"
+      ],
+      "grammatical_case": "GrammaticalCase.NOMINATIVE",
+      "distance": "بعيد",
+      "gender": "محايد",
+      "number": "مكاني",
+      "usage_contexts": [
+        "الإشارة المكانية البعيدة المؤكدة"
+      ],
+      "frequency_score": 0.73,
+      "morphological_pattern": "CV-CV-CV-CV"
+    }
+  ],
+  "syllable_patterns": {
+    "CVV-CVV": [
+      "هذا"
+    ],
+    "CVV-CVCV": [
+      "هذه",
+      "ذلك"
+    ],
+    "CVC-CV": [
+      "تلك"
+    ],
+    "CVV-CVV-CV": [
+      "هذان",
+      "هاتان"
+    ],
+    "CVV-CVCV-CV": [
+      "هذين",
+      "هاتين"
+    ],
+    "CVV-CV-CV": [
+      "ذانك",
+      "تانك"
+    ],
+    "CVV-CV-CVV-CV": [
+      "هؤلاء"
+    ],
+    "CVC-CVV-CV-CV": [
+      "أولئك"
+    ],
+    "CV-CVV": [
+      "هنا"
+    ],
+    "CVV-CV-CVV": [
+      "هاهنا"
+    ],
+    "CV-CVV-CV": [
+      "هناك"
+    ],
+    "CV-CVV-CV-CV": [
+      "هنالك"
+    ]
+  },
+  "statistics": {
+    "total_demonstratives": 16,
+    "categories": {
+      "قريب_مذكر_مفرد": 1,
+      "قريب_مؤنث_مفرد": 1,
+      "بعيد_مذكر_مفرد": 1,
+      "بعيد_مؤنث_مفرد": 1,
+      "قريب_مذكر_مثنى": 2,
+      "قريب_مؤنث_مثنى": 2,
+      "بعيد_مذكر_مثنى": 1,
+      "بعيد_مؤنث_مثنى": 1,
+      "قريب_جمع": 1,
+      "بعيد_جمع": 1,
+      "مكاني_قريب": 2,
+      "مكاني_بعيد": 2
+    },
+    "distances": {
+      "قريب": 9,
+      "بعيد": 7
+    },
+    "numbers": {
+      "مفرد": 4,
+      "مثنى": 6,
+      "جمع": 2,
+      "مكاني": 4
+    },
+    "genders": {
+      "مذكر": 5,
+      "مؤنث": 5,
+      "محايد": 6
+    },
+    "syllable_patterns": 12
+  }
+}

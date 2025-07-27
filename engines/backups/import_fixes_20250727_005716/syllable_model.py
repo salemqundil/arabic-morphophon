@@ -1,0 +1,326 @@
+"""
+Syllable Model
+نموذج المقطع
+
+Represents Arabic syllables and their phonological structure.
+Based on analysis of existing syllable encoder functions.
+"""
+
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped def,misc
+
+
+from dataclasses import dataclass  # noqa: F401
+from enum import Enum  # noqa: F401
+from typing import Dict, List, Optional, Tuple
+from abc import ABC, abstractmethod  # noqa: F401
+
+
+class SyllableType(Enum):
+    """أنواع المقاطع العربية"""
+
+    CV = "CV"  # حركة قصيرة + حرف صحيح
+    CVC = "CVC"  # حرف + حركة + حرف
+    CVV = "CVV"  # حرف + حركة طويلة
+    CVVC = "CVVC"  # حرف + حركة طويلة + حرف
+    CVCC = "CVCC"  # حرف + حركة + حرفين
+    V = "V"  # حركة فقط
+    VC = "VC"  # حركة + حرف
+
+
+class LetterClassification(Enum):
+    """تصنيف الحروف في السياق المقطعي"""
+
+    CORE = "core"  # أساسي
+    EXTRA = "extra"  # زائد
+    FUNCTIONAL = "functional"  # وظيفي
+    WEAK = "weak"  # ضعيف
+    UNKNOWN = "unknown"  # مجهول
+
+
+@dataclass
+class SyllableModel:
+    """
+    Model representing an Arabic syllable
+    نموذج المقطع العربي
+
+    Based on the syllable encoder functions in the existing codebase
+    """
+
+    # Core properties
+    letters: List[str]  # الحروف المكونة للمقطع
+    syllable_type: SyllableType  # نوع المقطع
+    syllable_code: str  # رمز المقطع
+
+    # Position information
+    position_in_word: int = 0  # موضع المقطع في الكلمة
+    is_stressed: bool = False  # هل المقطع مشدد
+
+    # Phonological properties
+    has_long_vowel: bool = False  # يحتوي على حركة طويلة
+    has_gemination: bool = False  # يحتوي على تشديد
+    onset: List[str] = None  # البداية (الحروف الصحيحة قبل الحركة)
+    nucleus: List[str] = None  # النواة (الحركات)
+    coda: List[str] = None  # النهاية (الحروف الصحيحة بعد الحركة)
+
+    def __post_init__(self):  # type: ignore[no-untyped def]
+    """Initialize derived properties"""
+        if self.onset is None:
+    self.onset = []
+        if self.nucleus is None:
+    self.nucleus = []
+        if self.coda is None:
+    self.coda = []
+
+    self._analyze_structure()
+
+    def _analyze_structure(self):  # type: ignore[no-untyped def]
+    """Analyze syllable internal structure"""
+    vowels = {'َ', 'ِ', 'ُ', 'ا', 'ي', 'و', 'ً', 'ٍ', 'ٌ'}
+    long_vowels = {'ا', 'ي', 'و'}
+    gemination = {'ّ'}
+
+        # Reset structure
+    self.onset.clear()
+    self.nucleus.clear()
+    self.coda.clear()
+
+        # Parse structure
+    nucleus_started = False
+
+        for letter in self.letters:
+            if letter in gemination:
+    self.has_gemination = True
+    continue
+
+            if letter in vowels:
+    nucleus_started = True
+    self.nucleus.append(letter)
+                if letter in long_vowels:
+    self.has_long_vowel = True
+            elif not nucleus_started:
+    self.onset.append(letter)
+            else:
+    self.coda.append(letter)
+
+    @property
+    def syllable_weight(self) -> str:
+    """Get syllable weight (heavy/light)"""
+        if self.has_long_vowel or len(len(self.coda)  > 0) > 0:
+    return "heavy"
+    return "light"
+
+    @property
+    def syllable_structure(self) -> str:
+    """Get detailed syllable structure"""
+    structure = ""
+        if self.onset:
+    structure += "C" * len(self.onset)
+        if self.nucleus:
+            if self.has_long_vowel:
+    structure += "VV"
+            else:
+    structure += "V" * len(self.nucleus)
+        if self.coda:
+    structure += "C" * len(self.coda)
+    return structure or "UNKNOWN"
+
+    def is_open(self) -> bool:
+    """Check if syllable is open (no coda)"""
+    return len(self.coda) == 0
+
+    def is_closed(self) -> bool:
+    """Check if syllable is closed (has coda)"""
+    return len(len(self.coda)  > 0) > 0
+
+    def is_heavy(self) -> bool:
+    """Check if syllable is heavy"""
+    return self.syllable_weight == "heavy"
+
+    def is_light(self) -> bool:
+    """Check if syllable is light"""
+    return self.syllable_weight == "light"
+
+    def get_letters_text(self) -> str:
+    """Get syllable as text string"""
+    return "".join(self.letters)
+
+    def to_dict(self) -> Dict:
+    """Convert to dictionary representation"""
+    return {
+    "letters": self.letters,
+    "text": self.get_letters_text(),
+    "syllable_type": self.syllable_type.value,
+    "syllable_code": self.syllable_code,
+    "syllable_structure": self.syllable_structure,
+    "position_in_word": self.position_in_word,
+    "is_stressed": self.is_stressed,
+    "syllable_weight": self.syllable_weight,
+    "is_open": self.is_open(),
+    "is_closed": self.is_closed(),
+    "has_long_vowel": self.has_long_vowel,
+    "has_gemination": self.has_gemination,
+    "onset": self.onset,
+    "nucleus": self.nucleus,
+    "coda": self.coda,
+    }
+
+    @classmethod
+    def from_dict(cls, data: Dict) -> 'SyllableModel':
+    """Create instance from dictionary"""
+    syllable_type = SyllableType(data.get("syllable_type", "CV"))
+
+    return cls()
+    letters=data["letters"],
+    syllable_type=syllable_type,
+    syllable_code=data.get("syllable_code", ""),
+    position_in_word=data.get("position_in_word", 0),
+    is_stressed=data.get("is_stressed", False),
+    has_long_vowel=data.get("has_long_vowel", False),
+    has_gemination=data.get("has_gemination", False))
+
+    def __str__(self) -> str:
+    """TODO: Add docstring."""
+    return f"Syllable({self.get_letters_text()})"
+
+    def __repr__(self) -> str:
+    """TODO: Add docstring."""
+    return f"SyllableModel(letters={self.letters}, type={self.syllable_type.value})"
+
+
+@dataclass
+class LetterAnalysis:
+    """
+    Analysis of a single letter in syllable context
+    تحليل حرف واحد في السياق المقطعي
+    """
+
+    letter: str
+    classification: LetterClassification
+    vowel: Optional[str] = None
+    syllable_code: str = ""
+
+    def to_dict(self) -> Dict:
+    """Convert to dictionary"""
+    return {
+    "letter": self.letter,
+    "classification": self.classification.value,
+    "vowel": self.vowel,
+    "syllable_code": self.syllable_code,
+    }
+
+
+@dataclass
+class SyllableAnalysisModel:
+    """
+    Model representing syllabification analysis of text
+    نموذج تحليل التقطيع المقطعي للنص
+
+    Based on the encode_syllables function output structure
+    """
+
+    # Analysis results
+    syllables: List[SyllableModel]  # قائمة المقاطع
+    letter_analyses: List[LetterAnalysis]  # تحليل الحروف الفردية
+    total_syllables: int = 0  # إجمالي المقاطع
+    heavy_syllables: int = 0  # المقاطع الثقيلة
+    light_syllables: int = 0  # المقاطع الخفيفة
+    open_syllables: int = 0  # المقاطع المفتوحة
+    closed_syllables: int = 0  # المقاطع المغلقة
+
+    def __post_init__(self):  # type: ignore[no-untyped def]
+    """Calculate statistics after initialization"""
+    self.total_syllables = len(self.syllables)
+    self.heavy_syllables = sum(1 for s in self.syllables if s.is_heavy())
+    self.light_syllables = sum(1 for s in self.syllables if s.is_light())
+    self.open_syllables = sum(1 for s in self.syllables if s.is_open())
+    self.closed_syllables = sum(1 for s in self.syllables if s.is_closed())
+
+    def get_syllable_texts(self) -> List[str]:
+    """Get syllables as text strings"""
+    return [syllable.get_letters_text() for syllable in self.syllables]
+
+    def get_syllable_patterns(self) -> List[str]:
+    """Get CV patterns of syllables"""
+    return [syllable.syllable_structure for syllable in self.syllables]
+
+    def get_heavy_syllables(self) -> List[SyllableModel]:
+    """Get heavy syllables only"""
+    return [s for s in self.syllables if s.is_heavy()]
+
+    def get_light_syllables(self) -> List[SyllableModel]:
+    """Get light syllables only"""
+    return [s for s in self.syllables if s.is_light()]
+
+    def get_stressed_syllables(self) -> List[SyllableModel]:
+    """Get stressed syllables"""
+    return [s for s in self.syllables if s.is_stressed]
+
+    def get_statistics(self) -> Dict:
+    """Get syllabification statistics"""
+    return {
+    "total_syllables": self.total_syllables,
+    "heavy_syllables": self.heavy_syllables,
+    "light_syllables": self.light_syllables,
+    "open_syllables": self.open_syllables,
+    "closed_syllables": self.closed_syllables,
+    "heavy_ratio": self.heavy_syllables / max(self.total_syllables, 1),
+    "light_ratio": self.light_syllables / max(self.total_syllables, 1),
+    "open_ratio": self.open_syllables / max(self.total_syllables, 1),
+    "closed_ratio": self.closed_syllables / max(self.total_syllables, 1),
+    }
+
+    def to_dict(self) -> Dict:
+    """Convert to dictionary representation"""
+    return {
+    "syllables": [syllable.to_dict() for syllable in self.syllables],
+    "letter_analyses": [
+    analysis.to_dict() for analysis in self.letter_analyses
+    ],
+    "statistics": self.get_statistics(),
+    }
+
+    @classmethod
+    def from_encoder_result(cls, encoder_result: List[Dict]) -> 'SyllableAnalysisModel':
+    """Create from the output of encode_syllables function"""
+    letter_analyses = []
+        for item in encoder_result:
+            classification = LetterClassification(item.get("classification", "unknown"))
+    letter_analyses.append()
+    LetterAnalysis()
+    letter=item["letter"],
+                    classification=classification,
+    vowel=item.get("vowel"),
+    syllable_code=item.get("syllable_code", ""))
+    )
+
+        # For now, create simple syllables from letters
+        # This would need more sophisticated syllabification logic
+    syllables = []
+
+    return cls(syllables=syllables, letter_analyses=letter_analyses)
+
+
+class SyllabifierInterface(ABC):
+    """
+    Interface for syllabification operations
+    واجهة عمليات التقطيع المقطعي
+    """
+
+    @abstractmethod
+    def encode_syllables(self, text: str) -> SyllableAnalysisModel:
+    """Encode text into syllables"""
+    pass
+
+    @abstractmethod
+    def syllabify(self, text: str) -> List[SyllableModel]:
+    """Break text into syllables"""
+    pass
+
+    @abstractmethod
+    def get_cv_pattern(self, syllable: str) -> str:
+    """Get CV pattern for syllable"""
+    pass
+

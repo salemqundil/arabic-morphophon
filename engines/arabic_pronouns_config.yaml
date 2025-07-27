@@ -1,0 +1,387 @@
+# Arabic Pronouns Generator Configuration
+# =====================================
+# ملف إعدادات مولد الضمائر العربية من المقاطع الصوتية
+
+# System Configuration
+system:
+  version: "1.0.0"
+  encoding: "utf-8"
+  language: "Arabic"
+  script: "Arabic"
+  locale: "ar_SA"
+  description: "نظام متطور لتوليد الضمائر العربية من المقاطع الصوتية باستخدام التعلم العميق"
+
+# Input Sources
+input:
+  syllables_database: "complete_arabic_syllable_inventory.json"
+  syllable_count: 22218
+  syllable_types: ["CV", "CVC", "VC", "CVV", "CVVC"]
+  audio_features: "MFCC"  # Mel-frequency cepstral coefficients
+  feature_dimensions: 40
+
+# Pronouns Classification
+pronouns:
+  total_classes: 25
+
+  # الضمائر المنفصلة - Detached Pronouns (12 classes)
+  detached:
+    first_person:
+      - id: 0
+        text: "أنا"
+        transliteration: "ana"
+        pattern: "CV-CV"
+        frequency: 0.95
+        contexts: ["subject", "predicate"]
+
+      - id: 1
+        text: "نحن"
+        transliteration: "nahnu"
+        pattern: "CV-CVC"
+        frequency: 0.85
+        contexts: ["subject", "predicate"]
+
+    second_person:
+      - id: 2
+        text: "أنت"
+        transliteration: "anta"
+        pattern: "CV-CVC"
+        frequency: 0.90
+        gender: "masculine"
+        number: "singular"
+
+      - id: 3
+        text: "أنتِ"
+        transliteration: "anti"
+        pattern: "CV-CV"
+        frequency: 0.88
+        gender: "feminine"
+        number: "singular"
+
+      - id: 4
+        text: "أنتما"
+        transliteration: "antuma"
+        pattern: "CV-CV-CV"
+        frequency: 0.40
+        number: "dual"
+
+      - id: 5
+        text: "أنتم"
+        transliteration: "antum"
+        pattern: "CV-CVC"
+        frequency: 0.75
+        gender: "masculine"
+        number: "plural"
+
+      - id: 6
+        text: "أنتن"
+        transliteration: "antunna"
+        pattern: "CV-CVC"
+        frequency: 0.65
+        gender: "feminine"
+        number: "plural"
+
+    third_person:
+      - id: 7
+        text: "هو"
+        transliteration: "huwa"
+        pattern: "CV-CV"
+        frequency: 0.95
+        gender: "masculine"
+        number: "singular"
+
+      - id: 8
+        text: "هي"
+        transliteration: "hiya"
+        pattern: "CV-CV"
+        frequency: 0.93
+        gender: "feminine"
+        number: "singular"
+
+      - id: 9
+        text: "هما"
+        transliteration: "huma"
+        pattern: "CV-CV"
+        frequency: 0.45
+        number: "dual"
+
+      - id: 10
+        text: "هم"
+        transliteration: "hum"
+        pattern: "CVC"
+        frequency: 0.80
+        gender: "masculine"
+        number: "plural"
+
+      - id: 11
+        text: "هن"
+        transliteration: "hunna"
+        pattern: "CVC"
+        frequency: 0.70
+        gender: "feminine"
+        number: "plural"
+
+  # الضمائر المتصلة - Attached Pronouns (13 classes)
+  attached:
+    first_person:
+      - id: 12
+        text: "ـني"
+        transliteration: "-ni"
+        pattern: "CV-CV"
+        frequency: 0.85
+        attachment_type: "suffix"
+        contexts: ["object", "possessive"]
+
+      - id: 13
+        text: "ـي"
+        transliteration: "-i"
+        pattern: "CV"
+        frequency: 0.90
+        attachment_type: "suffix"
+        contexts: ["possessive"]
+
+      - id: 14
+        text: "ـنا"
+        transliteration: "-na"
+        pattern: "CV-CV"
+        frequency: 0.88
+        attachment_type: "suffix"
+        contexts: ["object", "possessive"]
+
+    second_person:
+      - id: 15
+        text: "ـك"
+        transliteration: "-ka"
+        pattern: "CVC"
+        frequency: 0.92
+        gender: "masculine"
+        number: "singular"
+        attachment_type: "suffix"
+
+      - id: 16
+        text: "ـكِ"
+        transliteration: "-ki"
+        pattern: "CV"
+        frequency: 0.85
+        gender: "feminine"
+        number: "singular"
+        attachment_type: "suffix"
+
+      - id: 17
+        text: "ـكما"
+        transliteration: "-kuma"
+        pattern: "CV-CV"
+        frequency: 0.35
+        number: "dual"
+        attachment_type: "suffix"
+
+      - id: 18
+        text: "ـكم"
+        transliteration: "-kum"
+        pattern: "CVC"
+        frequency: 0.70
+        gender: "masculine"
+        number: "plural"
+        attachment_type: "suffix"
+
+      - id: 19
+        text: "ـكن"
+        transliteration: "-kunna"
+        pattern: "CVC"
+        frequency: 0.60
+        gender: "feminine"
+        number: "plural"
+        attachment_type: "suffix"
+
+    third_person:
+      - id: 20
+        text: "ـه"
+        transliteration: "-hu"
+        pattern: "CV"
+        frequency: 0.95
+        gender: "masculine"
+        number: "singular"
+        attachment_type: "suffix"
+
+      - id: 21
+        text: "ـها"
+        transliteration: "-ha"
+        pattern: "CV-CV"
+        frequency: 0.90
+        gender: "feminine"
+        number: "singular"
+        attachment_type: "suffix"
+
+      - id: 22
+        text: "ـهما"
+        transliteration: "-huma"
+        pattern: "CV-CV"
+        frequency: 0.40
+        number: "dual"
+        attachment_type: "suffix"
+
+      - id: 23
+        text: "ـهم"
+        transliteration: "-hum"
+        pattern: "CVC"
+        frequency: 0.75
+        gender: "masculine"
+        number: "plural"
+        attachment_type: "suffix"
+
+      - id: 24
+        text: "ـهن"
+        transliteration: "-hunna"
+        pattern: "CVC"
+        frequency: 0.65
+        gender: "feminine"
+        number: "plural"
+        attachment_type: "suffix"
+
+# Syllable Pattern Mapping
+syllable_patterns:
+  detached_patterns:
+    "CV": ["هو", "هي"]
+    "CVC": ["هم", "هن"]
+    "CV-CV": ["أنا", "هو", "هي", "هما"]
+    "CV-CVC": ["نحن", "أنت", "أنتم", "أنتن"]
+    "CV-CV-CV": ["أنتما"]
+
+  attached_patterns:
+    "CV": ["ـي", "ـكِ", "ـه"]
+    "CVC": ["ـك", "ـكم", "ـكن", "ـهم", "ـهن"]
+    "CV-CV": ["ـني", "ـنا", "ـها", "ـهما", "ـكما"]
+
+# Deep Learning Model Configuration
+model:
+  architecture: "LSTM"
+  input_features: 40        # MFCC features
+  hidden_size: 128         # Hidden layer size
+  num_layers: 2            # Number of LSTM layers
+  dropout: 0.3             # Dropout rate
+  num_classes: 25          # Total pronoun classes
+
+  # Training Parameters
+  training:
+    learning_rate: 0.001
+    batch_size: 32
+    epochs: 100
+    validation_split: 0.2
+    early_stopping_patience: 10
+    optimizer: "Adam"
+    loss_function: "CrossEntropyLoss"
+
+  # Data Augmentation
+  augmentation:
+    noise_factor: 0.1
+    time_shifting: True
+    pitch_shifting: True
+    speed_perturbation: True
+
+# Audio Processing Configuration
+audio_processing:
+  sample_rate: 16000       # Hz
+  frame_length: 25         # milliseconds
+  frame_shift: 10          # milliseconds
+  num_mfcc: 40            # Number of MFCC coefficients
+  num_filters: 40          # Number of mel filters
+  fft_size: 512           # FFT window size
+  preemphasis: 0.97       # Pre-emphasis coefficient
+
+  # Windowing
+  window_type: "hamming"
+
+  # Feature Normalization
+  normalization:
+    method: "mean_variance"  # or "min_max"
+    global_stats: True
+
+# Linguistic Constraints
+constraints:
+  phonological:
+    allowed_consonant_clusters: ["نت", "حن", "نتم", "نتن"]
+    vowel_harmony: True
+    stress_patterns: ["initial", "penultimate"]
+
+  morphological:
+    attachment_rules:
+      nouns: ["ـي", "ـك", "ـه", "ـها", "ـنا", "ـكم", "ـهم"]
+      verbs: ["ـني", "ـك", "ـه", "ـها", "ـنا", "ـكم", "ـهم"]
+      prepositions: ["ـي", "ـك", "ـه", "ـها", "ـنا", "ـكم", "ـهم"]
+
+  semantic:
+    context_sensitivity: True
+    disambiguation_rules:
+      - rule: "ـه في نهاية الفعل = ضمير مفعول"
+      - rule: "ـه في نهاية الاسم = ضمير مضاف إليه"
+      - rule: "هو منفصل = فاعل أو مبتدأ"
+
+# Output Configuration
+output:
+  format: "json"
+  include_confidence: True
+  include_alternatives: True
+  max_alternatives: 3
+  confidence_threshold: 0.7
+
+  # Detailed Analysis
+  detailed_output:
+    include_syllable_breakdown: True
+    include_phonetic_features: True
+    include_usage_contexts: True
+    include_frequency_scores: True
+
+# Evaluation Metrics
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "confusion_matrix"
+
+  test_data:
+    source: "manual_annotations"
+    size: 1000  # samples per class
+    stratified: True
+
+# Performance Optimization
+optimization:
+  gpu_acceleration: True
+  multi_threading: True
+  batch_processing: True
+  memory_efficient: True
+
+  # Caching
+  cache_features: True
+  cache_models: True
+  cache_predictions: True
+
+# Logging and Monitoring
+logging:
+  level: "INFO"
+  output_file: "arabic_pronouns_generator.log"
+  include_timestamps: True
+  include_performance_metrics: True
+
+  # Progress Tracking
+  progress_updates: True
+  milestone_reporting: True
+  error_reporting: True
+
+# Integration Settings
+integration:
+  syllable_generator: "arabic_syllable_generator.py"
+  function_words_generator: "arabic_function_words_generator.py"
+
+  # API Configuration
+  api:
+    enable_rest_api: True
+    port: 8080
+    max_requests_per_minute: 100
+
+  # Database Integration
+  database:
+    type: "JSON"  # or "SQLite", "MongoDB"
+    connection_string: "arabic_pronouns_database.json"
+    auto_backup: True
+    backup_frequency: "daily"

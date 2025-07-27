@@ -1,0 +1,218 @@
+# Arabic Function Words Generator Configuration
+# ============================================
+# ملف إعدادات مولد حروف المعاني العربية
+
+# System Configuration
+system:
+  version: "1.0.0"
+  encoding: "utf-8"
+  language: "Arabic"
+  script: "Arabic"
+  locale: "ar_SA"
+
+# Input Database
+input:
+  syllables_database: "complete_arabic_syllable_inventory.json"
+  syllable_count: 22218
+  syllable_types: ["CV", "CVC", "VC", "CVV", "CVVC"]
+
+# Generation Parameters
+generation:
+  max_candidates: 500
+  max_syllables_per_word: 3
+  similarity_threshold: 0.6
+  frequency_threshold: 0.01  # Minimum syllable frequency (1%)
+  complexity_threshold: 2.0  # Maximum articulatory complexity
+
+# Syllable Pattern Configuration
+patterns:
+  single_syllable:
+    - "CV"          # في، لِ، بِ، كَ
+    - "CVC"         # مِن، عَن، قَد، لَم
+    - "VC"          # إِ (in إلى)
+    - "CVV"         # لا، ما
+
+  two_syllable:
+    - ["CV", "CV"]    # إِلى، عَلى
+    - ["CV", "CVC"]   # compound forms
+    - ["CVC", "CV"]   # حَتَّى، لَدَى
+    - ["CV", "CVV"]   # إِذا
+    - ["VC", "CV"]    # إِلى pattern
+    - ["CVV", "CV"]   # لامَّا
+
+  three_syllable:
+    - ["CV", "CV", "CV"]      # لَعَلَّ
+    - ["CVC", "CV", "CV"]     # مِثْلَما
+
+# Function Word Types
+word_types:
+  preposition:
+    arabic_name: "حرف_جر"
+    examples: ["في", "من", "إلى", "على", "عن", "ب", "ل", "ك", "مع", "بين"]
+    typical_patterns: ["CV", "CVC", "CV-CV"]
+    max_syllables: 2
+
+  conjunction:
+    arabic_name: "حرف_عطف"
+    examples: ["و", "ف", "ثم", "أو", "لكن", "بل"]
+    typical_patterns: ["CV", "CVC"]
+    max_syllables: 2
+
+  particle:
+    arabic_name: "حرف"
+    examples: ["قد", "لقد", "سوف", "سـ", "إن", "أن"]
+    typical_patterns: ["CV", "CVC", "CV-CV"]
+    max_syllables: 2
+
+  negation:
+    arabic_name: "حرف_نفي"
+    examples: ["لا", "ما", "لن", "لم", "ليس"]
+    typical_patterns: ["CV", "CVC", "CVV"]
+    max_syllables: 2
+
+  interrogative:
+    arabic_name: "حرف_استفهام"
+    examples: ["هل", "أ", "ما", "من", "متى", "أين", "كيف"]
+    typical_patterns: ["CV", "CVC", "CV-CV"]
+    max_syllables: 2
+
+  conditional:
+    arabic_name: "حرف_شرط"
+    examples: ["إن", "إذا", "لو", "لولا", "حيث"]
+    typical_patterns: ["CV", "CV-CV", "CVC"]
+    max_syllables: 2
+
+  emphasis:
+    arabic_name: "حرف_توكيد"
+    examples: ["إن", "أن", "لقد", "قد", "نعم"]
+    typical_patterns: ["CV", "CVC", "CV-CV"]
+    max_syllables: 2
+
+  vocative:
+    arabic_name: "حرف_نداء"
+    examples: ["يا", "أي", "هيا"]
+    typical_patterns: ["CV", "CV-CV"]
+    max_syllables: 2
+
+# Phonological Constraints
+phonological_constraints:
+  # Consonants rarely used in function words
+  restricted_consonants: ["ع", "غ", "خ", "ق", "ظ", "ض"]
+
+  # Maximum cluster complexity
+  max_onset_complexity: 1    # Single consonant onsets preferred
+  max_coda_complexity: 1     # Single consonant codas preferred
+
+  # Sequence restrictions
+  forbidden_sequences:
+    - "ءء"     # Multiple hamzas
+    - "أأ"     # Multiple alifs with hamza
+    - "ًٌٍ"    # Multiple case endings
+
+  # Diacritic constraints
+  max_consecutive_diacritics: 2
+  forbidden_initial_diacritics: ["ً", "ٌ", "ٍ", "َ", "ُ", "ِ", "ّ", "ْ"]
+  forbidden_final_diacritics: ["ّ", "ْ"]
+
+# Length Constraints
+length_constraints:
+  min_characters: 1
+  max_characters: 6
+  preferred_length: 2-3
+
+  min_syllables: 1
+  max_syllables: 3
+  preferred_syllables: 1-2
+
+# Frequency and Similarity Scoring
+scoring:
+  similarity_weights:
+    exact_match: 1.0
+    high_similarity: 0.6-0.99
+    medium_similarity: 0.3-0.59
+    low_similarity: 0.0-0.29
+
+  frequency_weights:
+    syllable_frequency: 0.4
+    phonological_weight: 0.3
+    morphological_complexity: 0.3
+
+  ranking_criteria:
+    primary: "similarity_score"
+    secondary: "frequency_estimate"
+    tertiary: "phonological_weight"
+
+# Validation Rules
+validation:
+  enable_phonological_validation: true
+  enable_morphological_validation: true
+  enable_similarity_validation: true
+  enable_unicode_normalization: true
+
+  error_handling:
+    log_validation_errors: true
+    skip_invalid_candidates: true
+    report_error_statistics: true
+
+# Output Configuration
+output:
+  max_results_per_category: 100
+  include_syllable_breakdown: true
+  include_linguistic_features: true
+  include_similarity_scores: true
+  include_classification: true
+
+  export_formats:
+    - "json"
+    - "csv"
+    - "txt"
+
+  detailed_analysis:
+    top_candidates: 50
+    include_syllable_components: true
+    include_phonological_analysis: true
+    include_frequency_analysis: true
+
+# Performance Settings
+performance:
+  max_combinations_per_pattern: 1000
+  batch_processing: false
+  memory_limit_mb: 512
+  timeout_seconds: 300
+
+# Quality Assurance
+quality_assurance:
+  minimum_similarity_for_inclusion: 0.3
+  maximum_candidates_per_pattern: 1000
+  validate_unicode_normalization: true
+  check_phonological_constraints: true
+
+  test_cases:
+    known_prepositions: ["في", "من", "إلى", "على"]
+    known_conjunctions: ["و", "ف", "ثم", "لكن"]
+    known_particles: ["قد", "لقد", "سوف"]
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_file: "arabic_function_words.log"
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_encoding: "utf-8"
+
+  log_sections:
+    initialization: true
+    generation: true
+    validation: true
+    classification: true
+    statistics: true
+
+# Research and Analysis
+research:
+  enable_pattern_analysis: true
+  enable_frequency_distribution: true
+  enable_phonological_clustering: true
+  enable_comparative_analysis: true
+
+  export_research_data: true
+  generate_linguistic_reports: true
+  create_visualization_data: false

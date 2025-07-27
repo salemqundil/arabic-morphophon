@@ -1,0 +1,437 @@
+{
+  "metadata": {
+    "name": "Arabic Morphological Rules Engine",
+    "version": "3.0.0",
+    "description": "Comprehensive rule-based system for Arabic morphological analysis",
+    "linguistic_framework": "Traditional Arabic Grammar + Modern Computational Morphology",
+    "coverage": "Modern Standard Arabic + Classical Arabic",
+    "rule_types": ["segmentation", "analysis", "generation", "normalization"],
+    "author": "Arabic NLP Research Team",
+    "license": "MIT"
+  },
+  
+  "segmentation_rules": {
+    "description": "Rules for segmenting Arabic words into morphemes",
+    "priority_order": [
+      "definite_article_rule",
+      "preposition_rules", 
+      "conjunction_rules",
+      "verbal_prefix_rules",
+      "root_extraction_rules",
+      "pattern_matching_rules",
+      "suffix_identification_rules",
+      "clitic_attachment_rules"
+    ],
+    
+    "definite_article_rule": {
+      "rule_id": "def_art_001",
+      "name": "Definite Article Segmentation",
+      "pattern": "^(ال)(.+)$",
+      "replacement": "PREFIX:al + STEM:$2",
+      "conditions": {
+        "min_stem_length": 2,
+        "not_proper_noun": true,
+        "check_solar_assimilation": true
+      },
+      "confidence": 0.95,
+      "examples": [
+        {"input": "الكتاب", "output": "PREFIX:al + STEM:كتاب"},
+        {"input": "المدرسة", "output": "PREFIX:al + STEM:مدرسة"}
+      ]
+    },
+    
+    "preposition_rules": {
+      "bi_preposition": {
+        "rule_id": "prep_001",
+        "pattern": "^(ب)(.+)$",
+        "replacement": "PREFIX:bi + STEM:$2",
+        "conditions": {"min_stem_length": 2},
+        "confidence": 0.90,
+        "examples": [{"input": "بالقلم", "output": "PREFIX:bi + STEM:القلم"}]
+      },
+      "li_preposition": {
+        "rule_id": "prep_002", 
+        "pattern": "^(ل)(.+)$",
+        "replacement": "PREFIX:li + STEM:$2",
+        "conditions": {"min_stem_length": 2, "not_verbal_prefix": true},
+        "confidence": 0.85,
+        "examples": [{"input": "للطالب", "output": "PREFIX:li + STEM:الطالب"}]
+      },
+      "ka_preposition": {
+        "rule_id": "prep_003",
+        "pattern": "^(ك)(.+)$", 
+        "replacement": "PREFIX:ka + STEM:$2",
+        "conditions": {"min_stem_length": 2},
+        "confidence": 0.88,
+        "examples": [{"input": "كالأسد", "output": "PREFIX:ka + STEM:الأسد"}]
+      }
+    },
+    
+    "conjunction_rules": {
+      "wa_conjunction": {
+        "rule_id": "conj_001",
+        "pattern": "^(و)(.+)$",
+        "replacement": "PREFIX:wa + STEM:$2", 
+        "conditions": {"min_stem_length": 2},
+        "confidence": 0.92,
+        "examples": [{"input": "والطالب", "output": "PREFIX:wa + STEM:الطالب"}]
+      },
+      "fa_conjunction": {
+        "rule_id": "conj_002",
+        "pattern": "^(ف)(.+)$",
+        "replacement": "PREFIX:fa + STEM:$2",
+        "conditions": {"min_stem_length": 2, "not_verbal_root": true},
+        "confidence": 0.87,
+        "examples": [{"input": "فالمدرسة", "output": "PREFIX:fa + STEM:المدرسة"}]
+      }
+    },
+    
+    "verbal_prefix_rules": {
+      "imperfect_ya": {
+        "rule_id": "verb_pref_001",
+        "pattern": "^(ي)(.+)$",
+        "replacement": "PREFIX:ya + STEM:$2",
+        "conditions": {"verbal_context": true, "min_stem_length": 2},
+        "confidence": 0.93,
+        "examples": [{"input": "يكتب", "output": "PREFIX:ya + STEM:كتب"}]
+      },
+      "imperfect_ta": {
+        "rule_id": "verb_pref_002",
+        "pattern": "^(ت)(.+)$", 
+        "replacement": "PREFIX:ta + STEM:$2",
+        "conditions": {"verbal_context": true, "min_stem_length": 2},
+        "confidence": 0.90,
+        "examples": [{"input": "تكتب", "output": "PREFIX:ta + STEM:كتب"}]
+      },
+      "imperfect_aa": {
+        "rule_id": "verb_pref_003",
+        "pattern": "^(أ)(.+)$",
+        "replacement": "PREFIX:aa + STEM:$2",
+        "conditions": {"verbal_context": true, "min_stem_length": 2},
+        "confidence": 0.91,
+        "examples": [{"input": "أكتب", "output": "PREFIX:aa + STEM:كتب"}]
+      },
+      "imperfect_na": {
+        "rule_id": "verb_pref_004",
+        "pattern": "^(ن)(.+)$",
+        "replacement": "PREFIX:na + STEM:$2", 
+        "conditions": {"verbal_context": true, "min_stem_length": 2},
+        "confidence": 0.89,
+        "examples": [{"input": "نكتب", "output": "PREFIX:na + STEM:كتب"}]
+      }
+    },
+    
+    "suffix_identification_rules": {
+      "pronominal_suffixes": {
+        "rule_id": "suff_pron_001",
+        "patterns": {
+          "1st_sing_object": {"pattern": "(.+)(ني)$", "features": ["1st", "sing", "object"]},
+          "2nd_masc": {"pattern": "(.+)(ك)$", "features": ["2nd", "masc", "possessive"]},
+          "2nd_fem": {"pattern": "(.+)(ك)$", "features": ["2nd", "fem", "possessive"]},
+          "3rd_masc": {"pattern": "(.+)(ه)$", "features": ["3rd", "masc", "possessive"]},
+          "3rd_fem": {"pattern": "(.+)(ها)$", "features": ["3rd", "fem", "possessive"]},
+          "1st_plur": {"pattern": "(.+)(نا)$", "features": ["1st", "plur", "possessive"]},
+          "2nd_plur": {"pattern": "(.+)(كم)$", "features": ["2nd", "plur", "possessive"]},
+          "3rd_masc_plur": {"pattern": "(.+)(هم)$", "features": ["3rd", "masc", "plur", "possessive"]},
+          "3rd_fem_plur": {"pattern": "(.+)(هن)$", "features": ["3rd", "fem", "plur", "possessive"]}
+        },
+        "confidence": 0.88
+      },
+      "case_endings": {
+        "rule_id": "suff_case_001",
+        "patterns": {
+          "nominative": {"pattern": "(.+)(ُ)$", "features": ["nominative", "case"]},
+          "accusative": {"pattern": "(.+)(َ)$", "features": ["accusative", "case"]},
+          "genitive": {"pattern": "(.+)(ِ)$", "features": ["genitive", "case"]},
+          "nunation_accusative": {"pattern": "(.+)(ً)$", "features": ["accusative", "nunation", "indefinite"]},
+          "nunation_nominative": {"pattern": "(.+)(ٌ)$", "features": ["nominative", "nunation", "indefinite"]},
+          "nunation_genitive": {"pattern": "(.+)(ٍ)$", "features": ["genitive", "nunation", "indefinite"]}
+        },
+        "confidence": 0.75
+      },
+      "plural_suffixes": {
+        "rule_id": "suff_plur_001",
+        "patterns": {
+          "masc_plur_nom": {"pattern": "(.+)(ون)$", "features": ["masculine", "plural", "nominative"]},
+          "masc_plur_acc_gen": {"pattern": "(.+)(ين)$", "features": ["masculine", "plural", "accusative_genitive"]},
+          "fem_plur": {"pattern": "(.+)(ات)$", "features": ["feminine", "plural"]},
+          "dual_nom": {"pattern": "(.+)(ان)$", "features": ["dual", "nominative"]},
+          "dual_acc_gen": {"pattern": "(.+)(ين)$", "features": ["dual", "accusative_genitive"]}
+        },
+        "confidence": 0.92
+      }
+    }
+  },
+  
+  "analysis_rules": {
+    "description": "Rules for analyzing segmented morphemes",
+    "root_identification": {
+      "trilateral_extraction": {
+        "rule_id": "root_tri_001",
+        "description": "Extract trilateral roots from verbal forms",
+        "patterns": {
+          "form_i": {
+            "perfect": "C1aC2aC3a  C1C2C3",
+            "imperfect": "yaC1C2uC3u  C1C2C3"
+          },
+          "form_ii": {
+            "perfect": "C1aC2C2aC3a  C1C2C3", 
+            "imperfect": "yuC1aC2C2iC3u  C1C2C3"
+          },
+          "form_iii": {
+            "perfect": "C1aaC2aC3a  C1C2C3",
+            "imperfect": "yuC1aaC2iC3u  C1C2C3"
+          }
+        },
+        "confidence": 0.85
+      },
+      "weak_root_handling": {
+        "rule_id": "root_weak_001",
+        "description": "Process weak roots with missing radicals",
+        "patterns": {
+          "assimilated": "WCC patterns where W is deleted",
+          "hollow": "CWC patterns where W becomes long vowel",
+          "defective": "CCW patterns where W is deleted word-finally"
+        },
+        "confidence": 0.78
+      }
+    },
+    
+    "pattern_recognition": {
+      "verbal_patterns": {
+        "rule_id": "pattern_verb_001",
+        "form_i_recognition": {
+          "perfect_patterns": ["CaCaCa", "CaCiCa", "CaCuCa"],
+          "imperfect_patterns": ["yaCCuCu", "yaCCiCu", "yaCCaCu"],
+          "confidence": 0.90
+        },
+        "derived_forms": {
+          "form_ii": {"pattern": "CaCCaCa", "confidence": 0.88},
+          "form_iii": {"pattern": "CaaCaCa", "confidence": 0.86}, 
+          "form_iv": {"pattern": "aCCaCa", "confidence": 0.87},
+          "form_v": {"pattern": "taCaCCaCa", "confidence": 0.85},
+          "form_vi": {"pattern": "taCaaCaCa", "confidence": 0.83},
+          "form_vii": {"pattern": "inCaCaCa", "confidence": 0.81},
+          "form_viii": {"pattern": "iCtaCaCa", "confidence": 0.84},
+          "form_x": {"pattern": "istaCCaCa", "confidence": 0.89}
+        }
+      },
+      "nominal_patterns": {
+        "rule_id": "pattern_nom_001",
+        "agent_patterns": {
+          "CaaCiC": {"meaning": "active_participle", "confidence": 0.92},
+          "muCaCCiC": {"meaning": "form_ii_agent", "confidence": 0.88},
+          "muCaaCiC": {"meaning": "form_iii_agent", "confidence": 0.86}
+        },
+        "patient_patterns": {
+          "maCCuuC": {"meaning": "passive_participle", "confidence": 0.90},
+          "muCaCCaC": {"meaning": "form_ii_patient", "confidence": 0.87}
+        }
+      }
+    },
+    
+    "morphosyntactic_features": {
+      "verbal_features": {
+        "rule_id": "feat_verb_001",
+        "tense_aspect": {
+          "perfect": {"features": ["past", "perfective"], "confidence": 0.95},
+          "imperfect": {"features": ["present", "imperfective"], "confidence": 0.93}
+        },
+        "person_number_gender": {
+          "patterns": {
+            "CaCaC-tu": {"features": ["1st", "sing"], "confidence": 0.98},
+            "CaCaC-ta": {"features": ["2nd", "masc", "sing"], "confidence": 0.96},
+            "CaCaC-ti": {"features": ["2nd", "fem", "sing"], "confidence": 0.96},
+            "CaCaC-a": {"features": ["3rd", "masc", "sing"], "confidence": 0.94},
+            "CaCaC-at": {"features": ["3rd", "fem", "sing"], "confidence": 0.94}
+          }
+        }
+      },
+      "nominal_features": {
+        "rule_id": "feat_nom_001",
+        "number": {
+          "singular": {"pattern": "base_form", "confidence": 0.90},
+          "dual": {"patterns": ["-aan", "-ayn"], "confidence": 0.95},
+          "plural_sound_masc": {"patterns": ["-uun", "-iin"], "confidence": 0.93},
+          "plural_sound_fem": {"pattern": "-aat", "confidence": 0.94},
+          "plural_broken": {"various_patterns": true, "confidence": 0.70}
+        },
+        "gender": {
+          "masculine": {"default": true, "confidence": 0.85},
+          "feminine": {"markers": ["-a", "-aa"], "confidence": 0.88}
+        },
+        "case": {
+          "nominative": {"marker": "-u", "confidence": 0.80},
+          "accusative": {"marker": "-a", "confidence": 0.80}, 
+          "genitive": {"marker": "-i", "confidence": 0.80}
+        },
+        "definiteness": {
+          "definite": {"marker": "al-", "confidence": 0.95},
+          "indefinite": {"default": true, "confidence": 0.85}
+        }
+      }
+    }
+  },
+  
+  "generation_rules": {
+    "description": "Rules for generating inflected forms from roots and patterns",
+    "verbal_generation": {
+      "conjugation_rules": {
+        "rule_id": "gen_verb_001",
+        "form_i_conjugation": {
+          "root_input": "CCC",
+          "pattern_application": {
+            "perfect": {
+              "3rd_masc_sing": "CaCaCa",
+              "3rd_fem_sing": "CaCaCat",
+              "1st_sing": "CaCaCtu"
+            },
+            "imperfect": {
+              "3rd_masc_sing": "yaCCuCu",
+              "3rd_fem_sing": "taCCuCu", 
+              "1st_sing": "aCCuCu"
+            }
+          },
+          "confidence": 0.88
+        }
+      },
+      "weak_verb_rules": {
+        "rule_id": "gen_weak_001",
+        "assimilated_verbs": {
+          "pattern_modifications": {
+            "form_i_imperfect": "W deletion in initial position",
+            "form_viii": "Wt assimilation"
+          }
+        },
+        "hollow_verbs": {
+          "pattern_modifications": {
+            "perfect": "Waa lengthening",
+            "imperfect": "Wuu/ii alternation"
+          }
+        }
+      }
+    },
+    
+    "nominal_generation": {
+      "derivation_rules": {
+        "rule_id": "gen_nom_001",
+        "participle_formation": {
+          "active_participle": {
+            "form_i": "CCC  CaaCiC",
+            "form_ii": "CCC  muCaCCiC"
+          },
+          "passive_participle": {
+            "form_i": "CCC  maCCuuC",
+            "form_ii": "CCC  muCaCCaC"
+          }
+        },
+        "broken_plural_rules": {
+          "afCaaC_pattern": {
+            "input": "CiCaaC",
+            "output": "aCCaaC",
+            "examples": ["kitaab  aktaab"]
+          },
+          "CuCuuC_pattern": {
+            "input": "CaCC",
+            "output": "CuCuuC", 
+            "examples": ["bayt  buyuut"]
+          }
+        }
+      }
+    }
+  },
+  
+  "normalization_rules": {
+    "description": "Rules for text normalization and preprocessing",
+    "orthographic_normalization": {
+      "hamza_normalization": {
+        "rule_id": "norm_hamza_001",
+        "patterns": [
+          {"input": "أ", "output": "ا", "context": "word_initial"},
+          {"input": "إ", "output": "ا", "context": "word_initial"},
+          {"input": "آ", "output": "اا", "context": "lengthening"}
+        ]
+      },
+      "alef_normalization": {
+        "rule_id": "norm_alef_001", 
+        "patterns": [
+          {"input": "ى", "output": "ي", "context": "word_final"},
+          {"input": "ة", "output": "ه", "context": "pause_form"}
+        ]
+      },
+      "diacritic_handling": {
+        "rule_id": "norm_diac_001",
+        "removal_optional": true,
+        "preservation_contexts": ["ambiguity_resolution", "phonological_analysis"]
+      }
+    },
+    
+    "morphological_normalization": {
+      "lemmatization_rules": {
+        "rule_id": "norm_lemma_001",
+        "verbal_lemmas": {
+          "perfect_3rd_masc_sing": "canonical_form",
+          "strip_prefixes": ["verbal_prefixes", "temporal_markers"],
+          "strip_suffixes": ["person_markers", "object_pronouns"]
+        },
+        "nominal_lemmas": {
+          "singular_masculine": "canonical_form",
+          "strip_definiteness": true,
+          "strip_case_endings": true,
+          "process_broken_plurals": true
+        }
+      }
+    }
+  },
+  
+  "error_handling_rules": {
+    "description": "Rules for handling morphological analysis errors",
+    "ambiguity_resolution": {
+      "frequency_based": {
+        "rule_id": "err_freq_001",
+        "use_corpus_frequency": true,
+        "frequency_threshold": 0.1,
+        "confidence_adjustment": 0.05
+      },
+      "context_based": {
+        "rule_id": "err_ctx_001", 
+        "use_pos_context": true,
+        "use_semantic_context": true,
+        "context_window": 3
+      }
+    },
+    
+    "unknown_word_handling": {
+      "rule_id": "err_unk_001",
+      "strategies": [
+        "pattern_matching",
+        "partial_analysis", 
+        "transliteration_check",
+        "dialectal_variation_check"
+      ],
+      "fallback_confidence": 0.30
+    },
+    
+    "malformed_input_handling": {
+      "rule_id": "err_mal_001",
+      "preprocessing_repairs": [
+        "remove_non_arabic_characters",
+        "normalize_spacing",
+        "fix_common_typos"
+      ]
+    }
+  },
+  
+  "evaluation_metrics": {
+    "description": "Metrics for evaluating morphological analysis quality",
+    "accuracy_metrics": {
+      "segmentation_accuracy": "correct_boundaries / total_boundaries",
+      "analysis_accuracy": "correct_analyses / total_analyses", 
+      "root_extraction_accuracy": "correct_roots / total_roots"
+    },
+    "confidence_calibration": {
+      "confidence_bins": [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
+      "expected_accuracy_per_bin": [0.1, 0.3, 0.5, 0.7, 0.9]
+    }
+  }
+}

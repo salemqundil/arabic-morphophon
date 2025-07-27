@@ -1,0 +1,1232 @@
+{
+  "coverage_analysis": {
+    "hamza_syllables": {
+      "count": 21,
+      "examples": [
+        "ءَ",
+        "ءِ",
+        "ءُ",
+        "ءا",
+        "ءي"
+      ],
+      "average_frequency": 0.6571428571428571,
+      "morphological_types": [
+        "hamza_final",
+        "hamza_initial"
+      ],
+      "weight_distribution": {
+        "light": 3,
+        "heavy": 18,
+        "super_heavy": 0
+      }
+    },
+    "tanween_syllables": {
+      "count": 30,
+      "examples": [
+        "بً",
+        "بٌ",
+        "بٍ",
+        "تً",
+        "تٌ"
+      ],
+      "average_frequency": 0.9,
+      "morphological_types": [
+        "tanween_accusative",
+        "tanween_genitive",
+        "tanween_nominative"
+      ],
+      "weight_distribution": {
+        "light": 0,
+        "heavy": 30,
+        "super_heavy": 0
+      }
+    },
+    "pronoun_syllables": {
+      "count": 8,
+      "examples": [
+        "ي",
+        "ك",
+        "ه",
+        "ها",
+        "نا"
+      ],
+      "average_frequency": 0.8875,
+      "morphological_types": [
+        "complex_attached_pronoun",
+        "attached_pronoun"
+      ],
+      "weight_distribution": {
+        "light": 8,
+        "heavy": 0,
+        "super_heavy": 0
+      }
+    },
+    "functional_syllables": {
+      "count": 11,
+      "examples": [
+        "بِ",
+        "لِ",
+        "كِ",
+        "هل",
+        "أ"
+      ],
+      "average_frequency": 0.7545454545454544,
+      "morphological_types": [
+        "attached_preposition",
+        "interrogative_particle"
+      ],
+      "weight_distribution": {
+        "light": 7,
+        "heavy": 4,
+        "super_heavy": 0
+      }
+    },
+    "derivational_syllables": {
+      "count": 2,
+      "examples": [
+        "است",
+        "ان"
+      ],
+      "average_frequency": 0.75,
+      "morphological_types": [
+        "derivational_prefix"
+      ],
+      "weight_distribution": {
+        "light": 1,
+        "heavy": 1,
+        "super_heavy": 0
+      }
+    },
+    "phonological_syllables": {
+      "count": 4,
+      "examples": [
+        "قدّ",
+        "مدّ",
+        "قال",
+        "بيع"
+      ],
+      "average_frequency": 0.675,
+      "morphological_types": [
+        "vowel_changed_syllable",
+        "geminated_syllable"
+      ],
+      "weight_distribution": {
+        "light": 0,
+        "heavy": 2,
+        "super_heavy": 2
+      }
+    }
+  },
+  "missing_combinations": {
+    "hamza_syllables": [
+      {
+        "pattern": "ءَ",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "hamza_initial",
+        "frequency_score": 0.8
+      },
+      {
+        "pattern": "ءِ",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "hamza_initial",
+        "frequency_score": 0.8
+      },
+      {
+        "pattern": "ءُ",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "hamza_initial",
+        "frequency_score": 0.8
+      },
+      {
+        "pattern": "ءا",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "ا"
+        ],
+        "coda": [],
+        "weight": "heavy",
+        "morphological_type": "hamza_initial",
+        "frequency_score": 0.8
+      },
+      {
+        "pattern": "ءي",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "ي"
+        ],
+        "coda": [],
+        "weight": "heavy",
+        "morphological_type": "hamza_initial",
+        "frequency_score": 0.8
+      },
+      {
+        "pattern": "ءو",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "و"
+        ],
+        "coda": [],
+        "weight": "heavy",
+        "morphological_type": "hamza_initial",
+        "frequency_score": 0.8
+      },
+      {
+        "pattern": "بَء",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "بِء",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "بُء",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "تَء",
+        "onset": [
+          "ت"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "تِء",
+        "onset": [
+          "ت"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "تُء",
+        "onset": [
+          "ت"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "دَء",
+        "onset": [
+          "د"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "دِء",
+        "onset": [
+          "د"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "دُء",
+        "onset": [
+          "د"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "طَء",
+        "onset": [
+          "ط"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "طِء",
+        "onset": [
+          "ط"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "طُء",
+        "onset": [
+          "ط"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "كَء",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "كِء",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      },
+      {
+        "pattern": "كُء",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [
+          "ء"
+        ],
+        "weight": "heavy",
+        "morphological_type": "hamza_final",
+        "frequency_score": 0.6
+      }
+    ],
+    "tanween_syllables": [
+      {
+        "pattern": "بً",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "بٌ",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "بٍ",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "تً",
+        "onset": [
+          "ت"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "تٌ",
+        "onset": [
+          "ت"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "تٍ",
+        "onset": [
+          "ت"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "دً",
+        "onset": [
+          "د"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "دٌ",
+        "onset": [
+          "د"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "دٍ",
+        "onset": [
+          "د"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "طً",
+        "onset": [
+          "ط"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "طٌ",
+        "onset": [
+          "ط"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "طٍ",
+        "onset": [
+          "ط"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "كً",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "كٌ",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "كٍ",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "قً",
+        "onset": [
+          "ق"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "قٌ",
+        "onset": [
+          "ق"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "قٍ",
+        "onset": [
+          "ق"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ءً",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ءٌ",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ءٍ",
+        "onset": [
+          "ء"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "فً",
+        "onset": [
+          "ف"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "فٌ",
+        "onset": [
+          "ف"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "فٍ",
+        "onset": [
+          "ف"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ثً",
+        "onset": [
+          "ث"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ثٌ",
+        "onset": [
+          "ث"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ثٍ",
+        "onset": [
+          "ث"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ذً",
+        "onset": [
+          "ذ"
+        ],
+        "nucleus": [
+          "/an/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_accusative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ذٌ",
+        "onset": [
+          "ذ"
+        ],
+        "nucleus": [
+          "/un/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_nominative",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "ذٍ",
+        "onset": [
+          "ذ"
+        ],
+        "nucleus": [
+          "/in/"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "tanween_genitive",
+        "frequency_score": 0.9
+      }
+    ],
+    "pronoun_syllables": [
+      {
+        "pattern": "ي",
+        "onset": [],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "attached_pronoun",
+        "frequency_score": 0.95
+      },
+      {
+        "pattern": "ك",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "attached_pronoun",
+        "frequency_score": 0.95
+      },
+      {
+        "pattern": "ه",
+        "onset": [
+          "ه"
+        ],
+        "nucleus": [],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "attached_pronoun",
+        "frequency_score": 0.95
+      },
+      {
+        "pattern": "ها",
+        "onset": [
+          "ه"
+        ],
+        "nucleus": [
+          "ا"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "complex_attached_pronoun",
+        "frequency_score": 0.85
+      },
+      {
+        "pattern": "نا",
+        "onset": [
+          "ن"
+        ],
+        "nucleus": [
+          "ا"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "complex_attached_pronoun",
+        "frequency_score": 0.85
+      },
+      {
+        "pattern": "كم",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "م"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "complex_attached_pronoun",
+        "frequency_score": 0.85
+      },
+      {
+        "pattern": "هم",
+        "onset": [
+          "ه"
+        ],
+        "nucleus": [
+          "م"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "complex_attached_pronoun",
+        "frequency_score": 0.85
+      },
+      {
+        "pattern": "هن",
+        "onset": [
+          "ه"
+        ],
+        "nucleus": [
+          "ن"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "complex_attached_pronoun",
+        "frequency_score": 0.85
+      }
+    ],
+    "functional_syllables": [
+      {
+        "pattern": "بِ",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "attached_preposition",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "لِ",
+        "onset": [
+          "ل"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "attached_preposition",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "كِ",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "ِ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "attached_preposition",
+        "frequency_score": 0.9
+      },
+      {
+        "pattern": "هل",
+        "onset": [
+          "ه"
+        ],
+        "nucleus": [
+          "ل"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "أ",
+        "onset": [
+          "أ"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "ما",
+        "onset": [
+          "م"
+        ],
+        "nucleus": [
+          "ا"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "من",
+        "onset": [
+          "م"
+        ],
+        "nucleus": [
+          "ن"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "متى",
+        "onset": [
+          "م"
+        ],
+        "nucleus": [
+          "ت"
+        ],
+        "coda": [
+          "ى"
+        ],
+        "weight": "heavy",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "أين",
+        "onset": [
+          "أ"
+        ],
+        "nucleus": [
+          "ي"
+        ],
+        "coda": [
+          "ن"
+        ],
+        "weight": "heavy",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "كيف",
+        "onset": [
+          "ك"
+        ],
+        "nucleus": [
+          "ي"
+        ],
+        "coda": [
+          "ف"
+        ],
+        "weight": "heavy",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "لماذا",
+        "onset": [
+          "ل"
+        ],
+        "nucleus": [
+          "م"
+        ],
+        "coda": [
+          "ا",
+          "ذ",
+          "ا"
+        ],
+        "weight": "heavy",
+        "morphological_type": "interrogative_particle",
+        "frequency_score": 0.7
+      }
+    ],
+    "derivational_syllables": [
+      {
+        "pattern": "است",
+        "onset": [
+          "ا"
+        ],
+        "nucleus": [
+          "س"
+        ],
+        "coda": [
+          "ت"
+        ],
+        "weight": "heavy",
+        "morphological_type": "derivational_prefix",
+        "frequency_score": 0.75
+      },
+      {
+        "pattern": "ان",
+        "onset": [
+          "ا"
+        ],
+        "nucleus": [
+          "ن"
+        ],
+        "coda": [],
+        "weight": "light",
+        "morphological_type": "derivational_prefix",
+        "frequency_score": 0.75
+      }
+    ],
+    "phonological_syllables": [
+      {
+        "pattern": "قدّ",
+        "onset": [
+          "ق"
+        ],
+        "nucleus": [
+          "ُ"
+        ],
+        "coda": [
+          "دّ"
+        ],
+        "weight": "super_heavy",
+        "morphological_type": "geminated_syllable",
+        "frequency_score": 0.65
+      },
+      {
+        "pattern": "مدّ",
+        "onset": [
+          "م"
+        ],
+        "nucleus": [
+          "َ"
+        ],
+        "coda": [
+          "دّ"
+        ],
+        "weight": "super_heavy",
+        "morphological_type": "geminated_syllable",
+        "frequency_score": 0.65
+      },
+      {
+        "pattern": "قال",
+        "onset": [
+          "ق"
+        ],
+        "nucleus": [
+          "ا"
+        ],
+        "coda": [
+          "ل"
+        ],
+        "weight": "heavy",
+        "morphological_type": "vowel_changed_syllable",
+        "frequency_score": 0.7
+      },
+      {
+        "pattern": "بيع",
+        "onset": [
+          "ب"
+        ],
+        "nucleus": [
+          "ي"
+        ],
+        "coda": [
+          "ع"
+        ],
+        "weight": "heavy",
+        "morphological_type": "vowel_changed_syllable",
+        "frequency_score": 0.7
+      }
+    ]
+  },
+  "improvement_metrics": {
+    "phoneme_increase": 2.230769230769231,
+    "syllable_type_increase": 2.3333333333333335,
+    "coverage_improvement": 22.0,
+    "estimated_total_combinations": 35404
+  }
+}

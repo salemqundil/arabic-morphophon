@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Word Weight Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #a29bfe;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #a29bfe;
+            box-shadow: 0 0 10px rgba(162, 155, 254, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #a29bfe;
+        }
+        .weight-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #a29bfe;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .weight-display {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            border-radius: 10px;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .pattern-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .structure-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .meter-box {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .weight-meter {
+            background: #e9ecef;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .weight-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a29bfe, #6c5ce7);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .weight-category {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .heavy { background: #e74c3c; color: white; }
+        .medium { background: #f39c12; color: white; }
+        .light { background: #2ecc71; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك وزن الكلمات</h1>
+            <div class="subtitle">Arabic Word Weight Analysis Engine</div>
+            <div class="subtitle">يحسب الوزن الصرفي والعروضي للكلمات العربية</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل الكلمة العربية:</label>
+            <input type="text" id="arabicText" placeholder="مثال: مُستَقبَل" value="مُستَقبَل">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('مُستَقبَل')">مُستَقبَل</button>
+            <button class="btn example-btn" onclick="setExample('كتاب')">كتاب</button>
+            <button class="btn example-btn" onclick="setExample('مدرسة')">مدرسة</button>
+            <button class="btn example-btn" onclick="setExample('استغفار')">استغفار</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeWeight()"> حساب الوزن</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج تحليل الوزن</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeWeight() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال كلمة عربية للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateWeightAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateWeightAnalysis(word) {
+            // Calculate morphological weight
+            const morphWeight = calculateMorphologicalWeight(word);
+            const prosodyWeight = calculateProsodicWeight(word);
+            const pattern = extractPattern(word);
+            const structure = analyzeStructure(word);
+
+            return {
+                input_word: word,
+                morphological_weight: morphWeight,
+                prosodic_weight: prosodyWeight,
+                total_weight: morphWeight.value + prosodyWeight.value,
+                pattern: pattern,
+                structure: structure,
+                weight_category: categorizeWeight(morphWeight.value + prosodyWeight.value),
+                meter_analysis: analyzeMeter(word),
+                comparative_analysis: generateComparativeAnalysis(word, morphWeight.value + prosodyWeight.value)
+            };
+        }
+
+        function calculateMorphologicalWeight(word) {
+            let weight = 0;
+            let factors = [];
+
+            // Base word length
+            weight += word.length * 0.5;
+            factors.push(`طول الكلمة: ${word.length}  0.5 = ${word.length * 0.5}`);
+
+            // Prefixes
+            const prefixes = ['ال', 'و', 'ف', 'ب', 'ك', 'ل', 'مُ', 'يُ', 'تُ', 'أُ'];
+            prefixes.forEach(prefix => {
+                if (word.startsWith(prefix)) {
+                    weight += 1;
+                    factors.push(`بادئة "${prefix}": +1`);
+                }
+            });
+
+            // Suffixes
+            const suffixes = ['ة', 'ان', 'ون', 'ين', 'ات', 'ها', 'هم', 'هن'];
+            suffixes.forEach(suffix => {
+                if (word.endsWith(suffix)) {
+                    weight += 0.8;
+                    factors.push(`لاحقة "${suffix}": +0.8`);
+                }
+            });
+
+            // Complex consonant clusters
+            const clusters = ['ست', 'غف', 'كت', 'شر'];
+            clusters.forEach(cluster => {
+                if (word.includes(cluster)) {
+                    weight += 1.2;
+                    factors.push(`مجموعة صامتة "${cluster}": +1.2`);
+                }
+            });
+
+            return {
+                value: Math.round(weight * 10) / 10,
+                factors: factors
+            };
+        }
+
+        function calculateProsodicWeight(word) {
+            let weight = 0;
+            let factors = [];
+
+            // Syllable count estimation
+            const vowels = (word.match(/[اويةىأإآ]/g) || []).length;
+            const syllabic_units = Math.max(1, vowels);
+            weight += syllabic_units * 1.5;
+            factors.push(`عدد المقاطع المقدر: ${syllabic_units}  1.5 = ${syllabic_units * 1.5}`);
+
+            // Long vowels
+            const longVowels = (word.match(/[آاوى]/g) || []).length;
+            weight += longVowels * 0.7;
+            factors.push(`صوائت طويلة: ${longVowels}  0.7 = ${longVowels * 0.7}`);
+
+            // Stressed positions (simplified)
+            if (word.length > 4) {
+                weight += 1;
+                factors.push('كلمة طويلة (نبر إضافي): +1');
+            }
+
+            return {
+                value: Math.round(weight * 10) / 10,
+                factors: factors
+            };
+        }
+
+        function extractPattern(word) {
+            // Simplified pattern extraction
+            const patterns = {
+                'مُستَقبَل': 'مُستَفعَل',
+                'كتاب': 'فِعال',
+                'مدرسة': 'مَفعَلة',
+                'استغفار': 'استِفعال'
+            };
+
+            return patterns[word] || generateGenericPattern(word);
+        }
+
+        function generateGenericPattern(word) {
+            // Simple pattern generation based on word structure
+            if (word.startsWith('مُ')) return 'مُفعَل';
+            if (word.startsWith('است')) return 'استِفعال';
+            if (word.endsWith('ة')) return 'فَعَلة';
+            return 'فَعَل';
+        }
+
+        function analyzeStructure(word) {
+            const consonants = word.replace(/[اويةىأإآ]/g, '').length;
+            const vowels = (word.match(/[اويةىأإآ]/g) || []).length;
+
+            return {
+                total_letters: word.length,
+                consonants: consonants,
+                vowels: vowels,
+                cv_ratio: vowels > 0 ? (consonants / vowels).toFixed(2) : 'غير محدد',
+                complexity: word.length > 6 ? 'معقد' : word.length > 4 ? 'متوسط' : 'بسيط'
+            };
+        }
+
+        function categorizeWeight(totalWeight) {
+            if (totalWeight >= 8) return { category: 'ثقيل', class: 'heavy', description: 'كلمة ثقيلة الوزن' };
+            if (totalWeight >= 5) return { category: 'متوسط', class: 'medium', description: 'كلمة متوسطة الوزن' };
+            return { category: 'خفيف', class: 'light', description: 'كلمة خفيفة الوزن' };
+        }
+
+        function analyzeMeter(word) {
+            // Simplified metrical analysis
+            const patterns = ['فعولن', 'مفاعيلن', 'فاعلاتن', 'متفاعلن'];
+            const selectedPattern = patterns[word.length % patterns.length];
+
+            return {
+                meter_pattern: selectedPattern,
+                rhythm: word.length % 2 === 0 ? 'متوازن' : 'غير متوازن',
+                suitability: 'مناسب للنثر والشعر'
+            };
+        }
+
+        function generateComparativeAnalysis(word, weight) {
+            const comparisons = [
+                { word: 'كتاب', weight: 4.5 },
+                { word: 'مدرسة', weight: 5.8 },
+                { word: 'استقبال', weight: 9.2 },
+                { word: 'بيت', weight: 3.0 }
+            ];
+
+            const closest = comparisons.reduce((prev, curr) =>
+                Math.abs(curr.weight - weight) < Math.abs(prev.weight - weight) ? curr : prev
+            );
+
+            return {
+                closest_match: closest,
+                relative_position: weight > 6 ? 'أثقل من المتوسط' : weight > 4 ? 'قريب من المتوسط' : 'أخف من المتوسط'
+            };
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            const weightPercent = Math.min(100, (analysis.total_weight / 12) * 100);
+
+            let html = `
+                <div class="weight-analysis">
+                    <div class="word-header"> تحليل وزن الكلمة: ${analysis.input_word}</div>
+
+                    <div class="weight-display">
+                        ${analysis.pattern}
+                        <div style="font-size: 0.6em; margin-top: 10px;">الوزن الإجمالي: ${analysis.total_weight}</div>
+                    </div>
+
+                    <div class="weight-category ${analysis.weight_category.class}">
+                        ${analysis.weight_category.category} - ${analysis.weight_category.description}
+                    </div>
+
+                    <div class="meter-box">
+                        <strong> مقياس الوزن:</strong><br>
+                        <div class="weight-meter">
+                            <div class="weight-fill" style="width: ${weightPercent}%">
+                                ${analysis.total_weight} / 12
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-grid">
+                        <div class="pattern-box info-box">
+                            <strong> الوزن الصرفي:</strong><br>
+                            <strong>القيمة:</strong> ${analysis.morphological_weight.value}<br>
+                            <strong>العوامل:</strong><br>
+                            ${analysis.morphological_weight.factors.map(f => ` ${f}`).join('<br>')}
+                        </div>
+
+                        <div class="structure-box info-box">
+                            <strong> الوزن العروضي:</strong><br>
+                            <strong>القيمة:</strong> ${analysis.prosodic_weight.value}<br>
+                            <strong>العوامل:</strong><br>
+                            ${analysis.prosodic_weight.factors.map(f => ` ${f}`).join('<br>')}
+                        </div>
+                    </div>
+
+                    <div class="meter-box">
+                        <strong> التحليل التركيبي:</strong><br>
+                        <strong>إجمالي الحروف:</strong> ${analysis.structure.total_letters} |
+                        <strong>الصوامت:</strong> ${analysis.structure.consonants} |
+                        <strong>الصوائت:</strong> ${analysis.structure.vowels}<br>
+                        <strong>نسبة ص/ع:</strong> ${analysis.structure.cv_ratio} |
+                        <strong>مستوى التعقيد:</strong> ${analysis.structure.complexity}
+                    </div>
+
+                    <div class="meter-box">
+                        <strong> التحليل العروضي:</strong><br>
+                        <strong>البحر:</strong> ${analysis.meter_analysis.meter_pattern} |
+                        <strong>الإيقاع:</strong> ${analysis.meter_analysis.rhythm}<br>
+                        <strong>الملاءمة:</strong> ${analysis.meter_analysis.suitability}
+                    </div>
+
+                    <div class="stats">
+                        <strong> التحليل المقارن:</strong>
+                        أقرب كلمة: ${analysis.comparative_analysis.closest_match.word} (${analysis.comparative_analysis.closest_match.weight}) |
+                        الموقع النسبي: ${analysis.comparative_analysis.relative_position}
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeWeight();
+        };
+    </script>
+</body>
+</html>

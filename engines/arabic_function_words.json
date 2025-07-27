@@ -1,0 +1,5316 @@
+{
+  "metadata": {
+    "generator": "ArabicFunctionWordsGenerator",
+    "version": "1.0.0",
+    "generated_date": "2025-07-24",
+    "total_candidates_generated": 2057,
+    "validated_candidates": 2057,
+    "top_candidates": 500,
+    "processing_time": 0.9860851764678955,
+    "similarity_threshold": 0.6
+  },
+  "statistics": {
+    "syllable_database_size": 22218,
+    "patterns_used": 12,
+    "known_function_words": 118,
+    "exact_matches": 0,
+    "high_similarity": 24,
+    "medium_similarity": 476,
+    "low_similarity": 0
+  },
+  "classification": {
+    "high_similarity": [
+      {
+        "word": "لَ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "وَ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.05360000000000001,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "لُ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "لِ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بُلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "وُ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "وِ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بُلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "كَ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "فَ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.026800000000000004,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بُ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بِ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "كُ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "كِ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "فُ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0201,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "فِ",
+        "pattern": "CV",
+        "similarity_score": 0.6666666666666666,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0201,
+        "phonological_weight": 1.0
+      }
+    ],
+    "medium_similarity": [
+      {
+        "word": "تَتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَنَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَحَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَيَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُنَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِنَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَحُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَحِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04240000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَيَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.04240000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَنُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَنِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُيَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِيَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُحَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.039,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِحَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.039,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.039,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.039,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.039,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.039,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.038500000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُيَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.038500000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.038500000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِيَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.038500000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَيُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَيِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُنُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُنِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِنُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِنِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0357,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0357,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَيُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0357,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَيِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0357,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُحُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُحِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِحُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِحِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0351,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُيُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُيِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِيُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِيِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُيُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُيِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِيُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِيِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5714285714285714,
+        "closest_known_word": "حيث",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "نَ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "من",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "مَ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "من",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.05360000000000001,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "يَ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "في",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.05360000000000001,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَتَلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.05346666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "نُ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "من",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "نِ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "من",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَبَلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.044533333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.044533333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.041600000000000005,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04156666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04156666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04156666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "مُ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "من",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "مِ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "من",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "يُ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "في",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "يِ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "في",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَجَلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04013333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03936666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03936666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.038266666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِلَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.038266666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0364,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0364,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "هَ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "هل",
+        "word_type": "حرف_استفهام",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَحُلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03493333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03493333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَحَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.034133333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِلُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِلِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "بل",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَحُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03153333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَحِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03153333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "سَ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "سـ",
+        "word_type": "حرف",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَرُحَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.031166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرِحَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.031166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُحُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.028566666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُحِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.028566666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرِحُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.028566666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرِحِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.028566666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "دَ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ضد",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.026800000000000004,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "هُ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "هل",
+        "word_type": "حرف_استفهام",
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "هِ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "هل",
+        "word_type": "حرف_استفهام",
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "حَشَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0246,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "سُ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "سـ",
+        "word_type": "حرف",
+        "frequency_estimate": 0.0234,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "سِ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "سـ",
+        "word_type": "حرف",
+        "frequency_estimate": 0.0234,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "حَشُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.022350000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَشِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.022350000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُشَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0207,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِشَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0207,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ضد",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0201,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "دِ",
+        "pattern": "CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "ضد",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0201,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "حُشُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.01845,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُشِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.01845,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِشُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.01845,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِشِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.5,
+        "closest_known_word": "حاشا",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.01845,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَتَتَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.05346666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.05346666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.05053333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَتُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَتِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُتَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِتَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04826666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.046066666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.046066666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04533333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04533333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.044533333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.044533333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَحَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُتُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُتِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِتُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِتِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَتَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "حَمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.04240000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَبَيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.041600000000000005,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.041600000000000005,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.041600000000000005,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04156666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04156666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04156666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04086666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04086666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04086666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04086666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَحُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتَحِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُتَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِتَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04046666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04013333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَوَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04013333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04013333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03936666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03936666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03933333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.038666666666666676,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03863333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03863333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03863333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "حُمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.038500000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.038500000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَجُنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.038266666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِنَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.038266666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُحَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِحَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَتُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَتِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُوَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037533333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037533333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِوَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037533333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037533333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.037200000000000004,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03713333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبَيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03713333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03713333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرَيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03713333333333333,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03643333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03643333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0364,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0364,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.036366666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "حَمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0357,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0357,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَحَوُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.035666666666666666,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَوِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.035666666666666666,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.035666666666666666,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحَيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.035666666666666666,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.035333333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِيَ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.035333333333333335,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُحُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتُحِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِحُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَتِحِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُتُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُتِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِتُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِتِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03526666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03493333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03493333333333334,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0342,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدَيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0342,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03416666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبُيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَبِيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَرُيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034166666666666665,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِنُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِنِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُوُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُوِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحُيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِوُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِوِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حول",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَحِيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03306666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.032733333333333337,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجَيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.032733333333333337,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031966666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدُيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031966666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031966666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَدِيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031966666666666664,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "حُمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حُمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حِمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "حيثما",
+        "word_type": "حرف_شرط",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَجُيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.030866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجُيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.030866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِيُ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.030866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "بَجِيِ",
+        "pattern": "CV-CV-CV",
+        "similarity_score": 0.4444444444444444,
+        "closest_known_word": "بين",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.030866666666666667,
+        "phonological_weight": 3.0
+      },
+      {
+        "word": "تَ",
+        "pattern": "CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "تَلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.05800000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0513,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0513,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.05020000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.05020000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُ",
+        "pattern": "CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "تِ",
+        "pattern": "CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "تُلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَفَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِتَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَبُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَبِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَكُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَكِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0435,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0435,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0435,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0435,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جَلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04240000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَفُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04125,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تَفِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04125,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04125,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.04125,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.04020000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.04020000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.040150000000000005,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جُلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0396,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جِلَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0396,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جَوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.038000000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0379,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03685000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03685000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِمَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03685000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03685000000000001,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُفَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0368,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِفَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0368,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0368,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0368,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِتُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِتِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُبُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُبِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُكُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُكِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِبُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِبِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِكُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِكِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَ",
+        "pattern": "CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "غير",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَرَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَهَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جُوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0352,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جِوَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0352,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جَلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034600000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جَلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.034600000000000006,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.0335,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.0335,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0335,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0335,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُفُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تُفِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِفُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "تِفِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03345,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَحَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0334,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَسَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0334,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0334,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0334,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَحَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما برح",
+        "word_type": "حرف",
+        "frequency_estimate": 0.0334,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جُلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جُلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جِلُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جِلِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ل",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0318,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جَوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0313,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "جَوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.0313,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "حَ",
+        "pattern": "CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "تحت",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 1.0
+      },
+      {
+        "word": "بَدَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَفَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دَكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَفَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ف",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.031200000000000002,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَبُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَبِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَرُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَرِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَكُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَكِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَهُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَهِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُرَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بُهَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِرَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بِهَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَبُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَبِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَكُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رَكِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رُكَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ك",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "رِبَ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.031149999999999997,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دُوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِمُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِمِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ما دام",
+        "word_type": "حرف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِوُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "دِوِ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "و",
+        "word_type": "حرف_عطف",
+        "frequency_estimate": 0.03015,
+        "phonological_weight": 2.0
+      },
+      {
+        "word": "بَحُ",
+        "pattern": "CV-CV",
+        "similarity_score": 0.4,
+        "closest_known_word": "ب",
+        "word_type": "حرف_جر",
+        "frequency_estimate": 0.0295,
+        "phonological_weight": 2.0
+      }
+    ],
+    "low_similarity": [],
+    "exact_matches": []
+  },
+  "top_function_words": [
+    {
+      "word": "لَ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ل",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "وَ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "و",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "وَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.05360000000000001,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَلَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بَ",
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "لُ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ل",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "لُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "لِ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ل",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "لِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بُلَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بُ",
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بِلَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بِ",
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَلُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بَ",
+        "لُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَلِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بَ",
+        "لِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "وُ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "و",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "وُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "وِ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "و",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "وِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0402,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بُلُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بُ",
+        "لُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بُلِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بُ",
+        "لِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بِلُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بِ",
+        "لُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بِلِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "بل",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "بِ",
+        "لِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.03675,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ب",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "كَ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ك",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "كَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0356,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "فَ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ف",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "فَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.026800000000000004,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بُ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ب",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بِ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ب",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "كُ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ك",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "كُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "كِ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ك",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "كِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.026699999999999998,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "فُ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ف",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "فُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0201,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "فِ",
+      "pattern": "CV",
+      "similarity_score": 0.6666666666666666,
+      "closest_known_word": "ف",
+      "word_type": "حرف_عطف",
+      "syllable_components": [
+        "فِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0201,
+        "phonological_weight": 1.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تَتَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تَ",
+        "تَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.062400000000000004,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تَتُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تَ",
+        "تُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تَتِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تَ",
+        "تِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تُتَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تُ",
+        "تَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تِتَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تِ",
+        "تَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0546,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَنَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "بين",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بَ",
+        "نَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.049,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تَحَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تَ",
+        "حَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تُتُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تُ",
+        "تُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تُتِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تُ",
+        "تِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تِتُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تِ",
+        "تُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تِتِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تِ",
+        "تِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حَتَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حَ",
+        "تَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حَلَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "حول",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حَ",
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0468,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَيَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "بين",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بَ",
+        "يَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0446,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بُنَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "بين",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بُ",
+        "نَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بِنَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "بين",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بِ",
+        "نَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.04455,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تَحُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تَ",
+        "حُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "تَحِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "تَ",
+        "حِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حُتَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حُ",
+        "تَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حُلَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "حول",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حُ",
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حِتَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "تحت",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حِ",
+        "تَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حِلَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "حول",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حِ",
+        "لَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0429,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حَوَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "حول",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "حَ",
+        "وَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.04240000000000001,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "حَيَ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "حيث",
+      "word_type": "حرف_شرط",
+      "syllable_components": [
+        "حَ",
+        "يَ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.04240000000000001,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَنُ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "بين",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بَ",
+        "نُ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    },
+    {
+      "word": "بَنِ",
+      "pattern": "CV-CV",
+      "similarity_score": 0.5714285714285714,
+      "closest_known_word": "بين",
+      "word_type": "حرف_جر",
+      "syllable_components": [
+        "بَ",
+        "نِ"
+      ],
+      "linguistic_features": {
+        "frequency_estimate": 0.0412,
+        "phonological_weight": 2.0,
+        "morphological_complexity": 0.0
+      }
+    }
+  ]
+}

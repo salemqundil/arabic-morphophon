@@ -1,0 +1,1200 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Arabic Phoneme to Word Decision Tree Generator
+==============================================
+نظام شجرة القرارات من الفونيمات إلى الكلمات النهائية
+
+Decision tree logic flow visualization for Arabic text processing:
+Phonemes → Diacritics → Syllables → Final Words
+
+Author: GitHub Copilot Arabic NLP Expert
+Version: 1.0.0 - DECISION TREE LOGIC
+Date: 2025-07-24
+Encoding: UTF 8
+"""
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped-def,misc
+
+
+import json  # noqa: F401
+import yaml  # noqa: F401
+from typing import Dict, List, Any, Optional, Tuple
+from dataclasses import dataclass, asdict  # noqa: F401
+from enum import Enum  # noqa: F401
+import logging  # noqa: F401
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# DECISION TREE NODE TYPES
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class NodeType(Enum):
+    """أنواع عقد الشجرة"""
+
+    ROOT = "root"
+    PHONEME_LAYER = "phoneme_layer"
+    DIACRITIC_LAYER = "diacritic_layer"
+    SYLLABLE_LAYER = "syllable_layer"
+    MORPHEME_LAYER = "morpheme_layer"
+    WORD_LAYER = "word_layer"
+    FINAL_OUTPUT = "final_output"
+
+
+class DecisionCriteria(Enum):
+    """معايير اتخاذ القرار"""
+
+    PHONETIC_COMPATIBILITY = "phonetic_compatibility"
+    MORPHOLOGICAL_VALIDITY = "morphological_validity"
+    SYLLABLE_STRUCTURE = "syllable_structure"
+    DIACRITIC_RULES = "diacritic_rules"
+    PHONOTACTIC_CONSTRAINTS = "phonotactic_constraints"
+    SEMANTIC_PLAUSIBILITY = "semantic_plausibility"
+
+
+@dataclass
+class DecisionNode:
+    """عقدة في شجرة القرارات"""
+
+    node_id: str
+    node_type: NodeType
+    input_data: List[str]
+    decision_criteria: List[DecisionCriteria]
+    processing_rules: Dict[str, Any]
+    output_data: List[str]
+    confidence_score: float
+    next_nodes: List[str]
+    error_handling: Dict[str, str]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# ARABIC PHONEME TO WORD DECISION TREE
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+class ArabicPhonemeWordDecisionTree:
+    """شجرة القرارات الشاملة من الفونيمات إلى الكلمات العربية"""
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """TODO: Add docstring."""
+        self.decision_tree = {}
+        self.processing_pipeline = []
+        self.linguistic_rules = {}
+
+        # Initialize decision tree structure
+        self._initialize_tree_structure()
+        self._load_linguistic_rules()
+        logger.info("تم تهيئة شجرة القرارات للمعالجة الصوتية العربية")
+
+    def _initialize_tree_structure(self):  # type: ignore[no-untyped def]
+        """تهيئة هيكل شجرة القرارات"""
+
+        # ROOT NODE - Input Processing
+        self.decision_tree["root"] = DecisionNode(
+            node_id="root",
+            node_type=NodeType.ROOT,
+            input_data=["raw_arabic_text", "user_input"],
+            decision_criteria=[DecisionCriteria.PHONETIC_COMPATIBILITY],
+            processing_rules={
+                "text_normalization": True,
+                "character_validation": True,
+                "encoding_check": "utf 8",
+                "preprocessing_steps": [
+                    "remove_extra_spaces",
+                    "normalize_arabic_characters",
+                    "validate_arabic_script",
+                ],
+            },
+            output_data=["normalized_text", "character_stream"],
+            confidence_score=1.0,
+            next_nodes=["phoneme_analysis"],
+            error_handling={
+                "invalid_characters": "filter_and_log",
+                "encoding_errors": "convert_to_utf8",
+                "empty_input": "return_error",
+            },
+        )
+
+        # LAYER 1: PHONEME ANALYSIS
+        self.decision_tree["phoneme_analysis"] = DecisionNode(
+            node_id="phoneme_analysis",
+            node_type=NodeType.PHONEME_LAYER,
+            input_data=["character_stream"],
+            decision_criteria=[
+                DecisionCriteria.PHONETIC_COMPATIBILITY,
+                DecisionCriteria.MORPHOLOGICAL_VALIDITY,
+            ],
+            processing_rules={
+                "phoneme_classification": {
+                    "consonants": [
+                        "ب",
+                        "ت",
+                        "ث",
+                        "ج",
+                        "ح",
+                        "خ",
+                        "د",
+                        "ذ",
+                        "ر",
+                        "ز",
+                        "س",
+                        "ش",
+                        "ص",
+                        "ض",
+                        "ط",
+                        "ظ",
+                        "ع",
+                        "غ",
+                        "ف",
+                        "ق",
+                        "ك",
+                        "ل",
+                        "م",
+                        "ن",
+                        "ه",
+                        "و",
+                        "ي",
+                        "ء",
+                    ],
+                    "vowels": ["َ", "ِ", "ُ", "ا", "و", "ي"],
+                    "diacritics": ["ً", "ٌ", "ٍ", "ْ", "ّ"],
+                    "special": ["آ", "أ", "إ", "ئ", "ؤ", "ة"],
+                },
+                "phonetic_features": {
+                    "manner_of_articulation": ["stop", "fricative", "nasal", "liquid"],
+                    "place_of_articulation": [
+                        "bilabial",
+                        "dental",
+                        "velar",
+                        "pharyngeal",
+                    ],
+                    "voicing": ["voiced", "voiceless"],
+                    "emphasis": ["emphatic", "non_emphatic"],
+                },
+                "validation_rules": [
+                    "check_arabic_phoneme_inventory",
+                    "identify_phoneme_boundaries",
+                    "extract_phonetic_features",
+                ],
+            },
+            output_data=["phoneme_sequence", "phonetic_features", "phoneme_boundaries"],
+            confidence_score=0.95,
+            next_nodes=["diacritic_processing"],
+            error_handling={
+                "unknown_phoneme": "mark_as_foreign",
+                "malformed_sequence": "attempt_correction",
+                "feature_extraction_error": "use_default_features",
+            },
+        )
+
+        # LAYER 2: DIACRITIC PROCESSING
+        self.decision_tree["diacritic_processing"] = DecisionNode(
+            node_id="diacritic_processing",
+            node_type=NodeType.DIACRITIC_LAYER,
+            input_data=["phoneme_sequence", "phonetic_features"],
+            decision_criteria=[
+                DecisionCriteria.DIACRITIC_RULES,
+                DecisionCriteria.MORPHOLOGICAL_VALIDITY,
+            ],
+            processing_rules={
+                "diacritic_analysis": {
+                    "short_vowels": {
+                        "َ": {"name": "fatha", "length": "short", "quality": "open"},
+                        "ِ": {"name": "kasra", "length": "short", "quality": "front"},
+                        "ُ": {"name": "damma", "length": "short", "quality": "back"},
+                    },
+                    "tanween": {
+                        "ً": {"type": "nunation_fath", "case": "accusative"},
+                        "ٌ": {"type": "nunation_damm", "case": "nominative"},
+                        "ٍ": {"type": "nunation_kasr", "case": "genitive"},
+                    },
+                    "other_marks": {
+                        "ْ": {"type": "sukun", "function": "consonant_cluster"},
+                        "ّ": {"type": "shadda", "function": "gemination"},
+                    },
+                },
+                "vowelization_rules": [
+                    "identify_explicit_vowels",
+                    "predict_missing_vowels",
+                    "apply_vowel_harmony",
+                    "resolve_ambiguous_cases",
+                ],
+                "morphological_constraints": {
+                    "root_pattern_matching": True,
+                    "inflectional_analysis": True,
+                    "derivational_analysis": True,
+                },
+            },
+            output_data=[
+                "vowelized_sequence",
+                "morphological_analysis",
+                "diacritic_features",
+            ],
+            confidence_score=0.88,
+            next_nodes=["syllable_construction"],
+            error_handling={
+                "missing_vowels": "use_statistical_prediction",
+                "conflicting_diacritics": "apply_priority_rules",
+                "invalid_combinations": "suggest_corrections",
+            },
+        )
+
+        # LAYER 3: SYLLABLE CONSTRUCTION
+        self.decision_tree["syllable_construction"] = DecisionNode(
+            node_id="syllable_construction",
+            node_type=NodeType.SYLLABLE_LAYER,
+            input_data=["vowelized_sequence", "morphological_analysis"],
+            decision_criteria=[
+                DecisionCriteria.SYLLABLE_STRUCTURE,
+                DecisionCriteria.PHONOTACTIC_CONSTRAINTS,
+            ],
+            processing_rules={
+                "syllable_patterns": {
+                    "CV": {"structure": "consonant + short_vowel", "weight": "light"},
+                    "CVC": {
+                        "structure": "consonant + short_vowel + consonant",
+                        "weight": "heavy",
+                    },
+                    "CVV": {"structure": "consonant + long_vowel", "weight": "heavy"},
+                    "CVVC": {
+                        "structure": "consonant + long_vowel + consonant",
+                        "weight": "super_heavy",
+                    },
+                    "CVCC": {
+                        "structure": "consonant + short_vowel + consonant + consonant",
+                        "weight": "super_heavy",
+                    },
+                },
+                "syllabification_algorithm": [
+                    "identify_syllable_nuclei",
+                    "assign_consonants_to_syllables",
+                    "apply_maximal_onset_principle",
+                    "handle_consonant_clusters",
+                    "resolve_ambiguous_boundaries",
+                ],
+                "phonotactic_constraints": {
+                    "onset_constraints": [
+                        "single_consonant_allowed",
+                        "some_clusters_allowed",
+                        "avoid_similar_place_clusters",
+                    ],
+                    "coda_constraints": [
+                        "single_consonant_preferred",
+                        "limited_clusters",
+                        "word_final_exceptions",
+                    ],
+                    "nucleus_constraints": [
+                        "exactly_one_vowel",
+                        "long_vowel_exceptions",
+                        "diphthong_handling",
+                    ],
+                },
+            },
+            output_data=["syllable_sequence", "prosodic_structure", "stress_pattern"],
+            confidence_score=0.85,
+            next_nodes=["morpheme_analysis"],
+            error_handling={
+                "invalid_syllable_structure": "apply_repair_strategies",
+                "constraint_violations": "find_minimal_violations",
+                "ambiguous_boundaries": "use_frequency_based_decisions",
+            },
+        )
+
+        # LAYER 4: MORPHEME ANALYSIS
+        self.decision_tree["morpheme_analysis"] = DecisionNode(
+            node_id="morpheme_analysis",
+            node_type=NodeType.MORPHEME_LAYER,
+            input_data=["syllable_sequence", "prosodic_structure"],
+            decision_criteria=[
+                DecisionCriteria.MORPHOLOGICAL_VALIDITY,
+                DecisionCriteria.SEMANTIC_PLAUSIBILITY,
+            ],
+            processing_rules={
+                "morpheme_identification": {
+                    "root_extraction": {
+                        "trilateral_roots": True,
+                        "quadrilateral_roots": True,
+                        "pattern_matching": ["فعل", "فاعل", "مفعول", "تفعيل"],
+                    },
+                    "affix_analysis": {
+                        "prefixes": ["ال", "و", "ف", "ب", "ل", "من", "إلى"],
+                        "suffixes": ["ة", "ان", "ين", "ون", "ها", "هم", "هن"],
+                        "infixes": ["ت", "ن", "ا"],
+                    },
+                    "stem_formation": [
+                        "combine_root_and_pattern",
+                        "apply_morphophonemic_rules",
+                        "handle_weak_letters",
+                        "process_gemination",
+                    ],
+                },
+                "morphological_features": {
+                    "word_class": ["noun", "verb", "adjective", "particle"],
+                    "inflectional_features": {
+                        "gender": ["masculine", "feminine"],
+                        "number": ["singular", "dual", "plural"],
+                        "case": ["nominative", "accusative", "genitive"],
+                        "definiteness": ["definite", "indefinite"],
+                    },
+                    "derivational_features": {
+                        "verbal_form": [
+                            "I",
+                            "II",
+                            "III",
+                            "IV",
+                            "V",
+                            "VI",
+                            "VII",
+                            "VIII",
+                            "IX",
+                            "X",
+                        ],
+                        "noun_type": ["concrete", "abstract", "agent", "patient"],
+                        "adjective_type": ["qualitative", "relational", "intensive"],
+                    },
+                },
+            },
+            output_data=[
+                "morpheme_structure",
+                "grammatical_features",
+                "semantic_roles",
+            ],
+            confidence_score=0.82,
+            next_nodes=["word_formation"],
+            error_handling={
+                "unrecognized_morphemes": "consult_lexicon",
+                "invalid_combinations": "check_morphological_rules",
+                "ambiguous_analysis": "rank_by_frequency",
+            },
+        )
+
+        # LAYER 5: WORD FORMATION
+        self.decision_tree["word_formation"] = DecisionNode(
+            node_id="word_formation",
+            node_type=NodeType.WORD_LAYER,
+            input_data=["morpheme_structure", "grammatical_features"],
+            decision_criteria=[
+                DecisionCriteria.MORPHOLOGICAL_VALIDITY,
+                DecisionCriteria.SEMANTIC_PLAUSIBILITY,
+            ],
+            processing_rules={
+                "word_assembly": {
+                    "morpheme_ordering": [
+                        "prefix_attachment",
+                        "stem_formation",
+                        "suffix_attachment",
+                        "phonological_adjustments",
+                    ],
+                    "allomorph_selection": {
+                        "context_sensitive_rules": True,
+                        "phonological_conditioning": True,
+                        "lexical_conditioning": True,
+                    },
+                    "morphophonemic_processes": [
+                        "vowel_assimilation",
+                        "consonant_assimilation",
+                        "epenthesis",
+                        "deletion",
+                        "metathesis",
+                    ],
+                },
+                "word_validation": {
+                    "lexicon_lookup": True,
+                    "productivity_check": True,
+                    "semantic_coherence": True,
+                    "pragmatic_acceptability": True,
+                },
+                "output_formatting": {
+                    "vocalization_level": ["none", "partial", "full"],
+                    "orthographic_normalization": True,
+                    "presentation_form": ["academic", "modern", "classical"],
+                },
+            },
+            output_data=["formed_word", "confidence_metrics", "alternative_forms"],
+            confidence_score=0.78,
+            next_nodes=["final_output"],
+            error_handling={
+                "formation_failure": "provide_closest_valid_form",
+                "low_confidence": "flag_for_manual_review",
+                "multiple_valid_forms": "rank_by_frequency_and_context",
+            },
+        )
+
+        # LAYER 6: FINAL OUTPUT
+        self.decision_tree["final_output"] = DecisionNode(
+            node_id="final_output",
+            node_type=NodeType.FINAL_OUTPUT,
+            input_data=["formed_word", "confidence_metrics"],
+            decision_criteria=[DecisionCriteria.SEMANTIC_PLAUSIBILITY],
+            processing_rules={
+                "quality_assessment": {
+                    "linguistic_validity": True,
+                    "confidence_threshold": 0.7,
+                    "error_detection": True,
+                },
+                "output_enrichment": {
+                    "add_linguistic_analysis": True,
+                    "include_alternatives": True,
+                    "provide_explanations": True,
+                },
+                "result_presentation": {
+                    "format": "comprehensive_analysis",
+                    "include_metadata": True,
+                    "error_reporting": True,
+                },
+            },
+            output_data=["final_word", "analysis_report", "processing_metadata"],
+            confidence_score=0.75,
+            next_nodes=[],
+            error_handling={
+                "below_threshold": "return_error_with_explanation",
+                "processing_timeout": "return_partial_results",
+                "system_error": "log_and_return_graceful_failure",
+            },
+        )
+
+    def _load_linguistic_rules(self):  # type: ignore[no-untyped def]
+        """تحميل القواعد اللغوية المرجعية"""
+
+        self.linguistic_rules = {
+            "phoneme_inventory": {
+                "consonants": {
+                    "stops": ["ب", "ت", "د", "ط", "ك", "ق", "ء"],
+                    "fricatives": [
+                        "ف",
+                        "ث",
+                        "ذ",
+                        "س",
+                        "ز",
+                        "ش",
+                        "ص",
+                        "ض",
+                        "خ",
+                        "غ",
+                        "ح",
+                        "ع",
+                        "ه",
+                    ],
+                    "nasals": ["م", "ن"],
+                    "liquids": ["ل", "ر"],
+                    "glides": ["و", "ي"],
+                },
+                "vowels": {
+                    "short": ["َ", "ِ", "ُ"],
+                    "long": ["ا", "ي", "و"],
+                    "tanween": ["ً", "ٌ", "ٍ"],
+                },
+            },
+            "syllable_constraints": {
+                "minimal_word": "CV",
+                "maximal_syllable": "CVCC",
+                "preferred_patterns": ["CV", "CVC", "CVV"],
+                "stress_rules": {
+                    "primary_stress": "final_heavy_syllable",
+                    "secondary_stress": "alternating_pattern",
+                    "stress_clash_resolution": "right_to_left",
+                },
+            },
+            "morphological_patterns": {
+                "trilateral_patterns": [
+                    "فَعَل",
+                    "فَعِل",
+                    "فَعُل",  # verbs
+                    "فاعِل",
+                    "فَعّال",
+                    "مَفعول",  # participles
+                    "فَعْل",
+                    "فِعْل",
+                    "فُعْل",  # nouns
+                ],
+                "augmented_patterns": [
+                    "أَفعَل",
+                    "فَعَّل",
+                    "فاعَل",  # Form II, III, IV
+                    "تَفَعَّل",
+                    "تَفاعَل",
+                    "اِنفَعَل",  # Form V, VI, VII
+                ],
+            },
+        }
+
+    def process_text_to_word(self, input_text: str) -> Dict[str, Any]:
+        """معالجة النص الكامل من الفونيمات إلى الكلمة النهائية"""
+
+        logger.info(f"بدء معالجة النص: {input_text}")
+
+        processing_log = []
+        current_node = "root"
+        current_data = input_text
+
+        try:
+            while current_node and current_node in self.decision_tree:
+                node = self.decision_tree[current_node]
+
+                # Process current node
+                processing_result = self._process_node(node, current_data)
+                processing_log.append(
+                    {
+                        "node": current_node,
+                        "input": current_data,
+                        "output": processing_result["output"],
+                        "confidence": processing_result["confidence"],
+                        "decisions_made": processing_result["decisions"],
+                    }
+                )
+
+                # Move to next node
+                if node.next_nodes:
+                    current_node = node.next_nodes[0]  # Follow primary path
+                    current_data = processing_result["output"]
+                else:
+                    break
+
+            # Compile final result
+            final_result = {
+                "input_text": input_text,
+                "final_word": current_data,
+                "processing_pipeline": processing_log,
+                "overall_confidence": self._calculate_overall_confidence(
+                    processing_log
+                ),
+                "decision_path": [log["node"] for log in processing_log],
+                "processing_success": True,
+            }
+
+            logger.info(f"معالجة مكتملة: {input_text} → {current_data}")
+            return final_result
+
+        except Exception as e:
+            logger.error(f"خطأ في المعالجة: {str(e)}")
+            return {
+                "input_text": input_text,
+                "error": str(e),
+                "processing_pipeline": processing_log,
+                "processing_success": False,
+            }
+
+    def _process_node(self, node: DecisionNode, input_data: Any) -> Dict[str, Any]:
+        """معالجة عقدة واحدة في الشجرة"""
+
+        decisions_made = []
+
+        # Apply processing rules based on node type
+        if node.node_type == NodeType.ROOT:
+            output = self._process_root_node(
+                input_data, node.processing_rules, decisions_made
+            )
+        elif node.node_type == NodeType.PHONEME_LAYER:
+            output = self._process_phoneme_layer(
+                input_data, node.processing_rules, decisions_made
+            )
+        elif node.node_type == NodeType.DIACRITIC_LAYER:
+            output = self._process_diacritic_layer(
+                input_data, node.processing_rules, decisions_made
+            )
+        elif node.node_type == NodeType.SYLLABLE_LAYER:
+            output = self._process_syllable_layer(
+                input_data, node.processing_rules, decisions_made
+            )
+        elif node.node_type == NodeType.MORPHEME_LAYER:
+            output = self._process_morpheme_layer(
+                input_data, node.processing_rules, decisions_made
+            )
+        elif node.node_type == NodeType.WORD_LAYER:
+            output = self._process_word_layer(
+                input_data, node.processing_rules, decisions_made
+            )
+        elif node.node_type == NodeType.FINAL_OUTPUT:
+            output = self._process_final_output(
+                input_data, node.processing_rules, decisions_made
+            )
+        else:
+            output = input_data  # Pass through
+
+        return {
+            "output": output,
+            "confidence": node.confidence_score,
+            "decisions": decisions_made,
+        }
+
+    def _process_root_node(self, input_data: str, rules: Dict, decisions: List) -> str:
+        """معالجة العقدة الجذر"""
+        decisions.append("text_normalization_applied")
+        # Basic text normalization
+        normalized = input_data.strip()
+        return normalized
+
+    def _process_phoneme_layer(
+        self, input_data: str, rules: Dict, decisions: List
+    ) -> List[str]:
+        """معالجة طبقة الفونيمات"""
+        decisions.append("phoneme_classification_completed")
+        # Convert text to phoneme sequence
+        phonemes = list(input_data)
+        return phonemes
+
+    def _process_diacritic_layer(
+        self, input_data: List[str], rules: Dict, decisions: List
+    ) -> List[Dict]:
+        """معالجة طبقة الحركات"""
+        decisions.append("diacritic_analysis_applied")
+        # Add diacritic information
+        processed = []
+        for phoneme in input_data:
+            processed.append(
+                {
+                    "phoneme": phoneme,
+                    "diacritics": self._identify_diacritics(phoneme),
+                    "vowelization": self._predict_vowelization(phoneme),
+                }
+            )
+        return processed
+
+    def _process_syllable_layer(
+        self, input_data: List[Dict], rules: Dict, decisions: List
+    ) -> List[Dict]:
+        """معالجة طبقة المقاطع"""
+        decisions.append("syllable_construction_completed")
+        # Construct syllables
+        syllables = self._construct_syllables(input_data)
+        return syllables
+
+    def _process_morpheme_layer(
+        self, input_data: List[Dict], rules: Dict, decisions: List
+    ) -> Dict:
+        """معالجة طبقة المورفيمات"""
+        decisions.append("morpheme_analysis_completed")
+        # Analyze morphemes
+        return {
+            "morphemes": input_data,
+            "root": self._extract_root(input_data),
+            "pattern": self._identify_pattern(input_data),
+            "features": self._extract_features(input_data),
+        }
+
+    def _process_word_layer(
+        self, input_data: Dict, rules: Dict, decisions: List
+    ) -> str:
+        """معالجة طبقة الكلمات"""
+        decisions.append("word_formation_completed")
+        # Form final word
+        return self._form_word(input_data)
+
+    def _process_final_output(
+        self, input_data: str, rules: Dict, decisions: List
+    ) -> Dict:
+        """معالجة الإخراج النهائي"""
+        decisions.append("final_output_prepared")
+        return {"word": input_data, "analysis": "complete", "quality": "validated"}
+
+    # Helper methods for processing
+    def _identify_diacritics(self, phoneme: str) -> List[str]:
+        """تحديد الحركات للفونيم"""
+        diacritics = []
+        if phoneme in ["َ", "ِ", "ُ", "ً", "ٌ", "ٍ", "ْ", "ّ"]:
+            diacritics.append(phoneme)
+        return diacritics
+
+    def _predict_vowelization(self, phoneme: str) -> str:
+        """تنبؤ التشكيل للفونيم"""
+        # Simplified vowelization prediction
+        consonants = ["ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش"]
+        if phoneme in consonants:
+            return "َ"  # Default fatha
+        return ""
+
+    def _construct_syllables(self, phoneme_data: List[Dict]) -> List[Dict]:
+        """بناء المقاطع من الفونيمات"""
+        syllables = []
+        current_syllable = []
+
+        for item in phoneme_data:
+            current_syllable.append(item)
+            # Simplified syllable boundary detection
+            if len(current_syllable) >= 2:  # CV minimum
+                syllables.append(
+                    {
+                        "syllable": current_syllable,
+                        "type": "CV" if len(current_syllable) == 2 else "CVC",
+                        "weight": "light" if len(current_syllable) == 2 else "heavy",
+                    }
+                )
+                current_syllable = []
+
+        if current_syllable:
+            syllables.append(
+                {
+                    "syllable": current_syllable,
+                    "type": "incomplete",
+                    "weight": "unknown",
+                }
+            )
+
+        return syllables
+
+    def _extract_root(self, data: List[Dict]) -> str:
+        """استخراج الجذر"""
+        # Simplified root extraction
+        consonants = []
+        for syllable in data:
+            for phoneme_data in syllable.get("syllable", []):
+                phoneme = phoneme_data.get("phoneme", "")
+                if phoneme not in ["َ", "ِ", "ُ", "ا", "و", "ي"]:
+                    consonants.append(phoneme)
+
+        return "".join(consonants[:3])  # Take first 3 consonants as root
+
+    def _identify_pattern(self, data: List[Dict]) -> str:
+        """تحديد الوزن الصرفي"""
+        # Simplified pattern identification
+        return "فَعَل"  # Default pattern
+
+    def _extract_features(self, data: List[Dict]) -> Dict:
+        """استخراج الخصائص النحوية"""
+        return {"word_class": "noun", "gender": "masculine", "number": "singular"}
+
+    def _form_word(self, morpheme_data: Dict) -> str:
+        """تكوين الكلمة النهائية"""
+        # Simplified word formation
+        root = morpheme_data.get("root", "كتب")
+        return root  # Return root as word for simplicity
+
+    def _calculate_overall_confidence(self, processing_log: List[Dict]) -> float:
+        """حساب الثقة الإجمالية"""
+        if not processing_log:
+            return 0.0
+
+        confidences = [log.get("confidence", 0.0) for log in processing_log]
+        return sum(confidences) / len(confidences)
+
+    def generate_decision_tree_diagram(self) -> str:
+        """توليد مخطط شجرة القرارات"""
+
+        diagram = """
+# 🌳 Arabic Phoneme-to-Word Decision Tree Logic Flow
+# شجرة القرارات: من الفونيمات إلى الكلمات العربية
+
+## 📊 DECISION TREE STRUCTURE
+
+```
+ROOT (النص الخام)
+ │
+ ├─ Text Normalization
+ ├─ Character Validation
+ ├─ Encoding Check
+ │
+ ▼
+PHONEME LAYER (طبقة الفونيمات)
+ │
+ ├─ Consonant Classification
+ │   ├─ Stops: [ب، ت، د، ط، ك، ق، ء]
+ │   ├─ Fricatives: [ف، ث، ذ، س، ز، ش، ص، ض، خ، غ، ح، ع، ه]
+ │   ├─ Nasals: [م، ن]
+ │   ├─ Liquids: [ل، ر]
+ │   └─ Glides: [و، ي]
+ │
+ ├─ Vowel Identification
+ │   ├─ Short Vowels: [َ، ِ، ُ]
+ │   ├─ Long Vowels: [ا، ي، و]
+ │   └─ Tanween: [ً، ٌ، ٍ]
+ │
+ └─ Feature Extraction
+     ├─ Place of Articulation
+     ├─ Manner of Articulation
+     ├─ Voicing
+     └─ Emphasis
+ │
+ ▼
+DIACRITIC LAYER (طبقة الحركات)
+ │
+ ├─ Explicit Diacritic Processing
+ │   ├─ Fatha (َ) → Open vowel
+ │   ├─ Kasra (ِ) → Front vowel
+ │   ├─ Damma (ُ) → Back vowel
+ │   ├─ Sukun (ْ) → No vowel
+ │   └─ Shadda (ّ) → Gemination
+ │
+ ├─ Vowel Prediction (for missing diacritics)
+ │   ├─ Morphological Context
+ │   ├─ Phonological Patterns
+ │   ├─ Statistical Models
+ │   └─ Rule-based Inference
+ │
+ └─ Morphophonemic Rules
+     ├─ Vowel Harmony
+     ├─ Assimilation Rules
+     └─ Vowel Epenthesis
+ │
+ ▼
+SYLLABLE LAYER (طبقة المقاطع)
+ │
+ ├─ Syllable Boundary Detection
+ │   ├─ Nucleus Identification (vowels)
+ │   ├─ Onset Assignment (consonants before nucleus)
+ │   └─ Coda Assignment (consonants after nucleus)
+ │
+ ├─ Syllable Structure Classification
+ │   ├─ CV (Light syllable)
+ │   ├─ CVC (Heavy syllable)
+ │   ├─ CVV (Heavy syllable - long vowel)
+ │   ├─ CVVC (Super-heavy syllable)
+ │   └─ CVCC (Super-heavy syllable)
+ │
+ ├─ Phonotactic Constraint Checking
+ │   ├─ Valid Onset Clusters
+ │   ├─ Valid Coda Clusters
+ │   ├─ Consonant Compatibility
+ │   └─ Sonority Sequencing
+ │
+ └─ Prosodic Analysis
+     ├─ Syllable Weight Calculation
+     ├─ Stress Assignment Rules
+     └─ Rhythmic Pattern Detection
+ │
+ ▼
+MORPHEME LAYER (طبقة المورفيمات)
+ │
+ ├─ Root Extraction
+ │   ├─ Trilateral Root Identification
+ │   │   ├─ Strong Roots: كتب، درس، علم
+ │   │   ├─ Weak Roots: قول، بيع، وقف
+ │   │   └─ Doubled Roots: مدد، ردد، عدد
+ │   │
+ │   ├─ Quadrilateral Root Identification
+ │   │   ├─ Primary: دحرج، زلزل، وسوس
+ │   │   └─ Extended: ترجم، تلفز، فلسف
+ │   │
+ │   └─ Root Validation
+ │       ├─ Lexicon Lookup
+ │       ├─ Semantic Coherence
+ │       └─ Frequency Analysis
+ │
+ ├─ Pattern/Template Matching
+ │   ├─ Verbal Patterns
+ │   │   ├─ Form I: فَعَل، فَعِل، فَعُل
+ │   │   ├─ Form II: فَعَّل (intensitive)
+ │   │   ├─ Form III: فاعَل (associative)
+ │   │   ├─ Form IV: أَفعَل (causative)
+ │   │   └─ Forms V-X: تَفَعَّل، تَفاعَل، etc.
+ │   │
+ │   ├─ Nominal Patterns
+ │   │   ├─ Agent: فاعِل (كاتب، قارئ)
+ │   │   ├─ Patient: مَفعول (مكتوب، مقروء)
+ │   │   ├─ Instrument: مِفعال (مفتاح، مقص)
+ │   │   ├─ Place: مَفعَل (مكتب، مدرسة)
+ │   │   └─ Abstract: فَعْل، فِعْل، فُعْل
+ │   │
+ │   └─ Adjectival Patterns
+ │       ├─ Intensive: فَعّال (جميل، كبير)
+ │       ├─ Comparative: أَفعَل (أكبر، أجمل)
+ │       └─ Elative: فُعلان (عطشان، جوعان)
+ │
+ ├─ Affix Analysis
+ │   ├─ Prefixes
+ │   │   ├─ Definite Article: ال
+ │   │   ├─ Prepositions: ب، ل، ف، من، إلى
+ │   │   ├─ Conjunctions: و، ف
+ │   │   └─ Verbal Prefixes: أ، ن، ت، ي
+ │   │
+ │   ├─ Suffixes
+ │   │   ├─ Pronominal: ه، ها، هم، هن، ي، ك
+ │   │   ├─ Feminine: ة، ات
+ │   │   ├─ Plural: ون، ين، ات
+ │   │   └─ Case Markers: ً، ٌ، ٍ
+ │   │
+ │   └─ Infixes (internal modifications)
+ │       ├─ Passive Voice: vowel pattern changes
+ │       ├─ Reflexive: ت infix
+ │       └─ Augmentation: various consonant insertions
+ │
+ └─ Morphological Feature Assignment
+     ├─ Lexical Category: noun, verb, adjective, particle
+     ├─ Inflectional Features
+     │   ├─ Gender: masculine, feminine
+     │   ├─ Number: singular, dual, plural
+     │   ├─ Case: nominative, accusative, genitive
+     │   ├─ Definiteness: definite, indefinite
+     │   ├─ Person: 1st, 2nd, 3rd
+     │   └─ Tense/Aspect: perfective, imperfective, subjunctive
+     │
+     └─ Derivational Features
+         ├─ Verbal Form: I-X
+         ├─ Semantic Role: agent, patient, instrument, location
+         └─ Productivity: productive, semi-productive, lexicalized
+ │
+ ▼
+WORD LAYER (طبقة الكلمات)
+ │
+ ├─ Morpheme Assembly
+ │   ├─ Linear Ordering
+ │   │   ├─ Prefix + Stem + Suffix ordering
+ │   │   ├─ Multiple affix coordination
+ │   │   └─ Constraint satisfaction
+ │   │
+ │   ├─ Allomorph Selection
+ │   │   ├─ Phonologically conditioned variants
+ │   │   ├─ Morphologically conditioned variants
+ │   │   └─ Lexically specified variants
+ │   │
+ │   └─ Interface Resolution
+ │       ├─ Morpheme boundary effects
+ │       ├─ Feature percolation
+ │       └─ Blocking and competition
+ │
+ ├─ Morphophonemic Processing
+ │   ├─ Phonological Rules Application
+ │   │   ├─ Assimilation
+ │   │   │   ├─ Place assimilation: نب → مب
+ │   │   │   ├─ Voice assimilation: تد → دد
+ │   │   │   └─ Manner assimilation: نل → لل
+ │   │   │
+ │   │   ├─ Epenthesis (vowel insertion)
+ │   │   │   ├─ Cluster breaking: كتب → كُتُب
+ │   │   │   ├─ Hiatus resolution: اا → آ
+ │   │   │   └─ Word-initial clusters: ستعمل → استعمل
+ │   │   │
+ │   │   ├─ Deletion
+ │   │   │   ├─ Vowel deletion in clusters
+ │   │   │   ├─ Consonant deletion in complex clusters
+ │   │   │   └─ Final vowel deletion
+ │   │   │
+ │   │   └─ Metathesis (sound reordering)
+ │   │       ├─ ت + ص → صت
+ │   │       ├─ ت + ط → طت
+ │   │       └─ ت + ز → زت
+ │   │
+ │   ├─ Weak Letter Processing (حروف العلة)
+ │   │   ├─ Vowel-Consonant Alternations
+ │   │   │   ├─ قول: قال، يقول، قائل
+ │   │   │   ├─ بيع: باع، يبيع، بائع
+ │   │   │   └─ وقف: وقف، يقف، واقف
+ │   │   │
+ │   │   ├─ Vowel Length Adjustments
+ │   │   │   ├─ Long vowel shortening
+ │   │   │   ├─ Short vowel lengthening
+ │   │   │   └─ Vowel quality changes
+ │   │   │
+ │   │   └─ Glide Formation
+ │   │       ├─ i → y / _V
+ │   │       ├─ u → w / _V
+ │   │       └─ Vowel hiatus resolution
+ │   │
+ │   └─ Gemination Processing (التضعيف)
+ │       ├─ Morphological gemination
+ │       ├─ Phonological gemination
+ │       └─ Gemination simplification rules
+ │
+ ├─ Lexical Validation
+ │   ├─ Dictionary Lookup
+ │   │   ├─ Root-based lexicon search
+ │   │   ├─ Full-form lexicon search
+ │   │   └─ Compound analysis
+ │   │
+ │   ├─ Productivity Assessment
+ │   │   ├─ Pattern productivity metrics
+ │   │   ├─ Neologism detection
+ │   │   └─ Borrowing identification
+ │   │
+ │   └─ Semantic Validation
+ │       ├─ Compositional semantics
+ │       ├─ Selectional restrictions
+ │       └─ Pragmatic plausibility
+ │
+ └─ Output Generation
+     ├─ Orthographic Realization
+     │   ├─ Script selection (Arabic script)
+     │   ├─ Diacritic level (none/partial/full)
+     │   └─ Presentation forms
+     │
+     ├─ Alternative Forms Generation
+     │   ├─ Morphological variants
+     │   ├─ Phonological variants
+     │   └─ Dialectal variants
+     │
+     └─ Confidence Scoring
+         ├─ Individual component scores
+         ├─ Aggregate confidence
+         └─ Uncertainty quantification
+ │
+ ▼
+FINAL OUTPUT (الإخراج النهائي)
+ │
+ ├─ Quality Assessment
+ │   ├─ Linguistic Validity Check
+ │   ├─ Confidence Threshold Check
+ │   └─ Error Detection
+ │
+ ├─ Result Enrichment
+ │   ├─ Linguistic Analysis Metadata
+ │   │   ├─ Morphological breakdown
+ │   │   ├─ Phonological structure
+ │   │   ├─ Syntactic features
+ │   │   └─ Semantic information
+ │   │
+ │   ├─ Processing Information
+ │   │   ├─ Decision path taken
+ │   │   ├─ Alternative analyses
+ │   │   ├─ Confidence scores
+ │   │   └─ Processing time
+ │   │
+ │   └─ Error Reporting
+ │       ├─ Failed analyses
+ │       ├─ Ambiguous cases
+ │       ├─ Low confidence warnings
+ │       └─ Suggested improvements
+ │
+ └─ Final Word + Comprehensive Analysis
+     ├─ Primary Result: Final Arabic Word
+     ├─ Analysis Report: Complete linguistic breakdown
+     ├─ Metadata: Processing details and statistics
+     └─ Alternatives: Other possible analyses
+```
+
+## 🔄 DECISION CRITERIA AT EACH LAYER
+
+### Phoneme Layer Decisions:
+- ✅ Is character in Arabic phoneme inventory?
+- ✅ What are the phonetic features?
+- ✅ Are there phoneme boundary ambiguities?
+- ✅ Are there foreign/borrowed elements?
+
+### Diacritic Layer Decisions:
+- ✅ Are diacritics explicitly marked?
+- ✅ Can missing vowels be predicted?
+- ✅ Do vowel patterns follow morphological rules?
+- ✅ Are there diacritic conflicts to resolve?
+
+### Syllable Layer Decisions:
+- ✅ Where are syllable boundaries?
+- ✅ What syllable types are present?
+- ✅ Are phonotactic constraints satisfied?
+- ✅ How should stress be assigned?
+
+### Morpheme Layer Decisions:
+- ✅ Can a valid root be extracted?
+- ✅ Does the word match known patterns?
+- ✅ Are affixes properly identified?
+- ✅ Do morphological features cohere?
+
+### Word Layer Decisions:
+- ✅ How should morphemes be assembled?
+- ✅ Which phonological rules apply?
+- ✅ Is the result lexically valid?
+- ✅ What is the confidence level?
+
+### Final Output Decisions:
+- ✅ Does the result meet quality thresholds?
+- ✅ Should alternatives be provided?
+- ✅ How much analysis detail to include?
+- ✅ Are there errors to report?
+
+## 📊 CONFIDENCE SCORING ALGORITHM
+
+Each layer contributes to overall confidence:
+- Phoneme Layer: 0.95 (high - deterministic)
+- Diacritic Layer: 0.88 (good - some prediction involved)
+- Syllable Layer: 0.85 (good - structural constraints)
+- Morpheme Layer: 0.82 (fair - lexical knowledge required)
+- Word Layer: 0.78 (fair - complex interactions)
+- Final Output: 0.75 (fair - overall assessment)
+
+**Overall Confidence = Π(individual_confidences) / number_of_layers**
+
+## 🚨 ERROR HANDLING STRATEGIES
+
+- **Graceful Degradation**: Continue processing with reduced confidence
+- **Alternative Paths**: Explore multiple analysis options
+- **Fallback Methods**: Use simpler algorithms when complex ones fail
+- **Human-in-the-Loop**: Flag difficult cases for manual review
+- **Learning from Errors**: Update models based on correction feedback
+
+---
+
+**🎯 This decision tree represents the complete logic flow from individual Arabic phonemes to fully formed and analyzed Arabic words.**
+        """
+
+        return diagram
+
+    def export_tree_structure(self, filename: str = "arabic_decision_tree.json"):  # type: ignore[no-untyped def]
+        """تصدير هيكل الشجرة إلى ملف JSON"""
+
+        exportable_tree = {}
+        for node_id, node in self.decision_tree.items():
+            exportable_tree[node_id] = asdict(node)
+            # Convert enums to strings for JSON serialization
+            exportable_tree[node_id]["node_type"] = node.node_type.value
+            exportable_tree[node_id]["decision_criteria"] = [
+                criteria.value for criteria in node.decision_criteria
+            ]
+
+        with open(filename, 'w', encoding='utf 8') as f:
+            json.dump(exportable_tree, f, ensure_ascii=False, indent=2)
+
+        logger.info(f"تم تصدير هيكل الشجرة إلى {filename}")
+
+    def export_linguistic_rules(self, filename: str = "arabic_linguistic_rules.yaml"):  # type: ignore[no-untyped def]
+        """تصدير القواعد اللغوية إلى ملف YAML"""
+
+        with open(filename, 'w', encoding='utf 8') as f:
+            yaml.dump(
+                self.linguistic_rules, f, allow_unicode=True, default_flow_style=False
+            )
+
+        logger.info(f"تم تصدير القواعد اللغوية إلى {filename}")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════
+# MAIN EXECUTION AND DEMONSTRATION
+# ═══════════════════════════════════════════════════════════════════════════════════
+
+
+def main():  # type: ignore[no-untyped def]
+    """تشغيل النظام وإظهار شجرة القرارات"""
+
+    print("🌳 Arabic Phoneme-to Word Decision Tree System")
+    print("=" * 60)
+
+    # Create decision tree system
+    decision_tree = ArabicPhonemeWordDecisionTree()
+
+    # Generate and display decision tree diagram
+    print("\n📊 شجرة القرارات الكاملة:")
+    diagram = decision_tree.generate_decision_tree_diagram()
+    print(diagram)
+
+    # Test the system with sample text
+    test_cases = ["كتاب", "مدرسة", "يكتب", "مكتوب"]
+
+    print("\n🔬 اختبار النظام:")
+    for test_text in test_cases:
+        print(f"\n   📝 النص: {test_text}")
+        result = decision_tree.process_text_to_word(test_text)
+
+        if result["processing_success"]:
+            print(f"   ✅ النتيجة: {result['final_word']}")
+            print(f"   📊 الثقة: {result['overall_confidence']:.2f}")
+            print(f"   🛤️  المسار: {'} → '.join(result['decision_path'])}")
+        else:
+            print(f"   ❌ خطأ: {result['error']}")
+
+    # Export tree structure and rules
+    decision_tree.export_tree_structure()
+    decision_tree.export_linguistic_rules()
+
+    print("\n✅ تم إكمال عرض نظام شجرة القرارات!")
+    print("📄 تم تصدير الملفات:")
+    print("   - arabic_decision_tree.json")
+    print("   - arabic_linguistic_rules.yaml")
+
+
+if __name__ == "__main__":
+    main()

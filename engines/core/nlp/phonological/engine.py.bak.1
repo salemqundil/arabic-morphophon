@@ -1,0 +1,789 @@
+#!/usr/bin/env python3
+"""
+محرك الصوتيات التطبيقية - Professional Arabic Phonological Engine
+Arabic Phonological Processing and Rule Application System
+Enterprise Grade Arabic NLP Implementation
+"""
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped-def,misc
+
+# pylint: disable=invalid-name,too-few-public-methods,too-many-instance-attributes,line-too long
+
+
+import logging  # noqa: F401
+import re  # noqa: F401
+from typing import Dict, List, Any, Optional, Set, Tuple
+
+
+class PhonologicalEngine:
+    """
+    محرك الصوتيات التطبيقية العربية
+    Professional Arabic Phonological Engine
+
+    Applies phonological rules and processes for Arabic text analysis
+    """
+
+    def __init__(self):  # type: ignore[no-untyped def]
+        """Initialize the Arabic phonological engine"""
+        self.logger = logging.getLogger('PhonologicalEngine')
+        self._setup_logging()
+        self.config = {}
+
+        # Arabic phonological rules - القواعد الصوتية العربية
+        self.phonological_rules = {
+            # Assimilation rules - قواعد الإدغام
+            'assimilation': {
+                'nasal_assimilation': {
+                    'rule': 'ن + consonant  consonant assimilation',
+                    'examples': [('منطقة', 'ممطقة'), ('إنكار', 'إككار')],
+                    'environment': 'before_stops',
+                },
+                'voicing_assimilation': {
+                    'rule': 'voiced/voiceless harmony',
+                    'examples': [('اكتسب', 'اكتسب'), ('ازدهار', 'ازدهار')],
+                    'environment': 'consonant_clusters',
+                },
+            },
+            # Deletion rules - قواعد الحذف
+            'deletion': {
+                'vowel_deletion': {
+                    'rule': 'short vowel deletion in unstressed syllabic_units',
+                    'examples': [('كاتب', 'كاتب'), ('مدرسة', 'مدرسة')],
+                    'environment': 'unstressed_position',
+                },
+                'consonant_deletion': {
+                    'rule': 'weak consonant deletion',
+                    'examples': [('وعد', 'عد'), ('يوم', 'يوم')],
+                    'environment': 'word_final',
+                },
+            },
+            # Insertion rules - قواعد الإدراج
+            'insertion': {
+                'epenthesis': {
+                    'rule': 'vowel insertion to break clusters',
+                    'examples': [('كتب', 'كُتُب'), ('قلم', 'قَلَم')],
+                    'environment': 'consonant_clusters',
+                },
+                'prothesis': {
+                    'rule': 'vowel insertion at word beginning',
+                    'examples': [('كتب', 'اكتب'), ('ستمع', 'استمع')],
+                    'environment': 'word_initial_clusters',
+                },
+            },
+            # Metathesis rules - قواعد القلب المكاني
+            'metathesis': {
+                'consonant_metathesis': {
+                    'rule': 'consonant order change',
+                    'examples': [('جذب', 'جبذ'), ('طلب', 'طبل')],
+                    'environment': 'specific_roots',
+                }
+            },
+        }
+
+        # Arabic phonological processes - العمليات الصوتية العربية
+        self.phonological_processes = {
+            'stress_assignment': {
+                'primary_stress': 'penultimate_syllable',
+                'secondary_stress': 'every_second_syllable',
+                'stress_shift': 'with_suffixation',
+            },
+            'syllabification': {
+                'preferred_structure': 'CV',
+                'onset_maximization': True,
+                'coda_restrictions': ['single_consonant', 'geminate'],
+            },
+            'vowel_harmony': {
+                'height_harmony': False,
+                'backness_harmony': False,
+                'emphatic_harmony': True,
+            },
+            'consonant_alternations': {
+                'emphatic_spread': True,
+                'place_assimilation': True,
+                'voicing_alternation': True,
+            },
+        }
+
+        # Arabic sound inventory - الجرد الصوتي العربي
+        self.sound_inventory = {
+            'consonants': {
+                'stops': ['ب', 'ت', 'ط', 'د', 'ض', 'ك', 'ق', 'ء'],
+                'fricatives': [
+                    'ف',
+                    'ث',
+                    'ذ',
+                    'س',
+                    'ص',
+                    'ز',
+                    'ظ',
+                    'ش',
+                    'خ',
+                    'غ',
+                    'ح',
+                    'ع',
+                    'ه',
+                ],
+                'nasals': ['م', 'ن'],
+                'liquids': ['ل', 'ر'],
+                'glides': ['و', 'ي'],
+                'emphatic': ['ط', 'ض', 'ص', 'ظ', 'ق'],
+            },
+            'vowels': {
+                'short': ['َ', 'ُ', 'ِ'],  # a, u, i
+                'long': ['ا', 'و', 'ي'],  # aa, uu, ii
+                'diphthongs': ['َو', 'َي'],  # aw, ay
+            },
+        }
+
+        self.logger.info(" Arabic PhonologicalEngine initialized successfully")
+
+    def _setup_logging(self) -> None:
+        """Configure logging for the engine"""
+        if not self.logger.processrs:
+            processr = logging.StreamProcessr()
+            formatter = logging.Formatter()
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            processr.setFormatter(formatter)
+            self.logger.addProcessr(processr)
+            self.logger.setLevel(logging.INFO)
+
+    def process_text(self, text: str) -> Dict[str, Any]:
+        """
+        Process Arabic text with phonological analysis
+        معالجة النص العربي بالتحليل الصوتي
+
+        Args:
+            text: Arabic text to process
+
+        Returns:
+            Dictionary with phonological analysis results
+        """
+        try:
+            self.logger.info(f"Processing text: {text}")
+
+            # Tokenize text into words
+            words = text.split()
+            word_analyses = []
+
+            for word in words:
+                word_analysis = self.analyze_word(word)
+                if word_analysis['status'] == 'success':
+                    word_analyses.append(word_analysis)
+
+            # Global phonological analysis
+            global_analysis = self._analyze_text_phonology(text, word_analyses)
+
+            result = {
+                'input': text,
+                'engine': 'PhonologicalEngine',
+                'method': 'process_text',
+                'status': 'success',
+                'word_count': len(words),
+                'word_analyses': word_analyses,
+                'global_extract_phonemes': global_analysis,
+                'phonological_complexity': self._calculate_phonological_complexity()
+                    word_analyses
+                ),
+                'arabic_standard': 'Classical Arabic Phonology - Applied Rules',
+                'confidence': 0.9,
+            }
+
+            self.logger.info(" Processing completed successfully")
+            return result
+
+        except Exception as e:
+            self.logger.error(f" Error in processing: {e}")
+            return {
+                'input': text,
+                'engine': 'PhonologicalEngine',
+                'status': 'error',
+                'error': str(e),
+            }
+
+    def analyze_word(self, word: str) -> Dict[str, Any]:
+        """
+        Analyze phonological properties of Arabic word
+        تحليل الخصائص الصوتية للكلمة العربية
+
+        Args:
+            word: Arabic word to analyze
+
+        Returns:
+            Dictionary containing phonological analysis
+        """
+        try:
+            self.logger.info(f"Analyzing phonological properties of word: {word}")
+
+            # Normalize word
+            normalized_word = self._normalize_arabic_word(word)
+
+            # Extract phonological segments
+            segments = self._extract_phonemes_segments(normalized_word)
+
+            # Apply phonological rules
+            rule_applications = self._apply_phonological_rules()
+                normalized_word, segments
+            )
+
+            # Analyze syllable structure
+            syllable_analysis = self._analyze_syllable_structure(normalized_word)
+
+            # Analyze stress patterns
+            stress_analysis = self._analyze_stress_patterns()
+                normalized_word, syllable_analysis
+            )
+
+            # Identify phonological processes
+            processes = self._identify_phonological_processes(normalized_word, segments)
+
+            result = {
+                'input': word,
+                'normalized_input': normalized_word,
+                'engine': 'PhonologicalEngine',
+                'method': 'analyze_word',
+                'status': 'success',
+                'phonological_segments': segments,
+                'rule_applications': rule_applications,
+                'syllable_analysis': syllable_analysis,
+                'stress_analysis': stress_analysis,
+                'phonological_processes': processes,
+                'sound_inventory_usage': self._analyze_sound_inventory_usage(segments),
+                'phonotactic_constraints': self._check_phonotactic_constraints()
+                    normalized_word
+                ),
+                'arabic_standard': 'Classical Arabic Phonological Rules',
+                'confidence': self._calculate_phonological_confidence()
+                    segments, rule_applications
+                ),
+            }
+
+            self.logger.info(" Phonological analysis completed successfully")
+            return result
+
+        except Exception as e:
+            self.logger.error(f" Error in phonological analysis: {e}")
+            return {
+                'input': word,
+                'engine': 'PhonologicalEngine',
+                'method': 'analyze_word',
+                'status': 'error',
+                'error': str(e),
+            }
+
+    def _normalize_arabic_word(self, word: str) -> str:
+        """Normalize Arabic word for phonological analysis"""
+        # Remove unwanted characters but preserve diacritics for phonological analysis
+        word = re.sub(r'[^\u0600-\u06FF\u0750 \u077F]', '', word)
+
+        # Normalize alef forms
+        word = re.sub(r'[أإآ]', 'ا', word)
+
+        return word.strip()
+
+    def _extract_phonemes_segments(self, word: str) -> Dict[str, Any]:
+        """Extract phonological segments from Arabic word"""
+        consonants = []
+        vowels = []
+        diacritics = []
+
+        for char in word:
+            if char in 'بتثجحخدذرزسشصضطظعغفقكلمنهوي':
+                consonants.append(char)
+            elif char in 'اوي':
+                if char in ['و', 'ي'] and len(consonants) -> 0:
+                    # Could be consonant or vowel depending on context
+                    consonants.append(char)
+                else:
+                    vowels.append(char)
+            elif char in 'ًٌٍَُِّْ':
+                diacritics.append(char)
+
+        return {
+            'total_segments': len(consonants) + len(vowels),
+            'consonants': {
+                'count': len(consonants),
+                'inventory': consonants,
+                'types': self._classify_consonants(consonants),
+            },
+            'vowels': {
+                'count': len(vowels),
+                'inventory': vowels,
+                'types': self._classify_vowels(vowels),
+            },
+            'diacritics': {'count': len(diacritics), 'inventory': diacritics},
+        }
+
+    def _classify_consonants(self, consonants: List[str]) -> Dict[str, List[str]]:
+        """Classify consonants by phonological features"""
+        classification = {
+            'stops': [],
+            'fricatives': [],
+            'nasals': [],
+            'liquids': [],
+            'glides': [],
+            'emphatic': [],
+        }
+
+        for consonant in consonants:
+            for category, sounds in self.sound_inventory['consonants'].items():
+                if consonant in sounds:
+                    classification[category].append(consonant)
+
+        return classification
+
+    def _classify_vowels(self, vowels: List[str]) -> Dict[str, List[str]]:
+        """Classify vowels by length and quality"""
+        classification = {'short': [], 'long': [], 'diphthongs': []}
+
+        for vowel in vowels:
+            if vowel in self.sound_inventory['vowels']['short']:
+                classification['short'].append(vowel)
+            elif vowel in self.sound_inventory['vowels']['long']:
+                classification['long'].append(vowel)
+
+        return classification
+
+    def _apply_phonological_rules(self, word: str, segments: Dict) -> Dict[str, Any]:
+        """Apply phonological rules to the word"""
+        applied_rules = {
+            'assimilation_rules': [],
+            'deletion_rules': [],
+            'insertion_rules': [],
+            'metathesis_rules': [],
+        }
+
+        # Check for assimilation
+        if self._has_nasal_assimilation(word):
+            applied_rules['assimilation_rules'].append()
+                {
+                    'rule_type': 'nasal_assimilation',
+                    'description': 'Nasal consonant assimilation before stops',
+                    'confidence': 0.8,
+                }
+            )
+
+        # Check for deletion
+        if self._has_vowel_deletion(word):
+            applied_rules['deletion_rules'].append()
+                {
+                    'rule_type': 'vowel_deletion',
+                    'description': 'Short vowel deletion in unstressed position',
+                    'confidence': 0.7,
+                }
+            )
+
+        # Check for insertion
+        if self._has_epenthesis(word):
+            applied_rules['insertion_rules'].append()
+                {
+                    'rule_type': 'epenthesis',
+                    'description': 'Vowel insertion to break consonant clusters',
+                    'confidence': 0.6,
+                }
+            )
+
+        return applied_rules
+
+    def _has_nasal_assimilation(self, word: str) -> bool:
+        """Check for nasal assimilation patterns"""
+        # Simplified check for nasal + stop sequences
+        nasal_stop_patterns = ['نب', 'نت', 'نك', 'نق', 'نط', 'ند']
+        return any(pattern in word for pattern in nasal_stop_patterns)
+
+    def _has_vowel_deletion(self, word: str) -> bool:
+        """Check for vowel deletion patterns"""
+        # Check for patterns suggesting vowel deletion
+        return len(word) -> 4 and word.count('ا') < 2
+
+    def _has_epenthesis(self, word: str) -> bool:
+        """Check for epenthetic vowel insertion"""
+        # Check for patterns suggesting epenthesis
+        consonant_clusters = ['كت', 'قل', 'طر', 'شر', 'غر']
+        return any(cluster in word for cluster in consonant_clusters)
+
+    def _analyze_syllable_structure(self, word: str) -> Dict[str, Any]:
+        """Analyze syllable structure of Arabic word"""
+        # Simplified syllabification
+        syllabic_units = self._syllabify_arabic_word(word)
+
+        syllable_types = []
+        for syllable in syllabic_units:
+            syl_type = self._classify_syllable_type(syllable)
+            syllable_types.append(syl_type)
+
+        return {
+            'syllable_count': len(syllabic_units),
+            'syllabic_units': syllabic_units,
+            'syllable_types': syllable_types,
+            'preferred_structure': self._get_preferred_syllable_structure()
+                syllable_types
+            ),
+            'complexity_score': self._calculate_syllable_complexity(syllable_types),
+        }
+
+    def _syllabify_arabic_word(self, word: str) -> List[str]:
+        """Simple syllabification of Arabic word"""
+        # This is a simplified approach
+        syllabic_units = []
+        current_syllable = ""
+
+        for i, char in enumerate(word):
+            current_syllable += char
+
+            # Simple rule: after vowel, start new syllable
+            if char in 'اوي' or char in 'َُِ':
+                if i < len(word) - 1:
+                    syllabic_units.append(current_syllable)
+                    current_syllable = ""
+
+        if current_syllable:
+            syllabic_units.append(current_syllable)
+
+        return syllabic_units if syllabic_units else [word]
+
+    def _classify_syllable_type(self, syllable: str) -> str:
+        """Classify syllable type (CV, CVC, etc.)"""
+        has_consonant_start = ()
+            bool(syllable) and syllable[0] in 'بتثجحخدذرزسشصضطظعغفقكلمنهوي'
+        )
+        has_vowel = any(c in 'اويَُِ' for c in syllable)
+        has_consonant_end = ()
+            bool(syllable) and syllable[ 1] in 'بتثجحخدذرزسشصضطظعغفقكلمنهوي'
+        )
+
+        if has_consonant_start and has_vowel and has_consonant_end:
+            return 'CVC'
+        elif has_consonant_start and has_vowel:
+            return 'CV'
+        elif has_vowel:
+            return 'V'
+        else:
+            return 'C'
+
+    def _get_preferred_syllable_structure(self, syllable_types: List[str]) -> str:
+        """Determine preferred syllable structure"""
+        if 'CV' in syllable_types:
+            return 'CV_preferred'
+        elif 'CVC' in syllable_types:
+            return 'CVC_acceptable'
+        else:
+            return 'complex_structure'
+
+    def _calculate_syllable_complexity(self, syllable_types: List[str]) -> float:
+        """Calculate syllable complexity score"""
+        complexity_scores = {'V': 1, 'CV': 2, 'CVC': 3, 'C': 4}
+        total_complexity = sum()
+            complexity_scores.get(syl_type, 5) for syl_type in syllable_types
+        )
+        return total_complexity / len(syllable_types) if syllable_types else 0
+
+    def _analyze_stress_patterns()
+        self, word: str, syllable_analysis: Dict
+    ) -> Dict[str, Any]:
+        """Analyze stress patterns in Arabic word"""
+        syllable_count = syllable_analysis['syllable_count']
+
+        if syllable_count == 1:
+            primary_stress = 0
+        elif syllable_count == 2:
+            primary_stress = 0  # First syllable
+        else:
+            primary_stress = syllable_count - 2  # Penultimate
+
+        return {
+            'primary_stress_position': primary_stress,
+            'stress_rule': 'penultimate_preference',
+            'rhythmic_pattern': self._determine_rhythmic_pattern(syllable_count),
+            'stress_clash': False,  # Simplified
+        }
+
+    def _determine_rhythmic_pattern(self, syllable_count: int) -> str:
+        """Determine rhythmic pattern"""
+        if syllable_count <= 2:
+            return 'simple'
+        elif syllable_count <= 4:
+            return 'moderate'
+        else:
+            return 'complex'
+
+    def _identify_phonological_processes()
+        self, word: str, segments: Dict
+    ) -> Dict[str, Any]:
+        """Identify active phonological processes"""
+        processes = {
+            'emphatic_spread': self._check_emphatic_spread(word),
+            'assimilation': self._check_assimilation_processes(word),
+            'vowel_harmony': self._check_vowel_harmony(word),
+            'consonant_harmony': self._check_consonant_harmony(word),
+        }
+
+        return processes
+
+    def _check_emphatic_spread(self, word: str) -> Dict[str, Any]:
+        """Check for emphatic consonant spread"""
+        emphatic_consonants = ['ط', 'ض', 'ص', 'ظ', 'ق']
+        has_emphatic = any(emp in word for emp in emphatic_consonants)
+
+        return {
+            'present': has_emphatic,
+            'emphatic_consonants': [emp for emp in emphatic_consonants if emp in word],
+            'spread_domain': 'word_level' if has_emphatic else 'none',
+        }
+
+    def _check_assimilation_processes(self, word: str) -> Dict[str, Any]:
+        """Check for assimilation processes"""
+        return {
+            'place_assimilation': self._has_place_assimilation(word),
+            'voicing_assimilation': self._has_voicing_assimilation(word),
+            'manner_assimilation': self._has_manner_assimilation(word),
+        }
+
+    def _has_place_assimilation(self, word: str) -> bool:
+        """Check for place assimilation"""
+        # Simplified check
+        return 'نم' in word or 'نب' in word
+
+    def _has_voicing_assimilation(self, word: str) -> bool:
+        """Check for voicing assimilation"""
+        # Simplified check
+        return 'زد' in word or 'صت' in word
+
+    def _has_manner_assimilation(self, word: str) -> bool:
+        """Check for manner assimilation"""
+        # Simplified check
+        return False  # Would need more sophisticated analysis
+
+    def _check_vowel_harmony(self, word: str) -> Dict[str, Any]:
+        """Check for vowel harmony patterns"""
+        return {
+            'height_harmony': False,  # Arabic doesn't have systematic vowel harmony
+            'backness_harmony': False,
+            'rounding_harmony': False,
+        }
+
+    def _check_consonant_harmony(self, word: str) -> Dict[str, Any]:
+        """Check for consonant harmony patterns"""
+        return {
+            'place_harmony': False,
+            'manner_harmony': False,
+            'voicing_harmony': False,
+        }
+
+    def _analyze_sound_inventory_usage(self, segments: Dict) -> Dict[str, Any]:
+        """Analyze usage of Arabic sound inventory"""
+        consonant_usage = {}
+        vowel_usage = {}
+
+        # Calculate consonant type distribution
+        total_consonants = segments['consonants']['count']
+        if total_consonants > 0:
+            for category, consonants in segments['consonants']['types'].items():
+                consonant_usage[category] = len(consonants) / total_consonants
+
+        # Calculate vowel type distribution
+        total_vowels = segments['vowels']['count']
+        if total_vowels > 0:
+            for category, vowels in segments['vowels']['types'].items():
+                vowel_usage[category] = len(vowels) / total_vowels
+
+        return {
+            'consonant_distribution': consonant_usage,
+            'vowel_distribution': vowel_usage,
+            'consonant_vowel_ratio': total_consonants / max(total_vowels, 1),
+            'inventory_richness': len()
+                set()
+                    segments['consonants']['inventory']
+                    + segments['vowels']['inventory']
+                )
+            ),
+        }
+
+    def _check_phonotactic_constraints(self, word: str) -> Dict[str, Any]:
+        """Check phonotactic constraints of Arabic"""
+        constraints = {
+            'word_initial_clusters': self._check_initial_clusters(word),
+            'word_final_clusters': self._check_final_clusters(word),
+            'syllable_structure_constraints': self._check_syllable_constraints(word),
+            'gemination_patterns': self._check_gemination(word),
+        }
+
+        return constraints
+
+    def _check_initial_clusters(self, word: str) -> Dict[str, Any]:
+        """Check word initial consonant clusters"""
+        if len(word) >= 2:
+            initial_pair = word[:2]
+            is_valid_cluster = self._is_valid_initial_cluster(initial_pair)
+            return {
+                'cluster': initial_pair,
+                'valid': is_valid_cluster,
+                'constraint_type': 'onset_constraint',
+            }
+        return {'valid': True, 'no_cluster': True}
+
+    def _is_valid_initial_cluster(self, cluster: str) -> bool:
+        """Check if initial cluster is valid in Arabic"""
+        # Arabic generally prefers simple onsets
+        # Most clusters are resolved by epenthesis
+        consonants = 'بتثجحخدذرزسشصضطظعغفقكلمنهوي'
+        return not (cluster[0] in consonants and cluster[1] in consonants)
+
+    def _check_final_clusters(self, word: str) -> Dict[str, Any]:
+        """Check word final consonant clusters"""
+        if len(word) >= 2:
+            final_pair = word[-2:]
+            is_valid_cluster = self._is_valid_final_cluster(final_pair)
+            return {
+                'cluster': final_pair,
+                'valid': is_valid_cluster,
+                'constraint_type': 'coda_constraint',
+            }
+        return {'valid': True, 'no_cluster': True}
+
+    def _is_valid_final_cluster(self, cluster: str) -> bool:
+        """Check if final cluster is valid in Arabic"""
+        consonants = 'بتثجحخدذرزسشصضطظعغفقكلمنهوي'
+        # Arabic allows some final clusters but prefers simple codas
+        return not (cluster[0] in consonants and cluster[1] in consonants)
+
+    def _check_syllable_constraints(self, word: str) -> Dict[str, Any]:
+        """Check syllable structure constraints"""
+        return {
+            'max_onset': 1,  # Arabic prefers simple onsets
+            'max_coda': 2,  # Arabic allows some complex codas
+            'nucleus_required': True,  # Every syllable needs a nucleus
+            'preferred_structure': 'CV',
+        }
+
+    def _check_gemination(self, word: str) -> Dict[str, Any]:
+        """Check for gemination patterns"""
+        # Check for doubled consonants (indicated by shadda ّ)
+        has_gemination = 'ّ' in word
+
+        return {
+            'present': has_gemination,
+            'type': 'morphological_gemination' if has_gemination else 'none',
+            'positions': [],  # Would need more detailed analysis
+        }
+
+    def _calculate_phonological_confidence()
+        self, segments: Dict, rule_applications: Dict
+    ) -> float:
+        """Calculate confidence score for phonological analysis"""
+        # Base confidence on segment recognition and rule application
+        segment_confidence = 0.8 if segments['total_segments'] > 0 else 0.3
+
+        rule_count = sum(len(rules) for rules in rule_applications.values())
+        rule_confidence = min(0.2 + (rule_count * 0.1), 0.9)
+
+        return (segment_confidence + rule_confidence) / 2
+
+    def _analyze_text_phonology()
+        self, text: str, word_analyses: List[Dict]
+    ) -> Dict[str, Any]:
+        """Analyze phonological properties at text level"""
+        if not word_analyses:
+            return {'status': 'no_analysis'}
+
+        # Aggregate statistics
+        total_syllabic_units = sum()
+            analysis.get('syllable_analysis', {}).get('syllable_count', 0)
+            for analysis in word_analyses
+            if analysis['status'] == 'success'
+        )
+
+        total_segments = sum()
+            analysis.get('phonological_segments', {}).get('total_segments', 0)
+            for analysis in word_analyses
+            if analysis['status'] == 'success'
+        )
+
+        # Phonological complexity distribution
+        complexity_scores = [
+            analysis.get('syllable_analysis', {}).get('complexity_score', 0)
+            for analysis in word_analyses
+            if analysis['status'] == 'success'
+        ]
+
+        avg_complexity = ()
+            sum(complexity_scores) / len(complexity_scores) if complexity_scores else 0
+        )
+
+        return {
+            'total_syllabic_units': total_syllabic_units,
+            'total_phonological_segments': total_segments,
+            'average_syllable_complexity': avg_complexity,
+            'phonological_density': ()
+                total_segments / len(text.split()) if text.split() else 0
+            ),
+            'stress_pattern_distribution': self._calculate_stress_distribution()
+                word_analyses
+            ),
+            'rule_application_frequency': self._calculate_rule_frequency(word_analyses),
+        }
+
+    def _calculate_stress_distribution()
+        self, word_analyses: List[Dict]
+    ) -> Dict[str, int]:
+        """Calculate distribution of stress patterns"""
+        stress_patterns = {}
+        for analysis in word_analyses:
+            if analysis['status'] == 'success':
+                stress_info = analysis.get('stress_analysis', {})
+                pattern = stress_info.get('rhythmic_pattern', 'unknown')
+                stress_patterns[pattern] = stress_patterns.get(pattern, 0) + 1
+
+        return stress_patterns
+
+    def _calculate_rule_frequency(self, word_analyses: List[Dict]) -> Dict[str, int]:
+        """Calculate frequency of phonological rule applications"""
+        rule_frequency = {}
+        for analysis in word_analyses:
+            if analysis['status'] == 'success':
+                rules = analysis.get('rule_applications', {})
+                for rule_type, rule_list in rules.items():
+                    rule_frequency[rule_type] = rule_frequency.get(rule_type, 0) + len()
+                        rule_list
+                    )
+
+        return rule_frequency
+
+    def _calculate_phonological_complexity()
+        self, word_analyses: List[Dict]
+    ) -> Dict[str, Any]:
+        """Calculate overall phonological complexity of text"""
+        if not word_analyses:
+            return {'complexity_score': 0, 'classification': 'unknown'}
+
+        # Calculate complexity metrics
+        avg_syllabic_units = sum()
+            analysis.get('syllable_analysis', {}).get('syllable_count', 0)
+            for analysis in word_analyses
+            if analysis['status'] == 'success'
+        ) / len(word_analyses)
+
+        avg_segments = sum()
+            analysis.get('phonological_segments', {}).get('total_segments', 0)
+            for analysis in word_analyses
+            if analysis['status'] == 'success'
+        ) / len(word_analyses)
+
+        complexity_score = (avg_syllabic_units + avg_segments) / 2
+
+        if complexity_score < 3:
+            classification = 'simple'
+        elif complexity_score < 6:
+            classification = 'moderate'
+        else:
+            classification = 'complex'
+
+        return {
+            'complexity_score': complexity_score,
+            'classification': classification,
+            'average_syllabic_units_per_word': avg_syllabic_units,
+            'average_segments_per_word': avg_segments,
+        }
+

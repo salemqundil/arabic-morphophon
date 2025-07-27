@@ -1,0 +1,204 @@
+{
+  "morphological_patterns": {
+    "فَعَلَ": {
+      "template": "CVCVC",
+      "type": "فعل ماضٍ ثلاثي",
+      "category": "verb",
+      "derivation": "مجرد",
+      "examples": ["كَتَبَ", "شَرِبَ", "فَعَلَ"],
+      "can_derive": ["فَاعِل", "مَفْعُول", "مَصْدَر"],
+      "semantic_role": "action_past"
+    },
+    "فَعُلَ": {
+      "template": "CVCVC",
+      "type": "فعل ماضٍ ثلاثي",
+      "category": "verb",
+      "derivation": "مجرد",
+      "examples": ["كَبُرَ", "صَغُرَ", "حَسُنَ"],
+      "can_derive": ["فَاعِل", "مَفْعُول"],
+      "semantic_role": "state_past"
+    },
+    "فَعِلَ": {
+      "template": "CVCVC",
+      "type": "فعل ماضٍ ثلاثي",
+      "category": "verb",
+      "derivation": "مجرد",
+      "examples": ["عَلِمَ", "فَهِمَ", "سَمِعَ"],
+      "can_derive": ["فَاعِل", "مَفْعُول"],
+      "semantic_role": "knowledge_past"
+    },
+    "يَفْعَلُ": {
+      "template": "CVCVCV",
+      "type": "فعل مضارع ثلاثي",
+      "category": "verb",
+      "derivation": "مجرد",
+      "examples": ["يَكْتُبُ", "يَشْرَبُ", "يَفْعَلُ"],
+      "can_derive": ["فَاعِل", "مَفْعُول"],
+      "semantic_role": "action_present"
+    },
+    "فَاعِل": {
+      "template": "CVVCVC",
+      "type": "اسم فاعل",
+      "category": "noun",
+      "derivation": "مشتق",
+      "examples": ["كَاتِب", "شَارِب", "فَاعِل"],
+      "semantic_role": "agent",
+      "gender_forms": {"masculine": "فَاعِل", "feminine": "فَاعِلَة"}
+    },
+    "مَفْعُول": {
+      "template": "CVCVVC",
+      "type": "اسم مفعول",
+      "category": "noun",
+      "derivation": "مشتق",
+      "examples": ["مَكْتُوب", "مَشْرُوب", "مَفْعُول"],
+      "semantic_role": "patient",
+      "gender_forms": {"masculine": "مَفْعُول", "feminine": "مَفْعُولَة"}
+    },
+    "مُفَعِّل": {
+      "template": "CVCVCVC",
+      "type": "اسم فاعل مزيد",
+      "category": "noun",
+      "derivation": "مشتق",
+      "examples": ["مُدَرِّس", "مُهَنِّئ", "مُفَعِّل"],
+      "semantic_role": "intensive_agent",
+      "gender_forms": {"masculine": "مُفَعِّل", "feminine": "مُفَعِّلَة"}
+    },
+    "فَعَّال": {
+      "template": "CVCCVC",
+      "type": "صفة مبالغة",
+      "category": "adjective",
+      "derivation": "مشتق",
+      "examples": ["قَرَّاء", "كَتَّاب", "فَعَّال"],
+      "semantic_role": "intensive_quality",
+      "intensity": "high"
+    },
+    "فَعُول": {
+      "template": "CVCVC",
+      "type": "صفة مبالغة",
+      "category": "adjective",
+      "derivation": "مشتق",
+      "examples": ["صَبُور", "شَكُور", "فَعُول"],
+      "semantic_role": "quality",
+      "intensity": "medium"
+    },
+    "مِفْعَال": {
+      "template": "CVCVVC",
+      "type": "اسم آلة",
+      "category": "noun",
+      "derivation": "مشتق",
+      "examples": ["مِفْتَاح", "مِقْيَاس", "مِفْعَال"],
+      "semantic_role": "instrument"
+    },
+    "فَعَّلَ": {
+      "template": "CVCCVC",
+      "type": "فعل مزيد بالتضعيف",
+      "category": "verb",
+      "derivation": "مزيد",
+      "examples": ["كَسَّرَ", "دَرَّسَ", "فَعَّلَ"],
+      "semantic_role": "causative",
+      "augmentation": "تضعيف"
+    },
+    "تَفَاعَلَ": {
+      "template": "CVCVCVC",
+      "type": "فعل مزيد بالتاء",
+      "category": "verb",
+      "derivation": "مزيد",
+      "examples": ["تَبَادَلَ", "تَشَارَكَ", "تَفَاعَلَ"],
+      "semantic_role": "reciprocal",
+      "augmentation": "تاء+ألف"
+    },
+    "اِنْفَعَلَ": {
+      "template": "VCCVCVC",
+      "type": "فعل مزيد بالهمزة والنون",
+      "category": "verb",
+      "derivation": "مزيد",
+      "examples": ["اِنْكَسَرَ", "اِنْفَتَحَ", "اِنْفَعَلَ"],
+      "semantic_role": "reflexive",
+      "augmentation": "همزة+نون"
+    },
+    "اِسْتَفْعَلَ": {
+      "template": "VCCVCVCVC",
+      "type": "فعل مزيد بالسين والتاء",
+      "category": "verb",
+      "derivation": "مزيد",
+      "examples": ["اِسْتَخْرَجَ", "اِسْتَفْهَمَ", "اِسْتَفْعَلَ"],
+      "semantic_role": "seeking",
+      "augmentation": "سين+تاء"
+    },
+    "مُسْتَفْعِل": {
+      "template": "CVCCVCVCVC",
+      "type": "اسم فاعل من استفعل",
+      "category": "noun",
+      "derivation": "مشتق",
+      "examples": ["مُسْتَخْرِج", "مُسْتَفْهِم", "مُسْتَفْعِل"],
+      "semantic_role": "seeker_agent"
+    },
+    "مَفْعِل": {
+      "template": "CVCVCVC",
+      "type": "اسم مكان/زمان",
+      "category": "noun",
+      "derivation": "مشتق",
+      "examples": ["مَكْتَب", "مَلْعَب", "مَفْعِل"],
+      "semantic_role": "place_time"
+    }
+  },
+  "frozen_patterns": {
+    "أدوات الاستفهام": {
+      "مَن": {"cv": "CVC", "type": "أداة استفهام", "meaning": "who"},
+      "مَا": {"cv": "CV", "type": "أداة استفهام", "meaning": "what"},
+      "مَتَى": {"cv": "CVCV", "type": "أداة استفهام", "meaning": "when"},
+      "أَيْنَ": {"cv": "VVCV", "type": "أداة استفهام", "meaning": "where"},
+      "كَيْفَ": {"cv": "CVVC", "type": "أداة استفهام", "meaning": "how"},
+      "لِمَاذَا": {"cv": "CVCVCV", "type": "أداة استفهام", "meaning": "why"}
+    },
+    "أدوات النفي": {
+      "لَا": {"cv": "CV", "type": "أداة نفي", "meaning": "no/not"},
+      "لَنْ": {"cv": "CVC", "type": "أداة نفي", "meaning": "will not"},
+      "لَمْ": {"cv": "CVC", "type": "أداة نفي", "meaning": "did not"},
+      "مَا": {"cv": "CV", "type": "أداة نفي", "meaning": "not"}
+    },
+    "أدوات الشرط": {
+      "إِنْ": {"cv": "VC", "type": "أداة شرط", "meaning": "if"},
+      "إِذَا": {"cv": "VCV", "type": "أداة شرط", "meaning": "if/when"},
+      "لَوْ": {"cv": "CVC", "type": "أداة شرط", "meaning": "if (hypothetical)"}
+    },
+    "ضمائر الإشارة": {
+      "هَذَا": {"cv": "CVCV", "type": "ضمير إشارة", "meaning": "this (masc)"},
+      "هَذِهِ": {"cv": "CVCVCV", "type": "ضمير إشارة", "meaning": "this (fem)"},
+      "ذَلِكَ": {"cv": "CVCVC", "type": "ضمير إشارة", "meaning": "that (masc)"},
+      "تِلْكَ": {"cv": "CVCV", "type": "ضمير إشارة", "meaning": "that (fem)"}
+    }
+  },
+  "diacritics_mapping": {
+    "َ": "a",
+    "ُ": "u", 
+    "ِ": "i",
+    "ّ": "gemination",
+    "ْ": "sukun",
+    "ً": "an",
+    "ٌ": "un",
+    "ٍ": "in"
+  },
+  "consonant_vowel_classification": {
+    "consonants": "بتثجحخدذرزسشصضطظعغفقكلمنهءىي",
+    "long_vowels": "اوي",
+    "hamza_forms": "أإآء",
+    "special_letters": "ةهى"
+  },
+  "weight_analysis_rules": {
+    "priority_order": [
+      "exact_match",
+      "cv_pattern_match", 
+      "morphological_analysis",
+      "semantic_classification",
+      "frozen_pattern_check"
+    ],
+    "confidence_weights": {
+      "exact_match": 1.0,
+      "cv_pattern_match": 0.8,
+      "morphological_analysis": 0.7,
+      "semantic_classification": 0.6,
+      "frozen_pattern_check": 0.9
+    }
+  }
+}

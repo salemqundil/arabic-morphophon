@@ -1,0 +1,160 @@
+{
+  "description": "Complete Arabic Phoneme Inventory - Classical and Modern Standard Arabic",
+  "version": "1.0.0",
+  "standard": "IPA_2015",
+  "last_updated": "2025-07-23",
+  "phoneme_inventory": {
+    "consonants": {
+      "stops": {
+        "voiceless": [
+          {"ipa": "t", "arabic": "ت", "place": "alveolar", "manner": "stop", "feature": ["voiceless", "alveolar", "stop"]},
+          {"ipa": "k", "arabic": "ك", "place": "velar", "manner": "stop", "feature": ["voiceless", "velar", "stop"]},
+          {"ipa": "q", "arabic": "ق", "place": "uvular", "manner": "stop", "feature": ["voiceless", "uvular", "stop"]},
+          {"ipa": "ʔ", "arabic": "ء", "place": "glottal", "manner": "stop", "feature": ["voiceless", "glottal", "stop"]}
+        ],
+        "voiced": [
+          {"ipa": "b", "arabic": "ب", "place": "bilabial", "manner": "stop", "feature": ["voiced", "bilabial", "stop"]},
+          {"ipa": "d", "arabic": "د", "place": "alveolar", "manner": "stop", "feature": ["voiced", "alveolar", "stop"]},
+          {"ipa": "dʒ", "arabic": "ج", "place": "postalveolar", "manner": "affricate", "feature": ["voiced", "postalveolar", "affricate"]}
+        ],
+        "emphatic": [
+          {"ipa": "tˤ", "arabic": "ط", "place": "alveolar", "manner": "stop", "feature": ["voiceless", "alveolar", "stop", "pharyngealized"]},
+          {"ipa": "dˤ", "arabic": "ض", "place": "alveolar", "manner": "stop", "feature": ["voiced", "alveolar", "stop", "pharyngealized"]},
+          {"ipa": "sˤ", "arabic": "ص", "place": "alveolar", "manner": "fricative", "feature": ["voiceless", "alveolar", "fricative", "pharyngealized"]},
+          {"ipa": "ðˤ", "arabic": "ظ", "place": "dental", "manner": "fricative", "feature": ["voiced", "dental", "fricative", "pharyngealized"]}
+        ]
+      },
+      "fricatives": {
+        "voiceless": [
+          {"ipa": "f", "arabic": "ف", "place": "labiodental", "manner": "fricative", "feature": ["voiceless", "labiodental", "fricative"]},
+          {"ipa": "θ", "arabic": "ث", "place": "dental", "manner": "fricative", "feature": ["voiceless", "dental", "fricative"]},
+          {"ipa": "s", "arabic": "س", "place": "alveolar", "manner": "fricative", "feature": ["voiceless", "alveolar", "fricative"]},
+          {"ipa": "ʃ", "arabic": "ش", "place": "postalveolar", "manner": "fricative", "feature": ["voiceless", "postalveolar", "fricative"]},
+          {"ipa": "x", "arabic": "خ", "place": "uvular", "manner": "fricative", "feature": ["voiceless", "uvular", "fricative"]},
+          {"ipa": "ħ", "arabic": "ح", "place": "pharyngeal", "manner": "fricative", "feature": ["voiceless", "pharyngeal", "fricative"]},
+          {"ipa": "h", "arabic": "ه", "place": "glottal", "manner": "fricative", "feature": ["voiceless", "glottal", "fricative"]}
+        ],
+        "voiced": [
+          {"ipa": "ð", "arabic": "ذ", "place": "dental", "manner": "fricative", "feature": ["voiced", "dental", "fricative"]},
+          {"ipa": "z", "arabic": "ز", "place": "alveolar", "manner": "fricative", "feature": ["voiced", "alveolar", "fricative"]},
+          {"ipa": "ʒ", "arabic": "ج", "place": "postalveolar", "manner": "fricative", "feature": ["voiced", "postalveolar", "fricative"], "note": "dialectal_variant"},
+          {"ipa": "ɣ", "arabic": "غ", "place": "uvular", "manner": "fricative", "feature": ["voiced", "uvular", "fricative"]},
+          {"ipa": "ʕ", "arabic": "ع", "place": "pharyngeal", "manner": "fricative", "feature": ["voiced", "pharyngeal", "fricative"]}
+        ]
+      },
+      "nasals": [
+        {"ipa": "m", "arabic": "م", "place": "bilabial", "manner": "nasal", "feature": ["voiced", "bilabial", "nasal"]},
+        {"ipa": "n", "arabic": "ن", "place": "alveolar", "manner": "nasal", "feature": ["voiced", "alveolar", "nasal"]}
+      ],
+      "liquids": [
+        {"ipa": "l", "arabic": "ل", "place": "alveolar", "manner": "lateral", "feature": ["voiced", "alveolar", "lateral"]},
+        {"ipa": "r", "arabic": "ر", "place": "alveolar", "manner": "trill", "feature": ["voiced", "alveolar", "trill"]}
+      ],
+      "glides": [
+        {"ipa": "w", "arabic": "و", "place": "labiovelar", "manner": "approximant", "feature": ["voiced", "labiovelar", "approximant"]},
+        {"ipa": "j", "arabic": "ي", "place": "palatal", "manner": "approximant", "feature": ["voiced", "palatal", "approximant"]}
+      ]
+    },
+    "vowels": {
+      "short": [
+        {"ipa": "a", "arabic": "َ", "height": "low", "backness": "central", "length": "short", "feature": ["low", "central", "short"]},
+        {"ipa": "i", "arabic": "ِ", "height": "high", "backness": "front", "length": "short", "feature": ["high", "front", "short"]},
+        {"ipa": "u", "arabic": "ُ", "height": "high", "backness": "back", "length": "short", "feature": ["high", "back", "rounded", "short"]}
+      ],
+      "long": [
+        {"ipa": "aː", "arabic": "ا", "height": "low", "backness": "central", "length": "long", "feature": ["low", "central", "long"]},
+        {"ipa": "iː", "arabic": "ي", "height": "high", "backness": "front", "length": "long", "feature": ["high", "front", "long"]},
+        {"ipa": "uː", "arabic": "و", "height": "high", "backness": "back", "length": "long", "feature": ["high", "back", "rounded", "long"]}
+      ],
+      "diphthongs": [
+        {"ipa": "aj", "arabic": "َي", "components": ["a", "j"], "feature": ["falling", "front_glide"]},
+        {"ipa": "aw", "arabic": "َو", "components": ["a", "w"], "feature": ["falling", "back_glide"]}
+      ]
+    },
+    "suprasegmentals": {
+      "stress": {
+        "rules": [
+          "Ultimate syllable if superheavy (CVVC, CVCC)",
+          "Penultimate if heavy (CVC, CVV) and ultimate is light",
+          "Antepenultimate if last two syllables are light"
+        ],
+        "notation": "ˈ"
+      },
+      "length": {
+        "phonemic": true,
+        "notation": "ː"
+      }
+    }
+  },
+  "phonological_processes": {
+    "assimilation": {
+      "definite_article": {
+        "name": "Definite Article Assimilation",
+        "description": "The /l/ in the definite article /al/ assimilates to coronal consonants",
+        "sun_letters": ["t", "θ", "d", "ð", "r", "z", "s", "ʃ", "sˤ", "dˤ", "tˤ", "ðˤ", "l", "n"],
+        "moon_letters": ["b", "dʒ", "ħ", "x", "ʕ", "ɣ", "f", "q", "k", "m", "h", "w", "j"],
+        "rule": "/al/ + [+coronal] → /a[+coronal][+coronal]/",
+        "examples": [
+          {"input": "/al-ʃams/", "output": "/aʃ-ʃams/", "gloss": "the sun"},
+          {"input": "/al-kitaːb/", "output": "/al-kitaːb/", "gloss": "the book"}
+        ]
+      },
+      "progressive": {
+        "description": "Consonant spreads features forward",
+        "examples": [
+          {"type": "place", "rule": "/n/ + [labial] → [labial]", "example": "/inbaːt/ → [imbaːt]"}
+        ]
+      }
+    },
+    "epenthesis": {
+      "vowel_insertion": {
+        "description": "Vowel insertion to break consonant clusters",
+        "rule": "C₁C₂C₃ → C₁iC₂C₃ (when C₁C₂ forms illegal cluster)",
+        "examples": [
+          {"input": "/ktb/", "output": "/kitb/", "context": "word_initial"},
+          {"input": "/ʔakl/", "output": "/ʔakil/", "context": "final_cluster"}
+        ]
+      }
+    },
+    "deletion": {
+      "vowel_syncope": {
+        "description": "Short vowel deletion in open syllables",
+        "rule": "V → ∅ / _CV.CV",
+        "examples": [
+          {"input": "/kataba/", "output": "/katba/", "context": "rapid_speech"}
+        ]
+      }
+    }
+  },
+  "syllable_structure": {
+    "templates": [
+      {"type": "CV", "structure": "C + V", "frequency": 0.35, "example": "/ka/"},
+      {"type": "CVC", "structure": "C + V + C", "frequency": 0.25, "example": "/kat/"},
+      {"type": "CVV", "structure": "C + Vː", "frequency": 0.20, "example": "/kaː/"},
+      {"type": "CVVC", "structure": "C + Vː + C", "frequency": 0.15, "example": "/kaːt/"},
+      {"type": "CVCC", "structure": "C + V + CC", "frequency": 0.05, "example": "/katb/"}
+    ],
+    "constraints": {
+      "onset": {
+        "required": true,
+        "max_consonants": 1,
+        "clusters": []
+      },
+      "nucleus": {
+        "required": true,
+        "types": ["short_vowel", "long_vowel"],
+        "no_schwa": true
+      },
+      "coda": {
+        "optional": true,
+        "max_consonants": 2,
+        "preferred_clusters": ["st", "nt", "kt", "lb", "rd"]
+      }
+    },
+    "weight": {
+      "light": ["CV"],
+      "heavy": ["CVC", "CVV"],
+      "superheavy": ["CVVC", "CVCC"]
+    }
+  }
+}

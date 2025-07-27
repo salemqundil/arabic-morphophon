@@ -1,0 +1,376 @@
+{
+  "definite": {
+    "nominative": {
+      "masc": {
+        "singular": "الفعل",
+        "dual": "الفعلان",
+        "plural": "الفعلون"
+      },
+      "fem": {
+        "singular": "الفعلة",
+        "dual": "الفعلتان",
+        "plural": "الفعلات"
+      }
+    },
+    "accusative": {
+      "masc": {
+        "singular": "الفعل",
+        "dual": "الفعلين",
+        "plural": "الفعلين"
+      },
+      "fem": {
+        "singular": "الفعلة",
+        "dual": "الفعلتين",
+        "plural": "الفعلات"
+      }
+    },
+    "genitive": {
+      "masc": {
+        "singular": "الفعل",
+        "dual": "الفعلين",
+        "plural": "الفعلين"
+      },
+      "fem": {
+        "singular": "الفعلة",
+        "dual": "الفعلتين",
+        "plural": "الفعلات"
+      }
+    }
+  },
+  "indefinite": {
+    "nominative": {
+      "masc": {
+        "singular": "فعل",
+        "dual": "فعلان",
+        "plural": "فعلون"
+      },
+      "fem": {
+        "singular": "فعلة",
+        "dual": "فعلتان",
+        "plural": "فعلات"
+      }
+    },
+    "accusative": {
+      "masc": {
+        "singular": "فعلا",
+        "dual": "فعلين",
+        "plural": "فعلين"
+      },
+      "fem": {
+        "singular": "فعلة",
+        "dual": "فعلتين",
+        "plural": "فعلات"
+      }
+    },
+    "genitive": {
+      "masc": {
+        "singular": "فعل",
+        "dual": "فعلين",
+        "plural": "فعلين"
+      },
+      "fem": {
+        "singular": "فعلة",
+        "dual": "فعلتين",
+        "plural": "فعلات"
+      }
+    }
+  },
+  "sound_masculine_plural": {
+    "definite": {
+      "nominative": "الفعلون",
+      "accusative": "الفعلين",
+      "genitive": "الفعلين"
+    },
+    "indefinite": {
+      "nominative": "فعلون",
+      "accusative": "فعلين",
+      "genitive": "فعلين"
+    }
+  },
+  "sound_feminine_plural": {
+    "definite": {
+      "nominative": "الفعلات",
+      "accusative": "الفعلات",
+      "genitive": "الفعلات"
+    },
+    "indefinite": {
+      "nominative": "فعلات",
+      "accusative": "فعلات",
+      "genitive": "فعلات"
+    }
+  },
+  "broken_plurals": {
+    "فعول": {
+      "definite": {
+        "nominative": "الفعول",
+        "accusative": "الفعول",
+        "genitive": "الفعول"
+      },
+      "indefinite": {
+        "nominative": "فعول",
+        "accusative": "فعولا",
+        "genitive": "فعول"
+      }
+    },
+    "أفعال": {
+      "definite": {
+        "nominative": "الأفعال",
+        "accusative": "الأفعال",
+        "genitive": "الأفعال"
+      },
+      "indefinite": {
+        "nominative": "أفعال",
+        "accusative": "أفعالا",
+        "genitive": "أفعال"
+      }
+    },
+    "فعال": {
+      "definite": {
+        "nominative": "الفعال",
+        "accusative": "الفعال",
+        "genitive": "الفعال"
+      },
+      "indefinite": {
+        "nominative": "فعال",
+        "accusative": "فعالا",
+        "genitive": "فعال"
+      }
+    },
+    "فُعَل": {
+      "definite": {
+        "nominative": "الفُعَل",
+        "accusative": "الفُعَل",
+        "genitive": "الفُعَل"
+      },
+      "indefinite": {
+        "nominative": "فُعَل",
+        "accusative": "فُعَلا",
+        "genitive": "فُعَل"
+      }
+    }
+  },
+  "adjective_patterns": {
+    "فاعل": {
+      "masc": {
+        "definite": {
+          "nominative": {
+            "singular": "الفاعل",
+            "dual": "الفاعلان",
+            "plural": "الفاعلون"
+          },
+          "accusative": {
+            "singular": "الفاعل",
+            "dual": "الفاعلين",
+            "plural": "الفاعلين"
+          },
+          "genitive": {
+            "singular": "الفاعل",
+            "dual": "الفاعلين",
+            "plural": "الفاعلين"
+          }
+        },
+        "indefinite": {
+          "nominative": {
+            "singular": "فاعل",
+            "dual": "فاعلان",
+            "plural": "فاعلون"
+          },
+          "accusative": {
+            "singular": "فاعلا",
+            "dual": "فاعلين",
+            "plural": "فاعلين"
+          },
+          "genitive": {
+            "singular": "فاعل",
+            "dual": "فاعلين",
+            "plural": "فاعلين"
+          }
+        }
+      },
+      "fem": {
+        "definite": {
+          "nominative": {
+            "singular": "الفاعلة",
+            "dual": "الفاعلتان",
+            "plural": "الفاعلات"
+          },
+          "accusative": {
+            "singular": "الفاعلة",
+            "dual": "الفاعلتين",
+            "plural": "الفاعلات"
+          },
+          "genitive": {
+            "singular": "الفاعلة",
+            "dual": "الفاعلتين",
+            "plural": "الفاعلات"
+          }
+        },
+        "indefinite": {
+          "nominative": {
+            "singular": "فاعلة",
+            "dual": "فاعلتان",
+            "plural": "فاعلات"
+          },
+          "accusative": {
+            "singular": "فاعلة",
+            "dual": "فاعلتين",
+            "plural": "فاعلات"
+          },
+          "genitive": {
+            "singular": "فاعلة",
+            "dual": "فاعلتين",
+            "plural": "فاعلات"
+          }
+        }
+      }
+    },
+    "مفعول": {
+      "masc": {
+        "definite": {
+          "nominative": {
+            "singular": "المفعول",
+            "dual": "المفعولان",
+            "plural": "المفعولون"
+          },
+          "accusative": {
+            "singular": "المفعول",
+            "dual": "المفعولين",
+            "plural": "المفعولين"
+          },
+          "genitive": {
+            "singular": "المفعول",
+            "dual": "المفعولين",
+            "plural": "المفعولين"
+          }
+        },
+        "indefinite": {
+          "nominative": {
+            "singular": "مفعول",
+            "dual": "مفعولان",
+            "plural": "مفعولون"
+          },
+          "accusative": {
+            "singular": "مفعولا",
+            "dual": "مفعولين",
+            "plural": "مفعولين"
+          },
+          "genitive": {
+            "singular": "مفعول",
+            "dual": "مفعولين",
+            "plural": "مفعولين"
+          }
+        }
+      },
+      "fem": {
+        "definite": {
+          "nominative": {
+            "singular": "المفعولة",
+            "dual": "المفعولتان",
+            "plural": "المفعولات"
+          },
+          "accusative": {
+            "singular": "المفعولة",
+            "dual": "المفعولتين",
+            "plural": "المفعولات"
+          },
+          "genitive": {
+            "singular": "المفعولة",
+            "dual": "المفعولتين",
+            "plural": "المفعولات"
+          }
+        },
+        "indefinite": {
+          "nominative": {
+            "singular": "مفعولة",
+            "dual": "مفعولتان",
+            "plural": "مفعولات"
+          },
+          "accusative": {
+            "singular": "مفعولة",
+            "dual": "مفعولتين",
+            "plural": "مفعولات"
+          },
+          "genitive": {
+            "singular": "مفعولة",
+            "dual": "مفعولتين",
+            "plural": "مفعولات"
+          }
+        }
+      }
+    }
+  },
+  "irregular_nouns": {
+    "أب": {
+      "definite": {
+        "nominative": {
+          "singular": "الأب",
+          "dual": "الأبان",
+          "plural": "الآباء"
+        },
+        "accusative": {
+          "singular": "الأب",
+          "dual": "الأبين",
+          "plural": "الآباء"
+        },
+        "genitive": {
+          "singular": "الأب",
+          "dual": "الأبين",
+          "plural": "الآباء"
+        }
+      },
+      "indefinite": {
+        "nominative": {
+          "singular": "أب",
+          "dual": "أبان",
+          "plural": "آباء"
+        },
+        "accusative": {
+          "singular": "أبا",
+          "dual": "أبين",
+          "plural": "آباء"
+        },
+        "genitive": {
+          "singular": "أب",
+          "dual": "أبين",
+          "plural": "آباء"
+        }
+      }
+    },
+    "امرأة": {
+      "definite": {
+        "nominative": {
+          "singular": "المرأة",
+          "dual": "المرأتان",
+          "plural": "النساء"
+        },
+        "accusative": {
+          "singular": "المرأة",
+          "dual": "المرأتين",
+          "plural": "النساء"
+        },
+        "genitive": {
+          "singular": "المرأة",
+          "dual": "المرأتين",
+          "plural": "النساء"
+        }
+      },
+      "indefinite": {
+        "nominative": {
+          "singular": "امرأة",
+          "dual": "امرأتان",
+          "plural": "نساء"
+        },
+        "accusative": {
+          "singular": "امرأة",
+          "dual": "امرأتين",
+          "plural": "نساء"
+        },
+        "genitive": {
+          "singular": "امرأة",
+          "dual": "امرأتين",
+          "plural": "نساء"
+        }
+      }
+    }
+  }
+}

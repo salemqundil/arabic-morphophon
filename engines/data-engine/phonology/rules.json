@@ -1,0 +1,91 @@
+{
+  "assimilation": {
+    "description": "Arabic assimilation rules - إدغام",
+    "rules": {
+      "ن": {
+        "targets": ["ل", "ر", "ي", "و", "م", "ن"],
+        "replacement": "",
+        "context": "adjacent",
+        "description": "Nun assimilation in Arabic"
+      },
+      "ت": {
+        "targets": ["د", "ط", "ص", "ض", "ظ", "ذ", "ز", "س", "ش"],
+        "replacement": "",
+        "context": "prefix",
+        "description": "Ta assimilation with coronals"
+      },
+      "ل": {
+        "targets": ["ص", "ض", "ط", "ظ", "ت", "د", "ذ", "ث", "ر", "ز", "س", "ش", "ن"],
+        "replacement": "",
+        "context": "definite_article",
+        "description": "Definite article assimilation"
+      }
+    }
+  },
+  "deletion": {
+    "description": "Arabic deletion rules - حذف",
+    "rules": {
+      "ء": {
+        "conditions": {
+          "word_initial": true,
+          "after_vowel": true
+        },
+        "delete": true,
+        "description": "Hamza deletion in specific contexts"
+      },
+      "ه": {
+        "conditions": {
+          "word_final": true,
+          "unstressed": true
+        },
+        "delete": true,
+        "description": "Final ha deletion in unstressed positions"
+      },
+      "ي": {
+        "conditions": {
+          "before": ["ي"],
+          "morpheme_boundary": true
+        },
+        "delete": true,
+        "description": "Ya deletion to avoid gemination"
+      }
+    }
+  },
+  "inversion": {
+    "description": "Arabic sound inversion rules - قلب",
+    "rules": {
+      "س+و": {
+        "replace": "ص",
+        "context": "morpheme_internal",
+        "description": "Sin-waw inversion"
+      },
+      "ز+و": {
+        "replace": "ص",
+        "context": "morpheme_internal", 
+        "description": "Zay-waw inversion"
+      },
+      "د+ت": {
+        "replace": "ت",
+        "context": "morpheme_boundary",
+        "description": "Dal-ta inversion"
+      }
+    }
+  },
+  "epenthesis": {
+    "description": "Arabic epenthesis rules - إشباع",
+    "rules": {
+      "consonant_clusters": {
+        "pattern": "CC#",
+        "insert": "ِ",
+        "position": "between",
+        "description": "Vowel insertion in consonant clusters"
+      },
+      "initial_clusters": {
+        "pattern": "#CC",
+        "insert": "إ",
+        "position": "before",
+        "description": "Prosthetic alif insertion"
+      }
+    }
+  }
+}

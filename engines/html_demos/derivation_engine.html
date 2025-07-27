@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Derivation Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .derivation-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .root-info {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #2196f3;
+        }
+        .pattern-info {
+            background: #f3e5f5;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #9c27b0;
+        }
+        .derivations-list {
+            margin: 15px 0;
+        }
+        .derivation-item {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 12px;
+            margin: 3px;
+            border-radius: 15px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .morphological-info {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #ff9800;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك الاشتقاق العربي</h1>
+            <div class="subtitle">Arabic Word Derivation Engine</div>
+            <div class="subtitle">يحلل الجذور ويشتق الكلمات والأوزان</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل الكلمة أو الجذر العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: كتب أو درس" value="كتب">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('كتب')">جذر: كتب</button>
+            <button class="btn example-btn" onclick="setExample('درس')">جذر: درس</button>
+            <button class="btn example-btn" onclick="setExample('علم')">جذر: علم</button>
+            <button class="btn example-btn" onclick="setExample('قرأ')">جذر: قرأ</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeDerivation()"> تحليل الاشتقاق</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج تحليل الاشتقاق</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeDerivation() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال كلمة عربية للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateDerivationAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateDerivationAnalysis(word) {
+            // Sample derivation data
+            const derivationData = {
+                'كتب': {
+                    root: 'ك-ت-ب',
+                    pattern: 'فعل',
+                    base_form: 'كتب',
+                    meaning: 'الكتابة والتسجيل',
+                    derivations: [
+                        { word: 'كاتب', pattern: 'فاعل', type: 'اسم فاعل', meaning: 'من يكتب' },
+                        { word: 'مكتوب', pattern: 'مفعول', type: 'اسم مفعول', meaning: 'ما يُكتب' },
+                        { word: 'كتابة', pattern: 'فعالة', type: 'مصدر', meaning: 'عملية الكتابة' },
+                        { word: 'مكتب', pattern: 'مفعل', type: 'اسم مكان', meaning: 'مكان الكتابة' },
+                        { word: 'كتّاب', pattern: 'فعّال', type: 'صيغة مبالغة', meaning: 'كثير الكتابة' },
+                        { word: 'كُتُب', pattern: 'فُعُل', type: 'جمع', meaning: 'جمع كتاب' }
+                    ]
+                },
+                'درس': {
+                    root: 'د-ر-س',
+                    pattern: 'فعل',
+                    base_form: 'درس',
+                    meaning: 'التعلم والدراسة',
+                    derivations: [
+                        { word: 'دارس', pattern: 'فاعل', type: 'اسم فاعل', meaning: 'من يدرس' },
+                        { word: 'مدروس', pattern: 'مفعول', type: 'اسم مفعول', meaning: 'ما يُدرس' },
+                        { word: 'دراسة', pattern: 'فعالة', type: 'مصدر', meaning: 'عملية الدراسة' },
+                        { word: 'مدرسة', pattern: 'مفعلة', type: 'اسم مكان', meaning: 'مكان الدراسة' },
+                        { word: 'مُدرّس', pattern: 'مُفعّل', type: 'اسم فاعل', meaning: 'من يُعلّم' },
+                        { word: 'دروس', pattern: 'فعول', type: 'جمع', meaning: 'جمع درس' }
+                    ]
+                },
+                'علم': {
+                    root: 'ع-ل-م',
+                    pattern: 'فعل',
+                    base_form: 'علم',
+                    meaning: 'المعرفة والإدراك',
+                    derivations: [
+                        { word: 'عالم', pattern: 'فاعل', type: 'اسم فاعل', meaning: 'من يعلم' },
+                        { word: 'معلوم', pattern: 'مفعول', type: 'اسم مفعول', meaning: 'ما يُعلم' },
+                        { word: 'تعليم', pattern: 'تفعيل', type: 'مصدر', meaning: 'عملية التعليم' },
+                        { word: 'مُعلّم', pattern: 'مُفعّل', type: 'اسم فاعل', meaning: 'من يُعلّم' },
+                        { word: 'علّامة', pattern: 'فعّالة', type: 'صيغة مبالغة', meaning: 'كثير العلم' },
+                        { word: 'علوم', pattern: 'فعول', type: 'جمع', meaning: 'جمع علم' }
+                    ]
+                },
+                'قرأ': {
+                    root: 'ق-ر-أ',
+                    pattern: 'فعل',
+                    base_form: 'قرأ',
+                    meaning: 'القراءة والتلاوة',
+                    derivations: [
+                        { word: 'قارئ', pattern: 'فاعل', type: 'اسم فاعل', meaning: 'من يقرأ' },
+                        { word: 'مقروء', pattern: 'مفعول', type: 'اسم مفعول', meaning: 'ما يُقرأ' },
+                        { word: 'قراءة', pattern: 'فعالة', type: 'مصدر', meaning: 'عملية القراءة' },
+                        { word: 'مُقرئ', pattern: 'مُفعل', type: 'اسم فاعل', meaning: 'من يُعلّم القراءة' },
+                        { word: 'قرّاء', pattern: 'فعّال', type: 'صيغة مبالغة', meaning: 'كثير القراءة' },
+                        { word: 'قُرّاء', pattern: 'فُعّال', type: 'جمع', meaning: 'جمع قارئ' }
+                    ]
+                }
+            };
+
+            // Get derivation data or create generic analysis
+            const data = derivationData[word] || createGenericAnalysis(word);
+
+            return {
+                input_word: word,
+                analysis: data,
+                morphological_features: generateMorphologicalFeatures(data),
+                pattern_analysis: analyzePattern(data.pattern),
+                semantic_field: generateSemanticField(data.meaning)
+            };
+        }
+
+        function createGenericAnalysis(word) {
+            // Extract potential root (simplified)
+            const root = extractRoot(word);
+            return {
+                root: root,
+                pattern: 'فعل',
+                base_form: word,
+                meaning: 'معنى عام',
+                derivations: [
+                    { word: word + 'ة', pattern: 'فعلة', type: 'مصدر', meaning: 'مصدر الفعل' },
+                    { word: 'مُ' + word, pattern: 'مُفعل', type: 'اسم فاعل', meaning: 'من يقوم بالفعل' }
+                ]
+            };
+        }
+
+        function extractRoot(word) {
+            // Simplified root extraction
+            if (word.length >= 3) {
+                return word[0] + '-' + word[1] + '-' + word[2];
+            }
+            return word;
+        }
+
+        function generateMorphologicalFeatures(data) {
+            return {
+                root_type: 'ثلاثي',
+                pattern_family: 'أوزان الأفعال',
+                semantic_category: 'فعل متعدي',
+                frequency: 'عالي الاستخدام'
+            };
+        }
+
+        function analyzePattern(pattern) {
+            const patternInfo = {
+                'فعل': { description: 'وزن الفعل الأساسي', structure: 'ف-ع-ل', type: 'ثلاثي مجرد' },
+                'فاعل': { description: 'وزن اسم الفاعل', structure: 'ف-ا-ع-ل', type: 'اسم فاعل' },
+                'مفعول': { description: 'وزن اسم المفعول', structure: 'م-ف-ع-و-ل', type: 'اسم مفعول' }
+            };
+
+            return patternInfo[pattern] || { description: 'وزن عام', structure: pattern, type: 'غير محدد' };
+        }
+
+        function generateSemanticField(meaning) {
+            return {
+                domain: 'الأعمال والأنشطة',
+                related_concepts: ['التعلم', 'المعرفة', 'الثقافة'],
+                usage_context: 'عام ومتخصص'
+            };
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="derivation-analysis">
+                    <div class="word-header"> تحليل الكلمة: ${analysis.input_word}</div>
+
+                    <div class="analysis-grid">
+                        <div class="root-info info-box">
+                            <strong> الجذر:</strong> ${analysis.analysis.root}<br>
+                            <strong> الوزن:</strong> ${analysis.analysis.pattern}<br>
+                            <strong> الشكل الأساسي:</strong> ${analysis.analysis.base_form}
+                        </div>
+
+                        <div class="morphological-info info-box">
+                            <strong> الخصائص الصرفية:</strong><br>
+                            <strong>نوع الجذر:</strong> ${analysis.morphological_features.root_type}<br>
+                            <strong>عائلة الوزن:</strong> ${analysis.morphological_features.pattern_family}
+                        </div>
+                    </div>
+
+                    <div class="pattern-info">
+                        <strong> تحليل الوزن:</strong><br>
+                        <strong>الوصف:</strong> ${analysis.pattern_analysis.description}<br>
+                        <strong>البنية:</strong> ${analysis.pattern_analysis.structure}<br>
+                        <strong>النوع:</strong> ${analysis.pattern_analysis.type}
+                    </div>
+
+                    <div><strong> المشتقات:</strong></div>
+                    <div class="derivations-list">
+                        ${analysis.analysis.derivations.map(derivation =>
+                            `<div class="derivation-item" title="${derivation.meaning}">
+                                ${derivation.word} (${derivation.type})
+                            </div>`
+                        ).join('')}
+                    </div>
+
+                    <div class="stats">
+                        <strong> الإحصائيات:</strong>
+                        عدد المشتقات: ${analysis.analysis.derivations.length} |
+                        المعنى الأساسي: ${analysis.analysis.meaning} |
+                        المجال الدلالي: ${analysis.semantic_field.domain}
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeDerivation();
+        };
+    </script>
+</body>
+</html>

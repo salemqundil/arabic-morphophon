@@ -1,0 +1,548 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "creation_date": "2025-07-24T18:28:59.156399",
+    "total_relative_pronouns": 17
+  },
+  "relative_pronouns": [
+    {
+      "text": "الذي",
+      "category": "مذكر_مفرد",
+      "syllables": [
+        "الْ",
+        "ذِي"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "dh",
+        "i"
+      ],
+      "syllable_pattern": "CVC-CV",
+      "frequency_score": 0.95,
+      "usage_contexts": [
+        "جملة الصلة",
+        "التعريف",
+        "الوصف"
+      ],
+      "morphological_features": {
+        "gender": "مذكر",
+        "number": "مفرد",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "الذى",
+      "category": "مذكر_مفرد",
+      "syllables": [
+        "الْ",
+        "ذَى"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "dh",
+        "aa"
+      ],
+      "syllable_pattern": "CVC-CVC",
+      "frequency_score": 0.85,
+      "usage_contexts": [
+        "جملة الصلة",
+        "النصوص الكلاسيكية"
+      ],
+      "morphological_features": {
+        "gender": "مذكر",
+        "number": "مفرد",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "التي",
+      "category": "مؤنث_مفرد",
+      "syllables": [
+        "الْ",
+        "تِي"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "t",
+        "i"
+      ],
+      "syllable_pattern": "CVC-CV",
+      "frequency_score": 0.92,
+      "usage_contexts": [
+        "جملة الصلة",
+        "التعريف",
+        "الوصف"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "مفرد",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللتي",
+      "category": "مؤنث_مفرد",
+      "syllables": [
+        "الْ",
+        "لَ",
+        "تِي"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "a",
+        "t",
+        "i"
+      ],
+      "syllable_pattern": "CVC-CV-CV",
+      "frequency_score": 0.75,
+      "usage_contexts": [
+        "النصوص الفصيحة",
+        "الكتابة الرسمية"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "مفرد",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللذان",
+      "category": "مذكر_مثنى",
+      "syllables": [
+        "الْ",
+        "لَ",
+        "ذَا",
+        "نِ"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "a",
+        "dh",
+        "aa",
+        "n"
+      ],
+      "syllable_pattern": "CVC-CV-CV-CV",
+      "frequency_score": 0.65,
+      "usage_contexts": [
+        "المثنى المرفوع",
+        "النصوص الفصيحة"
+      ],
+      "morphological_features": {
+        "gender": "مذكر",
+        "number": "مثنى",
+        "case": "رفع",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللذين",
+      "category": "مذكر_مثنى",
+      "syllables": [
+        "الْ",
+        "لَ",
+        "ذَيْ",
+        "نِ"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "a",
+        "dh",
+        "ay",
+        "n"
+      ],
+      "syllable_pattern": "CVC-CV-CV-CV",
+      "frequency_score": 0.62,
+      "usage_contexts": [
+        "المثنى المنصوب والمجرور",
+        "النصوص الفصيحة"
+      ],
+      "morphological_features": {
+        "gender": "مذكر",
+        "number": "مثنى",
+        "case": "نصب_وجر",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللتان",
+      "category": "مؤنث_مثنى",
+      "syllables": [
+        "الْ",
+        "لَ",
+        "تَا",
+        "نِ"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "a",
+        "t",
+        "aa",
+        "n"
+      ],
+      "syllable_pattern": "CVC-CV-CV-CV",
+      "frequency_score": 0.58,
+      "usage_contexts": [
+        "المثنى المؤنث المرفوع",
+        "النصوص الفصيحة"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "مثنى",
+        "case": "رفع",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللتين",
+      "category": "مؤنث_مثنى",
+      "syllables": [
+        "الْ",
+        "لَ",
+        "تَيْ",
+        "نِ"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "a",
+        "t",
+        "ay",
+        "n"
+      ],
+      "syllable_pattern": "CVC-CV-CV-CV",
+      "frequency_score": 0.55,
+      "usage_contexts": [
+        "المثنى المؤنث المنصوب والمجرور"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "مثنى",
+        "case": "نصب_وجر",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "الذين",
+      "category": "مذكر_جمع",
+      "syllables": [
+        "الْ",
+        "ذِي",
+        "نَ"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "dh",
+        "i",
+        "n"
+      ],
+      "syllable_pattern": "CVC-CV-CV",
+      "frequency_score": 0.88,
+      "usage_contexts": [
+        "جمع المذكر السالم",
+        "جمع التكسير"
+      ],
+      "morphological_features": {
+        "gender": "مذكر",
+        "number": "جمع",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللاتي",
+      "category": "مؤنث_جمع",
+      "syllables": [
+        "الْ",
+        "لَا",
+        "تِي"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "aa",
+        "t",
+        "i"
+      ],
+      "syllable_pattern": "CVC-CV-CV",
+      "frequency_score": 0.72,
+      "usage_contexts": [
+        "جمع المؤنث السالم",
+        "جمع التكسير"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "جمع",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللائي",
+      "category": "مؤنث_جمع",
+      "syllables": [
+        "الْ",
+        "لَائِي"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "aa",
+        "i"
+      ],
+      "syllable_pattern": "CVC-COMPLEX",
+      "frequency_score": 0.68,
+      "usage_contexts": [
+        "جمع المؤنث",
+        "النصوص الكلاسيكية"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "جمع",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "اللواتي",
+      "category": "مؤنث_جمع",
+      "syllables": [
+        "الْ",
+        "لَ",
+        "وَا",
+        "تِي"
+      ],
+      "phonemes": [
+        "a",
+        "l",
+        "l",
+        "a",
+        "w",
+        "aa",
+        "t",
+        "i"
+      ],
+      "syllable_pattern": "CVC-CV-CV-CV",
+      "frequency_score": 0.65,
+      "usage_contexts": [
+        "جمع المؤنث",
+        "النصوص الفصيحة"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "جمع",
+        "case": "متغير",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "مَن",
+      "category": "عام",
+      "syllables": [
+        "مَنْ"
+      ],
+      "phonemes": [
+        "m",
+        "a",
+        "n"
+      ],
+      "syllable_pattern": "CVC",
+      "frequency_score": 0.9,
+      "usage_contexts": [
+        "العاقل",
+        "الاستفهام",
+        "الشرط"
+      ],
+      "morphological_features": {
+        "gender": "محايد",
+        "number": "محايد",
+        "case": "مبني",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "ما",
+      "category": "عام",
+      "syllables": [
+        "مَا"
+      ],
+      "phonemes": [
+        "m",
+        "aa"
+      ],
+      "syllable_pattern": "CV",
+      "frequency_score": 0.87,
+      "usage_contexts": [
+        "غير العاقل",
+        "الاستفهام",
+        "الشرط"
+      ],
+      "morphological_features": {
+        "gender": "محايد",
+        "number": "محايد",
+        "case": "مبني",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "أي",
+      "category": "عام",
+      "syllables": [
+        "أَيّ"
+      ],
+      "phonemes": [
+        "a",
+        "y",
+        "y"
+      ],
+      "syllable_pattern": "CV",
+      "frequency_score": 0.76,
+      "usage_contexts": [
+        "التعميم",
+        "الشرط",
+        "الاستفهام"
+      ],
+      "morphological_features": {
+        "gender": "متغير",
+        "number": "متغير",
+        "case": "معرب",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "ذو",
+      "category": "مذكر_مفرد",
+      "syllables": [
+        "ذُو"
+      ],
+      "phonemes": [
+        "dh",
+        "u"
+      ],
+      "syllable_pattern": "CV",
+      "frequency_score": 0.45,
+      "usage_contexts": [
+        "الإضافة",
+        "الوصف",
+        "النصوص الكلاسيكية"
+      ],
+      "morphological_features": {
+        "gender": "مذكر",
+        "number": "مفرد",
+        "case": "معرب",
+        "definiteness": "معرف"
+      }
+    },
+    {
+      "text": "ذات",
+      "category": "مؤنث_مفرد",
+      "syllables": [
+        "ذَاتِ"
+      ],
+      "phonemes": [
+        "dh",
+        "aa",
+        "t"
+      ],
+      "syllable_pattern": "CVC",
+      "frequency_score": 0.42,
+      "usage_contexts": [
+        "الإضافة",
+        "الوصف",
+        "النصوص الكلاسيكية"
+      ],
+      "morphological_features": {
+        "gender": "مؤنث",
+        "number": "مفرد",
+        "case": "معرب",
+        "definiteness": "معرف"
+      }
+    }
+  ],
+  "syllable_patterns": {
+    "CVC-CV": [
+      "الذي",
+      "التي"
+    ],
+    "CVC-CVC": [
+      "الذى"
+    ],
+    "CVC-CV-CV": [
+      "اللتي",
+      "الذين",
+      "اللاتي"
+    ],
+    "CVC-CV-CV-CV": [
+      "اللذان",
+      "اللذين",
+      "اللتان",
+      "اللتين",
+      "اللواتي"
+    ],
+    "CVC-COMPLEX": [
+      "اللائي"
+    ],
+    "CVC": [
+      "مَن",
+      "ذات"
+    ],
+    "CV": [
+      "ما",
+      "أي",
+      "ذو"
+    ]
+  },
+  "phoneme_patterns": {
+    "a-l-dh": [
+      "الذي",
+      "الذى",
+      "الذين"
+    ],
+    "a-l-t": [
+      "التي"
+    ],
+    "a-l-l": [
+      "اللتي",
+      "اللذان",
+      "اللذين",
+      "اللتان",
+      "اللتين",
+      "اللاتي",
+      "اللائي",
+      "اللواتي"
+    ],
+    "m-a-n": [
+      "مَن"
+    ],
+    "m-aa": [
+      "ما"
+    ],
+    "a-y-y": [
+      "أي"
+    ],
+    "dh-u": [
+      "ذو"
+    ],
+    "dh-aa-t": [
+      "ذات"
+    ]
+  }
+}

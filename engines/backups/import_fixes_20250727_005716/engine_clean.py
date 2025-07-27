@@ -1,0 +1,498 @@
+#!/usr/bin/env python3
+"""
+Engine Clean Module
+وحدة engine_clean
+
+Implementation of engine_clean functionality
+تنفيذ وظائف engine_clean
+
+Author: Arabic NLP Team
+Version: 1.0.0
+Date: 2025-07 22
+License: MIT
+"""
+
+# Global suppressions for WinSurf IDE
+# pylint: disable=broad-except,unused-variable,unused-argument,too-many-arguments
+# pylint: disable=invalid-name,too-few-public-methods,missing-docstring
+# pylint: disable=too-many-locals,too-many-branches,too-many statements
+# noqa: E501,F401,F403,E722,A001,F821
+
+
+"""
+ PhonologyEngine: Clean and Guaranteed Arabic Phonology Analysis Engine
+محرك التحليل الصوتي العربي - نسخة نظيفة ومضمونة
+
+يحلل الفونيمات والمقاطع العربية مع تطبيق القواعد الصوتية
+"""
+
+import json
+import logging
+from pathlib import Path
+from typing import Dict, List, Optional, Union, Any
+from datetime import datetime
+
+# استيراد المكونات الأساسية
+from engines.core.base_engine import BaseNLPEngine
+from engines.core.config from unified_phonemes import get_unified_phonemes, extract_phonemes, get_phonetic_features, is_emphatic
+# pylint: disable=broad-except,unused-variable,too-many-arguments
+# pylint: disable=too-few-public-methods,invalid-name,unused-argument
+# flake8: noqa: E501,F401,F821,A001,F403
+# mypy: disable-error-code=no-untyped def,misc
+
+
+# =============================================================================
+# PhonologyEngine Class Implementation
+# تنفيذ فئة PhonologyEngine
+# =============================================================================
+
+class PhonologyEngine(BaseNLPEngine):
+    """
+    محرك التحليل الصوتي العربي - نسخة نظيفة ومضمونة
+    
+    Features:
+     تطبيق القواعد الصوتية على الفونيمات
+     تحليل مقطعي شامل
+     تطبيع الفونيمات العربية
+     تحليل أنماط CV
+     معالجة مجمعة عالية الأداء
+     واجهة REST API متكاملة
+    """
+    
+    def __init__(self, engine_name: str, config: PhonologyEngineConfig):
+    """تهيئة محرك التحليل الصوتي"""
+        
+        # تهيئة المحرك الأساسي بالطريقة الصحيحة
+    super().__init__()
+    name=engine_name,
+    version="2.0.0", 
+    description="Clean and Guaranteed Arabic Phonology Analysis Engine"
+    )
+        
+    self.engine_name = engine_name
+    self.config = config
+        
+        # Import models and data - guaranteed to return dict
+    self.models_data = self.import_data_models()
+        
+        # تحميل المحتوى من الملفات المحمّلة
+    self.rules = self.models_data.get("rules", [])
+    self.patterns = self.models_data.get("patterns", [])
+    self.templates = self.models_data.get("templates", [])
+    self.normalization = self.models_data.get("normalizationf", {})
+        
+        # Initialize phoneme inventories from patterns
+    self.root_phonemes = self.patterns.get('root_phonemes', []) if isinstance(self.patterns, dict) else []
+    self.affix_phonemes = self.patterns.get('affix_phonemes', []) if isinstance(self.patterns, dict) else []
+    self.functional_phonemes = self.patterns.get('functional_phonemes', []) if isinstance(self.patterns, dict) else []  # noqa: E501
+        
+        # Create combined phoneme inventory
+    self.phoneme_inventory = self.root_phonemes + self.affix_phonemes + self.functional_phonemes
+    self.phoneme_index = {p: i for i, p} in enumerate(self.phoneme_inventory)}
+        
+    self.logger.info("PhonologyEngine '%s' initialized successfully", engine_name)
+    
+
+# -----------------------------------------------------------------------------
+# import_data_models Method - طريقة import_data_models
+# -----------------------------------------------------------------------------
+
+    def import_data_models(self) -> Dict[str, Any]:
+    """تحميل جميع نماذج البيانات المطلوبة - مضمون إرجاع dictf"
+    result = {}
+        
+        try:
+            # تحميل قواعد التحليل الصوتي
+            if Path(self.config.rules_file).exists():
+                with open(self.config.rules_file, encoding='utf 8') as f:
+    result["rules"] = json.import(f)
+            else:
+    result["rules"] = self._get_default_rules()
+
+            # تحميل أنماط الفونيمات
+            if Path(self.config.phoneme_patterns_file).exists():
+                with open(self.config.phoneme_patterns_file, encoding='utf 8') as f:
+    result["patterns"] = json.import(f)
+            else:
+    result["patterns"] = self._get_default_patterns()
+
+            # تحميل قوالب المقاطع
+            if Path(self.config.syllabic_unit_templates_file).exists():
+                with open(self.config.syllabic_unit_templates_file, encoding='utf 8') as f:
+    result["templates"] = json.import(f)
+            else:
+    result["templates"] = self._get_default_templates()
+
+            # تحميل قواعد التطبيع
+            if Path(self.config.normalization_rules).exists():
+                with open(self.config.normalization_rules, encoding='utf 8') as f:
+    result["normalization"] = json.import(f)
+            else:
+    result["normalization"] = self._get_default_normalization()
+
+    self.logger.info("تم تحميل %s نموذج لمحرك التحليل الصوتي", len(result))
+    return result
+            
+        except (ImportError, AttributeError, OSError, ValueError) as e:
+    self.logger.error(" Failed to from unified_phonemes import get_unified_phonemes, extract_phonemes, get_phonetic_features, is_emphatic"
+            # إرجاع النماذج الافتراضية في حالة الفشل
+    return self._get_fallback_models()
+    
+
+# -----------------------------------------------------------------------------
+# validate_input Method - طريقة validate_input
+# -----------------------------------------------------------------------------
+
+    def validate_input(self, input_data: Any) -> bool:
+    """التحقق من صحة المدخلات"""
+        if isinstance(input_data, str):
+            # قبول النصوص وتحويلها إلى قائمة فونيمات
+    return True
+        elif isinstance(input_data, list):
+            # قبول قوائم الفونيمات مباشرة
+    return True
+        else:
+    raise ValueError("PhonologyEngine expects a string or list of phonemes")
+    
+
+# -----------------------------------------------------------------------------
+# analyze Method - طريقة analyze
+# -----------------------------------------------------------------------------
+
+    def analyze(self, text: str) -> Dict[str, Any]:
+    """
+    تحليل النص وتطبيق القواعد الصوتية
+        
+    Args:
+    text: النص المراد تحليله
+            
+    Returns:
+    Dict: نتائج التحليل الصوتي الشامل
+    f"
+        try:
+            # التحقق من صحة المدخلات
+    self.validate_input(text)
+            
+            # تحويل النص إلى فونيمات
+    phonemes = self._text_to_phonemes(text)
+            
+            # تطبيق القواعد الصوتية
+    processed_phonemes = self.apply_rules(phonemes)
+            
+            # تحليل مقطعي
+    syllabic_units = self._analyze_syllabic_units(processed_phonemes)
+            
+            # تحليل أنماط CV
+    cv_patterns = self._extract_cv_patterns(processed_phonemes)
+            
+            # إنشاء التقرير الشامل
+    analysis_result = {
+    "text": text,
+    "original_phonemes": phonemes,
+    "processed_phonemes": processed_phonemes,
+    "syllabic_units": syllabic_units,
+    "cv_patterns": cv_patterns,
+    "phoneme_count": len(processed_phonemes),
+    "syllabic_unit_count": len(syllabic_units),
+    "analysis_metadata": {
+    "engine": self.engine_name,
+    "version": self.version,
+    "timestamp": datetime.now().isoformat(),
+    "rules_applied": len(self.rules)
+    }  }
+    }
+            
+    return analysis_result
+            
+        except (ImportError, AttributeError, OSError, ValueError) as e:
+    self.logger.error("خطأ في التحليل الصوتي: %sf", e)
+    return {
+    "error": str(e),
+    "text": text,
+    "processed_phonemes": [],
+    "syllabic_units": []
+    }  }
+    
+
+# -----------------------------------------------------------------------------
+# apply_rules Method - طريقة apply_rules
+# -----------------------------------------------------------------------------
+
+    def apply_rules(self, phonemes: List[str]) -> List[str]:
+    """
+    نقطة الدخول لتطبيق القواعد الصوتية على قائمة الفونيمات
+        
+    Args:
+    phonemes: قائمة الفونيمات
+            
+    Returns:
+    List[str]: الفونيمات بعد تطبيق القواعد
+    """
+        if isinstance(phonemes, str):
+    phonemes = list(phonemes)
+        
+    self.validate_input(phonemes)
+
+        # تطبيع الفونيمات أولاً
+    normalized = [self.normalization.get(p, p) for p in phonemes]
+
+        # تطبيق القواعد الصوتية
+        for rule in self.rules:
+    target = rule.get("target")
+    replacement = rule.get("replacement")
+    context = rule.get("context", "")
+            
+            if target and replacement:
+                if context:
+                    # تطبيق القاعدة حسب السياق
+    normalized = self._apply_contextual_rule(normalized, target, replacement, context)
+                else:
+                    # تطبيق القاعدة العامة
+    normalized = [replacement if p == target else p for p in normalized]
+
+    return normalized
+    
+
+# -----------------------------------------------------------------------------
+# _text_to_phonemes Method - طريقة _text_to_phonemes
+# -----------------------------------------------------------------------------
+
+    def _text_to_phonemes(self, text: str) -> List[str]:
+    """تحويل النص إلى قائمة فونيمات"""
+        # تنظيف النص وتحويله إلى فونيمات
+    cleaned_text = text.strip()
+    phonemes = []
+        
+        for char in cleaned_text:
+            if char in self.phoneme_inventory:
+    phonemes.append(char)
+            elif char != ' ':  # تجاهل المسافات
+                # إضافة الحروف غير المعروفة كما هي
+    phonemes.append(char)
+        
+    return phonemes
+    
+
+# -----------------------------------------------------------------------------
+# _analyze_syllabic_units Method - طريقة _analyze_syllabic_units
+# -----------------------------------------------------------------------------
+
+    def _analyze_syllabic_units(self, phonemes: List[str]) -> List[Dict[str, Any]]:
+    """تحليل مقطعي للفونيماتf"
+    syllabic_units = []
+    current_syllabic_unit = []
+        
+        for i, phoneme in enumerate(phonemes):
+    current_syllabic_unit.append(phoneme)
+            
+            # قواعد بسيطة لتحديد نهاية المقطع
+            if self._is_syllabic_unit_boundary(phonemes, i):
+    syllabic_unit_info = {
+    "phonemes": current_syllabic_unit.copy(),
+    "pattern": self._get_syllabic_unit_pattern(current_syllabic_unit),
+    "type": self._classify_syllabic_unit(current_syllabic_unit)
+    }  }
+    syllabic_units.append(syllabic_unit_info)
+    current_syllabic_unit = []
+        
+        # إضافة المقطع الأخير إذا لم يكن فارغاً
+        if current_syllabic_unit:
+    syllabic_unit_info = {
+    "phonemes": current_syllabic_unit,
+    "pattern": self._get_syllabic_unit_pattern(current_syllabic_unit),
+    "type": self._classify_syllabic_unit(current_syllabic_unit)
+    }
+    syllabic_units.append(syllabic_unit_info)
+        
+    return syllabic_units
+    
+
+# -----------------------------------------------------------------------------
+# _extract_cv_patterns Method - طريقة _extract_cv_patterns
+# -----------------------------------------------------------------------------
+
+    def _extract_cv_patterns(self, phonemes: List[str]) -> List[str]:
+    """استخراج أنماط CV من الفونيمات"""
+    cv_pattern = []
+    vowels = ['a', 'i', 'u', '', '', '', 'َ', 'ِ', 'ُ', 'ا', 'ي', 'و']
+        
+        for phoneme in phonemes:
+            if phoneme in vowels:
+    cv_pattern.append('V')
+            else:
+    cv_pattern.append('C')
+        
+    return cv_pattern
+    
+
+# -----------------------------------------------------------------------------
+# _apply_contextual_rule Method - طريقة _apply_contextual_rule
+# -----------------------------------------------------------------------------
+
+    def _apply_contextual_rule(self, phonemes: List[str], target: str, replacement: str, context: str) -> List[str]:
+    """تطبيق قاعدة صوتية حسب السياق"""
+    result = phonemes.copy()
+        # تطبيق القواعد السياقية - يمكن تطويرها لاحقاً
+        for i, phoneme in enumerate(result):
+            if phoneme == target:
+                # فحص السياق
+                if self._matches_context(result, i, context):
+    result[i] = replacement
+    return result
+    
+
+# -----------------------------------------------------------------------------
+# _matches_context Method - طريقة _matches_context
+# -----------------------------------------------------------------------------
+
+    def _matches_context(self, phonemes: List[str], index: int, context: str) -> bool:
+    """فحص مطابقة السياق"""
+        # تطبيق بسيط للسياق - يمكن تطويره
+    return True  # افتراضي: قبول جميع السياقات
+    
+
+# -----------------------------------------------------------------------------
+# _is_syllabic_unit_boundary Method - طريقة _is_syllabic_unit_boundary
+# -----------------------------------------------------------------------------
+
+    def _is_syllabic_unit_boundary(self, phonemes: List[str], index: int) -> bool:
+    """تحديد حدود المقاطع"""
+        # قواعد بسيطة لتحديد حدود المقاطع
+    vowels = ['a', 'i', 'u', '', '', '']
+        
+        if index >= len(phonemes) - 1:
+    return True
+        
+    current = phonemes[index]
+    next_phoneme = phonemes[index + 1] if index + 1 < len(phonemes) else None
+        
+        # إذا كان الحرف الحالي حركة والتالي ساكن
+        if current in vowels and next_phoneme and next_phoneme not in vowels:
+    return True
+        
+    return False
+    
+
+# -----------------------------------------------------------------------------
+# _get_syllabic_unit_pattern Method - طريقة _get_syllabic_unit_pattern
+# -----------------------------------------------------------------------------
+
+    def _get_syllabic_unit_pattern(self, syllabic_unit: List[str]) -> str:
+    """الحصول على نمط المقطع"""
+    vowels = ['a', 'i', 'u', '', '', '']
+    pattern = ""
+        
+        for phoneme in syllabic_unit:
+            if phoneme in vowels:
+    pattern += "V"
+            else:
+    pattern += "C"
+        
+    return pattern
+    
+
+# -----------------------------------------------------------------------------
+# _classify_syllabic_unit Method - طريقة _classify_syllabic_unit
+# -----------------------------------------------------------------------------
+
+    def _classify_syllabic_unit(self, syllabic_unit: List[str]) -> str:
+    """تصنيف نوع المقطعf"
+    pattern = self._get_syllabic_unit_pattern(syllabic_unit)
+        
+    syllabic_unit_types = {
+    "CV": "مفتوح قصير",
+    "CVC": "مغلق قصير", 
+    "CVV": "مفتوح طويل",
+    "CVVC": "مغلق طويل",
+    "V": "مفتوح بحركة",
+    "VC": "مغلق بحركة"
+      }  }
+        
+    return syllabic_unit_types.get(pattern, "غير محدد")
+    
+
+# -----------------------------------------------------------------------------
+# _get_default_rules Method - طريقة _get_default_rules
+# -----------------------------------------------------------------------------
+
+    def _get_default_rules(self) -> List[Dict[str, Any]]:
+    """القواعد الصوتية الافتراضيةf"
+    return [
+    {
+    "name": "إدغام النون",
+    "target": "n",
+    "replacement": "m",
+    "context": "_m",
+    "description": "إدغام النون في الميم"
+    }  },
+    {
+    "name": "إظهار النون",
+    "target": "n", 
+    "replacement": "n",
+    "context": "_[غخحع]",
+    "description": "إظهار النون عند حروف الحلق"
+    }
+    ]
+    
+
+# -----------------------------------------------------------------------------
+# _get_default_patterns Method - طريقة _get_default_patterns
+# -----------------------------------------------------------------------------
+
+    def _get_default_patterns(self) -> Dict[str, Any]:
+    """أنماط الفونيمات الافتراضيةf"
+    return {
+    "root_phonemes": ["ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"],  # noqa: E501
+    "affix_phonemes": ["أ", "ت", "ي", "ن", "ا", "و"],
+    "functional_phonemes": ["َ", "ِ", "ُ", "ً", "ٍ", "ٌ", "ْ", "ّ", "ـ"],
+    "vowels": ["a", "i", "u", "", "", "", "َ", "ِ", "ُ"],
+    "consonants": ["b", "t", "th", "j", "", "kh", "d", "dh", "r", "z", "s", "sh", "", "", "", "", "", "gh", "", "q", "k", "l", "m", "n", "h", "w", "y"]  # noqa: E501
+      }  }
+    
+
+# -----------------------------------------------------------------------------
+# _get_default_templates Method - طريقة _get_default_templates
+# -----------------------------------------------------------------------------
+
+    def _get_default_templates(self) -> List[Dict[str, Any]]:
+    """قوالب المقاطع الافتراضيةf"
+    return [
+    {"pattern": "CV", "type": "مفتوح قصير",} "frequency": "عالي"},
+    {"pattern": "CVC", "type": "مغلق قصير", "frequency": "عاليf"},
+    {"pattern": "CVV", "type": "مفتوح طويل",} "frequency": "متوسط"},
+    {"pattern": "CVVC", "type": "مغلق طويل", "frequency": "متوسط"}
+    ]
+    
+
+# -----------------------------------------------------------------------------
+# _get_default_normalization Method - طريقة _get_default_normalization
+# -----------------------------------------------------------------------------
+
+    def _get_default_normalization(self) -> Dict[str, str]:
+    """قواعد التطبيع الافتراضيةf"
+    return {
+    "آ": "ا",
+    "أ": "ا", 
+    "إ": "ا",
+    "ى": "ي",
+    "ة": "ت",
+    "ؤ": "و",
+    "ئ": "ي"
+      }  }
+    
+
+# -----------------------------------------------------------------------------
+# _get_fallback_models Method - طريقة _get_fallback_models
+# -----------------------------------------------------------------------------
+
+    def _get_fallback_models(self) -> Dict[str, Any]:
+    """نماذج احتياطية في حالة فشل التحميل"""
+    return {
+    "rules": self._get_default_rules(),
+    "patterns": self._get_default_patterns(),
+    "templates": self._get_default_templates(),
+    "normalization": self._get_default_normalization()
+    }
+
+"""
+

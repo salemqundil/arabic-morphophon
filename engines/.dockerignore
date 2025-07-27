@@ -1,0 +1,66 @@
+# .dockerignore file
+
+# Version control
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+ENV/
+.env
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Local development artifacts
+logs/
+data/
+*.db
+*.sqlite3
+
+# Kubernetes
+kubeconfig
+*.kubeconfig
+
+# Build artifacts
+infrastructure/nginx/ssl/
+node_modules/
+backend/static/
+
+# Backups
+backups/
+*.bak
+*.backup
+*.old

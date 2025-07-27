@@ -1,0 +1,336 @@
+2025-07-24 00:47:53,720 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 00:47:53,720 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 00:47:53,721 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 00:47:53,722 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: يَكْتُبُ
+2025-07-24 00:47:53,722 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 00:47:53,724 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُدَرِّسٌ
+2025-07-24 00:47:53,724 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 00:47:53,726 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كِتَابٌ
+2025-07-24 00:47:53,726 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 00:47:53,727 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: قَرَأْتُ
+2025-07-24 00:47:53,727 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 90.4% confidence
+2025-07-24 00:47:53,729 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الْبَيْتُ
+2025-07-24 00:47:53,729 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 00:47:53,731 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: فَعَّلَ
+2025-07-24 00:47:53,731 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 00:47:53,733 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مَسْؤُولٌ
+2025-07-24 00:47:53,733 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 93.9% confidence
+2025-07-24 00:47:53,735 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: اسْتَخْدَمَ
+2025-07-24 00:47:53,735 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 6 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 00:47:53,738 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُسْتَشْفَى
+2025-07-24 00:47:53,738 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 5 diacritics, 95.7% confidence
+2025-07-24 00:47:53,740 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الطَّالِبَةُ
+2025-07-24 00:47:53,740 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 6 phonemes, 5 diacritics, 98.7% confidence
+2025-07-24 00:47:53,742 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: وَالْمُدَرِّسُونَ
+2025-07-24 00:47:53,742 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 9 phonemes, 8 diacritics, 100.0% confidence
+2025-07-24 00:48:34,998 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 00:50:30,121 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 00:50:30,121 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 00:50:30,121 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 00:50:30,123 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: يَكْتُبُ
+2025-07-24 00:50:30,124 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 00:50:30,125 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُدَرِّسٌ
+2025-07-24 00:50:30,125 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 00:50:30,127 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كِتَابٌ
+2025-07-24 00:50:30,127 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 00:50:30,129 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: قَرَأْتُ
+2025-07-24 00:50:30,129 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 90.4% confidence
+2025-07-24 00:50:30,130 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الْبَيْتُ
+2025-07-24 00:50:30,130 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 00:50:30,132 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: فَعَّلَ
+2025-07-24 00:50:30,133 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 00:50:30,134 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مَسْؤُولٌ
+2025-07-24 00:50:30,134 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 93.9% confidence
+2025-07-24 00:50:30,136 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: اسْتَخْدَمَ
+2025-07-24 00:50:30,137 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 6 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 00:50:30,139 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُسْتَشْفَى
+2025-07-24 00:50:30,139 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 5 diacritics, 95.7% confidence
+2025-07-24 00:50:30,141 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الطَّالِبَةُ
+2025-07-24 00:50:30,141 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 6 phonemes, 5 diacritics, 98.7% confidence
+2025-07-24 00:50:30,143 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: وَالْمُدَرِّسُونَ
+2025-07-24 00:50:30,143 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 9 phonemes, 8 diacritics, 100.0% confidence
+2025-07-24 13:59:11,654 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 13:59:11,655 - __main__ - INFO - PurePhonologicalSyllableEngine initialized with phonological foundation
+2025-07-24 13:59:11,655 - __main__ - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:12:37,132 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:12:37,132 - __main__ - INFO - PurePhonologicalSyllableEngine initialized with phonological foundation
+2025-07-24 14:12:37,133 - __main__ - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:12:37,133 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 14:12:37,133 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:12:37,133 - __main__ - INFO - Syllabification complete: 1 syllables found
+2025-07-24 14:12:37,133 - __main__ - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:12:37,134 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 14:12:37,134 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:12:37,134 - __main__ - INFO - Syllabification complete: 1 syllables found
+2025-07-24 14:12:37,134 - __main__ - INFO - Starting syllabification of: مُدَرِّسٌ
+2025-07-24 14:12:37,134 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُدَرِّسٌ
+2025-07-24 14:12:37,134 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 14:12:37,134 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,135 - __main__ - INFO - Starting syllabification of: مُدَرِّسٌ
+2025-07-24 14:12:37,135 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُدَرِّسٌ
+2025-07-24 14:12:37,135 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 14:12:37,135 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,135 - __main__ - INFO - Starting syllabification of: كِتَابٌ
+2025-07-24 14:12:37,135 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كِتَابٌ
+2025-07-24 14:12:37,135 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:12:37,135 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,135 - __main__ - INFO - Starting syllabification of: كِتَابٌ
+2025-07-24 14:12:37,136 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كِتَابٌ
+2025-07-24 14:12:37,136 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:12:37,136 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,136 - __main__ - INFO - Starting syllabification of: يَكْتُبُ
+2025-07-24 14:12:37,136 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: يَكْتُبُ
+2025-07-24 14:12:37,136 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:12:37,136 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,136 - __main__ - INFO - Starting syllabification of: يَكْتُبُ
+2025-07-24 14:12:37,136 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: يَكْتُبُ
+2025-07-24 14:12:37,137 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:12:37,137 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,137 - __main__ - INFO - Starting syllabification of: الْبَيْتُ
+2025-07-24 14:12:37,137 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الْبَيْتُ
+2025-07-24 14:12:37,137 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:12:37,137 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,137 - __main__ - INFO - Starting syllabification of: الْبَيْتُ
+2025-07-24 14:12:37,137 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الْبَيْتُ
+2025-07-24 14:12:37,137 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:12:37,138 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,138 - __main__ - INFO - Starting syllabification of: مُسْتَشْفَى
+2025-07-24 14:12:37,138 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُسْتَشْفَى
+2025-07-24 14:12:37,138 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 5 diacritics, 95.7% confidence
+2025-07-24 14:12:37,138 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:37,138 - __main__ - INFO - Starting syllabification of: مُسْتَشْفَى
+2025-07-24 14:12:37,138 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُسْتَشْفَى
+2025-07-24 14:12:37,138 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 5 diacritics, 95.7% confidence
+2025-07-24 14:12:37,138 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:12:49,808 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:12:49,808 - syllable_phonological_engine - INFO - PurePhonologicalSyllableEngine initialized with phonological foundation
+2025-07-24 14:15:18,291 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:15:18,291 - syllable_phonological_engine - INFO - PurePhonologicalSyllableEngine initialized with phonological foundation
+2025-07-24 14:15:18,291 - syllable_phonological_engine - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:15:18,291 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 14:15:18,292 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:15:18,292 - syllable_phonological_engine - INFO - Syllabification complete: 1 syllables found
+2025-07-24 14:16:01,299 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:16:01,300 - syllable_phonological_engine - INFO - PurePhonologicalSyllableEngine initialized with phonological foundation
+2025-07-24 14:16:01,300 - syllable_phonological_engine - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:16:01,300 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 14:16:01,300 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:16:01,300 - syllable_phonological_engine - INFO - Syllabification complete: 1 syllables found
+2025-07-24 14:16:13,303 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:16:13,304 - __main__ - INFO - PurePhonologicalSyllableEngine initialized with phonological foundation
+2025-07-24 14:16:13,304 - __main__ - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:16:13,304 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 14:16:13,304 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:16:13,304 - __main__ - INFO - Syllabification complete: 1 syllables found
+2025-07-24 14:16:13,304 - __main__ - INFO - Starting syllabification of: كَتَبَ
+2025-07-24 14:16:13,305 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كَتَبَ
+2025-07-24 14:16:13,305 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 3 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:16:13,305 - __main__ - INFO - Syllabification complete: 1 syllables found
+2025-07-24 14:16:13,305 - __main__ - INFO - Starting syllabification of: مُدَرِّسٌ
+2025-07-24 14:16:13,305 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُدَرِّسٌ
+2025-07-24 14:16:13,305 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 14:16:13,305 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,306 - __main__ - INFO - Starting syllabification of: مُدَرِّسٌ
+2025-07-24 14:16:13,306 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُدَرِّسٌ
+2025-07-24 14:16:13,306 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 5 diacritics, 100.0% confidence
+2025-07-24 14:16:13,306 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,306 - __main__ - INFO - Starting syllabification of: كِتَابٌ
+2025-07-24 14:16:13,306 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كِتَابٌ
+2025-07-24 14:16:13,306 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:16:13,306 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,307 - __main__ - INFO - Starting syllabification of: كِتَابٌ
+2025-07-24 14:16:13,307 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: كِتَابٌ
+2025-07-24 14:16:13,307 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 3 diacritics, 100.0% confidence
+2025-07-24 14:16:13,307 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,307 - __main__ - INFO - Starting syllabification of: يَكْتُبُ
+2025-07-24 14:16:13,307 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: يَكْتُبُ
+2025-07-24 14:16:13,308 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:16:13,308 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,308 - __main__ - INFO - Starting syllabification of: يَكْتُبُ
+2025-07-24 14:16:13,308 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: يَكْتُبُ
+2025-07-24 14:16:13,308 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 4 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:16:13,308 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,308 - __main__ - INFO - Starting syllabification of: الْبَيْتُ
+2025-07-24 14:16:13,309 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الْبَيْتُ
+2025-07-24 14:16:13,309 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:16:13,309 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,309 - __main__ - INFO - Starting syllabification of: الْبَيْتُ
+2025-07-24 14:16:13,309 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: الْبَيْتُ
+2025-07-24 14:16:13,309 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 4 diacritics, 100.0% confidence
+2025-07-24 14:16:13,309 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,310 - __main__ - INFO - Starting syllabification of: مُسْتَشْفَى
+2025-07-24 14:16:13,310 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُسْتَشْفَى
+2025-07-24 14:16:13,310 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 5 diacritics, 95.7% confidence
+2025-07-24 14:16:13,310 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:16:13,310 - __main__ - INFO - Starting syllabification of: مُسْتَشْفَى
+2025-07-24 14:16:13,310 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: مُسْتَشْفَى
+2025-07-24 14:16:13,310 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 5 phonemes, 5 diacritics, 95.7% confidence
+2025-07-24 14:16:13,310 - __main__ - INFO - Syllabification complete: 2 syllables found
+2025-07-24 14:23:42,719 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:23:42,719 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ب
+2025-07-24 14:23:42,720 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,597 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:24:28,597 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ب
+2025-07-24 14:24:28,597 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,597 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ت
+2025-07-24 14:24:28,597 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,597 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ث
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ج
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ح
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: خ
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: د
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ذ
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,598 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ر
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ز
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: س
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ش
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ص
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ض
+2025-07-24 14:24:28,599 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ط
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ظ
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ع
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,600 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: غ
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ف
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ق
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ك
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ل
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: م
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ن
+2025-07-24 14:24:28,601 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ه
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: و
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ي
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ء
+2025-07-24 14:24:28,602 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 0 phonemes, 0 diacritics, 0.0% confidence
+2025-07-24 14:24:28,602 - __main__ - INFO - Arabic inventory initialized: 28 consonants, 3 short vowels, 3 long vowel letters
+2025-07-24 14:24:28,602 - __main__ - INFO - Phonotactic constraints setup: 7 forbidden clusters
+2025-07-24 14:24:28,602 - __main__ - INFO - CompleteArabicSyllableGenerator initialized with full phonological foundation
+2025-07-24 14:24:28,602 - __main__ - INFO - 🔬 Starting complete Arabic syllable generation...
+2025-07-24 14:24:28,603 - __main__ - INFO - Generated 84 CV syllables
+2025-07-24 14:24:28,603 - __main__ - INFO - Generated 84 CVV syllables
+2025-07-24 14:24:28,611 - __main__ - INFO - Generated 2331 CVC syllables
+2025-07-24 14:24:28,618 - __main__ - INFO - Generated 2331 CVVC syllables
+2025-07-24 14:24:28,693 - __main__ - INFO - Generated 17388 CVCC syllables
+2025-07-24 14:24:28,693 - __main__ - INFO - ✅ Complete syllable generation finished: 22218 total syllables
+2025-07-24 14:24:29,257 - __main__ - INFO - Syllable inventory saved to complete_arabic_syllable_inventory.json
+2025-07-24 14:25:59,271 - CompletePhonologicalResolver - INFO - ✅ CompletePhonologicalResolver initialized with 28 phonemes and 10 diacritics
+2025-07-24 14:25:59,271 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ب
+2025-07-24 14:25:59,271 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,271 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ت
+2025-07-24 14:25:59,271 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,271 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ث
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ج
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ح
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: خ
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: د
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ذ
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,272 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ر
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ز
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: س
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ش
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ص
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ض
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ط
+2025-07-24 14:25:59,273 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ظ
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ع
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: غ
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ف
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ق
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ك
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,274 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ل
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: م
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ن
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ه
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: و
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ي
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 1 phonemes, 0 diacritics, 100.0% confidence
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - 🔬 Starting complete analysis of: ء
+2025-07-24 14:25:59,275 - CompletePhonologicalResolver - INFO - ✅ Analysis complete: 0 phonemes, 0 diacritics, 0.0% confidence
+2025-07-24 14:25:59,275 - arabic_syllable_generator - INFO - Arabic inventory initialized: 28 consonants, 3 short vowels, 3 long vowel letters
+2025-07-24 14:25:59,276 - arabic_syllable_generator - INFO - Phonotactic constraints setup: 7 forbidden clusters
+2025-07-24 14:25:59,276 - arabic_syllable_generator - INFO - CompleteArabicSyllableGenerator initialized with full phonological foundation
+2025-07-24 14:25:59,276 - arabic_syllable_generator - INFO - Generated 84 CV syllables
+2025-07-24 14:25:59,276 - arabic_syllable_generator - INFO - Generated 84 CVV syllables
+2025-07-24 14:40:15,714 - __main__ - INFO - Loaded 22218 syllables from database
+2025-07-24 14:40:15,714 - __main__ - INFO - Morphological constraints setup complete
+2025-07-24 14:40:15,716 - __main__ - INFO - Organized syllables: {'CV': 84, 'CVV': 84, 'CVC': 2331, 'CVVC': 2331, 'CVCC': 17388}
+2025-07-24 14:40:15,717 - __main__ - INFO - ArabicMorphologicalWeightGenerator initialized with 22218 syllables
+2025-07-24 14:40:15,717 - __main__ - INFO - 🔬 Starting complete morphological weight generation...
+2025-07-24 14:40:15,717 - __main__ - INFO - 🔬 Starting verb weight generation...
+2025-07-24 14:40:15,778 - __main__ - INFO - Generated 3000 triliteral bare verb weights
+2025-07-24 14:40:15,788 - __main__ - INFO - Generated 3000 triliteral augmented verb weights
+2025-07-24 14:40:15,790 - __main__ - INFO - Generated 600 quadriliteral verb weights
+2025-07-24 14:40:15,790 - __main__ - INFO - ✅ Generated 6600 verb weights
+2025-07-24 14:40:15,790 - __main__ - INFO - 🔬 Starting noun weight generation...
+2025-07-24 14:40:15,801 - __main__ - INFO - Generated 4000 derivative noun weights
+2025-07-24 14:40:15,810 - __main__ - INFO - Generated 2400 source noun weights
+2025-07-24 14:40:15,815 - __main__ - INFO - Generated 1700 plural noun weights
+2025-07-24 14:40:15,817 - __main__ - INFO - Generated 700 dual and feminine noun weights
+2025-07-24 14:40:15,819 - __main__ - INFO - Generated 600 specialized noun weights
+2025-07-24 14:40:15,819 - __main__ - INFO - ✅ Generated 9400 noun weights
+2025-07-24 14:40:15,820 - __main__ - INFO - ✅ Complete morphological weight generation finished: 16000 total weights
+2025-07-24 14:40:16,445 - __main__ - INFO - Morphological weights saved to complete_arabic_morphological_weights.json
+2025-07-24 14:41:05,690 - arabic_morphological_weight_generator - INFO - Loaded 22218 syllables from database
+2025-07-24 14:41:05,691 - arabic_morphological_weight_generator - INFO - Morphological constraints setup complete
+2025-07-24 14:41:05,693 - arabic_morphological_weight_generator - INFO - Organized syllables: {'CV': 84, 'CVV': 84, 'CVC': 2331, 'CVVC': 2331, 'CVCC': 17388}
+2025-07-24 14:41:05,693 - arabic_morphological_weight_generator - INFO - ArabicMorphologicalWeightGenerator initialized with 22218 syllables
+2025-07-24 14:41:05,693 - arabic_morphological_weight_generator - INFO - 🔬 Starting verb weight generation...
+2025-07-24 14:41:05,752 - arabic_morphological_weight_generator - INFO - Generated 3000 triliteral bare verb weights
+2025-07-24 14:41:05,762 - arabic_morphological_weight_generator - INFO - Generated 3000 triliteral augmented verb weights
+2025-07-24 14:41:05,764 - arabic_morphological_weight_generator - INFO - Generated 600 quadriliteral verb weights
+2025-07-24 14:41:05,764 - arabic_morphological_weight_generator - INFO - ✅ Generated 6600 verb weights
+2025-07-24 14:41:05,764 - arabic_morphological_weight_generator - INFO - 🔬 Starting noun weight generation...
+2025-07-24 14:41:05,775 - arabic_morphological_weight_generator - INFO - Generated 4000 derivative noun weights
+2025-07-24 14:41:05,784 - arabic_morphological_weight_generator - INFO - Generated 2400 source noun weights
+2025-07-24 14:41:05,789 - arabic_morphological_weight_generator - INFO - Generated 1700 plural noun weights
+2025-07-24 14:41:05,791 - arabic_morphological_weight_generator - INFO - Generated 700 dual and feminine noun weights
+2025-07-24 14:41:05,793 - arabic_morphological_weight_generator - INFO - Generated 600 specialized noun weights
+2025-07-24 14:41:05,793 - arabic_morphological_weight_generator - INFO - ✅ Generated 9400 noun weights

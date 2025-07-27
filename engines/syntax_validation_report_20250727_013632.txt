@@ -1,0 +1,928 @@
+🧪 ADVANCED SYNTAX VALIDATION REPORT
+============================================================
+
+📊 SUMMARY
+Files processed: 368
+Files with errors: 216
+Clean files: 152
+Total errors: 216
+Success rate: 41.3%
+
+📋 ERRORS BY CATEGORY
+----------------------------------------
+
+Indentation Issues: 205 errors
+  ❌ arabic_function_words_analyzer.py: Line 16 - unexpected indent
+     Code: logging.basicConfig(level=logging.INFO)
+  ❌ arabic_inflection_corrected.py: Line 27 - unexpected indent
+     Code: logging.basicConfig()
+  ❌ arabic_inflection_rules_engine.py: Line 50 - unexpected indent
+     Code: logging.basicConfig()
+  ❌ arabic_inflection_ultimate.py: Line 50 - unexpected indent
+     Code: logging.basicConfig()
+  ❌ arabic_inflection_ultimate_fixed.py: Line 27 - unexpected indent
+     Code: logging.basicConfig()
+  ❌ arabic_interrogative_pronouns_deep_model.py: Line 28 - unexpected indent
+     Code: torch.manual_seed(42)
+  ❌ arabic_interrogative_pronouns_enhanced.py: Line 25 - unexpected indent
+     Code: self.model_configs = {
+  ❌ arabic_interrogative_pronouns_final.py: Line 27 - unexpected indent
+     Code: torch.manual_seed(42)
+  ❌ arabic_normalizer.py: Line 11 - unexpected indent
+     Code: class ArabicEra(Enum):
+  ❌ arabic_relative_pronouns_analyzer.py: Line 94 - unexpected indent
+     Code: for pronoun in pronouns:
+     ... and 195 more
+
+F-String Issues: 8 errors
+  ❌ complete_arabic_tracer.py: Line 15 - unterminated string literal (detected at line 15)
+     Code: """"
+  ❌ comprehensive_progressive_system.py: Line 27 - unterminated string literal (detected at line 27)
+     Code: """"
+  ❌ fix_fstring_syntax.py: Line 10 - unterminated string literal (detected at line 10)
+     Code: """"
+  ❌ progressive_vector_tracker.py: Line 34 - unterminated string literal (detected at line 34)
+     Code: """"
+  ❌ run_all_nlp_engines.py: Line 6 - unterminated string literal (detected at line 6)
+     Code: """"
+  ❌ experimental\advanced_ast_syntax_fixer.py: Line 11 - unterminated string literal (detected at line 11)
+     Code: """"
+  ❌ core\nlp\particles\models\particle_classify.py: Line 11 - unterminated string literal (detected at line 11)
+     Code: """"
+  ❌ core\nlp\inflection\models\feature_space.py: Line 7 - unterminated string literal (detected at line 7)
+     Code: """"
+
+Bracket/Parenthesis Issues: 3 errors
+  ❌ arabic_interrogative_pronouns_test_analysis.py: Line 125 - unmatched ')'
+     Code: )
+  ❌ arabic_pronouns_analyzer.py: Line 65 - closing parenthesis ')' does not match opening parenthesis '{' on line 60
+     Code: ),
+  ❌ arabic_pronouns_deep_model.py: Line 37 - unmatched ')'
+     Code: ):
+
+📁 ALL ERRORS BY FILE
+----------------------------------------
+
+📄 arabic_function_words_analyzer.py: 1 errors
+  Line 16: unexpected indent
+    Code: logging.basicConfig(level=logging.INFO)
+
+📄 arabic_inflection_corrected.py: 1 errors
+  Line 27: unexpected indent
+    Code: logging.basicConfig()
+
+📄 arabic_inflection_rules_engine.py: 1 errors
+  Line 50: unexpected indent
+    Code: logging.basicConfig()
+
+📄 arabic_inflection_ultimate.py: 1 errors
+  Line 50: unexpected indent
+    Code: logging.basicConfig()
+
+📄 arabic_inflection_ultimate_fixed.py: 1 errors
+  Line 27: unexpected indent
+    Code: logging.basicConfig()
+
+📄 arabic_interrogative_pronouns_deep_model.py: 1 errors
+  Line 28: unexpected indent
+    Code: torch.manual_seed(42)
+
+📄 arabic_interrogative_pronouns_enhanced.py: 1 errors
+  Line 25: unexpected indent
+    Code: self.model_configs = {
+
+📄 arabic_interrogative_pronouns_final.py: 1 errors
+  Line 27: unexpected indent
+    Code: torch.manual_seed(42)
+
+📄 arabic_interrogative_pronouns_test_analysis.py: 1 errors
+  Line 125: unmatched ')'
+    Code: )
+
+📄 arabic_normalizer.py: 1 errors
+  Line 11: unexpected indent
+    Code: class ArabicEra(Enum):
+
+📄 arabic_pronouns_analyzer.py: 1 errors
+  Line 65: closing parenthesis ')' does not match opening parenthesis '{' on line 60
+    Code: ),
+
+📄 arabic_pronouns_deep_model.py: 1 errors
+  Line 37: unmatched ')'
+    Code: ):
+
+📄 arabic_relative_pronouns_analyzer.py: 1 errors
+  Line 94: unexpected indent
+    Code: for pronoun in pronouns:
+
+📄 arabic_relative_pronouns_deep_model.py: 1 errors
+  Line 17: unexpected indent
+    Code: import torch.nn as nn
+
+📄 arabic_relative_pronouns_deep_model_simplified.py: 1 errors
+  Line 17: unexpected indent
+    Code: import torch.nn as nn
+
+📄 arabic_test.py: 1 errors
+  Line 13: unexpected indent
+    Code: def test_arabic_characters():  # type: ignore[no-untyped def]
+
+📄 arabic_vector_engine.py: 1 errors
+  Line 24: unexpected indent
+    Code: logging.basicConfig()
+
+📄 arabic_verb_conjugator.py: 1 errors
+  Line 45: unexpected indent
+    Code: logging.basicConfig()
+
+📄 archive\backup_unified_plugin_manager.py: 1 errors
+  Line 11: unexpected indent
+    Code: import logging
+
+📄 ast_validator.py: 1 errors
+  Line 10: unexpected indent
+    Code: import os
+
+📄 batch_syntax_fixer.py: 1 errors
+  Line 8: unexpected indent
+    Code: import re
+
+📄 citation_standardization_system.py: 1 errors
+  Line 19: unexpected indent
+    Code: import json
+
+📄 complete_all_13_engines.py: 1 errors
+  Line 34: unexpected indent
+    Code: current_dir = Path(__file__).parent,
+
+📄 complete_arabic_tracer.py: 1 errors
+  Line 15: unterminated string literal (detected at line 15)
+    Code: """"
+
+📄 complex_word_analysis_demo.py: 1 errors
+  Line 18: unexpected indent
+    Code: from advanced_arabic_phonology_system import ()
+
+📄 comprehensive_encoding_fix.py: 1 errors
+  Line 11: unexpected indent
+    Code: import subprocess
+
+📄 comprehensive_engine_analysis.py: 1 errors
+  Line 14: unexpected indent
+    Code: import os  # noqa: F401
+
+📄 comprehensive_progressive_system.py: 1 errors
+  Line 27: unterminated string literal (detected at line 27)
+    Code: """"
+
+📄 core\__init__.py: 1 errors
+  Line 21: unexpected indent
+    Code: from .phonology import PhonologyEngine
+
+📄 core\base_engine.py: 1 errors
+  Line 28: unexpected indent
+    Code: from datetime import datetime
+
+📄 core\engine.py: 1 errors
+  Line 16: unexpected indent
+    Code: from typing import Dict, List, Any, Optional
+
+📄 core\hierarchical_graph_engine.py: 1 errors
+  Line 10: unexpected indent
+    Code: import logging
+
+📄 core\inflection.py: 1 errors
+  Line 15: unexpected indent
+    Code: class InflectionEngine:
+
+📄 core\morphology.py: 1 errors
+  Line 15: unexpected indent
+    Code: class MorphologyEngine:
+
+📄 core\nlp\base_engine.py: 1 errors
+  Line 2: unexpected indent
+    Code: import ast
+
+📄 core\nlp\derivation\__init__.py: 1 errors
+  Line 18: unexpected indent
+    Code: from .engine import (  # noqa: F401
+
+📄 core\nlp\derivation\engine.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\derivation\models\comparative.py: 1 errors
+  Line 17: unexpected indent
+    Code: import logging
+
+📄 core\nlp\derivation\models\derive.py: 1 errors
+  Line 18: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\derivation\models\pattern_embed.py: 1 errors
+  Line 18: unexpected indent
+    Code: import numpy as np  # noqa: F401
+
+📄 core\nlp\derivation\models\root_embed.py: 1 errors
+  Line 18: unexpected indent
+    Code: import numpy as np  # noqa: F401
+
+📄 core\nlp\frozen_root\__init__.py: 1 errors
+  Line 36: unexpected indent
+    Code: from .models.classifier import (
+
+📄 core\nlp\frozen_root\engine.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\frozen_root\engine_new.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\frozen_root\models\__init__.py: 1 errors
+  Line 40: unexpected indent
+    Code: from .syllable_check import (
+
+📄 core\nlp\frozen_root\models\classifier.py: 1 errors
+  Line 33: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\frozen_root\models\syllable_check.py: 1 errors
+  Line 33: unexpected indent
+    Code: from typing import List, Dict, Tuple
+
+📄 core\nlp\frozen_root\models\verb_check.py: 1 errors
+  Line 33: unexpected indent
+    Code: from typing import Dict, List, Set, Tuple
+
+📄 core\nlp\full_pipeline\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\grammatical_particles\__init__.py: 1 errors
+  Line 31: unexpected indent
+    Code: __all__ = ['GrammaticalParticlesEngine']
+
+📄 core\nlp\grammatical_particles\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\inflection\__init__.py: 1 errors
+  Line 26: unexpected indent
+    Code: from .engine import InflectionEngine, ConjugationResult  # noqa: F401,
+
+📄 core\nlp\inflection\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\inflection\models\feature_space.py: 1 errors
+  Line 7: unterminated string literal (detected at line 7)
+    Code: """"
+
+📄 core\nlp\inflection\models\inflect.py: 1 errors
+  Line 14: unexpected indent
+    Code: import logging
+
+📄 core\nlp\morphology\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\morphology\models\morphological_models.py: 1 errors
+  Line 21: unexpected indent
+    Code: import re
+
+📄 core\nlp\particles\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\particles\models\particle_classify.py: 1 errors
+  Line 11: unterminated string literal (detected at line 11)
+    Code: """"
+
+📄 core\nlp\particles\models\particle_segment.py: 1 errors
+  Line 35: unexpected indent
+    Code: Enterprise grade Arabic grammatical particles phoneme and syllabic_unit segmentation,
+
+📄 core\nlp\phoneme\__init__.py: 1 errors
+  Line 12: unexpected indent
+    Code: from .engine from unified_phonemes import get_unified_phonemes, extract_phonemes, get_phonetic_features, is_emphatic
+
+📄 core\nlp\phoneme\engine.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\phoneme_advanced\engine.py: 1 errors
+  Line 27: unexpected indent
+    Code: from typing import Dict, List, Tuple, Optional, Union
+
+📄 core\nlp\phonological\api.py: 1 errors
+  Line 12: unexpected indent
+    Code: from flask import Flask, request, jsonify, Blueprint
+
+📄 core\nlp\phonological\engine.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\phonological\engine_old.py: 1 errors
+  Line 13: unexpected indent
+    Code: import yaml
+
+📄 core\nlp\phonological\models\__init__.py: 1 errors
+  Line 17: unexpected indent
+    Code: from .rule_base import PhonoRule, ContextualRule, SequentialRule  # noqa: F401
+
+📄 core\nlp\phonological\models\assimilation.py: 1 errors
+  Line 17: unexpected indent
+    Code: from typing import List, Dict, Any
+
+📄 core\nlp\phonological\models\deletion.py: 1 errors
+  Line 17: unexpected indent
+    Code: from typing import List, Dict, Any
+
+📄 core\nlp\phonological\models\inversion.py: 1 errors
+  Line 17: unexpected indent
+    Code: from typing import List, Dict, Any
+
+📄 core\nlp\phonological\models\rule_base.py: 1 errors
+  Line 17: unexpected indent
+    Code: from abc import ABC, abstractmethod  # noqa: F401
+
+📄 core\nlp\phonology\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\phonology\engine_clean.py: 1 errors
+  Line 27: unexpected indent
+    Code: import logging
+
+📄 core\nlp\syllable\__init__.py: 1 errors
+  Line 17: unexpected indent
+    Code: from .engine import SyllabicUnitEngine  # noqa: F401
+
+📄 core\nlp\syllable\engine.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\syllable\engine_advanced.py: 1 errors
+  Line 8: unexpected indent
+    Code: import logging
+
+📄 core\nlp\syllable\models\__init__.py: 1 errors
+  Line 16: unexpected indent
+    Code: from .templates import SyllabicUnitTemplateImporter, SyllabicUnitTemplate  # noqa: F401
+
+📄 core\nlp\syllable\models\segmenter.py: 1 errors
+  Line 18: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\syllable\models\templates.py: 1 errors
+  Line 18: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 core\nlp\weight\engine.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 core\nlp\weight\models\analyzer.py: 1 errors
+  Line 33: unexpected indent
+    Code: import re
+
+📄 core\phonology.py: 1 errors
+  Line 15: unexpected indent
+    Code: class PhonologyEngine:
+
+📄 core\unified_arabic_engine.py: 1 errors
+  Line 14: unexpected indent
+    Code: import sys
+
+📄 create_working_engines.py: 1 errors
+  Line 12: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 debug_output.py: 1 errors
+  Line 10: unexpected indent
+    Code: from nlp.syllable.engine import SyllabicUnitEngine  # noqa: F401
+
+📄 debug_test.py: 1 errors
+  Line 10: unexpected indent
+    Code: from nlp.syllable.engine import SyllabicUnitEngine  # noqa: F401,
+
+📄 emergency_fstring_fixer.py: 1 errors
+  Line 8: unexpected indent
+    Code: import re
+
+📄 engine_fix_guide.py: 1 errors
+  Line 14: unexpected indent
+    Code: def failed_engines_fix_guide():  # type: ignore[no-untyped def]
+
+📄 enhanced_final_analysis.py: 1 errors
+  Line 18: unexpected indent
+    Code: from arabic_pronouns_analyzer import ()
+
+📄 enhanced_system_architecture.py: 1 errors
+  Line 20: unexpected indent
+    Code: import asyncio
+
+📄 experimental\ARABIC_MATH_GENERATOR_COMPLETION_REPORT.py: 1 errors
+  Line 18: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 experimental\advanced_arabic_function_words_generator.py: 1 errors
+  Line 15: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 experimental\advanced_arabic_phonology_system.py: 1 errors
+  Line 22: unexpected indent
+    Code: from typing import Dict, List, Set, Tuple, Optional, Any
+
+📄 experimental\advanced_arabic_proper_names_generator.py: 1 errors
+  Line 17: unexpected indent
+    Code: import random
+
+📄 experimental\advanced_arabic_vector_generator.py: 1 errors
+  Line 20: unexpected indent
+    Code: import re
+
+📄 experimental\advanced_ast_syntax_fixer.py: 1 errors
+  Line 11: unterminated string literal (detected at line 11)
+    Code: """"
+
+📄 experimental\advanced_complex_word_demo.py: 1 errors
+  Line 21: unexpected indent
+    Code: from complete_arabic_phonological_coverage import (
+
+📄 experimental\arabic_demonstrative_evaluation.py: 1 errors
+  Line 19: unexpected indent
+    Code: import torch  # noqa: F401
+
+📄 experimental\arabic_demonstrative_pronouns_deep_model.py: 1 errors
+  Line 17: unexpected indent
+    Code: import torch.nn as nn
+
+📄 experimental\arabic_demonstrative_pronouns_generator.py: 1 errors
+  Line 19: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 experimental\arabic_function_words_generator.py: 1 errors
+  Line 28: unexpected indent
+    Code: import re
+
+📄 experimental\arabic_function_words_generator_clean.py: 1 errors
+  Line 15: unexpected indent
+    Code: import random
+
+📄 experimental\arabic_interrogative_pronouns_generator.py: 1 errors
+  Line 18: unexpected indent
+    Code: import logging  # noqa: F401
+
+📄 experimental\arabic_mathematical_generator.py: 1 errors
+  Line 19: unexpected indent
+    Code: import random
+
+📄 experimental\arabic_morphological_weight_generator.py: 1 errors
+  Line 31: unexpected indent
+    Code: import sys
+
+📄 experimental\arabic_pronouns_generator.py: 1 errors
+  Line 21: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 experimental\arabic_pronouns_generator_enhanced.py: 1 errors
+  Line 17: unexpected indent
+    Code: import re
+
+📄 experimental\arabic_relative_pronouns_advanced_tester.py: 1 errors
+  Line 19: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 experimental\arabic_relative_pronouns_generator.py: 1 errors
+  Line 17: unexpected indent
+    Code: import logging
+
+📄 experimental\arabic_syllable_generator.py: 1 errors
+  Line 30: unexpected indent
+    Code: import sys
+
+📄 experimental\comprehensive_arabic_verb_syllable_generator.py: 1 errors
+  Line 21: unexpected indent
+    Code: from dataclasses import dataclass
+
+📄 experimental\final_comprehensive_report_generator.py: 1 errors
+  Line 18: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 experimental\visual_heatmap_generator.py: 1 errors
+  Line 11: unexpected indent
+    Code: import matplotlib.pyplot as plt
+
+📄 final_comprehensive_comparison.py: 1 errors
+  Line 18: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 fix_arrow_comparisons.py: 1 errors
+  Line 8: unexpected indent
+    Code: import re,
+
+📄 fix_broken_comparisons.py: 1 errors
+  Line 8: unexpected indent
+    Code: import os
+
+📄 fix_common_fstring_errors.py: 1 errors
+  Line 8: unexpected indent
+    Code: import os
+
+📄 fix_comparison_operators.py: 1 errors
+  Line 10: unexpected indent
+    Code: from pathlib import Path,
+
+📄 fix_empty_imports.py: 1 errors
+  Line 8: unexpected indent
+    Code: import ast
+
+📄 fix_fstring_issues.py: 1 errors
+  Line 8: unexpected indent
+    Code: import re,
+
+📄 fix_fstring_syntax.py: 1 errors
+  Line 10: unterminated string literal (detected at line 10)
+    Code: """"
+
+📄 fix_import_data.py: 1 errors
+  Line 13: unexpected indent
+    Code: from pathlib import Path
+
+📄 fix_logging_config.py: 1 errors
+  Line 8: unexpected indent
+    Code: import logging
+
+📄 fix_numeric_comparisons.py: 1 errors
+  Line 10: unexpected indent
+    Code: import re
+
+📄 fix_return_type_arrow.py: 1 errors
+  Line 13: unexpected indent
+    Code: from pathlib import Path
+
+📄 fix_syntax_errors.py: 1 errors
+  Line 13: unexpected indent
+    Code: import os  # noqa: F401
+
+📄 fix_winsurf_issues.py: 1 errors
+  Line 17: unexpected indent
+    Code: import ast  # noqa: F401
+
+📄 forensic_audit.py: 1 errors
+  Line 11: unexpected indent
+    Code: import os
+
+📄 hafez_morphology_reactor.py: 1 errors
+  Line 24: unexpected indent
+    Code: import re
+
+📄 harakat_engine.py: 1 errors
+  Line 17: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 hierarchical_demo.py: 1 errors
+  Line 15: unexpected indent
+    Code: from pathlib import Path
+
+📄 integrated_engine.py: 1 errors
+  Line 18: unexpected indent
+    Code: import json  # noqa: F401
+
+📄 integrated_progressive_system.py: 1 errors
+  Line 19: unexpected indent
+    Code: import time
+
+📄 interactive_progressive_analyzer.py: 1 errors
+  Line 30: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 manual_test_fix.py: 1 errors
+  Line 10: unexpected indent
+    Code: def fix_test_file():
+
+📄 morphology_model.py: 1 errors
+  Line 12: unexpected indent
+    Code: from dataclasses import dataclass, field  # noqa: F401
+
+📄 progressive_integration_analysis.py: 1 errors
+  Line 14: unexpected indent
+    Code: def analyze_progressive_integration():  # type: ignore[no-untyped def]
+
+📄 progressive_vector_tracker.py: 1 errors
+  Line 34: unterminated string literal (detected at line 34)
+    Code: """"
+
+📄 remove_arabic_forever.py: 1 errors
+  Line 14: unexpected indent
+    Code: import os  # noqa: F401
+
+📄 run_all_nlp_engines.py: 1 errors
+  Line 6: unterminated string literal (detected at line 6)
+    Code: """"
+
+📄 run_syntax_fixes.py: 1 errors
+  Line 8: unexpected indent
+    Code: import logging
+
+📄 simple_test.py: 1 errors
+  Line 10: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 surgical_syntax_repair.py: 1 errors
+  Line 13: unexpected indent
+    Code: import ast
+
+📄 targeted_syntax_scanner.py: 1 errors
+  Line 9: unexpected indent
+    Code: import os
+
+📄 tests\conftest.py: 1 errors
+  Line 10: unexpected indent
+    Code: import pytest  # noqa: F401
+
+📄 tests\engine_batch_runner.py: 1 errors
+  Line 10: unexpected indent
+    Code: import time
+
+📄 tests\engine_health_monitor.py: 1 errors
+  Line 10: unexpected indent
+    Code: from pathlib import Path
+
+📄 tests\test_all_fixed_engines.py: 1 errors
+  Line 14: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 tests\test_arabic_math_concepts.py: 1 errors
+  Line 18: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 tests\test_arabic_system.py: 1 errors
+  Line 10: unexpected indent
+    Code: import pytest  # noqa: F401
+
+📄 tests\test_comprehensive_engines.py: 1 errors
+  Line 10: unexpected indent
+    Code: import sys
+
+📄 tests\test_core\test_base_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_base_engine_functionality():  # type: ignore[no-untyped-def]
+
+📄 tests\test_core\test_config.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_configuration_loading():  # type: ignore[no-untyped-def]
+
+📄 tests\test_core_integration.py: 1 errors
+  Line 10: unexpected indent
+    Code: import sys
+
+📄 tests\test_hello_world.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_hello_world():  # type: ignore[no-untyped-def]
+
+📄 tests\test_morphological_weights.py: 1 errors
+  Line 11: unexpected indent
+    Code: try:
+
+📄 tests\test_nlp\test_derivation\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_placeholder():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_derivation\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_derivation_engine():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_frozen_root\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_placeholder():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_frozen_root\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_frozen_root():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_inflection\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_hello_world():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_inflection\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_inflection_engine():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_morphology\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_placeholder():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_morphology\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_morphology_engine():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_phoneme\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_phoneme_processing():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_phoneme\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_phoneme_processing():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_phonological\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_phonological_processing():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_phonological\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_phonological_processing():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_syllable\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_hello_world():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_syllable\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_syllable_processing():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_weight\__init__.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_weight_calculation():  # type: ignore[no-untyped-def]
+
+📄 tests\test_nlp\test_weight\test_engine.py: 1 errors
+  Line 5: unexpected indent
+    Code: def test_weight_calculation():  # type: ignore[no-untyped-def]
+
+📄 tests\test_phoneme_integration.py: 1 errors
+  Line 11: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 tests\test_phoneme_processing.py: 1 errors
+  Line 10: unexpected indent
+    Code: import pytest  # noqa: F401
+
+📄 tests\test_phoneme_simple.py: 1 errors
+  Line 10: unexpected indent
+    Code: def test_phoneme_simple():  # type: ignore[no-untyped def]
+
+📄 tests\test_proper_names_examples.py: 1 errors
+  Line 12: unexpected indent
+    Code: from advanced_arabic_proper_names_generator import (  # noqa: F401,
+
+📄 tests\test_syllable_engine.py: 1 errors
+  Line 13: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 tests\test_syllable_generator.py: 1 errors
+  Line 11: unexpected indent
+    Code: try:
+
+📄 tests\test_syllable_processing.py: 1 errors
+  Line 10: unexpected indent
+    Code: import pytest  # noqa: F401
+
+📄 tests\test_syllable_readiness.py: 1 errors
+  Line 10: unexpected indent
+    Code: try:
+
+📄 tests\test_waw_hamza.py: 1 errors
+  Line 13: unexpected indent
+    Code: def test_arabic_waw_hamza():  # type: ignore[no-untyped def]
+
+📄 tests\test_word.py: 1 errors
+  Line 10: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 tests\test_zero_layer_comprehensive.py: 1 errors
+  Line 15: unexpected indent
+    Code: import sys  # noqa: F401
+
+📄 tools\PROJECT_COMPLETION_REPORT.py: 1 errors
+  Line 232: unexpected indent
+    Code: print(__doc__)
+
+📄 tools\arabic_nlp_status_report.py: 1 errors
+  Line 12: unexpected indent
+    Code: def main():  # type: ignore[no-untyped def]
+
+📄 tools\cli_text_processor.py: 1 errors
+  Line 10: unexpected indent
+    Code: import json
+
+📄 tools\comprehensive_file_analysis.py: 1 errors
+  Line 15: unexpected indent
+    Code: import os
+
+📄 tools\comprehensive_syntax_batch_fixer.py: 1 errors
+  Line 14: unexpected indent
+    Code: import os
+
+📄 tools\critical_syntax_fixer.py: 1 errors
+  Line 9: unexpected indent
+    Code: import re
+
+📄 tools\emergency_syntax_fixer.py: 1 errors
+  Line 9: unexpected indent
+    Code: import os
+
+📄 tools\final_arrow_syntax_fixer.py: 1 errors
+  Line 13: unexpected indent
+    Code: import logging
+
+📄 tools\final_comprehensive_report.py: 1 errors
+  Line 13: unexpected indent
+    Code: from pathlib import Path
+
+📄 tools\precision_violation_fixer.py: 1 errors
+  Line 15: unexpected indent
+    Code: import re
+
+📄 tools\project_status_checker.py: 1 errors
+  Line 8: unexpected indent
+    Code: import ast
+
+📄 tools\quality_status_report.py: 1 errors
+  Line 9: unexpected indent
+    Code: from pathlib import Path
+
+📄 tools\quick_status.py: 1 errors
+  Line 7: unexpected indent
+    Code: import ast,
+
+📄 tools\simple_arrow_syntax_fixer.py: 1 errors
+  Line 10: unexpected indent
+    Code: from pathlib import Path
+
+📄 tools\simple_text_cleaner.py: 1 errors
+  Line 13: unexpected indent
+    Code: import os  # noqa: F401
+
+📄 tools\strategic_action_plan.py: 1 errors
+  Line 11: unexpected indent
+    Code: import os
+
+📄 tools\surgical_syntax_fixer_v2.py: 1 errors
+  Line 18: unexpected indent
+    Code: self.error_files: Set[str] = set()
+
+📄 tools\surgical_syntax_fixer_v3.py: 1 errors
+  Line 18: unexpected indent
+    Code: import argparse
+
+📄 tools\targeted_critical_syntax_fixer.py: 1 errors
+  Line 14: unexpected indent
+    Code: from pathlib import Path
+
+📄 tools\text_heatmap_generator.py: 1 errors
+  Line 12: unexpected indent
+    Code: import os
+
+📄 tools\utf8_encoding_fixer.py: 1 errors
+  Line 27: unexpected indent
+    Code: import os  # noqa: F401
+
+📄 tools\utf8_terminal_cleaner.py: 1 errors
+  Line 14: unexpected indent
+    Code: import os  # noqa: F401
+
+📄 tools\validate_tools_ast.py: 1 errors
+  Line 2: unexpected indent
+    Code: files = [
+
+📄 ultimate_syntax_fix.py: 1 errors
+  Line 8: unexpected indent
+    Code: import re
+
+📄 ultimate_violation_eliminator.py: 1 errors
+  Line 25: unexpected indent
+    Code: import re
+
+📄 ultimate_winsurf_eliminator.py: 1 errors
+  Line 21: unexpected indent
+    Code: import ast
+
+📄 validate_broken_files.py: 1 errors
+  Line 8: unexpected indent
+    Code: import os
+
+📄 validate_citations.py: 1 errors
+  Line 14: unexpected indent
+    Code: import re
+
+📄 verify_string_fixes.py: 1 errors
+  Line 7: unexpected indent
+    Code: import os,
+
+📄 violation_elimination_system.py: 1 errors
+  Line 14: unexpected indent
+    Code: import re
+
+📄 winsurf_standards_library.py: 1 errors
+  Line 21: unexpected indent
+    Code: from typing import Dict, List, Optional, Union, Any, Tuple, Set
+
+📄 winsurf_verification_system.py: 1 errors
+  Line 17: unexpected indent
+    Code: import json
+
+📄 yellow_line_eliminator.py: 1 errors
+  Line 21: unexpected indent
+    Code: import re

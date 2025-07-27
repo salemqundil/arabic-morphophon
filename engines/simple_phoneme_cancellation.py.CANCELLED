@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""
+🚫 SIMPLIFIED PHONEME/SOUND CANCELLATION
+========================================
+
+Direct approach to safely disable sound/phoneme processing:
+1. Rename risky files to .CANCELLED extension
+2. Create simple stub files where needed
+3. Generate comprehensive report
+4. Focus only on current directory files for safety
+"""
+
+import os
+import glob
+from pathlib import Path
+from datetime import datetime
+
+
+def cancel_phoneme_sound_files():
+    """Cancel all phoneme/sound files in current directory"""
+
+    print("🚫 PHONEME/SOUND CANCELLATION - SIMPLIFIED APPROACH")
+    print("=" * 60)
+
+    # Patterns to identify phoneme/sound files
+    patterns = ["*phoneme*", "*phonolog*", "*syllable*", "*sound*", "*audio*"]
+
+    cancelled_files = []
+    stub_files = []
+
+    print("🔍 Step 1: Identifying phoneme/sound files...")
+
+    # Find all matching files in current directory only
+    target_files = []
+    for pattern in patterns:
+        matches = glob.glob(pattern)
+        target_files.extend(matches)
+
+    # Remove duplicates and filter to actual files
+    target_files = list(set([f for f in target_files if os.path.isfile(f)]))
+
+    print(f"Found {len(target_files)} phoneme/sound files to cancel")
+
+    if not target_files:
+        print("✅ No phoneme/sound files found in current directory")
+        return
+
+    print("\n🚫 Step 2: Cancelling files...")
+
+    for file_path in target_files:
+        try:
+            # Skip if already cancelled
+            if file_path.endswith('.CANCELLED'):
+                continue
+
+            print(f"📁 Processing: {file_path}")
+
+            # Rename to .CANCELLED
+            cancelled_path = f"{file_path}.CANCELLED"
+            os.rename(file_path, cancelled_path)
+            cancelled_files.append(
+                {
+                    'original': file_path,
+                    'cancelled': cancelled_path,
+                    'size': os.path.getsize(cancelled_path),
+                }
+            )
+            print(f"   ✅ Renamed to: {cancelled_path}")
+
+            # Create stub if it's a Python file
+            if file_path.endswith('.py'):
+                stub_content = f'''"""
+STUB - PHONEME/SOUND FILE CANCELLED
+===================================
+Original: {file_path}
+Cancelled: {datetime.now().isoformat()}
+Reason: Sound/phoneme processing cancelled for safety
+"""
+
+print("⚠️ Phoneme/sound processing has been cancelled")
+
+def __getattr__(name):
+    print(f"⚠️ Phoneme function '{{name}}' cancelled")
+    return lambda *args, **kwargs: None
+
+# Stub classes
+class PhonemeEngine:
+    def __init__(self, *args, **kwargs):
+        print("⚠️ PhonemeEngine cancelled")
+    def __getattr__(self, name):
+        return lambda *args, **kwargs: None
+
+class SyllableEngine:
+    def __init__(self, *args, **kwargs):
+        print("⚠️ SyllableEngine cancelled")
+    def __getattr__(self, name):
+        return lambda *args, **kwargs: None
+'''
+
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(stub_content)
+
+                stub_files.append(file_path)
+                print(f"   📝 Created stub: {file_path}")
+
+        except Exception as e:
+            print(f"   ❌ Error processing {file_path}: {e}")
+
+    print("\n📋 Step 3: Generating report...")
+
+    # Generate report
+    report_file = (
+        f"phoneme_cancellation_simple_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
+    )
+
+    report_content = f"""# 🚫 PHONEME/SOUND CANCELLATION REPORT
+
+**Date:** {datetime.now().isoformat()}
+**Method:** Simple file renaming + stub creation
+**Location:** Current directory only
+
+## 📊 SUMMARY
+
+- **Files cancelled:** {len(cancelled_files)}
+- **Stub files created:** {len(stub_files)}
+- **Total data preserved:** {sum(f['size'] for f in cancelled_files):,} bytes
+
+## 📁 CANCELLED FILES
+
+"""
+
+    for file_info in cancelled_files:
+        report_content += f"- `{file_info['original']}` → `{file_info['cancelled']}` ({file_info['size']:,} bytes)\n"
+
+    if stub_files:
+        report_content += "\n## 📝 STUB FILES CREATED\n\n"
+        for stub in stub_files:
+            report_content += f"- `{stub}` (prevents import errors)\n"
+
+    report_content += f"""
+
+## 🔄 RESTORATION INSTRUCTIONS
+
+To restore cancelled files:
+```bash
+# Restore individual files
+mv filename.CANCELLED filename
+
+# Restore all files
+for f in *.CANCELLED; do mv "$f" "${{f%.CANCELLED}}"; done
+
+# Remove stub files
+rm [stub file names]
+```
+
+## ✅ STATUS
+
+All phoneme/sound files in the current directory have been safely cancelled.
+Original files preserved with .CANCELLED extension.
+"""
+
+    with open(report_file, 'w', encoding='utf-8') as f:
+        f.write(report_content)
+
+    print(f"📋 Report saved: {report_file}")
+
+    # Final summary
+    print(f"\n🎉 CANCELLATION COMPLETE!")
+    print("=" * 40)
+    print(f"✅ Files cancelled: {len(cancelled_files)}")
+    print(f"✅ Stubs created: {len(stub_files)}")
+    print(f"✅ Report: {report_file}")
+    print("\n🛡️ Phoneme/sound processing safely cancelled!")
+
+    if cancelled_files:
+        print("\n📋 Cancelled files:")
+        for file_info in cancelled_files[:10]:
+            print(f"  - {file_info['original']} → {file_info['cancelled']}")
+        if len(cancelled_files) > 10:
+            print(f"  ... and {len(cancelled_files) - 10} more")
+
+
+if __name__ == "__main__":
+    cancel_phoneme_sound_files()

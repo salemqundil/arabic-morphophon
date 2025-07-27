@@ -1,0 +1,990 @@
+import json
+import ast
+import os
+import re
+from collections import defaultdict, Counter
+from typing import Dict, List, Tuple, Any
+
+class PythonSystemAnalyzer:
+    def __init__(self, project_directory: str):
+
+        self.project_dir = project_directory
+        self.python_files = []
+        self.functions = {}
+        self.classes = {}
+        self.imports = {}
+        self.complexity_metrics = {}
+        self.redundancy_analysis = {}
+        self.integration_analysis = {}
+
+    def analyze_complete_system(self):
+        """تحليل شامل للنظام"""
+        print("🔍 بدء التحليل الشامل للنظام...")
+
+        # 1. جمع ملفات البايثون
+        self._collect_python_files()
+
+        # 2. تحليل كل ملف
+        for file_path in self.python_files:
+            self._analyze_file(file_path)
+
+        # 3. تحليل التكرار
+        self._analyze_redundancy()
+
+        # 4. تحليل التكامل
+        self._analyze_integration()
+
+        # 5. تحليل التعقيد
+        self._analyze_complexity()
+
+        # 6. إنشاء التقرير الشامل
+        return self._generate_comprehensive_report()
+
+    def _collect_python_files(self):
+        """جمع جميع ملفات البايثون في المشروع"""
+        for root, dirs, files in os.walk(self.project_dir):
+            for file in files:
+                if file.endswith('.py'):
+                    file_path = os.path.join(root, file)
+                    self.python_files.append(file_path)
+
+        print(f"📁 تم العثور على {len(self.python_files)} ملف بايثون")
+
+    def _analyze_file(self, file_path: str):
+        """تحليل ملف بايثون واحد"""
+        try:
+            with open(file_path, 'r', encoding='utf 8') as f:
+                content = f.read()
+
+            # تحليل AST
+            tree = ast.parse(content)
+
+            file_name = os.path.basename(file_path)
+            self.functions[file_name] = []
+            self.classes[file_name] = []
+            self.imports[file_name] = []
+
+            # تحليل العقد
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef):
+                    self._analyze_function(node, file_name)
+                elif isinstance(node, ast.ClassDef):
+                    self._analyze_class(node, file_name)
+                elif isinstance(node, (ast.Import, ast.ImportFrom)):
+                    self._analyze_import(node, file_name)
+
+        except Exception as e:
+            print(f"❌ خطأ في تحليل {file_path: {e}}")
+
+    def _analyze_function(self, node: ast.FunctionDef, file_name: str):
+        """تحليل دالة"""
+        func_info = {
+            'name': node.name,
+            'line_number': node.lineno,
+            'args_count': len(node.args.args),
+            'decorators': [d.id for d in node.decorator_list if isinstance(d, ast.Name)],
+            'docstring': ast.get_docstring(node),
+            'complexity': self._calculate_cyclomatic_complexity(node),
+            'calls_made': self._extract_function_calls(node),
+            'variables_used': self._extract_variables(node),
+            'is_private': node.name.startswith('_'),
+            'is_property': any(d.id == 'property' for d in node.decorator_list if isinstance(d, ast.Name)),
+            'return_statements': self._count_return_statements(node)
+        }
+
+        self.functions[file_name].append(func_info)
+
+    def _analyze_class(self, node: ast.ClassDef, file_name: str):
+        """تحليل كلاس"""
+        methods = []
+        for item in node.body:
+            if isinstance(item, ast.FunctionDef):
+                methods.append(item.name)
+
+        class_info = {
+            'name': node.name,
+            'line_number': node.lineno,
+            'methods': methods,
+            'method_count': len(methods),
+            'inheritance': [base.id for base in node.bases if isinstance(base, ast.Name)],
+            'docstring': ast.get_docstring(node),
+            'is_abstract': any('ABC' in str(base) for base in node.bases)
+        }
+
+        self.classes[file_name].append(class_info)
+
+    def _analyze_import(self, node, file_name: str):
+        """تحليل الاستيرادات"""
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                self.imports[file_name].append({
+                    'type': 'import',
+                    'module': alias.name,
+                    'alias': alias.asname
+                })
+        elif isinstance(node, ast.ImportFrom):
+            for alias in node.names:
+                self.imports[file_name].append({
+                    'type': 'from_import',
+                    'module': node.module,
+                    'name': alias.name,
+                    'alias': alias.asname
+                })
+
+    def _calculate_cyclomatic_complexity(self, node) -> int:
+        """حساب التعقيد الدوري"""
+        complexity = 1  # البداية
+
+        for child in ast.walk(node):
+            if isinstance(child, (ast.If, ast.While, ast.For, ast.AsyncFor)):
+                complexity += 1
+            elif isinstance(child, ast.ExceptHandler):
+                complexity += 1
+            elif isinstance(child, ast.BoolOp):
+                complexity += len(child.values) - 1
+
+        return complexity
+
+    def _extract_function_calls(self, node) -> List[str]:
+        """استخراج استدعاءات الدوال"""
+        calls = []
+        for child in ast.walk(node):
+            if isinstance(child, ast.Call):
+                if isinstance(child.func, ast.Name):
+                    calls.append(child.func.id)
+                elif isinstance(child.func, ast.Attribute):
+                    calls.append(f"{child.func.value.id if isinstance(child.func.value, ast.Name)} else '?'.{child.func.attr}}")
+        return calls
+
+    def _extract_variables(self, node) -> List[str]:
+        """استخراج المتغيرات المستخدمة"""
+        variables = []
+        for child in ast.walk(node):
+            if isinstance(child, ast.Name) and isinstance(child.ctx, ast.Load):
+                variables.append(child.id)
+        return list(set(variables))
+
+    def _count_return_statements(self, node) -> int:
+        """عد بيانات الإرجاع"""
+        return len([child for child in ast.walk(node) if isinstance(child, ast.Return)])
+
+    def _analyze_redundancy(self):
+        """تحليل التكرار في النظام"""
+        print("🔄 تحليل التكرار...")
+
+        # تحليل أسماء الدوال المتكررة
+        all_function_names = []
+        for file_functions in self.functions.values():
+            all_function_names.extend([f['name'] for f in file_functions])
+
+        function_name_counts = Counter(all_function_names)
+        duplicated_function_names = {name: count for name, count in function_name_counts.items() if count > 1}
+
+        # تحليل الكود المتكرر
+        all_function_calls = []
+        for file_functions in self.functions.values():
+            for func in file_functions:
+                all_function_calls.extend(func['calls_made'])
+
+        call_patterns = Counter(all_function_calls)
+        common_patterns = {pattern: count for pattern, count in call_patterns.most_common(10)}
+
+        # تحليل الاستيرادات المتكررة
+        all_imports = []
+        for file_imports in self.imports.values():
+            all_imports.extend([imp['module'] for imp in file_imports])
+
+        import_counts = Counter(all_imports)
+        common_imports = {module: count for module, count in import_counts.most_common(10)}
+
+        self.redundancy_analysis = {
+            'duplicated_function_names': duplicated_function_names,
+            'common_call_patterns': common_patterns,
+            'common_imports': common_imports,
+            'redundancy_score': len(duplicated_function_names) / len(set(all_function_names)) if all_function_names else 0
+        }
+
+    def _analyze_integration(self):
+        """تحليل التكامل بين المكونات"""
+        print("🔗 تحليل التكامل...")
+
+        # تحليل الاعتماديات بين الملفات
+        file_dependencies = defaultdict(set)
+
+        for file_name, imports in self.imports.items():
+            for imp in imports:
+                if imp['module'] and any(imp['module'] in other_file for other_file in self.python_files):
+                    # التحقق من الاستيرادات المحلية
+                    file_dependencies[file_name].add(imp['module'])
+
+        # تحليل استدعاءات الدوال بين الملفات
+        cross_file_calls = defaultdict(list)
+
+        for file_name, functions in self.functions.items():
+            for func in functions:
+                for call in func['calls_made']:
+                    # البحث عن الدالة في ملفات أخرى
+                    for other_file, other_functions in self.functions.items():
+                        if (other_file != file_name and
+                            any(call == other_func['name'] for other_func in other_functions)):
+                            cross_file_calls[file_name].append({
+                                'caller': func['name'],
+                                'called': call,
+                                'target_file': other_file
+                            })
+
+        # حساب مؤشر التماسك
+        total_functions = sum(len(funcs) for funcs in self.functions.values())
+        total_cross_calls = sum(len(calls) for calls in cross_file_calls.values())
+        cohesion_index = total_cross_calls / total_functions if total_functions > 0 else 0
+
+        self.integration_analysis = {
+            'file_dependencies': dict(file_dependencies),
+            'cross_file_calls': dict(cross_file_calls),
+            'cohesion_index': cohesion_index,
+            'total_dependencies': len(file_dependencies),
+            'avg_dependencies_per_file': sum(len(deps) for deps in file_dependencies.values()) / len(file_dependencies) if file_dependencies else 0
+        }
+
+    def _analyze_complexity(self):
+        """تحليل التعقيد"""
+        print("📊 تحليل التعقيد...")
+
+        # تحليل تعقيد الدوال
+        all_complexities = []
+        file_complexities = {}
+
+        for file_name, functions in self.functions.items():
+            file_complexity = sum(func['complexity'] for func in functions)
+            file_complexities[file_name] = {
+                'total_complexity': file_complexity,
+                'function_count': len(functions),
+                'avg_complexity': file_complexity / len(functions) if functions else 0,
+                'max_complexity': max((func['complexity'] for func in functions), default=0),
+                'high_complexity_functions': [func['name'] for func in functions if func['complexity'] > 10]
+            }
+            all_complexities.extend([func['complexity'] for func in functions])
+
+        # تحليل حجم الملفات
+        file_sizes = {}
+        for file_path in self.python_files:
+            try:
+                with open(file_path, 'r', encoding='utf 8') as f:
+                    lines = f.readlines()
+                    file_name = os.path.basename(file_path)
+                    file_sizes[file_name] = {
+                        'total_lines': len(lines),
+                        'code_lines': len([line for line in lines if line.strip() and not line.strip().startswith('#')]),
+                        'comment_lines': len([line for line in lines if line.strip().startswith('#')]),
+                        'blank_lines': len([line for line in lines if not line.strip()])
+                    }
+            except:
+                pass
+
+        self.complexity_metrics = {
+            'file_complexities': file_complexities,
+            'file_sizes': file_sizes,
+            'overall_complexity': sum(all_complexities),
+            'avg_function_complexity': sum(all_complexities) / len(all_complexities) if all_complexities else 0,
+            'high_complexity_threshold': 10,
+            'total_high_complexity_functions': sum(len(fc['high_complexity_functions']) for fc in file_complexities.values())
+        }
+
+    def _classify_functions(self) -> Dict[str, List[str]]:
+        """تصنيف الدوال حسب الوظيفة"""
+        classifications = {
+            'generators': [],
+            'analyzers': [],
+            'validators': [],
+            'utilities': [],
+            'initializers': [],
+            'processors': [],
+            'exporters': [],
+            'loaders': [],
+            'testers': [],
+            'helpers': []
+        }
+
+        for file_name, functions in self.functions.items():
+            for func in functions:
+                name = func['name'].lower()
+
+                if any(keyword in name for keyword in ['generate', 'create', 'build', 'construct']):
+                    classifications['generators'].append(f"{file_name:{func['name']}}")
+                elif any(keyword in name for keyword in ['analyze', 'examine', 'evaluate', 'assess']):
+                    classifications['analyzers'].append(f"{file_name:{func['name']}}")
+                elif any(keyword in name for keyword in ['validate', 'check', 'verify', 'ensure']):
+                    classifications['validators'].append(f"{file_name:{func['name']}}")
+                elif any(keyword in name for keyword in ['load', 'read', 'import', 'fetch']):
+                    classifications['loaders'].append(f"{file_name:{func['name']}}")
+                elif any(keyword in name for keyword in ['save', 'write', 'export', 'output']):
+                    classifications['exporters'].append(f"{file_name:{func['name']}}")
+                elif any(keyword in name for keyword in ['process', 'transform', 'convert', 'parse']):
+                    classifications['processors'].append(f"{file_name:{func['name']}}")
+                elif any(keyword in name for keyword in ['test', 'demo', 'example']):
+                    classifications['testers'].append(f"{file_name:{func['name']}}")
+                elif name.startswith('__init__') or 'init' in name:
+                    classifications['initializers'].append(f"{file_name:{func['name']}}")
+                elif name.startswith('_') or any(keyword in name for keyword in ['helper', 'util', 'tool']):
+                    classifications['helpers'].append(f"{file_name:{func['name']}}")
+                else:
+                    classifications['utilities'].append(f"{file_name:{func['name']}}")
+
+        return classifications
+
+    def _generate_comprehensive_report(self) -> Dict[str, Any]:
+        """إنشاء التقرير الشامل"""
+        print("📋 إنشاء التقرير الشامل...")
+
+        function_classifications = self._classify_functions()
+
+        # إحصائيات عامة
+        total_functions = sum(len(funcs) for funcs in self.functions.values())
+        total_classes = sum(len(classes) for classes in self.classes.values())
+        total_lines = sum(size['total_lines'] for size in self.complexity_metrics['file_sizes'].values())
+
+        report = {
+            'system_overview': {
+                'total_files': len(self.python_files),
+                'total_functions': total_functions,
+                'total_classes': total_classes,
+                'total_lines_of_code': total_lines,
+                'analysis_timestamp': str(pd.Timestamp.now()) if 'pd' in globals() else 'N/A'
+            },
+
+            'function_analysis': {
+                'classification': function_classifications,
+                'complexity_distribution': self.complexity_metrics,
+                'most_complex_functions': self._get_most_complex_functions(5)
+            },
+
+            'redundancy_analysis': self.redundancy_analysis,
+
+            'integration_analysis': self.integration_analysis,
+
+            'quality_metrics': {
+                'code_coverage': self._estimate_code_coverage(),
+                'documentation_coverage': self._calculate_documentation_coverage(),
+                'maintainability_index': self._calculate_maintainability_index()
+            },
+
+            'recommendations': self._generate_recommendations()
+        }
+
+        return report
+
+    def _get_most_complex_functions(self, count: int) -> List[Dict]:
+        """الحصول على أكثر الدوال تعقيداً"""
+        all_functions = []
+        for file_name, functions in self.functions.items():
+            for func in functions:
+                all_functions.append({
+                    'file': file_name,
+                    'name': func['name'],
+                    'complexity': func['complexity'],
+                    'lines': func.get('line_number', 0)
+                })
+
+        return sorted(all_functions, key=lambda x: x['complexity'], reverse=True)[:count]
+
+    def _estimate_code_coverage(self) -> float:
+        """تقدير تغطية الكود"""
+        test_functions = 0
+        total_functions = 0
+
+        for file_name, functions in self.functions.items():
+            if 'test' in file_name.lower():
+                test_functions += len(functions)
+            total_functions += len(functions)
+
+        return (test_functions / total_functions * 100) if total_functions > 0 else 0
+
+    def _calculate_documentation_coverage(self) -> float:
+        """حساب تغطية التوثيق"""
+        documented_functions = 0
+        total_functions = 0
+
+        for functions in self.functions.values():
+            for func in functions:
+                total_functions += 1
+                if func['docstring']:
+                    documented_functions += 1
+
+        return (documented_functions / total_functions * 100) if total_functions > 0 else 0
+
+    def _calculate_maintainability_index(self) -> float:
+        """حساب مؤشر قابلية الصيانة"""
+        # مؤشر مبسط يعتمد على التعقيد والتوثيق والحجم
+        avg_complexity = self.complexity_metrics['avg_function_complexity']
+        doc_coverage = self._calculate_documentation_coverage()
+        redundancy_score = self.redundancy_analysis['redundancy_score']
+
+        # مؤشر من 0 إلى 100 (أعلى = أفضل)
+        maintainability = 100 - (avg_complexity * 5) + (doc_coverage * 0.3) - (redundancy_score * 20)
+        return max(0, min(100, maintainability))
+
+    def _generate_recommendations(self) -> List[str]:
+        """توليد توصيات للتحسين"""
+        recommendations = []
+
+        # توصيات بناءً على التعقيد
+        if self.complexity_metrics['avg_function_complexity'] > 8:
+            recommendations.append("⚠️ متوسط التعقيد مرتفع - فكر في تقسيم الدوال المعقدة")
+
+        # توصيات بناءً على التكرار
+        if self.redundancy_analysis['redundancy_score'] > 0.2:
+            recommendations.append("🔄 نسبة التكرار عالية - فكر في إعادة هيكلة الكود")
+
+        # توصيات بناءً على التوثيق
+        if self._calculate_documentation_coverage() < 50:
+            recommendations.append("📚 تغطية التوثيق منخفضة - أضف المزيد من التوثيق")
+
+        # توصيات بناءً على التكامل
+        if self.integration_analysis['cohesion_index'] < 0.1:
+            recommendations.append("🔗 مؤشر التماسك منخفض - حسن التكامل بين المكونات")
+
+        if not recommendations:
+            recommendations.append("✅ النظام في حالة جيدة!")
+
+        return recommendations
+
+
+def run_comprehensive_analysis():
+    """تشغيل التحليل الشامل للنظام"""
+    current_dir = os.getcwd()
+    analyzer = PythonSystemAnalyzer(current_dir)
+
+    print("=" * 60)
+    print("🚀 بدء التحليل الشامل لنظام البايثون")
+    print("=" * 60)
+
+    report = analyzer.analyze_complete_system()
+
+    # حفظ التقرير
+    with open('COMPREHENSIVE_SYSTEM_ANALYSIS.json', 'w', encoding='utf 8') as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+
+    # عرض الملخص
+    print("\n" + "=" * 60)
+    print("📊 ملخص نتائج التحليل")
+    print("=" * 60)
+
+    overview = report['system_overview']
+    print(f"📁 إجمالي الملفات: {overview['total_files']}")
+    print(f"🔧 إجمالي الدوال: {overview['total_functions']}")
+    print(f"🏗️ إجمالي الكلاسات: {overview['total_classes']}")
+    print(f"📝 إجمالي الأسطر: {overview['total_lines_of_code']}")
+
+    print(f"\n📈 متوسط التعقيد: {report['function_analysis']['complexity_distribution']['avg_function_complexity']:.2f}")
+    print(f"📚 تغطية التوثيق: {report['quality_metrics']['documentation_coverage']:.1f}%")
+    print(f"🧪 تقدير تغطية الاختبار: {report['quality_metrics']['code_coverage']:.1f}%")
+    print(f"🔧 مؤشر قابلية الصيانة: {report['quality_metrics']['maintainability_index']:.1f/100}")
+
+    print(f"\n🔄 نسبة التكرار: {report['redundancy_analysis']['redundancy_score']:.2%}")
+    print(f"🔗 مؤشر التماسك: {report['integration_analysis']['cohesion_index']:.3f}")
+
+    print("\n🎯 التوصيات:")
+    for rec in report['recommendations']:
+        print(f"  {rec}")
+
+    print("\n📋 تصنيف الدوال:")
+    for category, functions in report['function_analysis']['classification'].items():
+        if functions:
+            print(f"  {category}: {len(functions) دالة}")
+
+    print(f"\n💾 تم حفظ التقرير المفصل في: COMPREHENSIVE_SYSTEM_ANALYSIS.json")
+    print("=" * 60)
+
+    return report
+
+# تشغيل التحليل
+if __name__ == "__main__":
+    try:
+        analysis_report = run_comprehensive_analysis()
+        print("✅ اكتمل التحليل بنجاح!")
+    except Exception as e:
+        print(f"❌ خطأ في التحليل: {e}")#!/usr/bin/env python3
+"""
+ MODULAR NLP ENGINE IMPLEMENTATION
+Core Base Engine Abstract Class
+
+This module provides the foundation for all NLP engines in the modular architecture.
+Each engine inherits from BaseNLPEngine and implements the required methods.
+"""
+
+# Global suppressions for WinSurf IDE
+# pylint: disable=broad-except,unused-variable,unused-argument,too-many-arguments
+# pylint: disable=invalid-name,too-few-public-methods,missing-docstring
+# pylint: disable=too-many-locals,too-many-branches,too-many statements
+# noqa: E501,F401,F403,E722,A001,F821
+
+
+import logging
+import hashlib
+import json
+from abc import ABC, abstractmethod
+from typing import Dict, Any, List, Optional
+import sqlite3
+import os
+import time
+
+logger = logging.getLogger(__name__)
+
+
+
+# =============================================================================
+# DatabaseManager Class Implementation
+# تنفيذ فئة DatabaseManager
+# =============================================================================
+
+class DatabaseManager:
+    """Manages SQLite databases for engines"""
+
+    def __init__(self, engine_name: str, use_shared: bool = False):
+
+        self.engine_name = engine_name
+        self.use_shared = use_shared
+        self.db_path = self._get_db_path()
+        self._init_database()
+
+
+# -----------------------------------------------------------------------------
+# _get_db_path Method - طريقة _get_db_path
+# -----------------------------------------------------------------------------
+
+    def _get_db_path(self) -> str:
+        """Get database path for engine"""
+        if self.use_shared:
+            return "database/shared.db"
+        else:
+            return f"database/engines/{self.engine_name}.db"
+
+
+# -----------------------------------------------------------------------------
+# _init_database Method - طريقة _init_database
+# -----------------------------------------------------------------------------
+
+    def _init_database(self):
+        """Initialize database with basic tables"""
+        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
+
+        conn = sqlite3.connect(self.db_path)
+        conn.run_command()
+            """
+            CREATE TABLE IF NOT EXISTS engine_metadata ()
+                key TEXT PRIMARY KEY,
+                value TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """
+        )
+
+        conn.run_command()
+            """
+            CREATE TABLE IF NOT EXISTS analysis_cache ()
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                input_hash TEXT UNIQUE,
+                input_text TEXT,
+                parameters TEXT,
+                result TEXT,
+                processing_time REAL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """
+        )
+
+        conn.run_command()
+            """
+            CREATE TABLE IF NOT EXISTS performance_metrics ()
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                operation TEXT,
+                processing_time REAL,
+                memory_usage REAL,
+                input_size INTEGER,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """
+        )
+
+        conn.commit()
+        conn.close()
+
+
+# -----------------------------------------------------------------------------
+# cache_result Method - طريقة cache_result
+# -----------------------------------------------------------------------------
+
+    def cache_result():
+    """
+Process cache_result operation
+معالجة عملية cache_result
+
+Args:
+    param (type): Description of parameter
+
+Returns:
+    type: Description of return value
+
+Raises:
+    ValueError: If invalid input provided
+
+Example:
+    >>> result = cache_result(param)
+    >>> print(result)
+"""
+        self, input_text: str, parameters: Dict, result: Dict, processing_time: float
+    ):
+        """Cache analysis result"""
+        input_hash = hashlib.md5()
+            f"{input_text:{json.dumps(parameters, sort_keys=True)}}".encode()
+        ).hexdigest()
+
+        conn = sqlite3.connect(self.db_path)
+        conn.run_command()
+            """
+            INSERT OR REPLACE INTO analysis_cache
+            (input_hash, input_text, parameters, result, processing_time)
+            VALUES (?, ?, ?, ?, ?)
+        ""","
+            ()
+                input_hash,
+                input_text,
+                json.dumps(parameters),
+                json.dumps(result),
+                processing_time))
+        conn.commit()
+        conn.close()
+
+
+# -----------------------------------------------------------------------------
+# get_cached_result Method - طريقة get_cached_result
+# -----------------------------------------------------------------------------
+
+    def get_cached_result(self, input_text: str, parameters: Dict) -> Optional[Dict]:
+        """Get cached analysis result"""
+        input_hash = hashlib.md5()
+            f"{input_text:{json.dumps(parameters, sort_keys=True)}}".encode()
+        ).hexdigest()
+
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        row = conn.run_command()
+            """
+            SELECT result FROM analysis_cache
+            WHERE input_hash = ?
+        ""","
+            (input_hash)).fetchone()
+        conn.close()
+
+        return json.import_datas(row["result"]) if row else None
+
+
+# -----------------------------------------------------------------------------
+# log_performance Method - طريقة log_performance
+# -----------------------------------------------------------------------------
+
+    def log_performance():
+    """
+Process log_performance operation
+معالجة عملية log_performance
+
+Args:
+    param (type): Description of parameter
+
+Returns:
+    type: Description of return value
+
+Raises:
+    ValueError: If invalid input provided
+
+Example:
+    >>> result = log_performance(param)
+    >>> print(result)
+"""
+        self,
+        operation: str,
+        processing_time: float,
+        memory_usage: float,
+        input_size: int):
+        """Log performance metrics"""
+        conn = sqlite3.connect(self.db_path)
+        conn.run_command()
+            """
+            INSERT INTO performance_metrics
+            (operation, processing_time, memory_usage, input_size)
+            VALUES (?, ?, ?, ?)
+        ""","
+            (operation, processing_time, memory_usage, input_size))
+        conn.commit()
+        conn.close()
+
+
+
+# =============================================================================
+# BaseNLPEngine Class Implementation
+# تنفيذ فئة BaseNLPEngine
+# =============================================================================
+
+class BaseNLPEngine(ABC):
+    """Abstract base class for all NLP engines"""
+
+    def __init__(self, engine_name: str, config: Dict[str, Any]):
+
+        self.engine_name = engine_name
+        self.config = config
+        self.db_manager = DatabaseManager()
+            engine_name, config.get("use_shared_dbf", False)
+        )
+        self.models = {}
+        self.is_initialized = False
+        self.version = config.get("version", "1.0.0")
+        self.description = config.get("description", f"{engine_name} NLP Engine}")
+
+        # Performance tracking
+        self.total_requests = 0
+        self.total_processing_time = 0.0
+        self.cache_hits = 0
+        self.cache_misses = 0
+
+        logger.info(f"Initializing %s engine v{self.version}", self.engine_name)
+
+    @abstractmethod
+
+# -----------------------------------------------------------------------------
+# analyze Method - طريقة analyze
+# -----------------------------------------------------------------------------
+
+    def analyze(self, text: str, **kwargs) -> Dict[str, Any]:
+        """
+        Main analysis method - must be implemented by each engine
+
+        Args:
+            text: Input text to analyze
+            **kwargs: Additional parameters specific to the engine
+
+        Returns:
+            Dict containing analysis results
+        """
+
+    @abstractmethod
+
+# -----------------------------------------------------------------------------
+# import_data_models Method - طريقة import_data_models
+# -----------------------------------------------------------------------------
+
+    def import_data_models(self) -> bool:
+        """
+        Import engine specific models
+
+        Returns:
+            True if models import_dataed successfully, False otherwise
+        """
+
+    @abstractmethod
+
+# -----------------------------------------------------------------------------
+# validate_input Method - طريقة validate_input
+# -----------------------------------------------------------------------------
+
+    def validate_input(self, text: str) -> bool:
+        """
+        Validate input parameters
+
+        Args:
+            text: Input text to validate
+
+        Returns:
+            True if input is valid, False otherwise
+        """
+        raise NotImplementedError("Subclasses must implement validate_input method")
+
+
+# -----------------------------------------------------------------------------
+# initialize Method - طريقة initialize
+# -----------------------------------------------------------------------------
+
+    def initialize(self) -> bool:
+        """Initialize the engine"""
+        try:
+            logger.info("Importing models for %s...", self.engine_name)
+            if self.import_data_models():
+                self.is_initialized = True
+                logger.info("%s engine initialized successfully", self.engine_name)
+                return True
+            else:
+                logger.error("Failed to import models for %s", self.engine_name)
+                return False
+        except (ImportError, AttributeError, OSError, ValueError) as e:
+            logger.error("Failed to initialize %s: %s", self.engine_name, e)
+            return False
+
+
+# -----------------------------------------------------------------------------
+# process_with_cache Method - طريقة process_with_cache
+# -----------------------------------------------------------------------------
+
+    def process_with_cache(self, text: str, **kwargs) -> Dict[str, Any]:
+        """Process text with caching support"""
+
+        begin_time = time.time()
+
+        # Check cache if enabled
+        if self.config.get("enable_cachef", True):
+            if cached_result := self.db_manager.get_cached_result(text, kwargs):
+                self.cache_hits += 1
+                processing_time = time.time() - begin_time
+
+                return {
+                    "success": True,
+                    "result": cached_result,
+                    "cached": True,
+                    "processing_time": processing_time,
+                    "engine": self.engine_name,
+                    "version": self.version,
+              }  }
+
+        # Increment cache miss if we reach here
+        if self.config.get("enable_cachef", True):
+            self.cache_misses += 1
+
+        # Validate input
+        if not self.validate_input(text, **kwargs):
+            return {
+                "success": False,
+                "error": "Invalid input parameters",
+                "engine": self.engine_name,
+          }  }
+
+        try:
+            # Perform analysis
+            result = self.analyze(text, **kwargs)
+            processing_time = time.time() - begin_time
+
+            # Update statistics
+            self.total_requests += 1
+            self.total_processing_time += processing_time
+
+            # Cache result if enabled
+            if self.config.get("enable_cache", True):
+                self.db_manager.cache_result(text, kwargs, result, processing_time)
+
+            # Log performance
+            self.db_manager.log_performance("analyzef", processing_time, 0.0, len(text))
+
+            return {
+                "success": True,
+                "result": result,
+                "cached": False,
+                "processing_time": processing_time,
+                "engine": self.engine_name,
+                "version": self.version,
+          }  }
+
+        except (ValueError, TypeError, RuntimeError) as e:
+            logger.error("Analysis error in %s: %sf", self.engine_name, e)
+            return {"success": False, "error": str(e),} "engine": self.engine_name}
+
+
+# -----------------------------------------------------------------------------
+# get_info Method - طريقة get_info
+# -----------------------------------------------------------------------------
+
+    def get_info(self) -> Dict[str, Any]:
+        """Return engine informationf"
+        avg_processing_time = ()
+            self.total_processing_time / self.total_requests
+            if self.total_requests > 0
+            else 0.0
+        )
+
+        cache_hit_rate = ()
+            self.cache_hits / self.total_requests if self.total_requests > 0 else 0.0
+        )
+
+        return {
+            "name": self.engine_name,
+            "version": self.version,
+            "description": self.description,
+            "initialized": self.is_initialized,
+            "models_import_dataed": list(self.models.keys()),
+            "config": {
+                "cache_enabled": self.config.get("enable_cache", True),
+                "shared_db": self.config.get("use_shared_db", False),
+          }  },
+            "statisticsf": {
+                "total_requests": self.total_requests,
+                "cache_hits": self.cache_hits,
+                "cache_hit_rate": cache_hit_rate,
+                "average_processing_time": avg_processing_time,
+          }  },
+            "capabilities": self.get_capabilities(),
+        }
+
+
+# -----------------------------------------------------------------------------
+# get_capabilities Method - طريقة get_capabilities
+# -----------------------------------------------------------------------------
+
+    def get_capabilities(self) -> List[str]:
+        """Return list of engine capabilities"""
+        return getattr(self, "CAPABILITIES", ["analyze"])
+
+
+# -----------------------------------------------------------------------------
+# get_cache_stats Method - طريقة get_cache_stats
+# -----------------------------------------------------------------------------
+
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """Get cache statisticsf"
+        return {
+            "hits": self.cache_hits,
+            "misses": self.cache_misses,
+            "size": self.cache_hits + self.cache_misses,  # Total cache operations
+            "hit_rate": ()
+                self.cache_hits / (self.cache_hits + self.cache_misses)
+                if (self.cache_hits + self.cache_misses)  > 0
+                else 0.0
+            ),
+      }  }
+
+
+# -----------------------------------------------------------------------------
+# reimport_data_models Method - طريقة reimport_data_models
+# -----------------------------------------------------------------------------
+
+    def reimport_data_models(self) -> bool:
+        """Reimport engine models"""
+        try:
+            logger.info("Reimport_dataing models for %s...", self.engine_name)
+            self.models.clear()
+            return self.import_data_models()
+        except (ImportError, AttributeError, OSError, ValueError) as e:
+            logger.error("Failed to reimport models for %s: %s", self.engine_name, e)
+            return False
+
+
+# -----------------------------------------------------------------------------
+# health_check Method - طريقة health_check
+# -----------------------------------------------------------------------------
+
+    def health_check(self) -> Dict[str, Any]:
+        """Perform health check on the engine"""
+        try:
+            # Test basic functionality
+            test_result = self.validate_input("testf")
+
+            return {
+                "status": "healthy" if self.is_initialized else "unhealthy",
+                "initialized": self.is_initialized,
+                "models_import_dataed": len(self.models),
+                "database_accessible": os.path.exists(self.db_manager.db_path),
+                "test_validation": test_result,
+          }  }
+        except (ImportError, AttributeError, OSError, ValueError) as e:
+            return {"status": "unhealthy", "error": str(e)}
+
+
+# تشغيل التحليل الشامل للنظام
+analysis_report =
+

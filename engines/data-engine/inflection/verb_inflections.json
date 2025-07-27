@@ -1,0 +1,398 @@
+{
+  "past": {
+    "1": {
+      "masc": {
+        "singular": "فعلت",
+        "dual": "فعلنا",
+        "plural": "فعلنا"
+      },
+      "fem": {
+        "singular": "فعلت",
+        "dual": "فعلنا", 
+        "plural": "فعلنا"
+      }
+    },
+    "2": {
+      "masc": {
+        "singular": "فعلت",
+        "dual": "فعلتما",
+        "plural": "فعلتم"
+      },
+      "fem": {
+        "singular": "فعلت",
+        "dual": "فعلتما",
+        "plural": "فعلتن"
+      }
+    },
+    "3": {
+      "masc": {
+        "singular": "فعل",
+        "dual": "فعلا",
+        "plural": "فعلوا"
+      },
+      "fem": {
+        "singular": "فعلت",
+        "dual": "فعلتا",
+        "plural": "فعلن"
+      }
+    }
+  },
+  "present": {
+    "1": {
+      "masc": {
+        "singular": "أفعل",
+        "dual": "نفعل",
+        "plural": "نفعل"
+      },
+      "fem": {
+        "singular": "أفعل",
+        "dual": "نفعل",
+        "plural": "نفعل"
+      }
+    },
+    "2": {
+      "masc": {
+        "singular": "تفعل",
+        "dual": "تفعلان",
+        "plural": "تفعلون"
+      },
+      "fem": {
+        "singular": "تفعلين",
+        "dual": "تفعلان",
+        "plural": "تفعلن"
+      }
+    },
+    "3": {
+      "masc": {
+        "singular": "يفعل",
+        "dual": "يفعلان",
+        "plural": "يفعلون"
+      },
+      "fem": {
+        "singular": "تفعل",
+        "dual": "تفعلان",
+        "plural": "يفعلن"
+      }
+    }
+  },
+  "imperative": {
+    "2": {
+      "masc": {
+        "singular": "افعل",
+        "dual": "افعلا",
+        "plural": "افعلوا"
+      },
+      "fem": {
+        "singular": "افعلي",
+        "dual": "افعلا",
+        "plural": "افعلن"
+      }
+    }
+  },
+  "subjunctive": {
+    "1": {
+      "masc": {
+        "singular": "أفعل",
+        "dual": "نفعل",
+        "plural": "نفعل"
+      },
+      "fem": {
+        "singular": "أفعل",
+        "dual": "نفعل",
+        "plural": "نفعل"
+      }
+    },
+    "2": {
+      "masc": {
+        "singular": "تفعل",
+        "dual": "تفعلا",
+        "plural": "تفعلوا"
+      },
+      "fem": {
+        "singular": "تفعلي",
+        "dual": "تفعلا",
+        "plural": "تفعلن"
+      }
+    },
+    "3": {
+      "masc": {
+        "singular": "يفعل",
+        "dual": "يفعلا",
+        "plural": "يفعلوا"
+      },
+      "fem": {
+        "singular": "تفعل",
+        "dual": "تفعلا",
+        "plural": "يفعلن"
+      }
+    }
+  },
+  "jussive": {
+    "1": {
+      "masc": {
+        "singular": "أفعل",
+        "dual": "نفعل",
+        "plural": "نفعل"
+      },
+      "fem": {
+        "singular": "أفعل",
+        "dual": "نفعل",
+        "plural": "نفعل"
+      }
+    },
+    "2": {
+      "masc": {
+        "singular": "تفعل",
+        "dual": "تفعلا",
+        "plural": "تفعلوا"
+      },
+      "fem": {
+        "singular": "تفعلي",
+        "dual": "تفعلا",
+        "plural": "تفعلن"
+      }
+    },
+    "3": {
+      "masc": {
+        "singular": "يفعل",
+        "dual": "يفعلا",
+        "plural": "يفعلوا"
+      },
+      "fem": {
+        "singular": "تفعل",
+        "dual": "تفعلا",
+        "plural": "يفعلن"
+      }
+    }
+  },
+  "passive_past": {
+    "1": {
+      "masc": {
+        "singular": "فُعِلت",
+        "dual": "فُعِلنا",
+        "plural": "فُعِلنا"
+      },
+      "fem": {
+        "singular": "فُعِلت",
+        "dual": "فُعِلنا",
+        "plural": "فُعِلنا"
+      }
+    },
+    "2": {
+      "masc": {
+        "singular": "فُعِلت",
+        "dual": "فُعِلتما",
+        "plural": "فُعِلتم"
+      },
+      "fem": {
+        "singular": "فُعِلت",
+        "dual": "فُعِلتما",
+        "plural": "فُعِلتن"
+      }
+    },
+    "3": {
+      "masc": {
+        "singular": "فُعِل",
+        "dual": "فُعِلا",
+        "plural": "فُعِلوا"
+      },
+      "fem": {
+        "singular": "فُعِلت",
+        "dual": "فُعِلتا",
+        "plural": "فُعِلن"
+      }
+    }
+  },
+  "passive_present": {
+    "1": {
+      "masc": {
+        "singular": "أُفعَل",
+        "dual": "نُفعَل",
+        "plural": "نُفعَل"
+      },
+      "fem": {
+        "singular": "أُفعَل",
+        "dual": "نُفعَل",
+        "plural": "نُفعَل"
+      }
+    },
+    "2": {
+      "masc": {
+        "singular": "تُفعَل",
+        "dual": "تُفعَلان",
+        "plural": "تُفعَلون"
+      },
+      "fem": {
+        "singular": "تُفعَلين",
+        "dual": "تُفعَلان",
+        "plural": "تُفعَلن"
+      }
+    },
+    "3": {
+      "masc": {
+        "singular": "يُفعَل",
+        "dual": "يُفعَلان",
+        "plural": "يُفعَلون"
+      },
+      "fem": {
+        "singular": "تُفعَل",
+        "dual": "تُفعَلان",
+        "plural": "يُفعَلن"
+      }
+    }
+  },
+  "irregular_verbs": {
+    "كان": {
+      "past": {
+        "3": {
+          "masc": {
+            "singular": "كان",
+            "dual": "كانا", 
+            "plural": "كانوا"
+          },
+          "fem": {
+            "singular": "كانت",
+            "dual": "كانتا",
+            "plural": "كنّ"
+          }
+        }
+      },
+      "present": {
+        "3": {
+          "masc": {
+            "singular": "يكون",
+            "dual": "يكونان",
+            "plural": "يكونون"
+          },
+          "fem": {
+            "singular": "تكون",
+            "dual": "تكونان", 
+            "plural": "يكنّ"
+          }
+        }
+      }
+    },
+    "جاء": {
+      "past": {
+        "3": {
+          "masc": {
+            "singular": "جاء",
+            "dual": "جاءا",
+            "plural": "جاؤوا"
+          },
+          "fem": {
+            "singular": "جاءت",
+            "dual": "جاءتا",
+            "plural": "جئن"
+          }
+        }
+      },
+      "present": {
+        "3": {
+          "masc": {
+            "singular": "يجيء",
+            "dual": "يجيئان",
+            "plural": "يجيؤون"
+          },
+          "fem": {
+            "singular": "تجيء",
+            "dual": "تجيئان",
+            "plural": "يجئن"
+          }
+        }
+      }
+    },
+    "قال": {
+      "past": {
+        "3": {
+          "masc": {
+            "singular": "قال",
+            "dual": "قالا",
+            "plural": "قالوا"
+          },
+          "fem": {
+            "singular": "قالت",
+            "dual": "قالتا",
+            "plural": "قلن"
+          }
+        }
+      },
+      "present": {
+        "3": {
+          "masc": {
+            "singular": "يقول",
+            "dual": "يقولان",
+            "plural": "يقولون"
+          },
+          "fem": {
+            "singular": "تقول",
+            "dual": "تقولان",
+            "plural": "يقلن"
+          }
+        }
+      }
+    }
+  },
+  "weak_verb_patterns": {
+    "hollow_verbs": {
+      "past": {
+        "3": {
+          "masc": {
+            "singular": "فال",
+            "dual": "فالا",
+            "plural": "فالوا"
+          },
+          "fem": {
+            "singular": "فالت",
+            "dual": "فالتا",
+            "plural": "فلن"
+          }
+        }
+      },
+      "present": {
+        "3": {
+          "masc": {
+            "singular": "يفول",
+            "dual": "يفولان",
+            "plural": "يفولون"
+          },
+          "fem": {
+            "singular": "تفول",
+            "dual": "تفولان",
+            "plural": "يفلن"
+          }
+        }
+      }
+    },
+    "defective_verbs": {
+      "past": {
+        "3": {
+          "masc": {
+            "singular": "فعى",
+            "dual": "فعيا",
+            "plural": "فعوا"
+          },
+          "fem": {
+            "singular": "فعت",
+            "dual": "فعتا",
+            "plural": "فعين"
+          }
+        }
+      },
+      "present": {
+        "3": {
+          "masc": {
+            "singular": "يفعي",
+            "dual": "يفعيان",
+            "plural": "يفعون"
+          },
+          "fem": {
+            "singular": "تفعي",
+            "dual": "تفعيان",
+            "plural": "يفعين"
+          }
+        }
+      }
+    }
+  }
+}

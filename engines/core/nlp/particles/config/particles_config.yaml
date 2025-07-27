@@ -1,0 +1,69 @@
+# Configuration for Arabic Grammatical Particles Engine
+# Professional linguistic analysis settings
+
+engine:
+  name: "GrammaticalParticlesEngine"
+  version: "1.0.0"
+  language: "Arabic"
+  description: "Enterprise-grade grammatical particles analysis"
+
+phoneme_mapping:
+  # Arabic consonants to IPA
+  consonants:
+    "ب": ["b"]
+    "ت": ["t"]
+    "ث": [""]
+    "ج": ["d"]
+    "ح": [""]
+    "خ": ["x"]
+    "د": ["d"]
+    "ذ": [""]
+    "ر": ["r"]
+    "ز": ["z"]
+    "س": ["s"]
+    "ش": [""]
+    "ص": ["s"]
+    "ض": ["d"]
+    "ط": ["t"]
+    "ظ": [""]
+    "ع": [""]
+    "غ": [""]
+    "ف": ["f"]
+    "ق": ["q"]
+    "ك": ["k"]
+    "ل": ["l"]
+    "م": ["m"]
+    "ن": ["n"]
+    "ه": ["h"]
+    "و": ["w"]
+    "ي": ["j"]
+    "ء": [""]
+
+  # Arabic vowels
+  vowels:
+    "َ": ["a"]  # Fatha
+    "ِ": ["i"]  # Kasra
+    "ُ": ["u"]  # Damma
+    "ا": ["a"] # Alif
+    "ي": ["i"] # Yaa
+    "و": ["u"] # Waw
+
+syllabic_unit_patterns:
+  # Arabic syllabic_unit structures for particles
+  basic_patterns:
+    - "CV"    # حَ، لَ، مَا
+    - "CVC"   # هَل، مِن، إِن
+    - "CVVC"  # مَاذَا، هَذَا
+    - "CVCC"  # أَنت، هُم
+    - "CVCV"  # هَذِه، لَكِن
+
+analysis:
+  enable_phoneme_extraction: true
+  enable_syllabic_unit_segmentation: true
+  enable_particle_classification: true
+  enable_morphological_analysis: true
+
+logging:
+  level: "INFO"
+  enable_analysis_logging: true
+  enable_performance_logging: true

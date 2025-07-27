@@ -1,0 +1,22 @@
+# Phonological Rules Configuration
+# Order matters - rules are applied sequentially
+
+rules_order:
+  - assimilation
+  - deletion
+  - inversion
+  - epenthesis
+
+rules_enabled:
+  assimilation: true
+  deletion: true
+  inversion: true
+  epenthesis: true
+
+# Performance settings
+max_iterations: 10
+apply_recursively: false
+
+# Debug settings
+debug_mode: false
+log_transformations: true

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Grammatical Particles Engine Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #00b894;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            color: #666;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .input-section {
+            margin: 20px 0;
+        }
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .input-section input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2em;
+            direction: rtl;
+            font-family: 'Amiri', 'Times New Roman', serif;
+        }
+        .input-section input[type="text"]:focus {
+            outline: none;
+            border-color: #00b894;
+            box-shadow: 0 0 10px rgba(0, 184, 148, 0.3);
+        }
+        .btn {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00b894;
+        }
+        .particle-analysis {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .word-header {
+            font-weight: bold;
+            color: #00b894;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .particle-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .particle {
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 3px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .particle:hover {
+            transform: scale(1.05);
+        }
+        .preposition { background: #e74c3c; color: white; }
+        .conjunction { background: #3498db; color: white; }
+        .interrogative { background: #f39c12; color: white; }
+        .conditional { background: #9b59b6; color: white; }
+        .temporal { background: #1abc9c; color: white; }
+        .negation { background: #e67e22; color: white; }
+        .emphasis { background: #34495e; color: white; }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-box {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+        .function-box {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+        }
+        .usage-box {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+        }
+        .examples-box {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .stats {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .example-texts {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .example-btn {
+            background: #28a745;
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+        }
+        .center-buttons { text-align: center; }
+        .hidden { display: none; }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> محرك الحروف النحوية</h1>
+            <div class="subtitle">Arabic Grammatical Particles Engine</div>
+            <div class="subtitle">يكشف ويحلل الحروف النحوية ووظائفها</div>
+        </div>
+
+        <div class="input-section">
+            <label for="arabicText">أدخل النص العربي:</label>
+            <input type="text" id="arabicText" placeholder="مثال: ذهب الطالب إلى المدرسة لكي يدرس" value="ذهب الطالب إلى المدرسة لكي يدرس">
+        </div>
+
+        <div class="example-texts">
+            <button class="btn example-btn" onclick="setExample('ذهب الطالب إلى المدرسة لكي يدرس')">مثال ١</button>
+            <button class="btn example-btn" onclick="setExample('هل تذهب من البيت إلى العمل؟')">مثال ٢</button>
+            <button class="btn example-btn" onclick="setExample('لا أذهب إذا كان الطقس ماطراً')">مثال ٣</button>
+            <button class="btn example-btn" onclick="setExample('سافرت بالطائرة حتى وصلت')">مثال ٤</button>
+        </div>
+
+        <div class="center-buttons">
+            <button class="btn" onclick="analyzeParticles()"> تحليل الحروف</button>
+            <button class="btn" onclick="clearResults()"> مسح النتائج</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color preposition"></div>
+                <span>حروف الجر</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color conjunction"></div>
+                <span>حروف العطف</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color interrogative"></div>
+                <span>حروف الاستفهام</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color conditional"></div>
+                <span>حروف الشرط</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color temporal"></div>
+                <span>ظروف الزمان</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color negation"></div>
+                <span>حروف النفي</span>
+            </div>
+        </div>
+
+        <div id="results" class="results hidden">
+            <h3> نتائج تحليل الحروف النحوية</h3>
+            <div id="analysis-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function setExample(text) {
+            document.getElementById('arabicText').value = text;
+        }
+
+        function clearResults() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('analysis-content').innerHTML = '';
+        }
+
+        function analyzeParticles() {
+            const text = document.getElementById('arabicText').value.trim();
+
+            if (!text) {
+                alert('يرجى إدخال نص عربي للتحليل');
+                return;
+            }
+
+            const mockAnalysis = simulateParticleAnalysis(text);
+            displayResults(mockAnalysis);
+        }
+
+        function simulateParticleAnalysis(text) {
+            // Database of Arabic grammatical particles
+            const particleDatabase = {
+                'إلى': { type: 'preposition', function: 'حرف جر', meaning: 'انتهاء الغاية', examples: ['ذهب إلى المدرسة'] },
+                'من': { type: 'preposition', function: 'حرف جر', meaning: 'ابتداء الغاية', examples: ['جاء من البيت'] },
+                'في': { type: 'preposition', function: 'حرف جر', meaning: 'الظرفية', examples: ['الكتاب في الحقيبة'] },
+                'على': { type: 'preposition', function: 'حرف جر', meaning: 'الاستعلاء', examples: ['الكتاب على الطاولة'] },
+                'عن': { type: 'preposition', function: 'حرف جر', meaning: 'المجاوزة', examples: ['ابتعد عن النار'] },
+                'ب': { type: 'preposition', function: 'حرف جر', meaning: 'الإلصاق/الاستعانة', examples: ['كتب بالقلم'] },
+                'ل': { type: 'preposition', function: 'حرف جر', meaning: 'التعليل/الملك', examples: ['هذا لك'] },
+                'ك': { type: 'preposition', function: 'حرف جر', meaning: 'التشبيه', examples: ['قوي كالأسد'] },
+
+                'و': { type: 'conjunction', function: 'حرف عطف', meaning: 'العطف المطلق', examples: ['أحمد وعلي'] },
+                'أو': { type: 'conjunction', function: 'حرف عطف', meaning: 'التخيير', examples: ['اشرب شاياً أو قهوة'] },
+                'لكن': { type: 'conjunction', function: 'حرف عطف', meaning: 'الاستدراك', examples: ['فقير لكن كريم'] },
+                'ف': { type: 'conjunction', function: 'حرف عطف', meaning: 'الترتيب والتعقيب', examples: ['دخل فجلس'] },
+                'ثم': { type: 'conjunction', function: 'حرف عطف', meaning: 'الترتيب مع التراخي', examples: ['أكل ثم شرب'] },
+
+                'هل': { type: 'interrogative', function: 'حرف استفهام', meaning: 'طلب التصور', examples: ['هل تأتي؟'] },
+                'أ': { type: 'interrogative', function: 'حرف استفهام', meaning: 'التصور والتصديق', examples: ['أتذهب؟'] },
+                'ما': { type: 'interrogative', function: 'حرف استفهام', meaning: 'السؤال عن غير العاقل', examples: ['ما هذا؟'] },
+                'متى': { type: 'interrogative', function: 'اسم استفهام', meaning: 'السؤال عن الزمان', examples: ['متى تسافر؟'] },
+                'أين': { type: 'interrogative', function: 'اسم استفهام', meaning: 'السؤال عن المكان', examples: ['أين تسكن؟'] },
+
+                'إذا': { type: 'conditional', function: 'حرف شرط', meaning: 'الشرط للمستقبل', examples: ['إذا جئت أكرمتك'] },
+                'إن': { type: 'conditional', function: 'حرف شرط', meaning: 'الشرط المطلق', examples: ['إن تدرس تنجح'] },
+                'لو': { type: 'conditional', function: 'حرف شرط', meaning: 'امتناع لامتناع', examples: ['لو درست لنجحت'] },
+                'لولا': { type: 'conditional', function: 'حرف شرط', meaning: 'امتناع لوجود', examples: ['لولا الله لهلكنا'] },
+
+                'حتى': { type: 'temporal', function: 'حرف غاية', meaning: 'انتهاء الغاية', examples: ['مشيت حتى وصلت'] },
+                'منذ': { type: 'temporal', function: 'ظرف زمان', meaning: 'ابتداء الغاية الزمنية', examples: ['لم أره منذ سنة'] },
+                'بعد': { type: 'temporal', function: 'ظرف زمان', meaning: 'التأخر الزمني', examples: ['جاء بعد ساعة'] },
+                'قبل': { type: 'temporal', function: 'ظرف زمان', meaning: 'التقدم الزمني', examples: ['وصل قبل الموعد'] },
+
+                'لا': { type: 'negation', function: 'حرف نفي', meaning: 'النفي', examples: ['لا أذهب'] },
+                'ما': { type: 'negation', function: 'حرف نفي', meaning: 'النفي', examples: ['ما جاء'] },
+                'لم': { type: 'negation', function: 'حرف نفي وجزم', meaning: 'نفي الماضي', examples: ['لم يأت'] },
+                'لن': { type: 'negation', function: 'حرف نفي ونصب', meaning: 'نفي المستقبل', examples: ['لن أذهب'] },
+
+                'قد': { type: 'emphasis', function: 'حرف تحقيق', meaning: 'التأكيد', examples: ['قد جاء'] },
+                'لقد': { type: 'emphasis', function: 'حرف تأكيد', meaning: 'التأكيد القوي', examples: ['لقد نجح'] },
+                'إن': { type: 'emphasis', function: 'حرف توكيد', meaning: 'التأكيد', examples: ['إن الله غفور'] },
+
+                'لكي': { type: 'conjunction', function: 'حرف تعليل', meaning: 'التعليل والغرض', examples: ['ذهب لكي يدرس'] }
+            };
+
+            const words = text.split(/\s+/);
+            const foundParticles = [];
+            const analysis = [];
+
+            words.forEach((word, index) => {
+                // Check for exact matches
+                if (particleDatabase[word]) {
+                    foundParticles.push({
+                        particle: word,
+                        position: index,
+                        data: particleDatabase[word],
+                        context: getContext(words, index)
+                    });
+                }
+
+                // Check for attached particles (prefixes)
+                const attachedParticles = ['ب', 'ك', 'ل', 'ف', 'و'];
+                attachedParticles.forEach(particle => {
+                    if (word.startsWith(particle) && word.length > 1) {
+                        const remainingWord = word.substring(1);
+                        if (particleDatabase[particle]) {
+                            foundParticles.push({
+                                particle: particle,
+                                position: index,
+                                data: particleDatabase[particle],
+                                context: getContext(words, index),
+                                attached_to: remainingWord
+                            });
+                        }
+                    }
+                });
+            });
+
+            return {
+                input_text: text,
+                total_words: words.length,
+                found_particles: foundParticles,
+                particle_statistics: generateParticleStatistics(foundParticles),
+                syntactic_analysis: generateSyntacticAnalysis(foundParticles),
+                complexity_analysis: analyzeComplexity(foundParticles, words.length)
+            };
+        }
+
+        function getContext(words, index) {
+            const start = Math.max(0, index - 2);
+            const end = Math.min(words.length, index + 3);
+            return words.slice(start, end).join(' ');
+        }
+
+        function generateParticleStatistics(particles) {
+            const stats = {};
+            particles.forEach(p => {
+                const type = p.data.type;
+                stats[type] = (stats[type] || 0) + 1;
+            });
+
+            return {
+                total_count: particles.length,
+                by_type: stats,
+                most_common_type: Object.keys(stats).reduce((a, b) => stats[a] > stats[b] ? a : b, 'none'),
+                diversity_score: Object.keys(stats).length
+            };
+        }
+
+        function generateSyntacticAnalysis(particles) {
+            const functions = particles.map(p => p.data.function);
+            const uniqueFunctions = [...new Set(functions)];
+
+            return {
+                syntactic_functions: uniqueFunctions,
+                complexity_level: uniqueFunctions.length > 4 ? 'معقد' : uniqueFunctions.length > 2 ? 'متوسط' : 'بسيط',
+                coherence_indicators: particles.filter(p => p.data.type === 'conjunction').length,
+                relationship_markers: particles.filter(p => ['preposition', 'conditional'].includes(p.data.type)).length
+            };
+        }
+
+        function analyzeComplexity(particles, totalWords) {
+            const particleRatio = particles.length / totalWords;
+            const typeVariety = new Set(particles.map(p => p.data.type)).size;
+
+            return {
+                particle_density: (particleRatio * 100).toFixed(1) + '%',
+                structural_complexity: typeVariety > 4 ? 'عالي' : typeVariety > 2 ? 'متوسط' : 'منخفض',
+                readability_score: particleRatio < 0.2 ? 'سهل' : particleRatio < 0.35 ? 'متوسط' : 'صعب',
+                syntactic_richness: typeVariety
+            };
+        }
+
+        function displayResults(analysis) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('analysis-content');
+
+            let html = `
+                <div class="stats">
+                    <strong> النص المدخل:</strong> ${analysis.input_text}<br>
+                    <strong> عدد الكلمات:</strong> ${analysis.total_words}<br>
+                    <strong> عدد الحروف النحوية:</strong> ${analysis.particle_statistics.total_count}<br>
+                    <strong> كثافة الحروف:</strong> ${analysis.complexity_analysis.particle_density}
+                </div>
+            `;
+
+            if (analysis.found_particles.length > 0) {
+                html += `<div class="particle-analysis">
+                    <div class="word-header"> الحروف النحوية المكتشفة</div>
+                    <div class="particle-list">
+                        ${analysis.found_particles.map(p =>
+                            `<span class="particle ${p.data.type}" title="${p.data.function}: ${p.data.meaning}">
+                                ${p.particle}${p.attached_to ? ` + ${p.attached_to}` : ''}
+                            </span>`
+                        ).join('')}
+                    </div>
+                </div>`;
+
+                analysis.found_particles.forEach((particle, index) => {
+                    html += `
+                        <div class="particle-analysis">
+                            <div class="word-header"> تحليل ${index + 1}: ${particle.particle}</div>
+
+                            <div class="analysis-grid">
+                                <div class="function-box info-box">
+                                    <strong> الوظيفة النحوية:</strong><br>
+                                    ${particle.data.function}<br><br>
+                                    <strong> المعنى:</strong><br>
+                                    ${particle.data.meaning}
+                                    ${particle.attached_to ? `<br><br><strong> متصل بـ:</strong> ${particle.attached_to}` : ''}
+                                </div>
+
+                                <div class="usage-box info-box">
+                                    <strong> السياق:</strong><br>
+                                    ${particle.context}<br><br>
+                                    <strong> الموقع:</strong> الكلمة رقم ${particle.position + 1}
+                                </div>
+                            </div>
+
+                            <div class="examples-box">
+                                <strong> أمثلة الاستخدام:</strong><br>
+                                ${particle.data.examples.map(ex => ` ${ex}`).join('<br>')}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            html += `
+                <div class="particle-analysis">
+                    <div class="word-header"> التحليل الإحصائي</div>
+
+                    <div class="analysis-grid">
+                        <div class="function-box info-box">
+                            <strong> إحصائيات الأنواع:</strong><br>
+                            ${Object.entries(analysis.particle_statistics.by_type).map(([type, count]) => {
+                                const typeName = {
+                                    'preposition': 'حروف الجر',
+                                    'conjunction': 'حروف العطف',
+                                    'interrogative': 'حروف الاستفهام',
+                                    'conditional': 'حروف الشرط',
+                                    'temporal': 'ظروف الزمان',
+                                    'negation': 'حروف النفي',
+                                    'emphasis': 'حروف التأكيد'
+                                }[type] || type;
+                                return ` ${typeName}: ${count}`;
+                            }).join('<br>')}
+                        </div>
+
+                        <div class="usage-box info-box">
+                            <strong> تحليل التعقيد:</strong><br>
+                             التعقيد التركيبي: ${analysis.complexity_analysis.structural_complexity}<br>
+                             مستوى القراءة: ${analysis.complexity_analysis.readability_score}<br>
+                             الثراء النحوي: ${analysis.complexity_analysis.syntactic_richness}<br>
+                             تنوع الوظائف: ${analysis.particle_statistics.diversity_score}
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <strong> التحليل النحوي:</strong>
+                        مستوى التعقيد: ${analysis.syntactic_analysis.complexity_level} |
+                        مؤشرات الترابط: ${analysis.syntactic_analysis.coherence_indicators} |
+                        علامات العلاقات: ${analysis.syntactic_analysis.relationship_markers}
+                    </div>
+                </div>
+            `;
+
+            contentDiv.innerHTML = html;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Auto-analyze on page import_data
+        window.onimport_data = function() {
+            analyzeParticles();
+        };
+    </script>
+</body>
+</html>

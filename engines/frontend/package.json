@@ -1,0 +1,45 @@
+{
+  "name": "arabic-morphophon-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Arabic Morphophonology Engine",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "docker:build": "docker build -t arabic-morphophon/frontend .",
+    "docker:build:dev": "docker build -t arabic-morphophon/frontend:dev -f ../local/frontend/Dockerfile.dev .",
+    "docker:build:fast": "docker build --cache-from arabic-morphophon/frontend:dev -t arabic-morphophon/frontend:dev -f ../local/frontend/Dockerfile.dev .",
+    "docker:run": "docker run -p 3000:3000 arabic-morphophon/frontend",
+    "docker:run:dev": "docker run -p 3000:3000 -v ${PWD}:/app -v /app/node_modules arabic-morphophon/frontend:dev",
+    "docker:run:fast": "docker run -d -p 3000:3000 --name frontend-dev arabic-morphophon/frontend:dev",
+    "docker:dev": "docker-compose -f ../docker-compose.local.yml up frontend",
+    "docker:dev:fast": "docker-compose -f ../docker-compose.local.yml up -d frontend",
+    "docker:compose:up": "docker-compose -f ../docker-compose.local.yml up -d",
+    "docker:compose:down": "docker-compose -f ../docker-compose.local.yml down",
+    "docker:compose:logs": "docker-compose -f ../docker-compose.local.yml logs -f",
+    "docker:compose:build": "docker-compose -f ../docker-compose.local.yml build",
+    "docker:compose:rebuild": "docker-compose -f ../docker-compose.local.yml build --no-cache",
+    "docker:clean": "node ./scripts/docker-clean.js",
+    "start:dev": "npm-run-all docker:compose:up wait-api dev",
+    "stop:dev": "docker-compose -f ../docker-compose.local.yml down",
+    "wait-api": "wait-on http://localhost:8000/api/health -t 60000"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "docker-compose": "^1.2.0",
+    "dockerode": "^4.0.7",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "npm-run-all": "^4.1.5",
+    "vite": "^5.0.0",
+    "wait-on": "^8.0.4"
+  }
+}
