@@ -1,0 +1,140 @@
+{
+  "roots": [
+    {
+      "root": "كتب",
+      "semantic_field": "الكتابة والتدوين",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "قرأ",
+      "semantic_field": "القراءة والتلاوة",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "قال",
+      "semantic_field": "القول والكلام",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "درس",
+      "semantic_field": "التعليم والدراسة",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "وعد",
+      "semantic_field": "الوعد والالتزام",
+      "weakness": "مثال",
+      "frequency": 0
+    },
+    {
+      "root": "سأل",
+      "semantic_field": "السؤال والاستفهام",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "كسب",
+      "semantic_field": "الكسب والربح",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "كذب",
+      "semantic_field": "الكذب والخداع",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "سعد",
+      "semantic_field": "السعادة",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "قتل",
+      "semantic_field": "القتل",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "وجد",
+      "semantic_field": "الوجود",
+      "weakness": "مثال",
+      "frequency": 0
+    },
+    {
+      "root": "ولد",
+      "semantic_field": "الولادة",
+      "weakness": "مثال",
+      "frequency": 0
+    },
+    {
+      "root": "دحرج",
+      "semantic_field": "الحركة الدائرية",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "زلزل",
+      "semantic_field": "الاهتزاز والحركة",
+      "weakness": null,
+      "frequency": 0
+    },
+    {
+      "root": "خطأ",
+      "semantic_field": "اختبار الأخطاء",
+      "weakness": null,
+      "frequency": 0
+    }
+  ],
+  "metadata": {
+    "store_dataed_at": "2025-07-20T14:34:40.032141",
+    "total_roots": 15,
+    "database_version": "1.0",
+    "statistics": {
+      "basic_statistics": {
+        "total_roots": 15,
+        "sound_roots": 12,
+        "weak_roots": 3,
+        "hamzated_roots": 0,
+        "avg_frequency": 0.0,
+        "avg_confidence": 1.0
+      },
+      "type_distribution": {
+        "ثلاثي": 13,
+        "رباعي": 2
+      },
+      "semantic_distribution": {
+        "اختبار الأخطاء": 1,
+        "الاهتزاز والحركة": 1,
+        "التعليم والدراسة": 1,
+        "الحركة الدائرية": 1,
+        "السؤال والاستفهام": 1,
+        "السعادة": 1,
+        "القتل": 1,
+        "القراءة والتلاوة": 1,
+        "القول والكلام": 1,
+        "الكتابة والتدوين": 1,
+        "الكذب والخداع": 1,
+        "الكسب والربح": 1,
+        "الوجود": 1,
+        "الوعد والالتزام": 1,
+        "الولادة": 1
+      },
+      "performance": {
+        "cache_hit_ratio": 0.058823529411764705,
+        "cache_size": 15,
+        "avg_query_time": 4.184246063232422e-05,
+        "total_queries": 16
+      },
+      "storage": {
+        "database_size_mb": 0,
+        "cache_memory_usage": 15360
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+# Core Flask dependencies for Modular Arabic NLP Engine
+Flask==3.1.1
+Flask-CORS==4.0.0
+Flask-Caching==2.1.0
+
+# Data handleing
+numpy==1.24.3
+pandas==2.0.3
+
+# Text handleing and NLP
+regex==2023.8.8
+
+# System monitoring
+psutil==5.9.5
+
+# Development and testing
+pytest==7.4.2
+pytest-flask==1.2.0
+black==25.1.0
+
+# Production deployment
+gunicorn==21.2.0
+
+# Utilities
+blinker==1.9.0
+click==8.2.1
+colorama==0.4.6
+
+# Optional: Enhanced features (uncomment as needed)
+# redis==4.6.0          # For distributed caching
+# celery==5.3.1         # For background tasks
+# prometheus_client==0.17.1  # For metrics collection
+# Flask-SocketIO==5.3.6 # For real-time features
+# python-socketio==5.10.0
+# eventlet==0.33.3
+iniconfig==2.1.0
+isort==6.0.1
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+mypy==1.14.1
+mypy-extensions==1.0.0
+packaging==25.0
+pathspec==0.13.0
+platformdirs==4.3.6
+pluggy==1.5.0
+pytest==8.3.4
+setuptools==75.6.0
+typing_extensions==4.12.2
+Werkzeug==3.1.3
+mypy==1.17.0
+mypy_extensions==1.1.0
+packaging==25.0
+pathspec==0.12.1
+platformdirs==4.3.8
+pluggy==1.6.0
+Pygments==2.19.2
+pytest==8.4.1
+typing_extensions==4.14.1
+Werkzeug==3.1.3

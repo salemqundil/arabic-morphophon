@@ -1,0 +1,154 @@
+{
+  "test_summary": {
+    "total_tests": 22,
+    "passed_tests": 19,
+    "failed_tests": 3,
+    "success_rate": 86.36,
+    "status": "FAILED"
+  },
+  "test_results": [
+    {
+      "test_name": "Home Endpoint",
+      "status": "PASSED",
+      "execution_time_ms": 2034.1126918792725,
+      "errors": []
+    },
+    {
+      "test_name": "Health Check",
+      "status": "PASSED",
+      "execution_time_ms": 2051.055431365967,
+      "errors": []
+    },
+    {
+      "test_name": "System Status",
+      "status": "PASSED",
+      "execution_time_ms": 2060.9538555145264,
+      "errors": []
+    },
+    {
+      "test_name": "API Documentation",
+      "status": "PASSED",
+      "execution_time_ms": 2047.245979309082,
+      "errors": []
+    },
+    {
+      "test_name": "Phonology: Basic Arabic Text",
+      "status": "PASSED",
+      "execution_time_ms": 2047.1057891845703,
+      "errors": []
+    },
+    {
+      "test_name": "Phonology: Single Word",
+      "status": "PASSED",
+      "execution_time_ms": 2040.2007102966309,
+      "errors": []
+    },
+    {
+      "test_name": "Phonology: Complex Text",
+      "status": "PASSED",
+      "execution_time_ms": 2030.2386283874512,
+      "errors": []
+    },
+    {
+      "test_name": "SyllabicUnit: Simple Word",
+      "status": "PASSED",
+      "execution_time_ms": 2029.7527313232422,
+      "errors": []
+    },
+    {
+      "test_name": "SyllabicUnit: Complex Word",
+      "status": "PASSED",
+      "execution_time_ms": 2043.8551902770996,
+      "errors": []
+    },
+    {
+      "test_name": "SyllabicUnit: Multi-word Text",
+      "status": "PASSED",
+      "execution_time_ms": 2038.1226539611816,
+      "errors": []
+    },
+    {
+      "test_name": "Morphology: Root Extraction",
+      "status": "FAILED",
+      "execution_time_ms": 2052.3290634155273,
+      "errors": [
+        "Status: 200, Expected: 200"
+      ]
+    },
+    {
+      "test_name": "Morphology: Multiple Words",
+      "status": "PASSED",
+      "execution_time_ms": 2050.9538650512695,
+      "errors": []
+    },
+    {
+      "test_name": "Morphology: Complex Morphology",
+      "status": "PASSED",
+      "execution_time_ms": 2036.6473197937012,
+      "errors": []
+    },
+    {
+      "test_name": "Comprehensive Analysis: basic",
+      "status": "PASSED",
+      "execution_time_ms": 2031.0306549072266,
+      "errors": []
+    },
+    {
+      "test_name": "Comprehensive Analysis: intermediate",
+      "status": "PASSED",
+      "execution_time_ms": 2044.6133613586426,
+      "errors": []
+    },
+    {
+      "test_name": "Comprehensive Analysis: comprehensive",
+      "status": "PASSED",
+      "execution_time_ms": 2051.3827800750732,
+      "errors": []
+    },
+    {
+      "test_name": "Comprehensive Analysis: expert",
+      "status": "PASSED",
+      "execution_time_ms": 2041.8686866760254,
+      "errors": []
+    },
+    {
+      "test_name": "Empty Text Error",
+      "status": "PASSED",
+      "execution_time_ms": 2033.8950157165527,
+      "errors": []
+    },
+    {
+      "test_name": "Missing JSON Error",
+      "status": "FAILED",
+      "execution_time_ms": 2028.8918018341064,
+      "errors": [
+        "Status: 500, Expected: 400"
+      ]
+    },
+    {
+      "test_name": "Invalid Endpoint",
+      "status": "PASSED",
+      "execution_time_ms": 2047.5995540618896,
+      "errors": []
+    },
+    {
+      "test_name": "Invalid Analysis Level",
+      "status": "PASSED",
+      "execution_time_ms": 2024.7063636779785,
+      "errors": []
+    },
+    {
+      "test_name": "Response Time Test (Target: <100ms, Actual: 2054.61ms)",
+      "status": "FAILED",
+      "execution_time_ms": 0.005245208740234375,
+      "errors": [
+        "Status: 200, Expected: 200"
+      ]
+    }
+  ],
+  "performance_metrics": {
+    "average_response_time": 2041.33,
+    "fastest_response": 2024.7063636779785,
+    "slowest_response": 2060.9538555145264
+  }
+}

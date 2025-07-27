@@ -1,0 +1,28 @@
+{
+  "title": "Arabic Morphophonological Engine",
+  "creators": [
+    {
+      "name": "Arabic NLP Team",
+      "given_names": "Arabic NLP",
+      "family_names": "Team",
+      "email": "contact@arabic-nlp.org",
+      "orcid": "",
+      "affiliation": "Arabic NLP Research Team"
+    }
+  ],
+  "description": "Advanced Arabic morphophonological analysis engine",
+  "access_right": "open",
+  "license": {
+    "id": "mit"
+  },
+  "upimport_data_type": "software",
+  "keywords": [
+    "Arabic",
+    "NLP",
+    "morphology",
+    "phonology",
+    "computational linguistics",
+    "natural language processing"
+  ],
+  "version": "2.0.0"
+}

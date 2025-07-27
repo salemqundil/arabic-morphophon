@@ -1,0 +1,31 @@
+[flake8]
+max-line-length = 88
+max-complexity = 15
+extend-ignore = 
+    E203,
+    W503,
+    E501,
+    F401,
+    D100,
+    D101,
+    D102,
+    D103,
+    D104,
+    D105,
+    B101,
+    B902
+exclude = 
+    .venv,
+    .env,
+    dist,
+    build,
+    __pycache__,
+    *.egg-info,
+    .git,
+    .mypy_cache,
+    .pytest_cache
+per-file-ignores =
+    __init__.py:F401,F403
+    test_*.py:E501,D
+    */tests/*:E501,D
+    app*.py:E501

@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-07-23T14:50:42.237693",
+  "engine_analysis": {
+    "total": 13,
+    "working": 8,
+    "failed": 5,
+    "success_rate": 61.53846153846154
+  },
+  "progressive_system_test": [
+    {
+      "word": "كتاب",
+      "success": true,
+      "vector_size": 340,
+      "phoneme_pairs": 4,
+      "syllabic_units": 2,
+      "root": "كتب",
+      "processing_time": 0.0008718967437744141,
+      "stages_completed": 5
+    },
+    {
+      "word": "مدرسة",
+      "success": true,
+      "vector_size": 334,
+      "phoneme_pairs": 4,
+      "syllabic_units": 1,
+      "root": "مدرس",
+      "processing_time": 0.000762939453125,
+      "stages_completed": 5
+    },
+    {
+      "word": "يكتب",
+      "success": true,
+      "vector_size": 340,
+      "phoneme_pairs": 4,
+      "syllabic_units": 2,
+      "root": "كتب",
+      "processing_time": 0.0006453990936279297,
+      "stages_completed": 5
+    },
+    {
+      "word": "الطالب",
+      "success": true,
+      "vector_size": 498,
+      "phoneme_pairs": 6,
+      "syllabic_units": 3,
+      "root": "طلب",
+      "processing_time": 0.0006422996520996094,
+      "stages_completed": 5
+    },
+    {
+      "word": "جميلة",
+      "success": true,
+      "vector_size": 340,
+      "phoneme_pairs": 4,
+      "syllabic_units": 2,
+      "root": "جمل",
+      "processing_time": 0.0005669593811035156,
+      "stages_completed": 5
+    }
+  ],
+  "stage_compatibility": {
+    "phoneme_analysis": true,
+    "diacritic_mapping": true,
+    "syllable_formation": true,
+    "root_extraction": true,
+    "pattern_analysis": true,
+    "derivation_check": false,
+    "inflection_analysis": false,
+    "final_classification": false
+  },
+  "summary": {
+    "overall_status": "جيد",
+    "recommendations": [
+      "إصلاح المحركات الفاشلة لتحسين الأداء",
+      "التركيز على المحركات الفاشلة: DiacriticEngine, SyllabicUnitEngine, RootEngine, DerivationEngine, InflectionEngine",
+      "تطوير المراحل المفقودة لاكتمال التتبع التدريجي"
+    ]
+  }
+}

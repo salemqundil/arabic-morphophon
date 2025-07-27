@@ -1,0 +1,72 @@
+# 🐳 Enterprise Docker Configuration for Arabic NLP System
+# Multi-stage production-ready container
+
+FROM python:3.11-slim as base
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Create non-root user for security
+RUN groupadd -r nlpuser && useradd -r -g nlpuser nlpuser
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Development stage
+FROM base as development
+
+WORKDIR /app
+
+# Install development dependencies
+COPY api/requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy source code
+COPY . .
+
+# Change ownership to non-root user
+RUN chown -R nlpuser:nlpuser /app
+
+USER nlpuser
+
+EXPOSE 5000
+
+CMD ["python", "api/rest/app.py"]
+
+# Production stage
+FROM base as production
+
+WORKDIR /app
+
+# Install production dependencies only
+COPY api/requirements.txt .
+RUN pip install --no-dev -r requirements.txt
+
+# Copy application code
+COPY engines/ ./engines/
+COPY api/ ./api/
+COPY tests/ ./tests/
+
+# Create necessary directories
+RUN mkdir -p logs data cache
+
+# Change ownership to non-root user
+RUN chown -R nlpuser:nlpuser /app
+
+USER nlpuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:5000/api/v1/health || exit 1
+
+EXPOSE 5000
+
+# Use Gunicorn for production
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--threads", "2", "api.rest.app:app"]

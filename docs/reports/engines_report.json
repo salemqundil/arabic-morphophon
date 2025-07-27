@@ -1,0 +1,274 @@
+{
+  "engines_by_category": {
+    "Phonological Engine": [
+      "arabic_phonology_engine.py",
+      "arabic_phonology_engine\\example.py",
+      "arabic_phonology_engine\\setup.py",
+      "arabic_phonology_engine_new\\tests\\unit\\test_engine.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\core\\engine.py",
+      "arabic_phonology_engine\\arabic_phonology_engine\\analyzer.py",
+      "arabic_phonology_engine\\arabic_phonology_engine\\inflection.py",
+      "arabic_phonology_engine\\arabic_phonology_engine\\phonology.py",
+      "arabic_phonology_engine\\arabic_phonology_engine\\segmentation.py"
+    ],
+    "Other Engine": [
+      "demo_perfect_engine.py",
+      "test_engine.py",
+      "backend\\engine.py",
+      "backend\\engine_simple.py",
+      "demos\\demo_arabic_engine.py",
+      "demos\\demo_arabic_engine_fixed.py",
+      "demos\\demo_perfect_engine.py",
+      "python-dr.saleh\\test_engine.py",
+      "tests\\test_engine_smoke.py",
+      "tests\\smoke\\test_engine_health.py",
+      "tests\\unit\\test_arabic_engine.py",
+      "tests\\unit\\test_engine.py",
+      "python-dr.saleh\\demos\\demo_arabic_engine.py",
+      "python-dr.saleh\\demos\\demo_arabic_engine_fixed.py",
+      "python-dr.saleh\\demos\\demo_perfect_engine.py",
+      "python-dr.saleh\\tests\\smoke\\test_engine_health.py",
+      "python-dr.saleh\\tests\\unit\\test_arabic_engine.py",
+      "python-dr.saleh\\tests\\unit\\test_engine.py"
+    ],
+    "Integration Engine": [
+      "tests\\integration\\test_arabic_engine_comprehensive.py",
+      "python-dr.saleh\\tests\\integration\\test_arabic_engine_comprehensive.py"
+    ],
+    "Morphological Engine": [
+      "python-dr.saleh\\tests\\unit\\morphophonemic_engine.py",
+      "arabic_phonology_engine\\arabic_phonology_engine\\morphology.py"
+    ]
+  },
+  "engine_details": {
+    "arabic_phonology_engine.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\example.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\setup.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine_new\\tests\\unit\\test_engine.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\core\\engine.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\arabic_phonology_engine\\analyzer.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\arabic_phonology_engine\\inflection.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\arabic_phonology_engine\\phonology.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\arabic_phonology_engine\\segmentation.py": {
+      "category": "Phonological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "demo_perfect_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "test_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "backend\\engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "backend\\engine_simple.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "demos\\demo_arabic_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "demos\\demo_arabic_engine_fixed.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "demos\\demo_perfect_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\test_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "tests\\test_engine_smoke.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "tests\\smoke\\test_engine_health.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "tests\\unit\\test_arabic_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "tests\\unit\\test_engine.py": {
+      "category": "Other Engine",
+      "classes": [
+        "MockEngine"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\demos\\demo_arabic_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\demos\\demo_arabic_engine_fixed.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\demos\\demo_perfect_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\smoke\\test_engine_health.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\unit\\test_arabic_engine.py": {
+      "category": "Other Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\unit\\test_engine.py": {
+      "category": "Other Engine",
+      "classes": [
+        "MockEngine"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "tests\\integration\\test_arabic_engine_comprehensive.py": {
+      "category": "Integration Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\integration\\test_arabic_engine_comprehensive.py": {
+      "category": "Integration Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\unit\\morphophonemic_engine.py": {
+      "category": "Morphological Engine",
+      "classes": [
+        "TemplateType",
+        "VerbForm",
+        "PhonologicalRule",
+        "SyllabicUnitInfo",
+        "MorphophonemicResult",
+        "ArabicPhonologicalRules",
+        "ArabicTemplateProcessor",
+        "ArabicSyllabicUnitAnalyzer",
+        "ArabicMorphophonemicEngine"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine\\arabic_phonology_engine\\morphology.py": {
+      "category": "Morphological Engine",
+      "classes": [],
+      "functions": [],
+      "description": ""
+    }
+  },
+  "integration_points": [
+    "demo_advanced_integration.py",
+    "demo_enhanced_integration.py",
+    "arabic_morphophon\\integrator.py",
+    "demos\\demo_advanced_integration.py",
+    "demos\\demo_enhanced_integration.py",
+    "tests\\integration\\test_advanced_system.py",
+    "tests\\integration\\test_advanced_system_clean.py",
+    "tests\\integration\\test_api_integration.py",
+    "tests\\integration\\test_arabic_engine_comprehensive.py",
+    "tests\\integration\\test_comprehensive.py",
+    "tests\\integration\\test_full_pipeline.py",
+    "tests\\integration\\__init__.py",
+    "python-dr.saleh\\arabic_morphophon\\integrator.py",
+    "python-dr.saleh\\demos\\demo_advanced_integration.py",
+    "python-dr.saleh\\demos\\demo_enhanced_integration.py",
+    "python-dr.saleh\\tests\\integration\\test_advanced_system.py",
+    "python-dr.saleh\\tests\\integration\\test_advanced_system_clean.py",
+    "python-dr.saleh\\tests\\integration\\test_api_integration.py",
+    "python-dr.saleh\\tests\\integration\\test_arabic_engine_comprehensive.py",
+    "python-dr.saleh\\tests\\integration\\test_comprehensive.py",
+    "python-dr.saleh\\tests\\integration\\test_full_pipeline.py",
+    "python-dr.saleh\\tests\\integration\\__init__.py",
+    "python-dr.saleh\\tests\\morphophonemic-api\\test_integration.py",
+    "python-dr.saleh\\tests\\morphophonemic-api\\morphophonemic\\integrator.py",
+    "python-dr.saleh\\tests\\morphophonemic-api\\tests\\test_integrator.py",
+    "arabic_phonology_engine_new\\tests\\integration\\test_api.py",
+    "arabic_phonology_engine_new\\tests\\integration\\__init__.py"
+  ]
+}

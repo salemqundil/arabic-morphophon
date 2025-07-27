@@ -1,0 +1,544 @@
+/* 
+🎨 Advanced CSS Enhancements for Arabic Word Tracer
+تحسينات CSS متقدمة لمتتبع الكلمات العربية
+*/
+
+/* Advanced Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Enhanced Importing States */
+.import_dataing-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    height: 20px;
+    margin: 10px 0;
+}
+
+.import_dataing-skeleton.wide {
+    width: 100%;
+}
+
+.import_dataing-skeleton.medium {
+    width: 60%;
+}
+
+.import_dataing-skeleton.narrow {
+    width: 30%;
+}
+
+/* Advanced Typography */
+.arabic-text {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-feature-settings: 'liga' 1, 'dlig' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+}
+
+.phonetic-text {
+    font-family: 'Charis SIL', 'Doulos SIL', serif;
+    font-feature-settings: 'kern' 1;
+}
+
+/* Enhanced Data Visualization */
+.progress-ring {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: inline-block;
+}
+
+.progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 188.5;
+    stroke-dashoffset: 188.5;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-ring .background {
+    stroke: #e9ecef;
+}
+
+.progress-ring .progress {
+    stroke: var(--primary-color);
+}
+
+/* Interactive Elements */
+.interactive-chart {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.interactive-chart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Word Building Animation */
+.word-builder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.letter-block {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Amiri', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.letter-block::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.letter-block:hover::before {
+    animation: shimmer 0.8s ease-out;
+    opacity: 1;
+}
+
+.letter-block:nth-child(1) { animation-delay: 0.1s; }
+.letter-block:nth-child(2) { animation-delay: 0.2s; }
+.letter-block:nth-child(3) { animation-delay: 0.3s; }
+.letter-block:nth-child(4) { animation-delay: 0.4s; }
+.letter-block:nth-child(5) { animation-delay: 0.5s; }
+
+/* Advanced Tooltips */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-text);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--dark-text);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Enhanced Status Indicators */
+.status-indicator {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.status-indicator.online::after {
+    background: rgba(72, 187, 120, 0.5);
+}
+
+.status-indicator.offline::after {
+    background: rgba(245, 101, 101, 0.5);
+}
+
+.status-indicator.warning::after {
+    background: rgba(255, 165, 2, 0.5);
+}
+
+/* Morphological Tree Visualization */
+.morphology-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.tree-node {
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 8px;
+    position: relative;
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+.tree-node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.tree-level {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.tree-connection {
+    width: 2px;
+    height: 30px;
+    background: var(--primary-color);
+    margin: 0 auto;
+}
+
+/* Pattern Matching Visualization */
+.pattern-match {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.pattern-item {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.pattern-item:hover {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #fff, #f8f9fa);
+    transform: translateY(-2px);
+}
+
+.pattern-item.matched {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+}
+
+.pattern-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.pattern-form {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--dark-text);
+}
+
+/* Confidence Meter */
+.confidence-meter {
+    background: #e9ecef;
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--danger-color), var(--warning-color), var(--accent-color));
+    border-radius: 10px;
+    transition: width 0.8s ease;
+    position: relative;
+}
+
+.confidence-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.confidence-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    z-index: 2;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 1200px) {
+    .data-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .word-builder {
+        gap: 3px;
+    }
+    
+    .letter-block {
+        padding: 8px 12px;
+        font-size: 1.3rem;
+    }
+    
+    .pattern-match {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .tree-level {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .phoneme-container,
+    .syllable-container {
+        justify-content: center;
+    }
+    
+    .phoneme-item,
+    .syllable-item {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .main-container {
+        box-shadow: none;
+        background: white;
+    }
+    
+    .hero-header {
+        background: white;
+        color: black;
+        border-bottom: 2px solid #333;
+    }
+    
+    .input-section {
+        display: none;
+    }
+    
+    .linguistic-level {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .level-content.collapsed {
+        max-height: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light-bg: #2c3e50;
+        --dark-text: #ecf0f1;
+    }
+    
+    .linguistic-level {
+        background: #34495e;
+        color: #ecf0f1;
+    }
+    
+    .data-item {
+        background: #2c3e50;
+        border-left-color: var(--accent-color);
+    }
+    
+    .word-input {
+        background: #34495e;
+        color: #ecf0f1;
+        border-color: #4a5568;
+    }
+    
+    .word-input:focus {
+        background: #2c3e50;
+    }
+}
+
+/* Accessibility Enhancements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .linguistic-level {
+        border: 2px solid #000;
+    }
+    
+    .level-icon {
+        background: #000;
+        color: #fff;
+    }
+    
+    .phoneme-item,
+    .syllable-item,
+    .letter-block {
+        border: 1px solid #000;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !import_dataant;
+        animation-iteration-count: 1 !import_dataant;
+        transition-duration: 0.01ms !import_dataant;
+    }
+}
+
+/* Custom Scrollbar */
+.level-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.level-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.level-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.level-content::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}

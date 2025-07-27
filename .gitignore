@@ -1,38 +1,8 @@
-# Ignore build artifacts
-bin/
-obj/
-
-# Ignore temporary files
-*.tmp
-*.log
-
-# Ignore IDE-specific files
-.vscode/
-.idea/
-*.suo
-*.user
-*.rsuser
-*.vcxproj.user
-
-# Ignore system files
-Thumbs.db
-.DS_Store
-
-# Python virtual environments (official recommendation)
-.venv/
-venv/
-ENV/
-env/
-.ENV/
-.env
-
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-
-# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -46,99 +16,41 @@ parts/
 sdist/
 var/
 wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# poetry
-poetry.lock
-
-# celery beat schedule file
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
+# Virtual Environment
+.venv/
 venv/
 ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
+env/
 
 # IDE
-.vscode/
+.vscode/settings.json
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# Project specific
+*.log
+*.tmp
+safe_workspace/temp/*
+!safe_workspace/temp/.gitkeep
+safe_workspace/logs/*
+!safe_workspace/logs/.gitkeep
+
+# System files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Project specific
-logs/
-*.log
-config/secrets.yml
+# Backup files
+*.bak
+*.backup
+venv_backup/
+
+# Temporary files
+*.temp
+*.temporary

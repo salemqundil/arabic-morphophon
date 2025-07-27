@@ -1,0 +1,9 @@
+🏆 MorphophonologicalEngine (MASTER)
+├── 🔤 PhonologyEngine (Phonological Rules)
+├── 🔍 ArabicAnalyzer (Text Handleing) 
+├── 📦 AnalysisService (Web Services)
+└── ⚡ DynamicArabicEngine (Dynamic Web)
+
+🆕 New Generation Engines:
+├── 🏗️ ArabicPhonologyEngine (Advanced Core)
+└── 🎯 UnifiedArabicAnalyzer (Expert Unified)

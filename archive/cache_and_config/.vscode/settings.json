@@ -1,0 +1,75 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.defaultInterpreterPath": "./.venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=88"],
+    "python.sortImports.args": ["--profile", "black"],
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "editor.formatOnStore": true,
+    "editor.codeActionsOnStore": {
+        "source.organizeImports": "explicit"
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        ".pytest_cache": true,
+        ".coverage": true,
+        "htmlcov": true,
+        ".mypy_cache": true
+    },
+    "emmet.includeLanguages": {
+        "jinja-html": "html"
+    },
+    "files.associations": {
+        "*.html": "jinja-html"
+    },
+    "terminal.integrated.suggest.enabled": true,
+    "terminal.integrated.stickyScroll.enabled": false,
+    "cSpell.words": [
+        "Morphophonological",
+        "morphophonological",
+        "phonological", 
+        "morphological",
+        "Arabic",
+        "NLP",
+        "api",
+        "webapp",
+        "integrator",
+        "phoneme",
+        "syllabic_unit",
+        "derivation",
+        "inflection",
+        "consonants",
+        "vowels",
+        "diacritics",
+        "diacritization",
+        "syllabic_analysis",
+        "phonemizer",
+        "reshaper",
+        "parselmouth",
+        "eventlet",
+        "librosa",
+        "scipy",
+        "morphophon",
+        "jsonify",
+        "StreamProcessr",
+        "AnalysisLevel",
+        "MorphophonologicalEngine",
+        "AdvancedArabicAnalysisSystem",
+        "utf",
+        "pytest",
+        "pylint",
+        "mypy",
+        "flake8"
+    ],
+    "cSpell.enabled": true,
+    "cSpell.language": "en,ar"
+}

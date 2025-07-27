@@ -1,0 +1,116 @@
+{
+  "summary": {
+    "total_tests": 20,
+    "passed": 16,
+    "failed": 4,
+    "success_rate": 80.0,
+    "average_response_time_ms": 2038.6,
+    "status": "FAIL"
+  },
+  "results": [
+    {
+      "test": "Home Endpoint",
+      "status": "PASS",
+      "time_ms": 2041.1098003387451
+    },
+    {
+      "test": "Health Check",
+      "status": "PASS",
+      "time_ms": 2041.4652824401855
+    },
+    {
+      "test": "System Status",
+      "status": "PASS",
+      "time_ms": 2036.1497402191162
+    },
+    {
+      "test": "Phonology Test 1",
+      "status": "PASS",
+      "time_ms": 2047.4424362182617
+    },
+    {
+      "test": "Phonology Test 2",
+      "status": "PASS",
+      "time_ms": 2034.721851348877
+    },
+    {
+      "test": "Phonology Test 3",
+      "status": "PASS",
+      "time_ms": 2042.121410369873
+    },
+    {
+      "test": "SyllabicUnit Test 1",
+      "status": "PASS",
+      "time_ms": 2037.8146171569824
+    },
+    {
+      "test": "SyllabicUnit Test 2",
+      "status": "PASS",
+      "time_ms": 2031.569480895996
+    },
+    {
+      "test": "SyllabicUnit Test 3",
+      "status": "PASS",
+      "time_ms": 2032.6576232910156
+    },
+    {
+      "test": "Morphology Test 1",
+      "status": "PASS",
+      "time_ms": 2044.5671081542969
+    },
+    {
+      "test": "Morphology Test 2",
+      "status": "PASS",
+      "time_ms": 2053.738594055176
+    },
+    {
+      "test": "Morphology Test 3",
+      "status": "PASS",
+      "time_ms": 2031.8963527679443
+    },
+    {
+      "test": "Analysis Level: basic",
+      "status": "PASS",
+      "time_ms": 2033.1501960754395
+    },
+    {
+      "test": "Analysis Level: intermediate",
+      "status": "FAIL",
+      "time_ms": 2063.6000633239746,
+      "error": "Status: 500, Expected: 200"
+    },
+    {
+      "test": "Analysis Level: comprehensive",
+      "status": "FAIL",
+      "time_ms": 2041.356086730957,
+      "error": "Status: 500, Expected: 200"
+    },
+    {
+      "test": "Analysis Level: expert",
+      "status": "FAIL",
+      "time_ms": 2040.1427745819092,
+      "error": "Status: 500, Expected: 200"
+    },
+    {
+      "test": "Empty Text Error",
+      "status": "PASS",
+      "time_ms": 2057.569742202759
+    },
+    {
+      "test": "Missing JSON Error",
+      "status": "PASS",
+      "time_ms": 2026.5262126922607
+    },
+    {
+      "test": "Invalid Endpoint",
+      "status": "PASS",
+      "time_ms": 2025.1591205596924
+    },
+    {
+      "test": "Response Time (2060.7ms - Target: <50ms)",
+      "status": "FAIL",
+      "time_ms": 0.0050067901611328125,
+      "error": "Status: 200, Expected: 200"
+    }
+  ]
+}

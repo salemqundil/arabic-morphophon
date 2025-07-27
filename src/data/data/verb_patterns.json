@@ -1,0 +1,192 @@
+{
+  "I": {
+    "template": "فَعَلَ",
+    "cv_structure": "CaCaCa",
+    "meaning": "الثلاثي المجرد",
+    "examples": [
+      "كَتَبَ",
+      "قَرَأَ",
+      "ذَهَبَ",
+      "فَهِمَ"
+    ],
+    "frequency": 10,
+    "subcategories": {
+      "فَعَلَ_فَعْلاً": [
+        "كَتَبَ كِتَابَةً",
+        "قَرَأَ قِرَاءَةً"
+      ],
+      "فَعِلَ_فَعَلاً": [
+        "فَرِحَ فَرَحاً",
+        "حَزِنَ حُزْناً"
+      ],
+      "فَعُلَ_فُعُولَةً": [
+        "كَرُمَ كَرَامَةً",
+        "شَرُفَ شَرَافَةً"
+      ]
+    }
+  },
+  "II": {
+    "template": "فَعَّلَ",
+    "cv_structure": "CaCCaCa",
+    "meaning": "التفعيل والتكثير",
+    "examples": [
+      "عَلَّمَ",
+      "كَسَّرَ",
+      "قَطَّعَ",
+      "فَهَّمَ"
+    ],
+    "frequency": 9
+  },
+  "III": {
+    "template": "فَاعَلَ",
+    "cv_structure": "CaaCaCa",
+    "meaning": "المشاركة والمفاعلة",
+    "examples": [
+      "كَاتَبَ",
+      "قَاتَلَ",
+      "شَارَكَ",
+      "سَافَرَ"
+    ],
+    "frequency": 8
+  },
+  "IV": {
+    "template": "أَفْعَلَ",
+    "cv_structure": "aCCaCa",
+    "meaning": "الإفعال والتعدية",
+    "examples": [
+      "أَكْرَمَ",
+      "أَخْرَجَ",
+      "أَدْخَلَ",
+      "أَرْسَلَ"
+    ],
+    "frequency": 8
+  },
+  "V": {
+    "template": "تَفَعَّلَ",
+    "cv_structure": "taCaCCaCa",
+    "meaning": "التفعل والتأثر",
+    "examples": [
+      "تَعَلَّمَ",
+      "تَكَسَّرَ",
+      "تَقَطَّعَ",
+      "تَأَثَّرَ"
+    ],
+    "frequency": 7
+  },
+  "VI": {
+    "template": "تَفَاعَلَ",
+    "cv_structure": "taCaaCaCa",
+    "meaning": "التفاعل والمشاركة",
+    "examples": [
+      "تَكَاتَبَ",
+      "تَقَاتَلَ",
+      "تَشَارَكَ",
+      "تَسَاعَدَ"
+    ],
+    "frequency": 6
+  },
+  "VII": {
+    "template": "انْفَعَلَ",
+    "cv_structure": "inCaCaCa",
+    "meaning": "الانفعال والتأثر",
+    "examples": [
+      "انْكَسَرَ",
+      "انْقَطَعَ",
+      "انْفَتَحَ",
+      "انْدَفَعَ"
+    ],
+    "frequency": 6
+  },
+  "VIII": {
+    "template": "افْتَعَلَ",
+    "cv_structure": "iCtaCaCa",
+    "meaning": "الافتعال",
+    "examples": [
+      "اكْتَسَبَ",
+      "اجْتَمَعَ",
+      "اشْتَرَكَ",
+      "افْتَرَقَ"
+    ],
+    "frequency": 7
+  },
+  "IX": {
+    "template": "افْعَلَّ",
+    "cv_structure": "iCCaCCa",
+    "meaning": "دلالة اللون والعيب",
+    "examples": [
+      "احْمَرَّ",
+      "اصْفَرَّ",
+      "اخْضَرَّ",
+      "اعْوَجَّ"
+    ],
+    "frequency": 4
+  },
+  "X": {
+    "template": "اسْتَفْعَلَ",
+    "cv_structure": "istaCCaCa",
+    "meaning": "الاستفعال والطلب",
+    "examples": [
+      "اسْتَعْمَلَ",
+      "اسْتَخْرَجَ",
+      "اسْتَقْبَلَ",
+      "اسْتَغْرَقَ"
+    ],
+    "frequency": 8
+  },
+  "XI": {
+    "template": "افْعَالَّ",
+    "cv_structure": "iCCaaCCa",
+    "meaning": "المبالغة في اللون",
+    "examples": [
+      "احْمَارَّ",
+      "اصْفَارَّ",
+      "اخْضَارَّ"
+    ],
+    "frequency": 1,
+    "note": "نادر الاستعمال"
+  },
+  "XII": {
+    "template": "افْعَوْعَلَ",
+    "cv_structure": "iCCawCaCa",
+    "meaning": "اضطراب الحركة",
+    "examples": [
+      "اعْشَوْشَبَ",
+      "اقْعَوْعَدَ"
+    ],
+    "frequency": 1,
+    "note": "نادر جداً"
+  },
+  "XIII": {
+    "template": "افْعَوَّلَ",
+    "cv_structure": "iCCawwaCa",
+    "meaning": "المبالغة في الصفة",
+    "examples": [
+      "اجْلَوَّذَ",
+      "اعْلَوَّطَ"
+    ],
+    "frequency": 1,
+    "note": "نادر جداً"
+  },
+  "XIV": {
+    "template": "افْعَنْلَلَ",
+    "cv_structure": "iCCanLaLa",
+    "meaning": "دلالة القوة والشدة",
+    "examples": [
+      "اقْشَعَرَّ",
+      "احْرَنْجَمَ"
+    ],
+    "frequency": 1,
+    "note": "نادر جداً"
+  },
+  "XV": {
+    "template": "افْعَنْلَى",
+    "cv_structure": "iCCanLaa",
+    "meaning": "المبالغة في الصفة",
+    "examples": [
+      "اسْلَنْقَى",
+      "احْرَنْبَى"
+    ],
+    "frequency": 1,
+    "note": "نادر جداً، شبه منقرض"
+  }
+}

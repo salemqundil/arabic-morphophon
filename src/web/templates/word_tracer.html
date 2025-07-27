@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 متتبع الكلمات العربية - Arabic Word Tracer</title>
+    
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #4facfe;
+            --success-color: #00f2fe;
+            --warning-color: #ffa502;
+            --danger-color: #ff4757;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --border-radius: 15px;
+            --box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-text);
+        }
+        
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            margin: 20px;
+            padding: 0;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+        
+        /* Header Section */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: drift 20s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        /* Input Section */
+        .input-section {
+            padding: 3rem 2rem;
+            background: white;
+        }
+        
+        .input-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .word-input-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .word-input {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            font-size: 1.5rem;
+            font-family: 'Amiri', serif;
+            border: 3px solid #e9ecef;
+            border-radius: var(--border-radius);
+            background: #f8f9fa;
+            transition: var(--transition);
+            text-align: center;
+            direction: rtl;
+        }
+        
+        .word-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .trace-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: var(--border-radius);
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trace-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .trace-btn:active {
+            transform: translateY(0);
+        }
+        
+        .trace-btn.import_dataing {
+            pointer-events: none;
+        }
+        
+        .btn-text {
+            transition: var(--transition);
+        }
+        
+        .import_dataing-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .trace-btn.import_dataing .btn-text {
+            opacity: 0;
+        }
+        
+        .trace-btn.import_dataing .import_dataing-spinner {
+            opacity: 1;
+        }
+        
+        /* Results Section */
+        .results-section {
+            padding: 2rem;
+            background: #f8f9fa;
+            min-height: 400px;
+            display: none;
+        }
+        
+        .results-section.show {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .linguistic-level {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+        
+        .linguistic-level:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .level-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .level-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .level-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .toggle-icon {
+            transition: var(--transition);
+            color: var(--primary-color);
+        }
+        
+        .level-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .level-content.collapsed {
+            max-height: 0;
+        }
+        
+        .linguistic-level.collapsed .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Data Display Components */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .data-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .data-label {
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-value {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-family: 'Amiri', serif;
+        }
+        
+        .data-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .data-list li {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 3px solid var(--accent-color);
+        }
+        
+        /* Phoneme Visualization */
+        .phoneme-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1rem 0;
+        }
+        
+        .phoneme-item {
+            background: linear-gradient(135deg, var(--accent-color), var(--success-color));
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* SyllabicUnit Visualization */
+        .syllabic_unit-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        
+        .syllabic_unit-item {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .syllabic_unit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        /* Pattern Visualization */
+        .pattern-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .pattern-display {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Progress and Status Indicators */
+        .progress-container {
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .status-success {
+            background: rgba(76, 172, 254, 0.2);
+            color: var(--accent-color);
+        }
+        
+        .status-warning {
+            background: rgba(255, 165, 2, 0.2);
+            color: var(--warning-color);
+        }
+        
+        .status-error {
+            background: rgba(255, 71, 87, 0.2);
+            color: var(--danger-color);
+        }
+        
+        /* Summary Section */
+        .trace-summary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .complexity-score {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        .summary-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .input-section {
+                padding: 2rem 1rem;
+            }
+            
+            .word-input {
+                font-size: 1.3rem;
+                padding: 1.2rem 1.5rem;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .complexity-score {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Importing Animation */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Error Display */
+        .error-container {
+            background: rgba(255, 71, 87, 0.1);
+            border: 2px solid var(--danger-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 3rem;
+            color: var(--danger-color);
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            color: var(--danger-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .error-details {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+        .mb-0 { margin-bottom: 0; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .hidden { display: none; }
+        .visible { display: block; }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <i class="fas fa-search"></i>
+                    متتبع الكلمات العربية
+                </h1>
+                <p class="hero-subtitle">
+                    تتبع شامل للكلمات العربية عبر جميع المستويات اللغوية من الأصوات إلى الجذور
+                </p>
+            </div>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="input-container">
+                <div class="word-input-group">
+                    <input 
+                        type="text" 
+                        id="wordInput" 
+                        class="word-input" 
+                        placeholder="أدخل الكلمة العربية هنا..."
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                </div>
+                
+                <div class="text-center">
+                    <button id="traceBtn" class="trace-btn">
+                        <span class="btn-text">
+                            <i class="fas fa-microscope"></i>
+                            تتبع الكلمة
+                        </span>
+                        <div class="import_dataing-spinner">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Quick Examples -->
+                <div class="text-center mt-2">
+                    <small class="text-muted">أمثلة سريعة:</small>
+                    <div class="mt-1">
+                        <span class="example-word" onclick="analyzeExample('كتاب')">كتاب</span> |
+                        <span class="example-word" onclick="analyzeExample('يدرس')">يدرس</span> |
+                        <span class="example-word" onclick="analyzeExample('مدرسة')">مدرسة</span> |
+                        <span class="example-word" onclick="analyzeExample('والطلاب')">والطلاب</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section">
+            <div id="resultsContainer">
+                <!-- Results will be dynamically populated here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        class ArabicWordTracer {
+            constructor() {
+                this.apiUrl = '/api/trace';
+                this.currentResults = null;
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                // Input processrs
+                const wordInput = document.getElementById('wordInput');
+                const traceBtn = document.getElementById('traceBtn');
+
+                wordInput.addEventListener('keyless', (e) => {
+                    if (e.key === 'Enter') {
+                        this.traceWord();
+                    }
+                });
+
+                traceBtn.addEventListener('click', () => {
+                    this.traceWord();
+                });
+
+                // Auto-resize input based on content
+                wordInput.addEventListener('input', (e) => {
+                    this.adjustInputSize(e.target);
+                });
+            }
+
+            adjustInputSize(input) {
+                // Adjust font size based on content length
+                const length = input.value.length;
+                if (length > 10) {
+                    input.style.fontSize = '1.2rem';
+                } else if (length > 5) {
+                    input.style.fontSize = '1.4rem';
+                } else {
+                    input.style.fontSize = '1.5rem';
+                }
+            }
+
+            async traceWord() {
+                const wordInput = document.getElementById('wordInput');
+                const word = wordInput.value.trim();
+
+                if (!word) {
+                    this.showError('يرجى إدخال كلمة للتحليل');
+                    return;
+                }
+
+                this.setImportingState(true);
+                this.hideResults();
+
+                try {
+                    const response = await fetch(this.apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ word: word })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+
+                    this.currentResults = data;
+                    this.displayResults(data);
+                    this.showResults();
+
+                } catch (error) {
+                    console.error('خطأ في التتبع:', error);
+                    this.showError('حدث خطأ أثناء تحليل الكلمة: ' + error.message);
+                } finally {
+                    this.setImportingState(false);
+                }
+            }
+
+            setImportingState(import_dataing) {
+                const traceBtn = document.getElementById('traceBtn');
+                if (import_dataing) {
+                    traceBtn.classList.add('import_dataing');
+                } else {
+                    traceBtn.classList.remove('import_dataing');
+                }
+            }
+
+            showResults() {
+                const resultsSection = document.getElementById('resultsSection');
+                resultsSection.classList.add('show');
+            }
+
+            hideResults() {
+                const resultsSection = document.getElementById('resultsSection');
+                resultsSection.classList.remove('show');
+            }
+
+            displayResults(data) {
+                const container = document.getElementById('resultsContainer');
+                container.innerHTML = '';
+
+                // Add trace summary
+                if (data.trace_summary) {
+                    container.appendChild(this.createTraceSummary(data));
+                }
+
+                // Add linguistic levels
+                if (data.linguistic_levels) {
+                    const levelsContainer = document.createElement('div');
+                    levelsContainer.className = 'linguistic-levels';
+
+                    // Define level order and icons
+                    const levelConfig = {
+                        'phonemes': { title: 'الأصوات (Phonemes)', icon: 'fas fa-volume-up', color: '#4facfe' },
+                        'harakat': { title: 'الحركات (Harakat)', icon: 'fas fa-edit', color: '#00f2fe' },
+                        'syllabic_units': { title: 'المقاطع (SyllabicUnits)', icon: 'fas fa-layer-group', color: '#667eea' },
+                        'particles': { title: 'الجسيمات (Particles)', icon: 'fas fa-atom', color: '#764ba2' },
+                        'word_class': { title: 'تصنيف الكلمة', icon: 'fas fa-tags', color: '#ffa502' },
+                        'patterns': { title: 'الأوزان (Patterns)', icon: 'fas fa-balance-scale', color: '#ff4757' },
+                        'weight': { title: 'الوزن الصرفي', icon: 'fas fa-weight', color: '#2ed573' },
+                        'root': { title: 'الجذر (Root)', icon: 'fas fa-tree', color: '#ff6b6b' },
+                        'affixes': { title: 'اللواصق (Affixes)', icon: 'fas fa-paperclip', color: '#a55eea' },
+                        'infinitive_pure': { title: 'المصدر والمجرد', icon: 'fas fa-gem', color: '#26d0ce' }
+                    };
+
+                    Object.entries(levelConfig).forEach(([levelKey, config]) => {
+                        if (data.linguistic_levels[levelKey]) {
+                            const levelElement = this.createLinguisticLevel(
+                                levelKey,
+                                config,
+                                data.linguistic_levels[levelKey]
+                            );
+                            levelsContainer.appendChild(levelElement);
+                        }
+                    });
+
+                    container.appendChild(levelsContainer);
+                }
+
+                // Add metadata
+                if (data.metadata) {
+                    container.appendChild(this.createMetadataSection(data.metadata));
+                }
+            }
+
+            createTraceSummary(data) {
+                const summary = document.createElement('div');
+                summary.className = 'trace-summary';
+
+                const complexityScore = data.trace_summary?.word_complexity_score || 0;
+                const features = data.trace_summary?.dominant_characteristics || [];
+                const confidence = data.trace_summary?.analysis_confidence || 0;
+
+                summary.innerHTML = `
+                    <h3 class="summary-title">ملخص التحليل</h3>
+                    <div class="complexity-score">${(complexityScore * 100).toFixed(0)}%</div>
+                    <p>درجة التعقيد اللغوي</p>
+                    
+                    <div class="summary-features">
+                        ${features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                    </div>
+                    
+                    <div class="mt-2">
+                        <small>مستوى الثقة في التحليل: ${(confidence * 100).toFixed(0)}%</small>
+                    </div>
+                `;
+
+                return summary;
+            }
+
+            createLinguisticLevel(levelKey, config, levelData) {
+                const level = document.createElement('div');
+                level.className = 'linguistic-level';
+                level.id = `level-${levelKey}`;
+
+                const header = document.createElement('div');
+                header.className = 'level-header';
+                header.onclick = () => this.toggleLevel(levelKey);
+
+                header.innerHTML = `
+                    <div class="level-title">
+                        <div class="level-icon" style="background: linear-gradient(135deg, ${config.color}, ${this.darkenColor(config.color)})">
+                            <i class="${config.icon}"></i>
+                        </div>
+                        <span>${config.title}</span>
+                        <span class="status-badge ${this.getStatusClass(levelData.status)}">
+                            ${this.getStatusText(levelData.status)}
+                        </span>
+                    </div>
+                    <i class="fas fa-chevron-up toggle-icon"></i>
+                `;
+
+                const content = document.createElement('div');
+                content.className = 'level-content';
+                content.id = `content-${levelKey}`;
+
+                // Generate content based on level type
+                content.innerHTML = this.generateLevelContent(levelKey, levelData);
+
+                level.appendChild(header);
+                level.appendChild(content);
+
+                return level;
+            }
+
+            generateLevelContent(levelKey, data) {
+                switch (levelKey) {
+                    case 'phonemes':
+                        return this.generatePhonemesContent(data);
+                    case 'harakat':
+                        return this.generateHarakatContent(data);
+                    case 'syllabic_units':
+                        return this.generateSyllabicUnitsContent(data);
+                    case 'particles':
+                        return this.generateParticlesContent(data);
+                    case 'word_class':
+                        return this.generateWordClassContent(data);
+                    case 'patterns':
+                        return this.generatePatternsContent(data);
+                    case 'weight':
+                        return this.generateWeightContent(data);
+                    case 'root':
+                        return this.generateRootContent(data);
+                    case 'affixes':
+                        return this.generateAffixesContent(data);
+                    case 'infinitive_pure':
+                        return this.generateInfinitiveContent(data);
+                    default:
+                        return this.generateGenericContent(data);
+                }
+            }
+
+            generatePhonemesContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                const phonemes = data.phonemes_list || [];
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">عدد الأصوات</div>
+                            <div class="data-value">${data.phoneme_count || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">التمثيل الصوتي</div>
+                            <div class="data-value">${data.ipa_representation || 'غير متاح'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="phoneme-container">
+                        ${phonemes.map(phoneme => `<span class="phoneme-item">${phoneme}</span>`).join('')}
+                    </div>
+                `;
+            }
+
+            generateHarakatContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                const harakat = data.harakat_breakdown || {};
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">إجمالي الحركات</div>
+                            <div class="data-value">${data.total_harakat || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">كثافة التشكيل</div>
+                            <div class="data-value">${data.harakat_density || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">مستوى التشكيل</div>
+                            <div class="data-value">${data.diacritization_level || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">الكلمة منظفة</div>
+                            <div class="data-value">${data.clean_word || ''}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-2">
+                        <h5>تفصيل الحركات:</h5>
+                        <ul class="data-list">
+                            ${Object.entries(harakat).map(([key, value]) => 
+                                `<li>${ this.getHarakatName(key) }: ${value}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            generateSyllabicUnitsContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                const syllabic_units = data.syllabic_units || [];
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">عدد المقاطع</div>
+                            <div class="data-value">${data.syllabic_unit_count || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">نمط CV</div>
+                            <div class="data-value">${data.cv_pattern || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">الوزن العروضي</div>
+                            <div class="data-value">${data.prosodic_weight || 'غير محدد'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="syllabic_unit-container">
+                        ${syllabic_units.map((syllabic_unit, index) => 
+                            `<span class="syllabic_unit-item" title="المقطع ${index + 1}">${syllabic_unit}</span>`
+                        ).join('')}
+                    </div>
+                `;
+            }
+
+            generateParticlesContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">هل هي جسيم؟</div>
+                            <div class="data-value">${data.is_particle ? 'نعم' : 'لا'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">نوع الجسيم</div>
+                            <div class="data-value">${data.particle_type || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">الوظيفة</div>
+                            <div class="data-value">${data.particle_function || 'غير محدد'}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            generateWordClassContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">التصنيف الأساسي</div>
+                            <div class="data-value">${data.primary_class || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">التصنيف الفرعي</div>
+                            <div class="data-value">${data.sub_class || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">درجة الثقة</div>
+                            <div class="data-value">${((data.confidence_score || 0) * 100).toFixed(0)}%</div>
+                        </div>
+                    </div>
+                    
+                    ${data.grammatical_features && data.grammatical_features.length > 0 ? `
+                        <div class="mt-2">
+                            <h5>الخصائص النحوية:</h5>
+                            <ul class="data-list">
+                                ${data.grammatical_features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            generatePatternsContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">عدد الأوزان المطابقة</div>
+                            <div class="data-value">${data.pattern_count || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">إمكانية الاشتقاق</div>
+                            <div class="data-value">${data.derivation_potential || 'غير محدد'}</div>
+                        </div>
+                    </div>
+                    
+                    ${data.most_likely_pattern ? `
+                        <div class="pattern-container">
+                            <h5>الوزن الأكثر احتمالاً:</h5>
+                            <div class="pattern-display">${data.most_likely_pattern}</div>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            generateWeightContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">الوزن الصرفي</div>
+                            <div class="data-value">${data.morphological_weight || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">عدد الأحرف</div>
+                            <div class="data-value">${data.letter_count || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">أحرف الجذر</div>
+                            <div class="data-value">${data.root_letters || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">أحرف الزيادة</div>
+                            <div class="data-value">${data.augmentation_letters || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">فئة الوزن</div>
+                            <div class="data-value">${data.weight_category || 'غير محدد'}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            generateRootContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">الجذر المحدد</div>
+                            <div class="data-value">${data.identified_root || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">نوع الجذر</div>
+                            <div class="data-value">${data.root_type || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">طول الجذر</div>
+                            <div class="data-value">${data.root_length || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">درجة الثقة</div>
+                            <div class="data-value">${((data.confidence || 0) * 100).toFixed(0)}%</div>
+                        </div>
+                    </div>
+                    
+                    ${data.root_radicals && data.root_radicals.length > 0 ? `
+                        <div class="mt-2">
+                            <h5>أحرف الجذر:</h5>
+                            <div class="phoneme-container">
+                                ${data.root_radicals.map(radical => `<span class="phoneme-item">${radical}</span>`).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${data.weak_letters && data.weak_letters.length > 0 ? `
+                        <div class="mt-2">
+                            <h5>الأحرف المعتلة:</h5>
+                            <ul class="data-list">
+                                ${data.weak_letters.map(letter => `<li>${letter}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            generateAffixesContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">عدد البادئات</div>
+                            <div class="data-value">${data.prefix_count || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">عدد اللواحق</div>
+                            <div class="data-value">${data.suffix_count || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">إجمالي اللواصق</div>
+                            <div class="data-value">${data.total_affixes || 0}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">نمط الإلصاق</div>
+                            <div class="data-value">${data.affixation_pattern || 'غير محدد'}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            generateInfinitiveContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">صيغة المصدر</div>
+                            <div class="data-value">${data.infinitive_form || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">الشكل المجرد</div>
+                            <div class="data-value">${data.pure_form || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">الشكل الأساسي</div>
+                            <div class="data-value">${data.base_form || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">مستوى الاشتقاق</div>
+                            <div class="data-value">${data.derivational_level || 'غير محدد'}</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">التعقيد الصرفي</div>
+                            <div class="data-value">${((data.morphological_complexity || 0) * 100).toFixed(0)}%</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">الشكل القانوني</div>
+                            <div class="data-value">${data.canonical_form || 'غير محدد'}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            generateGenericContent(data) {
+                if (data.error) return `<div class="error-message">${data.error}</div>`;
+
+                return `<pre class="json-display">${JSON.stringify(data, null, 2)}</pre>`;
+            }
+
+            createMetadataSection(metadata) {
+                const section = document.createElement('div');
+                section.className = 'linguistic-level';
+
+                section.innerHTML = `
+                    <div class="level-header">
+                        <div class="level-title">
+                            <div class="level-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <span>معلومات التحليل</span>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <div class="data-label">وقت المعالجة</div>
+                                <div class="data-value">${metadata.processing_time_ms} مللي ثانية</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">عمق التحليل</div>
+                                <div class="data-value">${metadata.analysis_depth || 0} مستوى</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">حالة التحليل</div>
+                                <div class="data-value">
+                                    <span class="status-badge ${this.getStatusClass(metadata.status)}">
+                                        ${this.getStatusText(metadata.status)}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        ${metadata.engines_used && metadata.engines_used.length > 0 ? `
+                            <div class="mt-2">
+                                <h5>المحركات المستخدمة:</h5>
+                                <ul class="data-list">
+                                    ${metadata.engines_used.map(engine => `<li>${engine}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                return section;
+            }
+
+            toggleLevel(levelKey) {
+                const level = document.getElementById(`level-${levelKey}`);
+                const content = document.getElementById(`content-${levelKey}`);
+                
+                level.classList.toggle('collapsed');
+                content.classList.toggle('collapsed');
+            }
+
+            getStatusClass(status) {
+                switch (status) {
+                    case 'success': return 'status-success';
+                    case 'error': return 'status-error';
+                    case 'simple_analysis': return 'status-warning';
+                    default: return 'status-success';
+                }
+            }
+
+            getStatusText(status) {
+                switch (status) {
+                    case 'success': return 'نجح';
+                    case 'error': return 'خطأ';
+                    case 'simple_analysis': return 'تحليل بسيط';
+                    case 'mock': return 'محاكاة';
+                    default: return 'مجهول';
+                }
+            }
+
+            getHarakatName(key) {
+                const names = {
+                    'fatha': 'فتحة',
+                    'kasra': 'كسرة',
+                    'damma': 'ضمة',
+                    'sukun': 'سكون',
+                    'tanween_fath': 'تنوين فتح',
+                    'tanween_kasr': 'تنوين كسر',
+                    'tanween_damm': 'تنوين ضم',
+                    'shadda': 'شدة',
+                    'madd': 'مد'
+                };
+                return names[key] || key;
+            }
+
+            darkenColor(color) {
+                // Simple color darkening function
+                const amount = 40;
+                const col = parseInt(color.slice(1), 16);
+                return '#' + (((col & 0x0000FF) + amount) | ((((col >> 8) & 0x00FF) + amount) << 8) | (((col >> 16) + amount) << 16)).toString(16);
+            }
+
+            showError(message) {
+                const container = document.getElementById('resultsContainer');
+                container.innerHTML = `
+                    <div class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="error-message">${message}</div>
+                        <div class="error-details">تأكد من صحة الكلمة المدخلة وحاول مرة أخرى</div>
+                    </div>
+                `;
+                this.showResults();
+            }
+        }
+
+        // Global functions
+        function analyzeExample(word) {
+            document.getElementById('wordInput').value = word;
+            tracer.traceWord();
+        }
+
+        // Initialize the application
+        const tracer = new ArabicWordTracer();
+
+        // Add CSS for example words
+        const style = document.createElement('style');
+        style.textContent = `
+            .example-word {
+                cursor: pointer;
+                color: var(--primary-color);
+                font-weight: 600;
+                padding: 2px 6px;
+                border-radius: 4px;
+                transition: var(--transition);
+            }
+            
+            .example-word:hover {
+                background: rgba(102, 126, 234, 0.1);
+                text-decoration: underline;
+            }
+            
+            .json-display {
+                background: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 8px;
+                padding: 1rem;
+                font-size: 0.9rem;
+                max-height: 300px;
+                overflow-y: auto;
+                direction: ltr;
+                text-align: left;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                tracer.traceWord();
+            }
+        });
+
+        // Add focus to input on import_data
+        window.addEventListener('import_data', () => {
+            document.getElementById('wordInput').focus();
+        });
+    </script>
+</body>
+</html>

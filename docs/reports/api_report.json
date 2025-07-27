@@ -1,0 +1,371 @@
+{
+  "api_files": {
+    "advanced_hierarchical_api.py": [
+      "/",
+      "/api/health",
+      "/api/analyze/traditional",
+      "/api/analyze/hierarchical",
+      "/api/validate/rules",
+      "/api/repair",
+      "/api/batch",
+      "/api/info",
+      "/api/stats"
+    ],
+    "advanced_production_api.py": [
+      "/",
+      "/api/health",
+      "/analyze",
+      "/analyze/hierarchical",
+      "/rules/validate",
+      "/batch",
+      "/stats"
+    ],
+    "app.py": [
+      "/",
+      "/api/analyze",
+      "/api/stats",
+      "/api/cache/clear",
+      "/api/examples",
+      "/api/health",
+      "/static/<path:filename>"
+    ],
+    "app_dynamic.py": [
+      "/",
+      "/static/<path:filename>",
+      "/api/analyze",
+      "/api/stats",
+      "/api/health",
+      "/api/cache/clear",
+      "/api/examples"
+    ],
+    "app_new.py": [
+      "/",
+      "/api/analyze",
+      "/api/batch-analyze",
+      "/api/stats",
+      "/api/clear-cache"
+    ],
+    "demos\\demo_advanced_integration.py": [
+      "/analyze",
+      "/analyze/hierarchical",
+      "/rules/validate"
+    ],
+    "web_apps\\advanced_hierarchical_api.py": [
+      "/",
+      "/api/health",
+      "/api/analyze/traditional",
+      "/api/analyze/hierarchical",
+      "/api/validate",
+      "/api/repair",
+      "/api/batch",
+      "/api/system/info",
+      "/api/statistics"
+    ],
+    "web_apps\\main_app.py": [
+      "/",
+      "/api/analyze",
+      "/api/stats",
+      "/api/cache/clear",
+      "/api/examples",
+      "/api/health",
+      "/static/<path:filename>"
+    ],
+    "python-dr.saleh\\demos\\demo_advanced_integration.py": [
+      "/analyze",
+      "/analyze/hierarchical",
+      "/rules/validate"
+    ],
+    "python-dr.saleh\\web_apps\\advanced_hierarchical_api.py": [
+      "/",
+      "/api/health",
+      "/api/analyze/traditional",
+      "/api/analyze/hierarchical",
+      "/api/validate",
+      "/api/repair",
+      "/api/batch",
+      "/api/system/info",
+      "/api/statistics"
+    ],
+    "python-dr.saleh\\web_apps\\main_app.py": [
+      "/",
+      "/api/analyze",
+      "/api/stats",
+      "/api/cache/clear",
+      "/api/examples",
+      "/api/health",
+      "/static/<path:filename>"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\app.py": [
+      "/",
+      "/api/status",
+      "/api/process_root",
+      "/api/batch_process",
+      "/api/apply_template",
+      "/api/templates",
+      "/api/validate",
+      "/api/process",
+      "/api/batch",
+      "/api/analyze",
+      "/api/templates"
+    ],
+    "python-dr.saleh\\tests\\unit\\arabic_root_web_server.py": [
+      "/",
+      "/api/generate_single",
+      "/api/generate_batch",
+      "/api/generate_random",
+      "/api/add_to_database",
+      "/api/database_stats",
+      "/api/search_roots",
+      "/api/store_data_database",
+      "/api/backup_database",
+      "/api/optimize_database",
+      "/api/get_root_details/<root>",
+      "/api/status",
+      "/api/morphophonemic/process",
+      "/api/morphophonemic/batch",
+      "/api/morphophonemic/templates",
+      "/api/morphophonemic/analyze",
+      "/api/morphophonemic/rules",
+      "/downimport_data/generated.json"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\web\\routes.py": [
+      "/",
+      "/api/analyze",
+      "/api/stats",
+      "/api/health",
+      "/api/examples"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\api.py": [
+      "/",
+      "/api/syllabic",
+      "/api/health",
+      "/api/stats",
+      "/api/phonemes",
+      "/api/registry"
+    ],
+    "arabic_morphophon\\web\\routes.py": [
+      "/",
+      "/api/analyze",
+      "/api/stats",
+      "/api/health",
+      "/api/examples"
+    ]
+  },
+  "total_endpoints": 118,
+  "endpoint_details": {
+    "advanced_hierarchical_api.py": {
+      "routes": [
+        "/",
+        "/api/health",
+        "/api/analyze/traditional",
+        "/api/analyze/hierarchical",
+        "/api/validate/rules",
+        "/api/repair",
+        "/api/batch",
+        "/api/info",
+        "/api/stats"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "advanced_production_api.py": {
+      "routes": [
+        "/",
+        "/api/health",
+        "/analyze",
+        "/analyze/hierarchical",
+        "/rules/validate",
+        "/batch",
+        "/stats"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "app.py": {
+      "routes": [
+        "/",
+        "/api/analyze",
+        "/api/stats",
+        "/api/cache/clear",
+        "/api/examples",
+        "/api/health",
+        "/static/<path:filename>"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "app_dynamic.py": {
+      "routes": [
+        "/",
+        "/static/<path:filename>",
+        "/api/analyze",
+        "/api/stats",
+        "/api/health",
+        "/api/cache/clear",
+        "/api/examples"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "app_new.py": {
+      "routes": [
+        "/",
+        "/api/analyze",
+        "/api/batch-analyze",
+        "/api/stats",
+        "/api/clear-cache"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "demos\\demo_advanced_integration.py": {
+      "routes": [
+        "/analyze",
+        "/analyze/hierarchical",
+        "/rules/validate"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "web_apps\\advanced_hierarchical_api.py": {
+      "routes": [
+        "/",
+        "/api/health",
+        "/api/analyze/traditional",
+        "/api/analyze/hierarchical",
+        "/api/validate",
+        "/api/repair",
+        "/api/batch",
+        "/api/system/info",
+        "/api/statistics"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "web_apps\\main_app.py": {
+      "routes": [
+        "/",
+        "/api/analyze",
+        "/api/stats",
+        "/api/cache/clear",
+        "/api/examples",
+        "/api/health",
+        "/static/<path:filename>"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\demos\\demo_advanced_integration.py": {
+      "routes": [
+        "/analyze",
+        "/analyze/hierarchical",
+        "/rules/validate"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\web_apps\\advanced_hierarchical_api.py": {
+      "routes": [
+        "/",
+        "/api/health",
+        "/api/analyze/traditional",
+        "/api/analyze/hierarchical",
+        "/api/validate",
+        "/api/repair",
+        "/api/batch",
+        "/api/system/info",
+        "/api/statistics"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\web_apps\\main_app.py": {
+      "routes": [
+        "/",
+        "/api/analyze",
+        "/api/stats",
+        "/api/cache/clear",
+        "/api/examples",
+        "/api/health",
+        "/static/<path:filename>"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\morphophonemic-api\\app.py": {
+      "routes": [
+        "/",
+        "/api/status",
+        "/api/process_root",
+        "/api/batch_process",
+        "/api/apply_template",
+        "/api/templates",
+        "/api/validate",
+        "/api/process",
+        "/api/batch",
+        "/api/analyze",
+        "/api/templates"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\tests\\unit\\arabic_root_web_server.py": {
+      "routes": [
+        "/",
+        "/api/generate_single",
+        "/api/generate_batch",
+        "/api/generate_random",
+        "/api/add_to_database",
+        "/api/database_stats",
+        "/api/search_roots",
+        "/api/store_data_database",
+        "/api/backup_database",
+        "/api/optimize_database",
+        "/api/get_root_details/<root>",
+        "/api/status",
+        "/api/morphophonemic/process",
+        "/api/morphophonemic/batch",
+        "/api/morphophonemic/templates",
+        "/api/morphophonemic/analyze",
+        "/api/morphophonemic/rules",
+        "/downimport_data/generated.json"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "python-dr.saleh\\arabic_morphophon\\web\\routes.py": {
+      "routes": [
+        "/",
+        "/api/analyze",
+        "/api/stats",
+        "/api/health",
+        "/api/examples"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\api.py": {
+      "routes": [
+        "/",
+        "/api/syllabic",
+        "/api/health",
+        "/api/stats",
+        "/api/phonemes",
+        "/api/registry"
+      ],
+      "functions": [],
+      "description": ""
+    },
+    "arabic_morphophon\\web\\routes.py": {
+      "routes": [
+        "/",
+        "/api/analyze",
+        "/api/stats",
+        "/api/health",
+        "/api/examples"
+      ],
+      "functions": [],
+      "description": ""
+    }
+  }
+}

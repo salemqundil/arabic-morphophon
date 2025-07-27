@@ -1,0 +1,43 @@
+{
+  "project_name": "Arabic Morphophonological Engine",
+  "encoding": {
+    "default": "utf-8",
+    "console_encoding": "utf-8",
+    "file_encoding": "utf-8",
+    "code_page": 65001
+  },
+  "powershell": {
+    "safe_mode": true,
+    "utf8_support": true,
+    "working_directory": "safe_workspace"
+  },
+  "arabic_characters": {
+    "problematic_chars": [
+      "ؤ",
+      "ئ",
+      "إ",
+      "أ"
+    ],
+    "safe_handling": true,
+    "encoding_validation": true
+  },
+  "virtual_environment": {
+    "python_encoding": "utf-8",
+    "legacy_windows_stdio": true,
+    "distutils_hack_fixed": true
+  },
+  "project_structure": {
+    "safe_directories": [
+      "safe_workspace",
+      "safe_workspace/scripts",
+      "safe_workspace/data",
+      "safe_workspace/logs",
+      "safe_workspace/temp"
+    ],
+    "config_files": [
+      "project_config.json",
+      "SafePowerShell.bat",
+      "setup_project.py"
+    ]
+  }
+}

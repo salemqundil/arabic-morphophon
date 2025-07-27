@@ -1,0 +1,265 @@
+version: '3.8'
+
+services:
+  # =============================================================================
+  # DATABASE SERVICES
+  # =============================================================================
+  
+  postgres-main:
+    image: postgres:15-alpine
+    container_name: morphophon-postgres
+    environment:
+      POSTGRES_DB: arabic_morphophon
+      POSTGRES_USER: morphophon_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./database/seed_data.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  redis-cache:
+    image: redis:7-alpine
+    container_name: morphophon-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+  
+  # =============================================================================
+  # MESSAGE QUEUE
+  # =============================================================================
+  
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: morphophon-kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+      
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: morphophon-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+  
+  # =============================================================================
+  # MICROSERVICES
+  # =============================================================================
+  
+  api-gateway:
+    build: 
+      context: .
+      dockerfile: services/api-gateway/Dockerfile
+    container_name: morphophon-api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://morphophon_user:${POSTGRES_PASSWORD}@postgres-main:5432/arabic_morphophon
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis-cache:6379/0
+      - ROOT_SERVICE_URL=http://root-service:8001
+      - PATTERN_SERVICE_URL=http://pattern-service:8002
+      - PHONOLOGY_SERVICE_URL=http://phonology-service:8003
+      - INTEGRATION_SERVICE_URL=http://integration-service:8004
+      - ANALYTICS_SERVICE_URL=http://analytics-service:8005
+    depends_on:
+      - postgres-main
+      - redis-cache
+      - root-service
+      - pattern-service
+      - phonology-service
+      - integration-service
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  root-service:
+    build: 
+      context: .
+      dockerfile: services/root-service/Dockerfile
+    container_name: morphophon-root-service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://morphophon_user:${POSTGRES_PASSWORD}@postgres-main:5432/arabic_morphophon
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis-cache:6379/1
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - postgres-main
+      - redis-cache
+      - kafka
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  pattern-service:
+    build: 
+      context: .
+      dockerfile: services/pattern-service/Dockerfile
+    container_name: morphophon-pattern-service
+    ports:
+      - "8002:8002"
+    environment:
+      - DATABASE_URL=postgresql://morphophon_user:${POSTGRES_PASSWORD}@postgres-main:5432/arabic_morphophon
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis-cache:6379/2
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - postgres-main
+      - redis-cache
+      - kafka
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  phonology-service:
+    build: 
+      context: .
+      dockerfile: services/phonology-service/Dockerfile
+    container_name: morphophon-phonology-service
+    ports:
+      - "8003:8003"
+    environment:
+      - DATABASE_URL=postgresql://morphophon_user:${POSTGRES_PASSWORD}@postgres-main:5432/arabic_morphophon
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis-cache:6379/3
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - postgres-main
+      - redis-cache
+      - kafka
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  integration-service:
+    build: 
+      context: .
+      dockerfile: services/integration-service/Dockerfile
+    container_name: morphophon-integration-service
+    ports:
+      - "8004:8004"
+    environment:
+      - DATABASE_URL=postgresql://morphophon_user:${POSTGRES_PASSWORD}@postgres-main:5432/arabic_morphophon
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis-cache:6379/4
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - ROOT_SERVICE_URL=http://root-service:8001
+      - PATTERN_SERVICE_URL=http://pattern-service:8002
+      - PHONOLOGY_SERVICE_URL=http://phonology-service:8003
+    depends_on:
+      - postgres-main
+      - redis-cache
+      - kafka
+      - root-service
+      - pattern-service
+      - phonology-service
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  analytics-service:
+    build: 
+      context: .
+      dockerfile: services/analytics-service/Dockerfile
+    container_name: morphophon-analytics-service
+    ports:
+      - "8005:8005"
+    environment:
+      - DATABASE_URL=postgresql://morphophon_user:${POSTGRES_PASSWORD}@postgres-main:5432/arabic_morphophon
+      - REDIS_URL=redis://:${REDIS_PASSWORD}@redis-cache:6379/5
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - postgres-main
+      - redis-cache
+      - kafka
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+  
+  # =============================================================================
+  # MONITORING & ANALYTICS
+  # =============================================================================
+  
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: morphophon-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+    
+  grafana:
+    image: grafana/grafana:latest
+    container_name: morphophon-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+  
+  # =============================================================================
+  # ADDITIONAL SERVICES
+  # =============================================================================
+  
+  nginx:
+    image: nginx:alpine
+    container_name: morphophon-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - api-gateway
+    networks:
+      - morphophon-network
+    rebegin: unless-endped
+
+volumes:
+  postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  morphophon-network:
+    driver: bridge

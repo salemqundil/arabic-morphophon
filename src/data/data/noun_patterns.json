@@ -1,0 +1,164 @@
+{
+  "masdar_forms": {
+    "فَعْل": {
+      "template": "فَعْل",
+      "cv_structure": "CaCL",
+      "meaning": "مصدر الثلاثي",
+      "examples": [
+        "كَتْب",
+        "قَتْل",
+        "ضَرْب",
+        "نَصْر"
+      ],
+      "frequency": 9
+    },
+    "فِعَالَة": {
+      "template": "فِعَالَة",
+      "cv_structure": "CiCaaLa",
+      "meaning": "مصدر للحرف والصناعات",
+      "examples": [
+        "كِتَابَة",
+        "قِرَاءَة",
+        "زِرَاعَة",
+        "تِجَارَة"
+      ],
+      "frequency": 8
+    },
+    "فُعُول": {
+      "template": "فُعُول",
+      "cv_structure": "CuCuuL",
+      "meaning": "مصدر للحركة والانتقال",
+      "examples": [
+        "دُخُول",
+        "خُرُوج",
+        "نُزُول",
+        "صُعُود"
+      ],
+      "frequency": 7
+    }
+  },
+  "active_participle": {
+    "فَاعِل": {
+      "template": "فَاعِل",
+      "cv_structure": "CaaCiL",
+      "meaning": "اسم الفاعل من الثلاثي",
+      "examples": [
+        "كَاتِب",
+        "قَارِئ",
+        "ضَارِب",
+        "نَاصِر"
+      ],
+      "frequency": 10
+    },
+    "مُفَعِّل": {
+      "template": "مُفَعِّل",
+      "cv_structure": "muCaCCiL",
+      "meaning": "اسم الفاعل من فَعَّلَ",
+      "examples": [
+        "مُعَلِّم",
+        "مُكَسِّر",
+        "مُقَطِّع"
+      ],
+      "frequency": 8
+    },
+    "مُفَاعِل": {
+      "template": "مُفَاعِل",
+      "cv_structure": "muCaaCiL",
+      "meaning": "اسم الفاعل من فَاعَلَ",
+      "examples": [
+        "مُكَاتِب",
+        "مُقَاتِل",
+        "مُشَارِك"
+      ],
+      "frequency": 7
+    }
+  },
+  "passive_participle": {
+    "مَفْعُول": {
+      "template": "مَفْعُول",
+      "cv_structure": "maCCuuL",
+      "meaning": "اسم المفعول من الثلاثي",
+      "examples": [
+        "مَكْتُوب",
+        "مَقْرُوء",
+        "مَضْرُوب",
+        "مَنْصُور"
+      ],
+      "frequency": 10
+    },
+    "مُفَعَّل": {
+      "template": "مُفَعَّل",
+      "cv_structure": "muCaCCaL",
+      "meaning": "اسم المفعول من فَعَّلَ",
+      "examples": [
+        "مُعَلَّم",
+        "مُكَسَّر",
+        "مُقَطَّع"
+      ],
+      "frequency": 8
+    }
+  },
+  "adjectival_forms": {
+    "فَعِيل": {
+      "template": "فَعِيل",
+      "cv_structure": "CaCiiL",
+      "meaning": "صفة مشبهة للصفات الثابتة",
+      "examples": [
+        "كَرِيم",
+        "رَحِيم",
+        "عَلِيم",
+        "حَكِيم"
+      ],
+      "frequency": 9
+    },
+    "فَعُول": {
+      "template": "فَعُول",
+      "cv_structure": "CaCuuL",
+      "meaning": "صفة مشبهة للمبالغة",
+      "examples": [
+        "صَبُور",
+        "شَكُور",
+        "غَفُور",
+        "رَؤُوف"
+      ],
+      "frequency": 8
+    },
+    "فَعَّال": {
+      "template": "فَعَّال",
+      "cv_structure": "CaCCaaL",
+      "meaning": "صيغة مبالغة",
+      "examples": [
+        "فَعَّال",
+        "قَتَّال",
+        "عَلَّام",
+        "غَفَّار"
+      ],
+      "frequency": 7
+    }
+  },
+  "temporal_spatial": {
+    "مَفْعَل": {
+      "template": "مَفْعَل",
+      "cv_structure": "maCCaL",
+      "meaning": "اسم مكان وزمان",
+      "examples": [
+        "مَكْتَب",
+        "مَلْعَب",
+        "مَطْبَخ",
+        "مَسْجِد"
+      ],
+      "frequency": 8
+    },
+    "مَفْعِل": {
+      "template": "مَفْعِل",
+      "cv_structure": "maCCiL",
+      "meaning": "اسم مكان وزمان",
+      "examples": [
+        "مَجْلِس",
+        "مَسْكِن",
+        "مَطْلِع"
+      ],
+      "frequency": 7
+    }
+  }
+}

@@ -1,0 +1,1465 @@
+{
+  "dependencies": {
+    "advanced_hierarchical_api.py": [
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "time",
+      "datetime",
+      "pathlib",
+      "typing",
+      "flask",
+      "flask_cors",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings"
+    ],
+    "advanced_hierarchical_api_fixed.py": [],
+    "advanced_production_api.py": [
+      "os",
+      "sys",
+      "time",
+      "traceback",
+      "datetime",
+      "typing",
+      "flask",
+      "integrator",
+      "arabic_morphophon.integrator"
+    ],
+    "analyze_project_hierarchy.py": [
+      "ast",
+      "json",
+      "os",
+      "re",
+      "networkx",
+      "matplotlib.pyplot",
+      "collections",
+      "pathlib",
+      "typing",
+      "dataclasses"
+    ],
+    "app.py": [
+      "hashlib",
+      "json",
+      "os",
+      "sys",
+      "threading",
+      "time",
+      "uuid",
+      "datetime",
+      "flask",
+      "flask_cors",
+      "flask_socketio",
+      "arabic_morphophon.phonology.analyzer",
+      "arabic_morphophon.phonology.normalizer",
+      "arabic_morphophon.phonology.syllabic_unit_encoder"
+    ],
+    "app_clean.py": [
+      "logging",
+      "os",
+      "sys",
+      "typing",
+      "flask",
+      "flask_cors",
+      "arabic_morphophon.web",
+      "flask_socketio",
+      "arabic_morphophon.integrator"
+    ],
+    "app_dynamic.py": [
+      "asyncio",
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "time",
+      "uuid",
+      "datetime",
+      "threading",
+      "typing",
+      "flask",
+      "flask_cors",
+      "flask_socketio",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.phonology.analyzer",
+      "arabic_morphophon.phonology.classifier",
+      "arabic_morphophon.phonology.normalizer",
+      "arabic_morphophon.phonology.syllabic_unit_encoder"
+    ],
+    "app_fixed.py": [],
+    "app_new.py": [
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "time",
+      "arabic_morphophon.integrator",
+      "datetime",
+      "threading",
+      "typing",
+      "flask",
+      "flask_socketio",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.roots"
+    ],
+    "arabic_phonology_engine.py": [],
+    "comprehensive_tests.py": [
+      "json",
+      "sys",
+      "time",
+      "traceback",
+      "os",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.integrator"
+    ],
+    "demo_advanced_integration.py": [],
+    "demo_enhanced_integration.py": [],
+    "demo_perfect.py": [],
+    "demo_perfect_clean.py": [],
+    "demo_perfect_engine.py": [],
+    "fix_violations.py": [],
+    "gunicorn.conf.py": [],
+    "main.py": [],
+    "quick_test.py": [],
+    "run_tests.py": [
+      "argparse",
+      "subprocess",
+      "sys",
+      "pathlib"
+    ],
+    "setup.py": [
+      "pybind11",
+      "pybind11",
+      "pybind11.setup_helpers"
+    ],
+    "test_advanced_system.py": [],
+    "test_advanced_system_clean.py": [],
+    "test_clean_model.py": [],
+    "test_engine.py": [],
+    "test_simple.py": [],
+    "test_simplified_roots.py": [],
+    "verify_organization.py": [
+      "sys",
+      "pathlib",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "web_apps.main_app",
+      "web_apps.advanced_hierarchical_api"
+    ],
+    "WEB_TEST.py": [],
+    "arabic_morphology\\__init__.py": [],
+    "arabic_morphophon\\integrator.py": [
+      "json",
+      "logging",
+      "dataclasses",
+      "datetime",
+      "enum",
+      "typing",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.database.enhanced_root_database",
+      "contextlib"
+    ],
+    "arabic_morphophon\\__init__.py": [
+      "phonology"
+    ],
+    "arabic_phonology_engine\\example.py": [],
+    "arabic_phonology_engine\\setup.py": [],
+    "arabic_phonology_engine\\test_functionality.py": [],
+    "arabic_phonology_engine\\test_morphological_analyzer.py": [],
+    "arabic_phonology_engine\\web_app.py": [],
+    "backend\\app.py": [],
+    "backend\\engine.py": [],
+    "backend\\engine_simple.py": [],
+    "backend\\test_phonology.py": [],
+    "backend\\verify_phonology.py": [],
+    "data\\phoneme_db.py": [],
+    "demos\\copilot_demo.py": [],
+    "demos\\demo_advanced_integration.py": [
+      "os",
+      "sys",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "demos\\demo_arabic_engine.py": [],
+    "demos\\demo_arabic_engine_fixed.py": [],
+    "demos\\demo_enhanced_integration.py": [
+      "json",
+      "sys",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "demos\\demo_perfect.py": [
+      "os",
+      "sys",
+      "time",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "demos\\demo_perfect_engine.py": [
+      "json",
+      "datetime",
+      "arabic_morphophon.integrator"
+    ],
+    "phonology\\analyzer.py": [
+      "re"
+    ],
+    "phonology\\classifier.py": [],
+    "phonology\\normalizer.py": [
+      "re"
+    ],
+    "phonology\\syllabic_unit_encoder.py": [
+      "re",
+      "typing",
+      "normalizer"
+    ],
+    "phonology\\__init__.py": [
+      "analyzer",
+      "classifier",
+      "normalizer",
+      "syllabic_unit_encoder"
+    ],
+    "python-dr.saleh\\run_tests.py": [
+      "argparse",
+      "subprocess",
+      "sys",
+      "pathlib"
+    ],
+    "python-dr.saleh\\test_engine.py": [],
+    "python-dr.saleh\\verify_organization.py": [
+      "sys",
+      "pathlib",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "web_apps.main_app",
+      "web_apps.advanced_hierarchical_api"
+    ],
+    "scripts\\final_cleanup.py": [],
+    "scripts\\fix_violations.py": [
+      "os",
+      "subprocess",
+      "sys",
+      "re",
+      "pathlib",
+      "typing"
+    ],
+    "scripts\\quick_test.py": [
+      "os",
+      "sys",
+      "advanced_hierarchical_api",
+      "arabic_morphophon.advanced",
+      "arabic_morphophon.integrator"
+    ],
+    "scripts\\validate_environment.py": [],
+    "static\\# Different response formats based on an.py": [],
+    "tests\\conftest.py": [
+      "sys",
+      "pytest",
+      "pathlib"
+    ],
+    "tests\\test_engine_smoke.py": [],
+    "tests\\test_root_database.py": [],
+    "tests\\test_simple_smoke.py": [],
+    "tests\\test_smoke_phonology.py": [],
+    "tests\\__init__.py": [],
+    "web_apps\\advanced_hierarchical_api.py": [
+      "logging",
+      "traceback",
+      "datetime",
+      "typing",
+      "flask",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced"
+    ],
+    "web_apps\\main_app.py": [
+      "hashlib",
+      "json",
+      "os",
+      "sys",
+      "threading",
+      "time",
+      "uuid",
+      "datetime",
+      "flask",
+      "flask_cors",
+      "flask_socketio",
+      "arabic_morphophon.phonology.analyzer",
+      "arabic_morphophon.phonology.normalizer",
+      "arabic_morphophon.phonology.syllabic_unit_encoder"
+    ],
+    "web_apps\\web_api.py": [],
+    "tests\\integration\\test_advanced_system.py": [
+      "json",
+      "sys",
+      "time",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "advanced_hierarchical_api",
+      "arabic_morphophon.advanced"
+    ],
+    "tests\\integration\\test_advanced_system_clean.py": [
+      "sys",
+      "os",
+      "time",
+      "traceback",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "advanced_hierarchical_api"
+    ],
+    "tests\\integration\\test_api_integration.py": [],
+    "tests\\integration\\test_arabic_engine_comprehensive.py": [],
+    "tests\\integration\\test_comprehensive.py": [
+      "json",
+      "sys",
+      "time",
+      "traceback",
+      "os",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.morphophon"
+    ],
+    "tests\\integration\\test_full_pipeline.py": [],
+    "tests\\integration\\__init__.py": [],
+    "tests\\performance\\test_benchmarks.py": [],
+    "tests\\performance\\__init__.py": [],
+    "tests\\smoke\\test_basic_functionality.py": [
+      "pytest",
+      "arabic_morphophon.integrator"
+    ],
+    "tests\\smoke\\test_engine_health.py": [
+      "sys",
+      "pytest",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "tests\\smoke\\test_phonology_health.py": [
+      "sys",
+      "pytest",
+      "import_datalib",
+      "sys",
+      "contextlib",
+      "pathlib",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon",
+      "arabic_morphophon.models",
+      "arabic_morphophon.models.roots"
+    ],
+    "tests\\smoke\\__init__.py": [],
+    "tests\\unit\\test_api_direct.py": [],
+    "tests\\unit\\test_app.py": [
+      "pytest",
+      "sys",
+      "sys",
+      "app",
+      "pathlib",
+      "test_arabic_root_generator",
+      "test_arabic_database_manager"
+    ],
+    "tests\\unit\\test_arabic_engine.py": [],
+    "tests\\unit\\test_clean_model.py": [
+      "sys",
+      "pathlib",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.root_database",
+      "arabic_morphophon.database.enhanced_root_database"
+    ],
+    "tests\\unit\\test_copilot_demo.py": [],
+    "tests\\unit\\test_database.py": [
+      "json",
+      "sys",
+      "pytest",
+      "__future__",
+      "pathlib",
+      "textwrap",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "tests\\unit\\test_direct.py": [],
+    "tests\\unit\\test_engine.py": [
+      "json",
+      "os",
+      "sys",
+      "time",
+      "requests",
+      "datetime",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.integrator"
+    ],
+    "tests\\unit\\test_main.py": [],
+    "tests\\unit\\test_simple.py": [
+      "os",
+      "sys",
+      "traceback",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced",
+      "advanced_hierarchical_api"
+    ],
+    "tests\\unit\\test_simplified_roots.py": [
+      "sys",
+      "pathlib",
+      "arabic_morphophon.models.roots"
+    ],
+    "tests\\unit\\test_standalone.py": [],
+    "tests\\unit\\test_unit_collection.py": [],
+    "tests\\unit\\__init__.py": [],
+    "python-dr.saleh\\arabic_morphophon\\integrator.py": [
+      "json",
+      "logging",
+      "dataclasses",
+      "datetime",
+      "enum",
+      "typing",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.database.enhanced_root_database",
+      "contextlib"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\__init__.py": [
+      "phonology"
+    ],
+    "python-dr.saleh\\data\\phoneme_db.py": [],
+    "python-dr.saleh\\demos\\copilot_demo.py": [],
+    "python-dr.saleh\\demos\\demo_advanced_integration.py": [
+      "os",
+      "sys",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\demos\\demo_arabic_engine.py": [],
+    "python-dr.saleh\\demos\\demo_arabic_engine_fixed.py": [],
+    "python-dr.saleh\\demos\\demo_enhanced_integration.py": [
+      "json",
+      "sys",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\demos\\demo_perfect.py": [
+      "os",
+      "sys",
+      "time",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\demos\\demo_perfect_engine.py": [
+      "json",
+      "datetime",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\scripts\\final_cleanup.py": [],
+    "python-dr.saleh\\scripts\\fix_violations.py": [
+      "os",
+      "subprocess",
+      "sys",
+      "re",
+      "pathlib",
+      "typing"
+    ],
+    "python-dr.saleh\\scripts\\quick_test.py": [
+      "os",
+      "sys",
+      "advanced_hierarchical_api",
+      "arabic_morphophon.advanced",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\scripts\\validate_environment.py": [],
+    "python-dr.saleh\\static\\# Different response formats based on an.py": [],
+    "python-dr.saleh\\tests\\conftest.py": [
+      "sys",
+      "pytest",
+      "pathlib"
+    ],
+    "python-dr.saleh\\tests\\__init__.py": [],
+    "python-dr.saleh\\web_apps\\advanced_hierarchical_api.py": [
+      "logging",
+      "traceback",
+      "datetime",
+      "typing",
+      "flask",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced"
+    ],
+    "python-dr.saleh\\web_apps\\main_app.py": [
+      "hashlib",
+      "json",
+      "os",
+      "sys",
+      "threading",
+      "time",
+      "uuid",
+      "datetime",
+      "flask",
+      "flask_cors",
+      "flask_socketio",
+      "arabic_morphophon.phonology.analyzer",
+      "arabic_morphophon.phonology.normalizer",
+      "arabic_morphophon.phonology.syllabic_unit_encoder"
+    ],
+    "python-dr.saleh\\web_apps\\web_api.py": [],
+    "python-dr.saleh\\tests\\integration\\test_advanced_system.py": [
+      "json",
+      "sys",
+      "time",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "advanced_hierarchical_api",
+      "arabic_morphophon.advanced"
+    ],
+    "python-dr.saleh\\tests\\integration\\test_advanced_system_clean.py": [
+      "sys",
+      "os",
+      "time",
+      "traceback",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced.phoneme_embeddings",
+      "arabic_morphophon.advanced.syllabic_unit_embeddings",
+      "arabic_morphophon.advanced.graph_autoencoder",
+      "arabic_morphophon.advanced.soft_logic_rules",
+      "advanced_hierarchical_api"
+    ],
+    "python-dr.saleh\\tests\\integration\\test_api_integration.py": [],
+    "python-dr.saleh\\tests\\integration\\test_arabic_engine_comprehensive.py": [],
+    "python-dr.saleh\\tests\\integration\\test_comprehensive.py": [
+      "json",
+      "sys",
+      "time",
+      "traceback",
+      "os",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.morphophon"
+    ],
+    "python-dr.saleh\\tests\\integration\\test_full_pipeline.py": [],
+    "python-dr.saleh\\tests\\integration\\__init__.py": [],
+    "python-dr.saleh\\tests\\morphophonemic-api\\app.py": [
+      "os",
+      "json",
+      "logging",
+      "datetime",
+      "pathlib",
+      "typing",
+      "flask",
+      "flask_cors",
+      "flask_limiter",
+      "flask_limiter.util",
+      "werkzeug.exceptions",
+      "morphophonemic.integrator",
+      "morphophonemic.utils"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\run.py": [
+      "os",
+      "sys",
+      "logging",
+      "pathlib",
+      "app",
+      "gunicorn.app.wsgiapp"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\begin.py": [
+      "os",
+      "sys",
+      "argparse",
+      "subprocess",
+      "pathlib",
+      "app"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\test_integration.py": [
+      "sys",
+      "os",
+      "pathlib",
+      "morphophonemic.integrator",
+      "app"
+    ],
+    "python-dr.saleh\\tests\\performance\\test_benchmarks.py": [],
+    "python-dr.saleh\\tests\\performance\\__init__.py": [],
+    "python-dr.saleh\\tests\\smoke\\test_basic_functionality.py": [
+      "pytest",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\tests\\smoke\\test_engine_health.py": [
+      "sys",
+      "pytest",
+      "pathlib",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\tests\\smoke\\test_phonology_health.py": [
+      "sys",
+      "pytest",
+      "import_datalib",
+      "sys",
+      "contextlib",
+      "pathlib",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon",
+      "arabic_morphophon.models",
+      "arabic_morphophon.models.roots"
+    ],
+    "python-dr.saleh\\tests\\smoke\\__init__.py": [],
+    "python-dr.saleh\\tests\\unit\\arabic_comprehensive_generator.py": [
+      "json",
+      "random",
+      "requests",
+      "re",
+      "logging",
+      "datetime",
+      "typing",
+      "dataclasses",
+      "enum"
+    ],
+    "python-dr.saleh\\tests\\unit\\arabic_root_system_demo.py": [
+      "json",
+      "sys",
+      "datetime",
+      "pathlib",
+      "test_arabic_root_generator",
+      "test_arabic_database_manager"
+    ],
+    "python-dr.saleh\\tests\\unit\\arabic_root_web_server.py": [
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "datetime",
+      "pathlib",
+      "typing",
+      "functools",
+      "flask",
+      "flask_cors",
+      "werkzeug.exceptions",
+      "test_arabic_root_generator",
+      "test_arabic_database_manager",
+      "morphophonemic_engine"
+    ],
+    "python-dr.saleh\\tests\\unit\\config.py": [
+      "os",
+      "logging",
+      "logging",
+      "pathlib",
+      "typing",
+      "logging.processrs"
+    ],
+    "python-dr.saleh\\tests\\unit\\morphophonemic_engine.py": [
+      "re",
+      "logging",
+      "json",
+      "unicodedata",
+      "typing",
+      "dataclasses",
+      "datetime",
+      "enum",
+      "test_arabic_root_generator"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_api_direct.py": [],
+    "python-dr.saleh\\tests\\unit\\test_app.py": [
+      "pytest",
+      "app"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_arabic_database_manager.py": [
+      "json",
+      "sqlite3",
+      "sys",
+      "time",
+      "logging",
+      "datetime",
+      "pathlib",
+      "typing",
+      "dataclasses",
+      "arabic_morphophon.models.roots",
+      "test_arabic_root_generator"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_arabic_engine.py": [],
+    "python-dr.saleh\\tests\\unit\\test_arabic_root_generator.py": [
+      "json",
+      "random",
+      "sys",
+      "datetime",
+      "pathlib",
+      "typing",
+      "dataclasses",
+      "enum",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.root_database",
+      "arabic_morphophon.database.enhanced_root_database"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_clean_model.py": [
+      "sys",
+      "pathlib",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.root_database",
+      "arabic_morphophon.database.enhanced_root_database"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_copilot_demo.py": [],
+    "python-dr.saleh\\tests\\unit\\test_database.py": [
+      "json",
+      "sys",
+      "pytest",
+      "__future__",
+      "pathlib",
+      "textwrap",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_direct.py": [],
+    "python-dr.saleh\\tests\\unit\\test_engine.py": [
+      "json",
+      "os",
+      "sys",
+      "time",
+      "requests",
+      "datetime",
+      "arabic_morphophon.models.patterns",
+      "arabic_morphophon.models.phonology",
+      "arabic_morphophon.models.roots",
+      "arabic_morphophon.models.morphophon",
+      "arabic_morphophon.integrator"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_main.py": [],
+    "python-dr.saleh\\tests\\unit\\test_simple.py": [
+      "os",
+      "sys",
+      "traceback",
+      "typing",
+      "arabic_morphophon.integrator",
+      "arabic_morphophon.advanced",
+      "advanced_hierarchical_api"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_simplified_roots.py": [
+      "sys",
+      "pathlib",
+      "arabic_morphophon.models.roots"
+    ],
+    "python-dr.saleh\\tests\\unit\\test_standalone.py": [],
+    "python-dr.saleh\\tests\\unit\\test_unit_collection.py": [],
+    "python-dr.saleh\\tests\\unit\\__init__.py": [],
+    "python-dr.saleh\\tests\\morphophonemic-api\\morphophonemic\\integrator.py": [
+      "re",
+      "json",
+      "logging",
+      "sys",
+      "typing",
+      "dataclasses",
+      "datetime",
+      "pathlib",
+      "rules",
+      "utils",
+      "unit.test_arabic_root_generator",
+      "types"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\morphophonemic\\rules.py": [
+      "re",
+      "logging",
+      "abc",
+      "typing"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\morphophonemic\\utils.py": [
+      "re",
+      "logging",
+      "typing",
+      "dataclasses"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\morphophonemic\\__init__.py": [
+      "integrator",
+      "utils"
+    ],
+    "python-dr.saleh\\tests\\morphophonemic-api\\tests\\test_integrator.py": [
+      "unittest",
+      "sys",
+      "time",
+      "pathlib",
+      "morphophonemic.integrator",
+      "morphophonemic.rules",
+      "morphophonemic.utils"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\advanced\\graph_autoencoder.py": [
+      "math",
+      "numpy",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "torch.optim",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\advanced\\phoneme_embeddings.py": [
+      "math",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\advanced\\soft_logic_rules.py": [
+      "math",
+      "re",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\advanced\\syllabic_unit_embeddings.py": [
+      "math",
+      "re",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\advanced\\__init__.py": [
+      "typing",
+      "graph_autoencoder",
+      "phoneme_embeddings",
+      "soft_logic_rules",
+      "syllabic_unit_embeddings"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\database\\demo_root_database.py": [
+      "sys",
+      "time",
+      "json",
+      "tempfile",
+      "random",
+      "string",
+      "traceback",
+      "pathlib",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\database\\enhanced_root_database.py": [
+      "json",
+      "sqlite3",
+      "time",
+      "__future__",
+      "collections",
+      "dataclasses",
+      "datetime",
+      "pathlib",
+      "typing",
+      "models.roots"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\database\\test_enhanced_database.py": [
+      "tempfile",
+      "time",
+      "shutil",
+      "json",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\database\\test_root_database_pytest.py": [
+      "json",
+      "sys",
+      "pytest",
+      "time",
+      "time",
+      "__future__",
+      "pathlib",
+      "textwrap",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\database\\__init__.py": [
+      "enhanced_root_database"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\patterns.py": [
+      "json",
+      "re",
+      "__future__",
+      "dataclasses",
+      "enum",
+      "typing",
+      "arabic_morphophon.models.roots",
+      "roots"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\phonology.py": [
+      "re",
+      "abc",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\roots.py": [
+      "re",
+      "json",
+      "json",
+      "__future__",
+      "enum",
+      "typing",
+      "root_database"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\roots_clean.py": [
+      "re",
+      "__future__",
+      "enum",
+      "typing",
+      "root_database"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\roots_new.py": [
+      "re",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\roots_simple.py": [
+      "dataclasses",
+      "enum",
+      "typing",
+      "root_database"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\root_database.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\morphophon.py": [
+      "re",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\models\\__init__.py": [
+      "roots"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\phonology\\analyzer.py": [
+      "re"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\phonology\\classifier.py": [],
+    "python-dr.saleh\\arabic_morphophon\\phonology\\normalizer.py": [
+      "re"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\phonology\\syllabic_unit_encoder.py": [
+      "re",
+      "typing",
+      "normalizer"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\phonology\\__init__.py": [
+      "analyzer",
+      "classifier",
+      "normalizer",
+      "syllabic_unit_encoder"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\web\\routes.py": [
+      "typing",
+      "flask",
+      "services",
+      "utils"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\web\\services.py": [
+      "hashlib",
+      "logging",
+      "functools",
+      "typing",
+      "utils"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\web\\utils.py": [
+      "logging",
+      "time",
+      "functools",
+      "typing"
+    ],
+    "python-dr.saleh\\arabic_morphophon\\web\\__init__.py": [
+      "routes",
+      "services",
+      "utils"
+    ],
+    "arabic_phonology_engine_new\\config\\development.py": [
+      "os",
+      "dataclasses",
+      "typing"
+    ],
+    "arabic_phonology_engine_new\\scripts\\deploy.py": [],
+    "arabic_phonology_engine_new\\scripts\\setup.py": [
+      "pybind11",
+      "pybind11",
+      "pybind11.setup_helpers"
+    ],
+    "arabic_phonology_engine_new\\tests\\conftest.py": [
+      "pytest"
+    ],
+    "arabic_phonology_engine_new\\tests\\__init__.py": [],
+    "arabic_phonology_engine_new\\tools\\cleanup.py": [],
+    "arabic_phonology_engine_new\\tools\\orchestrator.py": [],
+    "arabic_phonology_engine_new\\tools\\project_optimizer.py": [
+      "hashlib",
+      "shutil",
+      "pathlib",
+      "typing"
+    ],
+    "arabic_phonology_engine_new\\tools\\verification.py": [],
+    "arabic_phonology_engine_new\\tests\\integration\\test_api.py": [],
+    "arabic_phonology_engine_new\\tests\\integration\\__init__.py": [],
+    "arabic_phonology_engine_new\\tests\\performance\\__init__.py": [],
+    "arabic_phonology_engine_new\\tests\\unit\\test_analyzer.py": [],
+    "arabic_phonology_engine_new\\tests\\unit\\test_engine.py": [],
+    "arabic_phonology_engine_new\\tests\\unit\\__init__.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\__init__.py": [
+      "core.engine",
+      "core.phoneme",
+      "data.phoneme_db"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\analyzer.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\classifier.py": [
+      "__future__",
+      "dataclasses",
+      "typing"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\import_data pytest.py": [
+      "pytest",
+      "classifier",
+      "morphophon"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\normalizer.py": [
+      "re"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\phoneme_registry.py": [
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\morphophon.py": [
+      "sys",
+      "__future__",
+      "dataclasses",
+      "pathlib",
+      "typing",
+      "phonology.classifier"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\syllabic_unit_encoder.py": [
+      "phonology.classifier"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\unified.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\utils.py": [
+      "typing"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\__init__.py": [
+      "os"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\core\\engine.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\core\\__init__.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\data\\phoneme_db.py": [
+      "logging",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\data\\__init__.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\utils\\__init__.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\api.py": [
+      "json",
+      "logging",
+      "os",
+      "sys",
+      "time",
+      "traceback",
+      "uuid",
+      "redis",
+      "abc",
+      "dataclasses",
+      "datetime",
+      "functools",
+      "pathlib",
+      "threading",
+      "typing",
+      "flask",
+      "flask_cors",
+      "phonology.classifier",
+      "phonology.phoneme_registry",
+      "phonology.morphophon"
+    ],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\app.py": [],
+    "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\__init__.py": [],
+    "arabic_phonology_engine\\arabic_phonology_engine\\analyzer.py": [],
+    "arabic_phonology_engine\\arabic_phonology_engine\\inflection.py": [],
+    "arabic_phonology_engine\\arabic_phonology_engine\\morphology.py": [],
+    "arabic_phonology_engine\\arabic_phonology_engine\\phonology.py": [],
+    "arabic_phonology_engine\\arabic_phonology_engine\\segmentation.py": [],
+    "arabic_phonology_engine\\arabic_phonology_engine\\__init__.py": [],
+    "arabic_phonology_engine\\tests\\run_tests.py": [],
+    "arabic_phonology_engine\\tests\\test_analyzer.py": [],
+    "arabic_phonology_engine\\tests\\test_inflection.py": [],
+    "arabic_phonology_engine\\tests\\test_morphology.py": [],
+    "arabic_phonology_engine\\tests\\test_phonology.py": [],
+    "arabic_phonology_engine\\tests\\test_segmentation.py": [],
+    "arabic_phonology_engine\\tests\\__init__.py": [],
+    "arabic_morphophon\\advanced\\graph_autoencoder.py": [
+      "math",
+      "numpy",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "torch.optim",
+      "typing"
+    ],
+    "arabic_morphophon\\advanced\\phoneme_embeddings.py": [
+      "math",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "typing"
+    ],
+    "arabic_morphophon\\advanced\\soft_logic_rules.py": [
+      "math",
+      "re",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "typing"
+    ],
+    "arabic_morphophon\\advanced\\syllabic_unit_embeddings.py": [
+      "math",
+      "re",
+      "torch",
+      "torch.nn",
+      "torch.nn.functional",
+      "typing"
+    ],
+    "arabic_morphophon\\advanced\\__init__.py": [
+      "typing",
+      "graph_autoencoder",
+      "phoneme_embeddings",
+      "soft_logic_rules",
+      "syllabic_unit_embeddings"
+    ],
+    "arabic_morphophon\\database\\demo_root_database.py": [
+      "sys",
+      "time",
+      "json",
+      "tempfile",
+      "random",
+      "string",
+      "traceback",
+      "pathlib",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "arabic_morphophon\\database\\enhanced_root_database.py": [
+      "json",
+      "sqlite3",
+      "time",
+      "__future__",
+      "collections",
+      "dataclasses",
+      "datetime",
+      "pathlib",
+      "typing",
+      "models.roots"
+    ],
+    "arabic_morphophon\\database\\test_enhanced_database.py": [
+      "tempfile",
+      "time",
+      "shutil",
+      "json",
+      "pathlib",
+      "typing",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "arabic_morphophon\\database\\test_root_database_pytest.py": [
+      "json",
+      "sys",
+      "pytest",
+      "time",
+      "time",
+      "__future__",
+      "pathlib",
+      "textwrap",
+      "arabic_morphophon.database.enhanced_root_database",
+      "arabic_morphophon.models.roots"
+    ],
+    "arabic_morphophon\\database\\__init__.py": [
+      "enhanced_root_database"
+    ],
+    "arabic_morphophon\\models\\patterns.py": [
+      "json",
+      "re",
+      "__future__",
+      "dataclasses",
+      "enum",
+      "typing",
+      "arabic_morphophon.models.roots",
+      "roots"
+    ],
+    "arabic_morphophon\\models\\phonology.py": [
+      "re",
+      "abc",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "arabic_morphophon\\models\\roots.py": [
+      "re",
+      "json",
+      "json",
+      "__future__",
+      "enum",
+      "typing",
+      "root_database"
+    ],
+    "arabic_morphophon\\models\\roots_clean.py": [
+      "re",
+      "__future__",
+      "enum",
+      "typing",
+      "root_database"
+    ],
+    "arabic_morphophon\\models\\roots_new.py": [
+      "re",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "arabic_morphophon\\models\\roots_simple.py": [
+      "dataclasses",
+      "enum",
+      "typing",
+      "root_database"
+    ],
+    "arabic_morphophon\\models\\root_database.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "arabic_morphophon\\models\\morphophon.py": [
+      "re",
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "arabic_morphophon\\models\\__init__.py": [
+      "roots"
+    ],
+    "arabic_morphophon\\phonology\\analyzer.py": [
+      "re"
+    ],
+    "arabic_morphophon\\phonology\\classifier.py": [],
+    "arabic_morphophon\\phonology\\normalizer.py": [
+      "re"
+    ],
+    "arabic_morphophon\\phonology\\syllabic_unit_encoder.py": [
+      "re",
+      "typing",
+      "normalizer"
+    ],
+    "arabic_morphophon\\phonology\\__init__.py": [
+      "analyzer",
+      "classifier",
+      "normalizer",
+      "syllabic_unit_encoder"
+    ],
+    "arabic_morphophon\\web\\routes.py": [
+      "typing",
+      "flask",
+      "services",
+      "utils"
+    ],
+    "arabic_morphophon\\web\\services.py": [
+      "hashlib",
+      "logging",
+      "functools",
+      "typing",
+      "utils"
+    ],
+    "arabic_morphophon\\web\\utils.py": [
+      "logging",
+      "time",
+      "functools",
+      "typing"
+    ],
+    "arabic_morphophon\\web\\__init__.py": [
+      "routes",
+      "services",
+      "utils"
+    ],
+    "arabic_morphology\\core\\models.py": [],
+    "arabic_morphology\\core\\__init__.py": [],
+    "arabic_morphology\\phonology\\processor.py": [],
+    "arabic_morphology\\phonology\\__init__.py": [],
+    "arabic_morphology\\segmentation\\segmenter.py": [],
+    "arabic_morphology\\segmentation\\__init__.py": [],
+    "arabic_morphology\\utils\\exceptions.py": [],
+    "arabic_morphology\\utils\\__init__.py": []
+  },
+  "circular_dependencies": [
+    [
+      "arabic_morphophon\\models\\phonology.py",
+      "comprehensive_tests.py"
+    ],
+    [
+      "arabic_morphophon\\models\\phonology.py",
+      "comprehensive_tests.py",
+      "arabic_morphophon\\integrator.py"
+    ],
+    [
+      "arabic_morphophon\\integrator.py",
+      "arabic_morphophon\\models\\patterns.py",
+      "comprehensive_tests.py"
+    ],
+    [
+      "arabic_morphophon\\integrator.py",
+      "arabic_morphophon\\models\\patterns.py",
+      "arabic_morphophon\\models\\roots.py",
+      "comprehensive_tests.py"
+    ],
+    [
+      "arabic_morphophon\\integrator.py",
+      "arabic_morphophon\\models\\roots.py",
+      "comprehensive_tests.py"
+    ],
+    [
+      "arabic_morphophon\\integrator.py",
+      "arabic_morphophon\\models\\morphophon.py",
+      "comprehensive_tests.py"
+    ],
+    [
+      "comprehensive_tests.py",
+      "arabic_morphophon\\models\\roots.py"
+    ],
+    [
+      "comprehensive_tests.py",
+      "arabic_morphophon\\models\\patterns.py"
+    ],
+    [
+      "comprehensive_tests.py",
+      "arabic_morphophon\\models\\patterns.py",
+      "arabic_morphophon\\models\\roots.py"
+    ],
+    [
+      "comprehensive_tests.py",
+      "arabic_morphophon\\models\\morphophon.py"
+    ]
+  ],
+  "dependency_levels": {},
+  "most_dependent": [
+    [
+      "test_advanced_system.py",
+      61
+    ],
+    [
+      "arabic_morphophon\\integrator.py",
+      36
+    ],
+    [
+      "demos\\copilot_demo.py",
+      35
+    ],
+    [
+      "comprehensive_tests.py",
+      34
+    ],
+    [
+      "arabic_morphophon\\models\\roots.py",
+      26
+    ],
+    [
+      "arabic_morphophon\\database\\enhanced_root_database.py",
+      15
+    ],
+    [
+      "arabic_morphophon\\advanced\\graph_autoencoder.py",
+      11
+    ],
+    [
+      "arabic_morphophon\\models\\patterns.py",
+      10
+    ],
+    [
+      "arabic_morphophon\\advanced\\phoneme_embeddings.py",
+      9
+    ],
+    [
+      "arabic_morphophon\\advanced\\syllabic_unit_embeddings.py",
+      9
+    ]
+  ],
+  "least_dependent": [
+    [
+      "arabic_morphophon\\web\\utils.py",
+      0
+    ],
+    [
+      "arabic_morphophon\\web\\__init__.py",
+      0
+    ],
+    [
+      "arabic_morphology\\core\\models.py",
+      0
+    ],
+    [
+      "arabic_morphology\\core\\__init__.py",
+      0
+    ],
+    [
+      "arabic_morphology\\phonology\\processor.py",
+      0
+    ],
+    [
+      "arabic_morphology\\phonology\\__init__.py",
+      0
+    ],
+    [
+      "arabic_morphology\\segmentation\\segmenter.py",
+      0
+    ],
+    [
+      "arabic_morphology\\segmentation\\__init__.py",
+      0
+    ],
+    [
+      "arabic_morphology\\utils\\exceptions.py",
+      0
+    ],
+    [
+      "arabic_morphology\\utils\\__init__.py",
+      0
+    ]
+  ]
+}

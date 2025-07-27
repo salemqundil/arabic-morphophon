@@ -1,0 +1,336 @@
+{
+  "project_name": "Arabic Morphophonological Integration Project",
+  "analysis_date": "2025-07-20",
+  "hierarchy_structure": {
+    "level_1_parent": {
+      "name": "External Interface Layer (Parent Level)",
+      "description": "نقاط الدخول الرئيسية للمشروع - Flask APIs",
+      "total_files": 20,
+      "components": {
+        "primary_apis": [
+          {
+            "file": "app.py",
+            "type": "Primary Flask API",
+            "routes": 7,
+            "endpoints": ["/", "/api/analyze", "/api/stats", "/api/health", "/api/cache/clear", "/api/examples", "/static/<path:filename>"],
+            "role": "الواجهة الرئيسية الأساسية",
+            "children": ["integrator.py", "models/"]
+          },
+          {
+            "file": "advanced_hierarchical_api.py", 
+            "type": "Advanced Flask API",
+            "routes": 9,
+            "endpoints": ["/", "/api/health", "/api/analyze/traditional", "/api/analyze/hierarchical", "/api/validate/rules", "/api/repair", "/api/batch", "/api/info", "/api/stats"],
+            "classes": ["AdvancedArabicAnalysisSystem"],
+            "role": "واجهة متقدمة للتحليل الهرمي",
+            "children": ["AdvancedArabicAnalysisSystem", "specialized_engines/"]
+          },
+          {
+            "file": "advanced_production_api.py",
+            "type": "Production Flask API", 
+            "routes": 7,
+            "endpoints": ["/", "/api/health", "/analyze", "/analyze/hierarchical", "/rules/validate", "/batch", "/stats"],
+            "classes": ["MockAdvancedComponents"],
+            "role": "واجهة الإنتاج المتقدمة",
+            "children": ["MockAdvancedComponents", "production_engines/"]
+          }
+        ],
+        "secondary_apis": [
+          {
+            "file": "app_dynamic.py",
+            "routes": 7,
+            "role": "واجهة ديناميكية للتحليل"
+          },
+          {
+            "file": "app_new.py", 
+            "routes": 5,
+            "role": "واجهة محدثة مع معالجة دفعية"
+          }
+        ]
+      }
+    },
+    "level_2_child": {
+      "name": "Service Layer (Child Level)",
+      "description": "محركات التكامل والخدمات الأساسية",
+      "total_files": 31,
+      "components": {
+        "integration_engines": [
+          {
+            "file": "arabic_morphophon/integrator.py",
+            "type": "Main Integration Engine",
+            "classes": ["MorphophonologicalEngine"],
+            "role": "محرك التكامل الرئيسي",
+            "parent": ["app.py", "advanced_hierarchical_api.py"],
+            "children": ["models/roots.py", "models/patterns.py", "models/phonology.py", "models/morphophon.py"]
+          }
+        ],
+        "phonological_engines": [
+          {
+            "file": "arabic_phonology_engine.py",
+            "type": "Phonological Engine",
+            "role": "محرك التحليل الصوتي الأساسي",
+            "parent": ["integrator.py"],
+            "children": ["phonology/analyzer.py", "phonology/classifier.py"]
+          },
+          {
+            "file": "arabic_phonology_engine/analyzer.py",
+            "type": "Phonological Analyzer",
+            "role": "محلل القواعد الصوتية"
+          }
+        ],
+        "morphological_engines": [
+          {
+            "file": "arabic_phonology_engine/morphology.py",
+            "type": "Morphological Engine", 
+            "role": "محرك التحليل الصرفي"
+          }
+        ]
+      }
+    },
+    "level_3_grandchild": {
+      "name": "Domain Layer (Grandchild Level)",
+      "description": "النماذج الأساسية والحزم المتخصصة",
+      "total_files": 41,
+      "components": {
+        "core_models": [
+          {
+            "file": "arabic_morphophon/models/roots.py",
+            "type": "Core Model",
+            "classes": ["ArabicRoot", "RootDatabase", "Radical"],
+            "functions": ["create_root"],
+            "role": "نموذج الجذور العربية مع قاعدة البيانات",
+            "parent": ["integrator.py"],
+            "children": ["SAMPLE_ROOTS", "root_database operations"]
+          },
+          {
+            "file": "arabic_morphophon/models/patterns.py",
+            "type": "Core Model",
+            "classes": ["MorphPattern", "PatternRepository", "CVStructure"],
+            "role": "نموذج الأوزان والقوالب الصرفية",
+            "parent": ["integrator.py"],
+            "children": ["verb_patterns", "noun_patterns", "adjective_patterns"]
+          },
+          {
+            "file": "arabic_morphophon/models/phonology.py",
+            "type": "Core Model",
+            "classes": ["PhonologyEngine", "PhonologicalRule", "SubstitutionRule"],
+            "role": "نموذج القواعد الصوتية",
+            "parent": ["integrator.py"],
+            "children": ["phonological_rules", "rule_application"]
+          },
+          {
+            "file": "arabic_morphophon/models/morphophon.py",
+            "type": "Core Model",
+            "classes": ["ArabicMorphophon", "ArabicSyllabicUnit"],
+            "role": "مُقسم المقاطع العربية",
+            "parent": ["integrator.py"],
+            "children": ["syllabic_unit_analysis", "phonotactic_rules"]
+          }
+        ],
+        "specialized_packages": [
+          {
+            "package": "arabic_morphophon/",
+            "type": "Main Package",
+            "files": 8,
+            "subpackages": ["models/", "phonology/", "data/"],
+            "role": "الحزمة الرئيسية للتكامل الصرفي-الصوتي"
+          },
+          {
+            "package": "arabic_morphology/",
+            "type": "Morphology Package", 
+            "role": "حزمة التحليل الصرفي المتخصصة"
+          },
+          {
+            "package": "arabic_phonology_engine/",
+            "type": "Phonology Package",
+            "role": "حزمة محرك التحليل الصوتي"
+          }
+        ]
+      }
+    },
+    "level_4_great_grandchild": {
+      "name": "Engine Layer (Great-grandchild Level)", 
+      "description": "المحركات المتخصصة والمكونات التفصيلية",
+      "total_files": 88,
+      "components": {
+        "specialized_engines": [
+          {
+            "file": "arabic_morphophon/phonology/analyzer.py",
+            "type": "Specialized Engine",
+            "role": "محلل الصوتيات المتخصص",
+            "parent": ["models/phonology.py"]
+          },
+          {
+            "file": "arabic_morphophon/phonology/classifier.py", 
+            "type": "Specialized Engine",
+            "role": "مصنف الأصوات",
+            "parent": ["models/phonology.py"]
+          },
+          {
+            "file": "arabic_morphophon/phonology/normalizer.py",
+            "type": "Specialized Engine", 
+            "role": "مُطبع النصوص العربية",
+            "parent": ["models/phonology.py"]
+          }
+        ],
+        "support_modules": [
+          {
+            "category": "Testing Modules",
+            "count": 88,
+            "role": "وحدات الاختبار والتحقق"
+          },
+          {
+            "category": "Demo Modules", 
+            "count": 15,
+            "role": "وحدات العرض والتوضيح"
+          }
+        ]
+      }
+    },
+    "level_5_great_great_grandchild": {
+      "name": "Data Layer (Great-great-grandchild Level)",
+      "description": "البيانات والتكوينات والموارد",
+      "components": {
+        "data_files": [
+          {
+            "file": "arabic_morphophon/data/linguistic_templates.json",
+            "type": "Data Resource",
+            "role": "قوالب لغوية للتحليل",
+            "parent": ["models/patterns.py", "models/roots.py"]
+          }
+        ],
+        "configuration_files": [
+          {
+            "file": "pyproject.toml",
+            "type": "Configuration",
+            "role": "تكوين المشروع الأساسي"
+          },
+          {
+            "file": "requirements.txt",
+            "type": "Configuration", 
+            "role": "متطلبات المشروع"
+          }
+        ],
+        "resource_files": [
+          {
+            "category": "Static Resources",
+            "location": "static/",
+            "role": "الموارد الثابتة للواجهة"
+          },
+          {
+            "category": "Templates",
+            "location": "templates/", 
+            "role": "قوالب HTML"
+          }
+        ]
+      }
+    }
+  },
+  "relationships_matrix": {
+    "parent_to_child": {
+      "app.py": ["integrator.py", "models/"],
+      "advanced_hierarchical_api.py": ["AdvancedArabicAnalysisSystem", "specialized_engines/"],
+      "integrator.py": ["models/roots.py", "models/patterns.py", "models/phonology.py", "models/morphophon.py"],
+      "models/phonology.py": ["phonology/analyzer.py", "phonology/classifier.py", "phonology/normalizer.py"]
+    },
+    "child_to_parent": {
+      "integrator.py": ["app.py", "advanced_hierarchical_api.py", "advanced_production_api.py"],
+      "models/roots.py": ["integrator.py"],
+      "models/patterns.py": ["integrator.py"],
+      "models/phonology.py": ["integrator.py"],
+      "phonology/analyzer.py": ["models/phonology.py"]
+    }
+  },
+  "data_flow": {
+    "request_flow": [
+      "Flask API (app.py)",
+      "Integration Engine (integrator.py)", 
+      "Core Models (roots.py, patterns.py, phonology.py)",
+      "Specialized Engines (analyzer.py, classifier.py)",
+      "Data Resources (linguistic_templates.json)"
+    ],
+    "response_flow": [
+      "Data Resources",
+      "Specialized Engines", 
+      "Core Models",
+      "Integration Engine",
+      "Flask API"
+    ]
+  },
+  "entry_points_ranking": [
+    {
+      "rank": 1,
+      "file": "app.py",
+      "type": "Primary API",
+      "routes": 7,
+      "import_dataance": "Critical",
+      "usage": "Main application interface"
+    },
+    {
+      "rank": 2, 
+      "file": "advanced_hierarchical_api.py",
+      "type": "Advanced API",
+      "routes": 9,
+      "import_dataance": "High",
+      "usage": "Advanced hierarchical analysis"
+    },
+    {
+      "rank": 3,
+      "file": "integrator.py", 
+      "type": "Integration Engine",
+      "import_dataance": "Critical",
+      "usage": "Core integration logic"
+    },
+    {
+      "rank": 4,
+      "file": "comprehensive_tests.py",
+      "type": "Testing Suite", 
+      "import_dataance": "High",
+      "usage": "Quality assurance"
+    }
+  ],
+  "metrics": {
+    "total_files": 274,
+    "api_files": 20,
+    "engines": 31,
+    "packages": 41,
+    "tests": 88,
+    "modules": 88,
+    "dependencies": 315,
+    "api_endpoints": 118,
+    "hierarchy_depth": 5,
+    "coverage_percentage": "100%"
+  },
+  "expert_recommendations": {
+    "strengths": [
+      "منطقية الهيكل الهرمي",
+      "فصل واضح للاهتمامات",
+      "قابلية التوسع العالية", 
+      "تنوع نقاط الدخول",
+      "تغطية اختبارات ممتازة"
+    ],
+    "improvements": [
+      "توحيد واجهات API المتشابهة",
+      "تقليل تكرار المحركات",
+      "تحسين التوثيق",
+      "تبسيط التبعيات"
+    ],
+    "priority_actions": [
+      {
+        "action": "API Consolidation",
+        "priority": "High",
+        "effort": "Medium"
+      },
+      {
+        "action": "Engine Deduplication", 
+        "priority": "Medium",
+        "effort": "High"
+      },
+      {
+        "action": "Documentation Enhancement",
+        "priority": "Medium", 
+        "effort": "Low"
+      }
+    ]
+  }
+}

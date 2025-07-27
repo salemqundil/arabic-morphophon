@@ -1,0 +1,2580 @@
+{
+  "project_structure": {
+    "advanced_hierarchical_api.py": {
+      "type": "api",
+      "classes": [
+        "AdvancedArabicAnalysisSystem"
+      ],
+      "functions": [],
+      "flask_routes": [
+        "/",
+        "/api/health",
+        "/api/analyze/traditional",
+        "/api/analyze/hierarchical",
+        "/api/validate/rules",
+        "/api/repair",
+        "/api/batch",
+        "/api/info",
+        "/api/stats"
+      ],
+      "description": ""
+    },
+    "advanced_hierarchical_api_fixed.py": {
+      "type": "api",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "advanced_production_api.py": {
+      "type": "api",
+      "classes": [
+        "MockAdvancedComponents"
+      ],
+      "functions": [],
+      "flask_routes": [
+        "/",
+        "/api/health",
+        "/analyze",
+        "/analyze/hierarchical",
+        "/rules/validate",
+        "/batch",
+        "/stats"
+      ],
+      "description": ""
+    },
+    "analyze_project_hierarchy.py": {
+      "type": "module",
+      "classes": [
+        "FileInfo",
+        "ProjectHierarchyAnalyzer"
+      ],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "app.py": {
+      "type": "api",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [
+        "/",
+        "/api/analyze",
+        "/api/stats",
+        "/api/cache/clear",
+        "/api/examples",
+        "/api/health",
+        "/static/<path:filename>"
+      ],
+      "description": ""
+    },
+    "app_clean.py": {
+      "type": "api",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "app_dynamic.py": {
+      "type": "api",
+      "classes": [
+        "DynamicArabicEngine"
+      ],
+      "functions": [],
+      "flask_routes": [
+        "/",
+        "/static/<path:filename>",
+        "/api/analyze",
+        "/api/stats",
+        "/api/health",
+        "/api/cache/clear",
+        "/api/examples"
+      ],
+      "description": ""
+    },
+    "app_fixed.py": {
+      "type": "api",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "app_new.py": {
+      "type": "api",
+      "classes": [
+        "MorphophonologicalEngine",
+        "AnalysisLevel",
+        "OutputFormat",
+        "FallbackEngine"
+      ],
+      "functions": [],
+      "flask_routes": [
+        "/",
+        "/api/analyze",
+        "/api/batch-analyze",
+        "/api/stats",
+        "/api/clear-cache"
+      ],
+      "description": ""
+    },
+    "arabic_phonology_engine.py": {
+      "type": "engine",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "comprehensive_tests.py": {
+      "type": "test",
+      "classes": [
+        "TestResult",
+        "ArabicMorphophonologyTester"
+      ],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "demo_advanced_integration.py": {
+      "type": "demo",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "demo_enhanced_integration.py": {
+      "type": "demo",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "demo_perfect.py": {
+      "type": "demo",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "demo_perfect_clean.py": {
+      "type": "demo",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "demo_perfect_engine.py": {
+      "type": "engine",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "fix_violations.py": {
+      "type": "module",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "gunicorn.conf.py": {
+      "type": "module",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "main.py": {
+      "type": "module",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "quick_test.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "run_tests.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "setup.py": {
+      "type": "config",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "test_advanced_system.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "test_advanced_system_clean.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "test_clean_model.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "test_engine.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "test_simple.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "test_simplified_roots.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "verify_organization.py": {
+      "type": "module",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "WEB_TEST.py": {
+      "type": "test",
+      "classes": [],
+      "functions": [],
+      "flask_routes": [],
+      "description": ""
+    },
+    "arabic_morphology": {
+      "__init__.py": {
+        "type": "package",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "core": {
+        "models.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "phonology": {
+        "processor.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "segmentation": {
+        "segmenter.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "utils": {
+        "exceptions.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      }
+    },
+    "arabic_morphophon": {
+      "integrator.py": {
+        "type": "module",
+        "classes": [
+          "AnalysisLevel",
+          "OutputFormat",
+          "AnalysisResult",
+          "MorphophonologicalEngine"
+        ],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "__init__.py": {
+        "type": "package",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "advanced": {
+        "graph_autoencoder.py": {
+          "type": "module",
+          "classes": [
+            "GraphConvLayer",
+            "GraphAutoencoder"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "phoneme_embeddings.py": {
+          "type": "module",
+          "classes": [
+            "PhonemeVowelEmbed"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "soft_logic_rules.py": {
+          "type": "module",
+          "classes": [
+            "RuleViolation",
+            "SoftLogicRule",
+            "PhonologicalAssimilationRule",
+            "MorphologicalFormRule",
+            "SyntacticAgreementRule",
+            "TransitivityRule",
+            "AdvancedRulesEngine"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "syllabic_unit_embeddings.py": {
+          "type": "module",
+          "classes": [
+            "SyllabicUnitEmbedding"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "database": {
+        "demo_root_database.py": {
+          "type": "demo",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "enhanced_root_database.py": {
+          "type": "module",
+          "classes": [
+            "DatabaseConfig",
+            "QueryStats",
+            "DatabaseMetrics",
+            "EnhancedRootDatabase"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_enhanced_database.py": {
+          "type": "test",
+          "classes": [
+            "DatabaseTestSuite"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_root_database_pytest.py": {
+          "type": "test",
+          "classes": [
+            "TestCRUDOperations",
+            "TestSearchOperations",
+            "TestBulkOperations",
+            "TestStatisticsAndAnalytics",
+            "TestErrorHandling",
+            "TestPerformance",
+            "TestDatabaseIntegration"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": "Pytest suite for RootDatabase CRUD operations."
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "models": {
+        "patterns.py": {
+          "type": "module",
+          "classes": [
+            "PatternType",
+            "VerbForm",
+            "CVStructure",
+            "MorphPattern",
+            "PatternRepository"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "phonology.py": {
+          "type": "module",
+          "classes": [
+            "PhonologicalContext",
+            "RuleType",
+            "PhonologicalRule",
+            "SubstitutionRule",
+            "HamzatWaslRule",
+            "IdghamRule",
+            "IqlabRule",
+            "TafkheemRule",
+            "PhonologyEngine"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "roots.py": {
+          "type": "module",
+          "classes": [
+            "RootType",
+            "ArabicRoot",
+            "RootDatabase",
+            "Radical"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": "arabic_morphophon.models.roots"
+        },
+        "roots_clean.py": {
+          "type": "module",
+          "classes": [
+            "RootType",
+            "ArabicRoot",
+            "RootDatabase",
+            "Radical"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": "arabic_morphophon.models.roots"
+        },
+        "roots_new.py": {
+          "type": "module",
+          "classes": [
+            "_BasicRoot",
+            "RootType",
+            "Root",
+            "RootDatabase"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "roots_simple.py": {
+          "type": "module",
+          "classes": [
+            "RootType",
+            "Root"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "root_database.py": {
+          "type": "module",
+          "classes": [
+            "ArabicRoot"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "morphophon.py": {
+          "type": "module",
+          "classes": [
+            "SyllabicUnitType",
+            "SyllabicUnitPosition",
+            "SyllabicUnitWeight",
+            "ArabicSyllabicUnit",
+            "ArabicMorphophon"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "phonology": {
+        "analyzer.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "classifier.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "normalizer.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "syllabic_unit_encoder.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": "Helper function to set syllabic_unit data properties"
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "web": {
+        "routes.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [
+            "/",
+            "/api/analyze",
+            "/api/stats",
+            "/api/health",
+            "/api/examples"
+          ],
+          "description": ""
+        },
+        "services.py": {
+          "type": "module",
+          "classes": [
+            "AnalysisService"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "utils.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      }
+    },
+    "arabic_phonology_engine": {
+      "example.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "setup.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_functionality.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_morphological_analyzer.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "web_app.py": {
+        "type": "api",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "arabic_phonology_engine": {
+        "analyzer.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "inflection.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "morphology.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "phonology.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "segmentation.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "tests": {
+        "run_tests.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_analyzer.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_inflection.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_morphology.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_phonology.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_segmentation.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      }
+    },
+    "backend": {
+      "app.py": {
+        "type": "api",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "engine.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "engine_simple.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_phonology.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "verify_phonology.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "data": {
+      "phoneme_db.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "demos": {
+      "copilot_demo.py": {
+        "type": "demo",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "demo_advanced_integration.py": {
+        "type": "demo",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [
+          "/analyze",
+          "/analyze/hierarchical",
+          "/rules/validate"
+        ],
+        "description": ""
+      },
+      "demo_arabic_engine.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "demo_arabic_engine_fixed.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "demo_enhanced_integration.py": {
+        "type": "demo",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "demo_perfect.py": {
+        "type": "demo",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "demo_perfect_engine.py": {
+        "type": "engine",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "phonology": {
+      "analyzer.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "classifier.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "normalizer.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "syllabic_unit_encoder.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": "Helper function to set syllabic_unit data fields"
+      },
+      "__init__.py": {
+        "type": "package",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "python-dr.saleh": {
+      "run_tests.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_engine.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "verify_organization.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "arabic_morphophon": {
+        "integrator.py": {
+          "type": "module",
+          "classes": [
+            "AnalysisLevel",
+            "OutputFormat",
+            "AnalysisResult",
+            "MorphophonologicalEngine"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "advanced": {
+          "graph_autoencoder.py": {
+            "type": "module",
+            "classes": [
+              "GraphConvLayer",
+              "GraphAutoencoder"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "phoneme_embeddings.py": {
+            "type": "module",
+            "classes": [
+              "PhonemeVowelEmbed"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "soft_logic_rules.py": {
+            "type": "module",
+            "classes": [
+              "RuleViolation",
+              "SoftLogicRule",
+              "PhonologicalAssimilationRule",
+              "MorphologicalFormRule",
+              "SyntacticAgreementRule",
+              "TransitivityRule",
+              "AdvancedRulesEngine"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "syllabic_unit_embeddings.py": {
+            "type": "module",
+            "classes": [
+              "SyllabicUnitEmbedding"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "database": {
+          "demo_root_database.py": {
+            "type": "demo",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "enhanced_root_database.py": {
+            "type": "module",
+            "classes": [
+              "DatabaseConfig",
+              "QueryStats",
+              "DatabaseMetrics",
+              "EnhancedRootDatabase"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_enhanced_database.py": {
+            "type": "test",
+            "classes": [
+              "DatabaseTestSuite"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_root_database_pytest.py": {
+            "type": "test",
+            "classes": [
+              "TestCRUDOperations",
+              "TestSearchOperations",
+              "TestBulkOperations",
+              "TestStatisticsAndAnalytics",
+              "TestErrorHandling",
+              "TestPerformance",
+              "TestDatabaseIntegration"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": "Pytest suite for RootDatabase CRUD operations."
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "models": {
+          "patterns.py": {
+            "type": "module",
+            "classes": [
+              "PatternType",
+              "VerbForm",
+              "CVStructure",
+              "MorphPattern",
+              "PatternRepository"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "phonology.py": {
+            "type": "module",
+            "classes": [
+              "PhonologicalContext",
+              "RuleType",
+              "PhonologicalRule",
+              "SubstitutionRule",
+              "HamzatWaslRule",
+              "IdghamRule",
+              "IqlabRule",
+              "TafkheemRule",
+              "PhonologyEngine"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "roots.py": {
+            "type": "module",
+            "classes": [
+              "RootType",
+              "ArabicRoot",
+              "RootDatabase",
+              "Radical"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": "arabic_morphophon.models.roots"
+          },
+          "roots_clean.py": {
+            "type": "module",
+            "classes": [
+              "RootType",
+              "ArabicRoot",
+              "RootDatabase",
+              "Radical"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": "arabic_morphophon.models.roots"
+          },
+          "roots_new.py": {
+            "type": "module",
+            "classes": [
+              "_BasicRoot",
+              "RootType",
+              "Root",
+              "RootDatabase"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "roots_simple.py": {
+            "type": "module",
+            "classes": [
+              "RootType",
+              "Root"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "root_database.py": {
+            "type": "module",
+            "classes": [
+              "ArabicRoot"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "morphophon.py": {
+            "type": "module",
+            "classes": [
+              "SyllabicUnitType",
+              "SyllabicUnitPosition",
+              "SyllabicUnitWeight",
+              "ArabicSyllabicUnit",
+              "ArabicMorphophon"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "phonology": {
+          "analyzer.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "classifier.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "normalizer.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "syllabic_unit_encoder.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": "Helper function to set syllabic_unit data properties"
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "web": {
+          "routes.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [
+              "/",
+              "/api/analyze",
+              "/api/stats",
+              "/api/health",
+              "/api/examples"
+            ],
+            "description": ""
+          },
+          "services.py": {
+            "type": "module",
+            "classes": [
+              "AnalysisService"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "utils.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        }
+      },
+      "data": {
+        "phoneme_db.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "demos": {
+        "copilot_demo.py": {
+          "type": "demo",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "demo_advanced_integration.py": {
+          "type": "demo",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [
+            "/analyze",
+            "/analyze/hierarchical",
+            "/rules/validate"
+          ],
+          "description": ""
+        },
+        "demo_arabic_engine.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "demo_arabic_engine_fixed.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "demo_enhanced_integration.py": {
+          "type": "demo",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "demo_perfect.py": {
+          "type": "demo",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "demo_perfect_engine.py": {
+          "type": "engine",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "scripts": {
+        "final_cleanup.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "fix_violations.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "quick_test.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "validate_environment.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "static": {
+        "# Different response formats based on an.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "tests": {
+        "conftest.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "integration": {
+          "test_advanced_system.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_advanced_system_clean.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_api_integration.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_arabic_engine_comprehensive.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_comprehensive.py": {
+            "type": "test",
+            "classes": [
+              "TestResult",
+              "ArabicMorphophonologyTester"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_full_pipeline.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "morphophonemic-api": {
+          "app.py": {
+            "type": "api",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [
+              "/",
+              "/api/status",
+              "/api/process_root",
+              "/api/batch_process",
+              "/api/apply_template",
+              "/api/templates",
+              "/api/validate",
+              "/api/process",
+              "/api/batch",
+              "/api/analyze",
+              "/api/templates"
+            ],
+            "description": ""
+          },
+          "run.py": {
+            "type": "module",
+            "classes": [
+              "StandaloneApplication"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "begin.py": {
+            "type": "module",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_integration.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "morphophonemic": {
+            "integrator.py": {
+              "type": "module",
+              "classes": [
+                "MorphophonemicResult",
+                "MorphophonemicIntegrator"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "rules.py": {
+              "type": "module",
+              "classes": [
+                "MorphophonemicRule",
+                "HamzatWasl",
+                "Idgham",
+                "Assimilation",
+                "Deletion",
+                "RulePipeline"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "utils.py": {
+              "type": "module",
+              "classes": [
+                "SyllabicUnitInfo"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "__init__.py": {
+              "type": "package",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            }
+          },
+          "tests": {
+            "test_integrator.py": {
+              "type": "test",
+              "classes": [
+                "TestMorphophonemicIntegrator",
+                "TestMorphophonemicRules",
+                "TestMorphophonemicUtils",
+                "TestIntegration"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            }
+          }
+        },
+        "performance": {
+          "test_benchmarks.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "smoke": {
+          "test_basic_functionality.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_engine_health.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_phonology_health.py": {
+            "type": "test",
+            "classes": [
+              "TestBasicImports",
+              "TestBasicPhonology",
+              "TestIntegration",
+              "PhonemeClassifier",
+              "SyllabicUnitUtils"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        },
+        "unit": {
+          "arabic_comprehensive_generator.py": {
+            "type": "module",
+            "classes": [
+              "UsageCategory",
+              "WordType",
+              "GrammaticalCase",
+              "GrammaticalNumber",
+              "GrammaticalGender",
+              "VerbTense",
+              "SentenceType",
+              "PhonologicalFeatures",
+              "MorphologicalFeatures",
+              "SyntacticFeatures",
+              "SemanticFeatures",
+              "PragmaticFeatures",
+              "ComprehensiveWordAttributes",
+              "ComprehensiveSentenceAttributes",
+              "ArabicDictionaryAPI",
+              "ArabicHarakatGenerator",
+              "ArabicGrammarAnalyzer",
+              "ComprehensiveArabicGenerator"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "arabic_root_system_demo.py": {
+            "type": "demo",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "arabic_root_web_server.py": {
+            "type": "api",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [
+              "/",
+              "/api/generate_single",
+              "/api/generate_batch",
+              "/api/generate_random",
+              "/api/add_to_database",
+              "/api/database_stats",
+              "/api/search_roots",
+              "/api/store_data_database",
+              "/api/backup_database",
+              "/api/optimize_database",
+              "/api/get_root_details/<root>",
+              "/api/status",
+              "/api/morphophonemic/process",
+              "/api/morphophonemic/batch",
+              "/api/morphophonemic/templates",
+              "/api/morphophonemic/analyze",
+              "/api/morphophonemic/rules",
+              "/downimport_data/generated.json"
+            ],
+            "description": ""
+          },
+          "config.py": {
+            "type": "config",
+            "classes": [
+              "Config",
+              "DevelopmentConfig",
+              "ProductionConfig",
+              "TestingConfig"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "morphophonemic_engine.py": {
+            "type": "engine",
+            "classes": [
+              "TemplateType",
+              "VerbForm",
+              "PhonologicalRule",
+              "SyllabicUnitInfo",
+              "MorphophonemicResult",
+              "ArabicPhonologicalRules",
+              "ArabicTemplateProcessor",
+              "ArabicSyllabicUnitAnalyzer",
+              "ArabicMorphophonemicEngine"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_api_direct.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_app.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_arabic_database_manager.py": {
+            "type": "test",
+            "classes": [
+              "DatabaseStats",
+              "ArabicRootDatabaseManager"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_arabic_engine.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_arabic_root_generator.py": {
+            "type": "test",
+            "classes": [
+              "WeaknessType",
+              "SemanticField",
+              "EnhancedRootAttributes",
+              "ArabicRootGenerator"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_clean_model.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_copilot_demo.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_database.py": {
+            "type": "test",
+            "classes": [
+              "TestCRUDOperations",
+              "TestSearchOperations",
+              "TestBulkOperations",
+              "TestStatistics",
+              "TestErrorHandling"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": "Pytest suite for RootDatabase CRUD operations."
+          },
+          "test_direct.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_engine.py": {
+            "type": "test",
+            "classes": [
+              "MockEngine"
+            ],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_main.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_simple.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_simplified_roots.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_standalone.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_unit_collection.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          }
+        }
+      },
+      "web_apps": {
+        "advanced_hierarchical_api.py": {
+          "type": "api",
+          "classes": [
+            "AdvancedArabicAnalysisSystem"
+          ],
+          "functions": [],
+          "flask_routes": [
+            "/",
+            "/api/health",
+            "/api/analyze/traditional",
+            "/api/analyze/hierarchical",
+            "/api/validate",
+            "/api/repair",
+            "/api/batch",
+            "/api/system/info",
+            "/api/statistics"
+          ],
+          "description": ""
+        },
+        "main_app.py": {
+          "type": "api",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [
+            "/",
+            "/api/analyze",
+            "/api/stats",
+            "/api/cache/clear",
+            "/api/examples",
+            "/api/health",
+            "/static/<path:filename>"
+          ],
+          "description": ""
+        },
+        "web_api.py": {
+          "type": "api",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      }
+    },
+    "scripts": {
+      "final_cleanup.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "fix_violations.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "quick_test.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "validate_environment.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "static": {
+      "# Different response formats based on an.py": {
+        "type": "module",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "tests": {
+      "conftest.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_engine_smoke.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_root_database.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_simple_smoke.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "test_smoke_phonology.py": {
+        "type": "test",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "__init__.py": {
+        "type": "package",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      },
+      "integration": {
+        "test_advanced_system.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_advanced_system_clean.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_api_integration.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_arabic_engine_comprehensive.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_comprehensive.py": {
+          "type": "test",
+          "classes": [
+            "TestResult",
+            "ArabicMorphophonologyTester"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_full_pipeline.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "performance": {
+        "test_benchmarks.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "smoke": {
+        "test_basic_functionality.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_engine_health.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_phonology_health.py": {
+          "type": "test",
+          "classes": [
+            "TestBasicImports",
+            "TestBasicPhonology",
+            "TestIntegration",
+            "PhonemeClassifier",
+            "SyllabicUnitUtils"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "unit": {
+        "test_api_direct.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_app.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_arabic_engine.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_clean_model.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_copilot_demo.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_database.py": {
+          "type": "test",
+          "classes": [
+            "TestCRUDOperations",
+            "TestSearchOperations",
+            "TestBulkOperations",
+            "TestStatistics",
+            "TestErrorHandling"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": "Pytest suite for RootDatabase CRUD operations."
+        },
+        "test_direct.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_engine.py": {
+          "type": "test",
+          "classes": [
+            "MockEngine"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_main.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_simple.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_simplified_roots.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_standalone.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "test_unit_collection.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      }
+    },
+    "web_apps": {
+      "advanced_hierarchical_api.py": {
+        "type": "api",
+        "classes": [
+          "AdvancedArabicAnalysisSystem"
+        ],
+        "functions": [],
+        "flask_routes": [
+          "/",
+          "/api/health",
+          "/api/analyze/traditional",
+          "/api/analyze/hierarchical",
+          "/api/validate",
+          "/api/repair",
+          "/api/batch",
+          "/api/system/info",
+          "/api/statistics"
+        ],
+        "description": ""
+      },
+      "main_app.py": {
+        "type": "api",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [
+          "/",
+          "/api/analyze",
+          "/api/stats",
+          "/api/cache/clear",
+          "/api/examples",
+          "/api/health",
+          "/static/<path:filename>"
+        ],
+        "description": ""
+      },
+      "web_api.py": {
+        "type": "api",
+        "classes": [],
+        "functions": [],
+        "flask_routes": [],
+        "description": ""
+      }
+    },
+    "arabic_phonology_engine_new": {
+      "config": {
+        "development.py": {
+          "type": "module",
+          "classes": [
+            "APIConfig",
+            "DevelopmentConfig",
+            "ProductionConfig",
+            "DistributedConfig"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "scripts": {
+        "deploy.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "setup.py": {
+          "type": "config",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "tests": {
+        "conftest.py": {
+          "type": "test",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "__init__.py": {
+          "type": "package",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": "Test suite for Arabic Phonology Engine."
+        },
+        "integration": {
+          "test_api.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": "Integration tests for API and workflows."
+          }
+        },
+        "performance": {
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": "Performance and import_data tests."
+          }
+        },
+        "unit": {
+          "test_analyzer.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "test_engine.py": {
+            "type": "test",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": "Unit tests for core components."
+          }
+        }
+      },
+      "tools": {
+        "cleanup.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "orchestrator.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "project_optimizer.py": {
+          "type": "module",
+          "classes": [
+            "ProjectOptimizer"
+          ],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        },
+        "verification.py": {
+          "type": "module",
+          "classes": [],
+          "functions": [],
+          "flask_routes": [],
+          "description": ""
+        }
+      },
+      "src": {
+        "arabic_phonology": {
+          "__init__.py": {
+            "type": "package",
+            "classes": [],
+            "functions": [],
+            "flask_routes": [],
+            "description": ""
+          },
+          "analysis": {
+            "analyzer.py": {
+              "type": "module",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "classifier.py": {
+              "type": "module",
+              "classes": [
+                "Phoneme"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": "Safe equality comparison with enhanced type checking"
+            },
+            "import_data pytest.py": {
+              "type": "test",
+              "classes": [
+                "TestPattern",
+                "TestWeight",
+                "TestFlush",
+                "TestSyllabicAnalyze",
+                "TestSyllabicUnitDataclass",
+                "TestEdgeCases"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": "Test the _pattern function for CV pattern generation."
+            },
+            "normalizer.py": {
+              "type": "module",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "phoneme_registry.py": {
+              "type": "module",
+              "classes": [
+                "PhonemeType",
+                "ScriptType",
+                "PhonemeDefinition",
+                "PhonemeRegistry"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "morphophon.py": {
+              "type": "module",
+              "classes": [
+                "SyllabicUnit"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "syllabic_unit_encoder.py": {
+              "type": "module",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "unified.py": {
+              "type": "module",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "utils.py": {
+              "type": "module",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "__init__.py": {
+              "type": "package",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            }
+          },
+          "core": {
+            "engine.py": {
+              "type": "engine",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "__init__.py": {
+              "type": "package",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": "Core phonology engine components."
+            }
+          },
+          "data": {
+            "phoneme_db.py": {
+              "type": "module",
+              "classes": [
+                "PhonemeType",
+                "ArticulationPlace",
+                "ArticulationManner",
+                "Phoneme",
+                "PhonemeDatabase"
+              ],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "__init__.py": {
+              "type": "package",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": "Data models and database components."
+            }
+          },
+          "utils": {
+            "__init__.py": {
+              "type": "package",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": "Utility functions and helpers."
+            }
+          },
+          "web": {
+            "api.py": {
+              "type": "api",
+              "classes": [
+                "StatsBackend",
+                "MemoryStatsBackend",
+                "RedisStatsBackend",
+                "ValidationResult"
+              ],
+              "functions": [],
+              "flask_routes": [
+                "/",
+                "/api/syllabic",
+                "/api/health",
+                "/api/stats",
+                "/api/phonemes",
+                "/api/registry"
+              ],
+              "description": ""
+            },
+            "app.py": {
+              "type": "api",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": ""
+            },
+            "__init__.py": {
+              "type": "package",
+              "classes": [],
+              "functions": [],
+              "flask_routes": [],
+              "description": "Web interface and API components."
+            }
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "total_files": 274,
+    "file_types": {
+      "api": 20,
+      "module": 88,
+      "engine": 19,
+      "test": 88,
+      "demo": 15,
+      "config": 3,
+      "package": 41
+    },
+    "packages": [
+      "arabic_morphology\\__init__.py",
+      "arabic_morphophon\\__init__.py",
+      "phonology\\__init__.py",
+      "tests\\__init__.py",
+      "tests\\integration\\__init__.py",
+      "tests\\performance\\__init__.py",
+      "tests\\smoke\\__init__.py",
+      "tests\\unit\\__init__.py",
+      "python-dr.saleh\\arabic_morphophon\\__init__.py",
+      "python-dr.saleh\\tests\\__init__.py",
+      "python-dr.saleh\\tests\\integration\\__init__.py",
+      "python-dr.saleh\\tests\\performance\\__init__.py",
+      "python-dr.saleh\\tests\\smoke\\__init__.py",
+      "python-dr.saleh\\tests\\unit\\__init__.py",
+      "python-dr.saleh\\tests\\morphophonemic-api\\morphophonemic\\__init__.py",
+      "python-dr.saleh\\arabic_morphophon\\advanced\\__init__.py",
+      "python-dr.saleh\\arabic_morphophon\\database\\__init__.py",
+      "python-dr.saleh\\arabic_morphophon\\models\\__init__.py",
+      "python-dr.saleh\\arabic_morphophon\\phonology\\__init__.py",
+      "python-dr.saleh\\arabic_morphophon\\web\\__init__.py",
+      "arabic_phonology_engine_new\\tests\\__init__.py",
+      "arabic_phonology_engine_new\\tests\\integration\\__init__.py",
+      "arabic_phonology_engine_new\\tests\\performance\\__init__.py",
+      "arabic_phonology_engine_new\\tests\\unit\\__init__.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\__init__.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\analysis\\__init__.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\core\\__init__.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\data\\__init__.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\utils\\__init__.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\__init__.py",
+      "arabic_phonology_engine\\arabic_phonology_engine\\__init__.py",
+      "arabic_phonology_engine\\tests\\__init__.py",
+      "arabic_morphophon\\advanced\\__init__.py",
+      "arabic_morphophon\\database\\__init__.py",
+      "arabic_morphophon\\models\\__init__.py",
+      "arabic_morphophon\\phonology\\__init__.py",
+      "arabic_morphophon\\web\\__init__.py",
+      "arabic_morphology\\core\\__init__.py",
+      "arabic_morphology\\phonology\\__init__.py",
+      "arabic_morphology\\segmentation\\__init__.py",
+      "arabic_morphology\\utils\\__init__.py"
+    ],
+    "entry_points": [
+      "advanced_hierarchical_api.py",
+      "advanced_hierarchical_api_fixed.py",
+      "advanced_production_api.py",
+      "app.py",
+      "app_clean.py",
+      "app_dynamic.py",
+      "app_fixed.py",
+      "app_new.py",
+      "demo_advanced_integration.py",
+      "demo_enhanced_integration.py",
+      "demo_perfect.py",
+      "demo_perfect_clean.py",
+      "arabic_phonology_engine\\web_app.py",
+      "backend\\app.py",
+      "demos\\copilot_demo.py",
+      "demos\\demo_advanced_integration.py",
+      "demos\\demo_enhanced_integration.py",
+      "demos\\demo_perfect.py",
+      "web_apps\\advanced_hierarchical_api.py",
+      "web_apps\\main_app.py",
+      "web_apps\\web_api.py",
+      "python-dr.saleh\\demos\\copilot_demo.py",
+      "python-dr.saleh\\demos\\demo_advanced_integration.py",
+      "python-dr.saleh\\demos\\demo_enhanced_integration.py",
+      "python-dr.saleh\\demos\\demo_perfect.py",
+      "python-dr.saleh\\web_apps\\advanced_hierarchical_api.py",
+      "python-dr.saleh\\web_apps\\main_app.py",
+      "python-dr.saleh\\web_apps\\web_api.py",
+      "python-dr.saleh\\tests\\morphophonemic-api\\app.py",
+      "python-dr.saleh\\tests\\unit\\arabic_root_system_demo.py",
+      "python-dr.saleh\\tests\\unit\\arabic_root_web_server.py",
+      "python-dr.saleh\\arabic_morphophon\\database\\demo_root_database.py",
+      "python-dr.saleh\\arabic_morphophon\\web\\routes.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\api.py",
+      "arabic_phonology_engine_new\\src\\arabic_phonology\\web\\app.py",
+      "arabic_morphophon\\database\\demo_root_database.py",
+      "arabic_morphophon\\web\\routes.py"
+    ]
+  }
+}
